@@ -69,6 +69,14 @@ total_b64_len = 0
 
 for k, p in MAPPING.items():
     if not os.path.exists(p):
+        webp_path = os.path.join(IMG_DIR, f"{k}.webp")
+        if os.path.exists(webp_path):
+            with open(webp_path, 'rb') as rf:
+                webp_bytes = rf.read()
+            b64 = base64.b64encode(webp_bytes).decode('ascii')
+            photos_dict[k] = f"data:image/webp;base64,{b64}"
+            total_b64_len += len(b64)
+            continue
         print(f"Warning: file {p} does not exist!")
         continue
     im = Image.open(p).convert('RGB')

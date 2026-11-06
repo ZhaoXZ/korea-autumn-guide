@@ -66,8 +66,8 @@ img{display:block;max-width:100%}
 .chip[aria-pressed="true"] span{color:#e9dccb}
 .chip.sm{padding:5px 12px;border-radius:99px;font-size:.84rem}
 .stickybar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 48px);z-index:30;background:rgb(247 241 231/.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.seg{display:flex;background:#ece2d2;border-radius:12px;padding:3px;margin:12px 14px 4px;gap:2px}
-.seg button{flex:1;border:0;background:transparent;border-radius:9px;padding:7px 4px;font-size:.88rem;cursor:pointer;color:var(--ink2)}
+.seg{display:flex;background:#ece2d2;border-radius:12px;padding:3px;margin:12px 14px 4px;gap:2px;overflow-x:auto}
+.seg button{flex:1;border:0;background:transparent;border-radius:9px;padding:7px 2px;font-size:.82rem;cursor:pointer;color:var(--ink2);white-space:nowrap}
 .seg button[aria-pressed="true"]{background:var(--paper);color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgb(0 0 0/.1)}
 
 /* ---------- generic card ---------- */
@@ -160,6 +160,12 @@ img{display:block;max-width:100%}
 .pcard .meta{display:flex;justify-content:space-between;align-items:center;gap:4px;margin-top:auto;padding-top:4px}
 .city{font-size:.64rem;padding:1px 7px;border-radius:6px;background:var(--maple-s);color:var(--maple);font-weight:700;white-space:nowrap}
 .city.bs{background:var(--night-s);color:var(--night)}
+.floor-tag{display:inline-block;font-size:.66rem;font-weight:700;color:var(--maple);background:var(--maple-s);padding:1px 7px;border-radius:6px;white-space:nowrap}
+.brand-bd{padding:10px;display:flex;flex-direction:column;gap:3px;flex:1}
+.brand-bd h3{font-size:.92rem;margin-top:2px}
+.brand-bd .ko-name{font-size:.74rem;color:var(--ink2);margin-bottom:2px}
+.brand-bd p{font-size:.78rem;color:var(--ink2);margin:1px 0;line-height:1.45}
+.brand-bd b{color:var(--ink)}
 .wide{grid-column:1/-1}
 .dist{padding:12px 14px}
 .dist dl{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;margin:6px 0 0;font-size:.82rem}
@@ -272,8 +278,9 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
   <div class="stickybar">
     <div class="seg" id="discSeg" role="group" aria-label="分类">
       <button type="button" data-k="autumn" aria-pressed="true">🍁 秋景</button>
-      <button type="button" data-k="shop" aria-pressed="false">🛍 街区</button>
-      <button type="button" data-k="ns" aria-pressed="false">✨ 非标</button>
+      <button type="button" data-k="brand" aria-pressed="false">🏷 品牌好店</button>
+      <button type="button" data-k="shop" aria-pressed="false">🛍 逛街商圈</button>
+      <button type="button" data-k="ns" aria-pressed="false">✨ 隐蔽非标</button>
       <button type="button" data-k="xmas" aria-pressed="false">🎄 圣诞</button>
     </div>
     <div class="chiprow" id="discChips" role="group" aria-label="筛选" style="padding-top:6px"></div>
@@ -349,6 +356,26 @@ const PL = {
   mangwon:{n:'望远市场',ko:'망원시장',c:'seoul',ll:[37.5566,126.9060],img:'mangwon'},
   object:{n:'object 独立设计店',ko:'오브젝트 서교점',c:'seoul',ll:[37.5540,126.9190],img:''},
 
+  // 朋友力荐 · 西村 & 景福宫
+  archivist:{n:'Archivist 维也纳咖啡',ko:'아키비스트 서촌',c:'seoul',ll:[37.5818,126.9712],img:'bukchon',food:1},
+  onemorebag:{n:'One More Bag (2楼)',ko:'원모어백',c:'seoul',ll:[37.5794,126.9718],img:'seongsu'},
+  ofrseoul:{n:'Ofr. Seoul 独立复古书店',ko:'오에프알 서울',c:'seoul',ll:[37.5810,126.9702],img:'bosudong'},
+  staffpicks:{n:'Staffpicks 银杏院落咖啡',ko:'스태프픽스',c:'seoul',ll:[37.5762,126.9678],img:'seoulforest',food:1},
+  granhand_sc:{n:'Granhand 西村香氛',ko:'그랑핸드 서촌',c:'seoul',ll:[37.5778,126.9725],img:'ikseon'},
+  samcheongdong:{n:'三清洞 瓦片面片汤',ko:'삼청동수제비',c:'seoul',ll:[37.5852,126.9822],img:'kalguksu',food:1},
+
+  // 朋友力荐 · 汉南洞顺坡买手街
+  hannam:{n:'汉南洞 坡道买手街',ko:'한남동 카페거리',c:'seoul',ll:[37.5385,127.0010],img:'garosu'},
+  mardi:{n:'Mardi Mercredi 汉南旗舰店',ko:'마르디 메크르디 한남',c:'seoul',ll:[37.5372,127.0006],img:'seongsu'},
+  matinkim:{n:'Matin Kim 汉南旗舰店',ko:'마틴킴 한남',c:'seoul',ll:[37.5358,127.0015],img:'seongsu'},
+  emis:{n:'EMIS 汉南店',ko:'이미스 한남',c:'seoul',ll:[37.5376,127.0002],img:'seongsu'},
+  rockfish_h:{n:'Rockfish Weatherwear 汉南',ko:'락피쉬웨더웨어 한남',c:'seoul',ll:[37.5365,127.0008],img:'seongsu'},
+  nonfiction_h:{n:'Nonfiction 汉南香氛',ko:'논픽션 한남',c:'seoul',ll:[37.5352,127.0028],img:'dosanpark'},
+
+  // 朋友力荐 · 圣水洞精选锚点
+  standoil:{n:'Stand Oil 圣水旗舰店',ko:'스탠드오일 성수',c:'seoul',ll:[37.5445,127.0570],img:'seongsu'},
+  lcdc:{n:'LCDC Seoul 复合空间',ko:'엘씨디씨 서울',c:'seoul',ll:[37.5420,127.0600],img:'seongsu'},
+
   busanst:{n:'釜山站（KTX）',ko:'부산역',c:'busan',ll:[35.1155,129.0426],img:'busanstation'},
   jeonpo:{n:'田浦咖啡街',ko:'전포카페거리',c:'busan',ll:[35.1555,129.0645],img:'jeonpo'},
   beomeosa:{n:'梵鱼寺',ko:'범어사',c:'busan',ll:[35.2841,129.0687],img:'beomeosa'},
@@ -384,71 +411,80 @@ const PL = {
 };
 
 const DAYS = [
- {id:'d1',md:'11/24',wd:'周二',city:'seoul',title:'抵达 · 石墙路落叶 + 明洞圣诞灯',area:'市厅 · 明洞（步行范围）',cover:'shinsegae',
-  stay:'明洞 / 乙支路',eat:'明洞饺子（现场排队，翻台快）',
+ {id:'d1',md:'11/24',wd:'周二',city:'seoul',title:'抵达 · 德寿宫石墙落叶 + 新世界圣诞巨幕',area:'市厅 · 明洞 · 乙支路（轻松漫步过渡）',cover:'shinsegae',
+  stay:'明洞 / 乙支路',eat:'明洞饺子（米其林刀切面，翻台快）或乙支路烤肉',
   items:[
-   {t:'午后',title:'仁川机场 → 酒店',d:'AREX 直达车到首尔站约 43 分钟；住明洞也可坐机场巴士。在机场买 / 充 T-money 或 WOWPASS。',tags:['move'],mv:1},
-   {t:'16:00',p:'deoksugung',title:'德寿宫石墙路 · 贞洞路',d:'首尔经典银杏街，晚秋落叶铺成金色地毯，红砖教堂 + 老洋楼。日落约 17:15，趁斜光拍。',tags:['autumn']},
-   {t:'17:30',p:'shinsegae',title:'新世界百货本店 圣诞外墙',d:'整面外墙的圣诞灯光秀（通常 11 月中旬点亮），首尔圣诞季的标志。',tags:['night']},
-   {t:'18:30',p:'myeongdong',title:'明洞暖场扫货',d:'Olive Young 明洞旗舰、Daiso 明洞多层店，彩妆护肤 + 平价杂货一站买齐。',tags:['shop']},
-   {t:'19:30',p:'r_kyoja',title:'晚饭 · 明洞饺子',d:'刀切面 + 饺子，米其林推荐的平价老店；不想排队就找附近烤肉。',tags:['food']},
+   {t:'午后',title:'仁川机场 → 酒店入住',d:'AREX 直达车到首尔站约 43 分钟；住明洞也可坐机场巴士 6001/6015。在机场取 eSIM、充好 T-money / WOWPASS。',tags:['move'],mv:1},
+   {t:'16:00',p:'deoksugung',title:'德寿宫石墙路 · 贞洞路',d:'首尔晚秋最负盛名的银杏散步道，夕阳下满地落叶金毯，映衬古朴石墙与红砖教堂。趁 17:15 日落斜光拍照。',tags:['autumn']},
+   {t:'17:30',p:'shinsegae',title:'新世界百货本店 圣诞外墙巨幕',d:'整面百货大楼外墙的梦幻圣诞灯光动画（11 月中旬点亮），首尔圣诞季必拍地标。在主路十字路口仰拍最震撼。',tags:['night']},
+   {t:'18:30',p:'myeongdong',title:'明洞随性逛逛 · 补齐消耗品',d:'朋友提醒：明洞商业感重、游客扎堆，不必在此花大量体力购物；简单逛逛 Olive Young 明洞旗舰或 Daiso 补齐润唇膏、暖宝宝等旅行用品即可。',tags:['shop']},
+   {t:'19:30',p:'r_kyoja',title:'晚饭 · 明洞饺子 / 乙支路',d:'热气腾腾的刀切面 + 蒸饺，米其林推荐老店；吃完散步至清溪川或乙支路感受初冬凉夜。',tags:['food']},
   ],
-  tip:'景福宫<b>周二闭馆</b>，今天别安排；德寿宫周二正常开放，晚上也开，可以进宫看夜景。'},
- {id:'d2',md:'11/25',wd:'周三',city:'seoul',title:'宫阙晚枫 · 韩屋巷 · 古着市场',area:'安国 · 钟路 · 东大门（地铁 3/1 号线）',cover:'changgyeong',
-  stay:'明洞 / 乙支路',eat:'早餐 London Bagel 要早到；午饭益善洞；晚饭广藏市场（都不用订）',
+  tip:'景福宫<b>周二闭馆</b>，今天别安排；明洞仅作初抵轻量过渡，真正精彩的小众设计好店都在后几天的西村、汉南洞和圣水。'},
+ {id:'d2',md:'11/25',wd:'周三',city:'seoul',title:'秘苑晚枫 · 绕景福宫一圈 · 西村神仙咖啡与小店',area:'安国 · 昌德宫 · 景福宫石墙 · 西村（步行环线）',cover:'huwon',
+  stay:'明洞 / 乙支路',eat:'早餐 London Bagel / Onion；下午 Archivist 维也纳咖啡；晚饭通仁市场/广藏市场',
   items:[
-   {t:'08:30',p:'onion',title:'安国早餐',d:'London Bagel Museum 安国店（开门前就排队）或 Onion 安国（韩屋咖啡馆，面包出名）。',tags:['food']},
-   {t:'10:00',p:'changdeok',title:'昌德宫 · 后苑（秘苑）',d:'首尔<b>秋色保留最久</b>的地方之一，芙蓉池、爱莲池枫树变色最晚。后苑只能跟导览团进（约 90 分钟），需官网预约。',tags:['autumn','culture']},
-   {t:'11:45',p:'changgyeong',title:'昌庆宫 · 春塘池 · 大温室',d:'与昌德宫相通，人少很多。池边枫树和白色玻璃温室很好拍。',tags:['autumn']},
-   {t:'13:00',p:'ikseon',title:'益善洞韩屋巷',d:'百年韩屋改造的小巷：韩屋咖啡、甜品、香氛小店、自拍馆，午饭就在这里。',tags:['shop','food']},
-   {t:'15:00',p:'dongmyo',title:'东庙跳蚤市场',d:'首尔最有生活感的非标市场：衣服堆在地上论件卖，古着、黑胶、老相机混在一起。',tags:['ns']},
-   {t:'16:30',p:'gwangjang',title:'广藏市场 · 二楼古着区 + 小吃',d:'二楼藏着一整片古着档口（구제상가），大衣、针织、皮衣很便宜。逛完下楼吃绿豆煎饼、生拌牛肉。',tags:['ns','food']},
-   {t:'19:00',p:'euljiro',title:'乙支路「Hipjiro」',d:'印刷厂、五金铺的老街，藏着没招牌的二楼小酒馆和咖啡馆，适合喝一杯。',tags:['night']},
+   {t:'08:30',p:'onion',title:'安国早餐 · 韩屋咖啡',d:'London Bagel Museum 安国店（开门前取号）或韩屋庭院 Onion 安国，烘焙香气唤醒清晨。',tags:['food']},
+   {t:'10:00',p:'changdeok',title:'昌德宫 · 后苑（秘苑红叶）',d:'首尔<b>秋色保留最晚、最震撼</b>的皇家秘苑！芙蓉池、爱莲池的枫叶晚红倒映水面，美不胜收。需官网提前预约导览。',tags:['autumn','culture']},
+   {t:'11:45',p:'changgyeong',title:'昌庆宫 · 大温室 或 北村漫步',d:'与昌德宫无缝相连，复古白色玻璃温室与枫林掩映；或漫步北村韩屋屋脊赏金色银杏。',tags:['autumn']},
+   {t:'13:00',p:'staffpicks',title:'绕景福宫北墙漫步至西村',d:'朋友力荐线路：安国与景福宫就一站路！沿景福宫北墙与青瓦台石墙路漫步至西村，正好绕景福宫一圈，沿途满地金黄落叶。',tags:['autumn','move']},
+   {t:'13:30',p:'archivist',title:'Archivist 维也纳咖啡',d:'<b>当地朋友封神认证！首尔最好喝的维也纳咖啡 (Einspänner)</b>！如丝绒般密实醇厚的奶盖入口惊艳，招牌无花果费南雪也是一绝。',tags:['food','ns']},
+   {t:'14:30',p:'onemorebag',title:'One More Bag (2楼)',d:'<b>【藏在2楼，门头极小】</b>韩国独立插画师帆布包、便携袋、布艺刺绣小挂件聚集地，女孩必逛宝藏店。',tags:['shop','ns']},
+   {t:'15:15',p:'ofrseoul',title:'Ofr. Seoul 独立复古书店',d:'巴黎独立艺术书店首尔店，隐匿在双层复古老宅，主打复古帆布包、独立画册、vintage饰品与家居杂货。',tags:['book','shop']},
+   {t:'16:00',p:'granhand_sc',title:'Granhand 西村香氛',d:'韩屋小院里的手工精油香氛，招牌 Susie Salmon，麻布香袋柜姐会用老式打字机免费敲印专属姓名。',tags:['shop']},
+   {t:'17:15',p:'gwangjang',title:'广藏市场 · 小吃与二楼古着',d:'二楼藏着一整片古着档口（구제상가）；下楼吃现炸绿豆煎饼、生拌牛肉与麻药紫菜包饭。',tags:['ns','food']},
+   {t:'19:30',p:'euljiro',title:'乙支路「Hipjiro」复古小酒馆',d:'五金印刷老街深处，藏着没招牌的二楼小酒馆、黑胶吧与精酿馆，感受首尔年轻人的夜生活。',tags:['night']},
   ],
-  tip:'想穿韩服拍照：昌德宫附近很多韩服店，冬季款带毛领披肩；<b>穿韩服进宫免门票</b>（后苑导览票除外）。',
-  alt:'☔ 雨天：国立现代美术馆首尔馆（三清洞）+ 北村小店。'},
- {id:'d3',md:'11/26',wd:'周四',city:'seoul',title:'圣水日 · 非标商业浓度最高的一天',area:'首尔林 · 圣水（2 号线）→ 晚上蚕室',cover:'lotteworld',
-  stay:'明洞 / 乙支路',eat:'圣水午饭热门店可用 Catch Table 远程排队；蚕室圣诞市集部分时段要预约',
+  tip:'安国到西村沿景福宫外墙步行体验极佳；Archivist 咖啡馆如遇排队，可以先登记手机号，步行 2 分钟逛对面的 One More Bag 或 Ofr. Seoul。'},
+ {id:'d3',md:'11/26',wd:'周四',city:'seoul',title:'首尔林金叶 · 圣水精准锚点 · 蚕室欧式圣诞',area:'首尔林（金叶水杉）→ 圣水核心旗舰 → 晚上蚕室（2号线）',cover:'seoulforest',
+  stay:'明洞 / 乙支路',eat:'午餐大林仓库画廊咖啡；圣水热门餐厅用 Catch Table 远程取号；蚕室市集小吃',
   items:[
-   {t:'09:30',p:'seoulforest',title:'首尔林 · 银杏林',d:'早上人少阳光透亮，漫天金黄银杏天幕与金叶地毯，非常出片。',tags:['autumn']},
-   {t:'11:00',p:'seongsu',title:'圣水 · 延武场街快闪',d:'首尔「快闪之都」：美妆、时装、动漫品牌每周轮换，常有免费小样和打卡装置。顺逛 K-fashion 旗舰店、Olive Young N 圣水。',tags:['shop','ns']},
-   {t:'13:00',p:'daelim',title:'午餐 + 大林仓库',d:'旧精米厂改造的画廊咖啡，圣水「工业风改造」的鼻祖。',tags:['food']},
-   {t:'14:30',p:'pov',title:'Point of View · Tamburins · 自拍馆',d:'策展式文具店 + 香氛店（护手霜是伴手礼常青款），最后两人拍一组人生四格。',tags:['ns']},
-   {t:'18:00',p:'lotte',title:'蚕室 · 圣诞市集 + 石村湖',d:'2 号线约 15 分钟。欧式圣诞市集、大圣诞树、旋转木马（据报道 11 月中旬开放），湖边看乐天塔夜景。',tags:['night','shop']},
+   {t:'09:30',p:'seoulforest',title:'首尔林 · 银杏森林与水杉步道',d:'早晨阳光通透，金黄银杏天幕与金叶地毯，人少景美出片极佳，先在自然绿意中治愈身心。',tags:['autumn']},
+   {t:'11:00',p:'pov',title:'圣水洞 · 核心锚点精准逛',d:'朋友提醒：圣水洞游人较多且部分支巷略显杂乱破旧，不必盲目乱转，锁定核心必逛美学地标：',tags:['shop','ns']},
+   {t:'11:15',p:'pov',title:'Point of View (1–3层)',d:'首尔文具美学天花板！3 层策展式空间，黄铜苹果镇纸、复古钢笔墨水与原创手作纸品，审美极高。',tags:['ns']},
+   {t:'12:15',p:'standoil',title:'Stand Oil 圣水旗舰店',d:'当红轻奢极简包包，Chubby Bag 保龄球包与腋下包，独栋展厅宛如摩登现代美术馆。',tags:['shop']},
+   {t:'13:00',p:'daelim',title:'午餐 · 大林仓库画廊咖啡',d:'旧精米厂改造的挑高红砖厂房，圣水「工业风改造」的代表鼻祖，在此享用手冲咖啡与披萨意面。',tags:['food']},
+   {t:'14:30',p:'lcdc',title:'LCDC Seoul 复合生活空间',d:'旧修车厂改建的复合空间，三楼 Door 集合店精选独立生活方式品牌与文艺小物。顺逛 Tamburins 艺术香氛。',tags:['shop','ns']},
+   {t:'18:00',p:'lotte',title:'蚕室 · 乐天欧式圣诞市集 + 石村湖',d:'地铁 2 号线约 15 分钟直达。欧式木屋圣诞市集、巨型发光圣诞树与旋转木马，湖畔远眺乐天世界塔夜景。',tags:['night','shop']},
   ],
-  tip:'圣水快闪每周都在变，出发前在 Instagram 搜 <b>#성수팝업</b> 挑 2–3 家本周必去。',
-  alt:'🌆 不去蚕室：纛岛汉江公园看日落，或汝矣岛 The Hyundai Seoul（快闪多，圣诞装置通常需预约）。'},
- {id:'d4',md:'11/27',wd:'周五',city:'seoul',title:'岛山潮流巡礼 · KTX 南下 · 田浦咖啡街',area:'上午 岛山/新沙 → 下午 KTX → 晚上 釜山西面',cover:'dosanpark',
-  stay:'釜山 西面（或广安里）',eat:'Nudake 甜品现场排；釜山站对面本钱猪肉汤饭不用订',
+  tip:'圣水快闪店每周都在轮换，出发前在 Instagram 搜 <b>#성수팝업</b> 挑选 1–2 家心仪快闪；逛街随身带护照退税。'},
+ {id:'d4',md:'11/27',wd:'周五',city:'seoul',title:'汉南洞顺坡血拼 · KTX 南下 · 广安里海风',area:'上午 汉南洞（6号线汉江镇站）→ 下午 KTX → 晚上 釜山海边/田浦',cover:'dosanpark',
+  stay:'釜山 西面（或广安里海景）',eat:'汉南洞 Brunch；釜山站对面本钱猪肉汤饭（随到随吃）',
   items:[
-   {t:'09:30',p:'hausdosan',title:'退房寄存 → Haus Dosan · 岛山公园',d:'Gentle Monster 把眼镜店做成装置艺术馆，楼里有 Nudake 造型甜品和 Tamburins。周边是设计师品牌聚集地，岛山公园看落叶。',tags:['shop','ns']},
-   {t:'12:00',p:'garosu',title:'新沙洞林荫道 午餐',d:'两侧银杏 + 品牌店 + 咖啡；想更文艺可以换汉南洞。',tags:['food','autumn']},
-   {t:'14:30',p:'seoulst',title:'首尔站 KTX → 釜山站',d:'约 2 小时 20 分 – 2 小时 50 分，上车前买便当咖啡。11/27 周五下午是热门时段，尽早订票。',tags:['move'],mv:1},
-   {t:'17:30',p:'r_bonjeon',title:'釜山站 · 先来一碗猪肉汤饭',d:'釜山站对面就是本钱猪肉汤饭，饿了先吃；然后坐地铁 1 号线约 15 分钟到西面入住。',tags:['food']},
-   {t:'19:30',p:'jeonpo',title:'田浦咖啡街 + 西面',d:'原五金工具街，现在是独立咖啡、选物店、文具小店扎堆的街区；逛完去西面地下街。',tags:['ns']},
+   {t:'09:30',p:'hannam',title:'退房行李寄存 → 汉江镇站 3号口出',d:'朋友独家秘笈：汉南洞依山坡而建，坚决不要逆坡爬山！坐地铁 6 号线到<b>汉江镇站 3 号口</b>出，顺着下坡一路逛最省力。',tags:['shop','move']},
+   {t:'10:00',p:'emis',title:'EMIS 汉南店 · 抢手帽型与配饰',d:'韩国爱豆私服标配，复古刺绣棒球帽版型绝佳，托特包和发圈性价比极高。',tags:['shop']},
+   {t:'10:45',p:'mardi',title:'Mardi Mercredi 汉南旗舰店',d:'多栋独栋并排（女装、鞋履、运动系列）。经典小雏菊刺绣卫衣、针织开衫与复古T恤。',tags:['shop']},
+   {t:'11:30',p:'rockfish_h',title:'Rockfish Weatherwear 汉南概念店',d:'英伦复古庄园风！丝绒玛丽珍平底鞋、软糯贝雷帽、围巾与防雨靴，秋冬搭配神器。',tags:['shop']},
+   {t:'12:15',p:'matinkim',title:'Matin Kim 汉南旗舰店',d:'高街酷飒千禧风，银色金属铁牌包（Accordion Bag）、做旧短皮衣与工装伞裙。',tags:['shop']},
+   {t:'12:45',p:'nonfiction_h',title:'Nonfiction 汉南香氛',d:'<b>【藏在2楼】</b>静谧通透的木质调沙龙香氛，Santal Cream、Gentle Night 试香与洗手体验。',tags:['shop','ns']},
+   {t:'13:15',p:'hannam',title:'汉南洞精致午餐 / 咖啡小憩',d:'街区内有很多露台早午餐与法式烘焙甜品店，补充体力准备南下。',tags:['food']},
+   {t:'13:45',p:'seoulst',title:'汉南洞打车直达首尔站（约 15 分钟）',d:'汉南洞紧邻首尔站！取行李后打车只要约 15 分钟即可直达 KTX 进站口，极其顺路省时。',tags:['move'],mv:1},
+   {t:'14:30',p:'seoulst',title:'首尔站 KTX → 釜山站',d:'约 2 小时 20 分 – 2 小时 50 分。周五下午为热门时段，提前在 Korail 订票。',tags:['move'],mv:1},
+   {t:'17:30',p:'r_bonjeon',title:'釜山站 · 本钱猪肉汤饭',d:'出站正对面就是釜山灵魂名物！乳白热汤配嫩肉片、生韭菜与特制虾酱，一碗下肚全身暖洋洋。',tags:['food']},
+   {t:'19:30',p:'gwangalli',title:'入住酒店 → 广安里海边吹风看大桥',d:'朋友推荐：釜山无需赶场，海边散步吹海风最治愈。漫步沙滩看广安大桥璀璨灯火；或去田浦咖啡街闲逛。',tags:['night']},
   ],
-  tip:'行李可先寄存在首尔酒店再回来取，或用首尔站储物柜。住明洞回首尔站很近。'},
- {id:'d5',md:'11/28',wd:'周六',city:'busan',title:'古寺晚红 · 旧工厂书店 · 海边灯光与无人机',area:'北边梵鱼寺 → 东莱 → 水营 → 海云台 → 广安里',cover:'gwangalli',
-  stay:'釜山 西面（或广安里）',eat:'东莱葱饼现场排；海云台锦绣河豚汤；广安里 Millac 不用订',
+  tip:'汉南洞到首尔站打车极其方便（约 15 分钟，车费约 8,000–10,000 韩元），不必拖着行李挤地铁转线。'},
+ {id:'d5',md:'11/28',wd:'周六',city:'busan',title:'千年古刹晚红 · 海边松弛漫步 · 广安里无人机秀',area:'北边梵鱼寺 → 东莱 → 海云台海滩 → 广安里跨海大桥',cover:'gwangalli',
+  stay:'釜山 西面（或广安里海景）',eat:'东莱奶奶葱饼（现场排队）；海云台锦绣河豚汤；广安里 Millac 美食集市',
   items:[
-   {t:'09:00',p:'beomeosa',title:'梵鱼寺',d:'釜山<b>晚秋代表</b>，千年古寺，红叶比市区晚，是这趟最有希望看到「红」的地方。地铁 1 号线梵鱼寺站转公交 90 路或打车上山。',tags:['autumn','culture']},
-   {t:'12:00',p:'dongnae',title:'东莱 · 葱饼午餐',d:'海鲜多到像蛋饼的东莱葱饼（동래파전）。',tags:['food']},
-   {t:'14:00',p:'f1963',title:'F1963',d:'旧钢丝工厂改造：YES24 二手书店、Terarosa 咖啡、竹林小径和展览，适合慢慢待一下午。',tags:['ns','culture']},
-   {t:'16:00',p:'haeridan',title:'海理团路 或 新世界 Centum City',d:'海理团路是老铁路边的小店巷；想逛百货就去 Centum City，冷了可以去里面的 Spa Land 汗蒸。',tags:['shop']},
-   {t:'18:00',p:'haeundae',title:'海云台灯光节（开幕日）',d:'据海云台区公布，第 13 届灯光节 <b>11/28 开幕</b>，沙滩和九南路布满灯光装置，免费。开幕当天人多注意安全。',tags:['night']},
-   {t:'20:00',p:'millac',title:'广安里 · 无人机秀 + Millac the Market',d:'广安里<b>每周六晚</b>有无人机秀（时间随季节调整，查官方 Instagram）。Millac 二楼正对广安大桥。',tags:['night','food']},
+   {t:'09:00',p:'beomeosa',title:'梵鱼寺 · 金井山秋色',d:'釜山<b>晚秋红叶巅峰胜地</b>，千年古寺被层林尽染的山峦环抱，禅意静谧，是这趟最有希望看到满山红叶的地方。',tags:['autumn','culture']},
+   {t:'12:00',p:'dongnae',title:'东莱 · 传统海鲜大葱饼',d:'老字号东莱葱饼（동래할매파전），海鲜多到像瀑布般倾泻在热脆葱饼上，配马格利米酒绝绝子。',tags:['food']},
+   {t:'14:00',p:'f1963',title:'F1963 绿意工业书店 或 Centum City',d:'旧钢丝工厂改造：YES24 复古二手书店、Terarosa 咖啡与竹林；想逛百货或泡温泉可去 Centum City Spa Land。',tags:['ns','culture']},
+   {t:'16:00',p:'haeridan',title:'海云台海滩散步 · 海理团路',d:'朋友建议：釜山无需繁琐攻略，海边散步吹风拍照最治愈！踩着细软沙滩看海鸥，或逛老铁路边的文艺小店。',tags:['autumn','shop']},
+   {t:'18:00',p:'haeundae',title:'海云台灯光节（开幕日）',d:'第 13 届海云台灯光节 <b>11/28 盛大开幕</b>，海滩与主街亮起连绵梦幻的灯光艺术装置，免费观赏。',tags:['night']},
+   {t:'20:00',p:'millac',title:'广安里 · 无人机光影秀 + Millac the Market',d:'广安里<b>每周六晚</b>千架无人机在跨海大桥前组成震撼图案。Millac 二楼阶梯落地窗正对广安大桥夜景，喝啤酒吃炸鸡。',tags:['night','food']},
   ],
-  tip:'海云台 → 广安里打车约 15 分钟。无人机秀结束后很难打车，提前用 Kakao T 叫车或坐地铁 2 号线。'},
- {id:'d6',md:'11/29',wd:'周日',city:'busan',title:'影岛海崖小巷 · 南浦老城 · 返程',area:'影岛 → 南浦洞 → 金海机场',cover:'huinnyeoul',
-  stay:'返程',eat:'三进鱼糕边走边吃；BIFF 广场坚果糖饼',
+  tip:'海云台打车到广安里约 15 分钟；周六无人机秀结束后打车较难，建议提前用 Kakao T 或坐地铁 2 号线回酒店。'},
+ {id:'d6',md:'11/29',wd:'周日',city:'busan',title:'影岛海崖小巷 · 造船厂咖啡 · 烟火老城返程',area:'影岛白浅滩 → 工业海港咖啡 → 南浦老城 → 金海机场',cover:'huinnyeoul',
+  stay:'返程',eat:'三进鱼糕现炸热吃；BIFF 广场坚果糖饼；海鲜市场',
   items:[
-   {t:'09:00',p:'huinnyeoul',title:'影岛 · 白浅滩文化村',d:'悬崖边的白墙小巷，一边是海一边是小店，被称为「釜山的圣托里尼」。',tags:['autumn']},
-   {t:'10:30',p:'piaq',title:'造船厂咖啡 Piaq / Momos',d:'老造船厂、仓库改成的超大咖啡馆，海港工业风；Momos 是世界咖啡师冠军所在的烘焙店。',tags:['ns','food']},
-   {t:'11:30',p:'samjin',title:'三进鱼糕 影岛本店',d:'像面包店一样的鱼糕店，几十种口味现做，伴手礼也在这买。',tags:['food']},
-   {t:'12:30',p:'biff',title:'BIFF 广场 · 国际市场 · 宝水洞书店',d:'吃坚果糖饼，逛国际市场；宝水洞旧书堆到天花板（部分书店周日休息）。',tags:['ns','food']},
-   {t:'14:30',p:'airport',title:'前往金海机场',d:'南浦打车约 40 分钟，地铁 + 轻轨约 1 小时。国际航班提前 2.5 小时到，留时间退税。',tags:['move'],mv:1},
+   {t:'09:00',p:'huinnyeoul',title:'影岛 · 白浅滩文化村',d:'悬崖峭壁边的纯白小巷，一边是无际的蔚蓝大海，一边是彩绘阶梯与文艺小铺，被称为「釜山的圣托里尼」，拍照极度治愈。',tags:['autumn']},
+   {t:'10:30',p:'piaq',title:'造船厂咖啡 Piaq / Momos',d:'万吨造船厂与老仓库改建的巨幕海景咖啡馆；Momos 是世界咖啡师冠军名店，坐在窗边看大货轮慢悠悠驶过港口。',tags:['ns','food']},
+   {t:'11:30',p:'samjin',title:'三进鱼糕 影岛本店',d:'像烘焙面包店一样的鱼糕总店，几十种芝士、鲜虾、辣椒现做热气腾腾，真空包装适合当伴手礼。',tags:['food']},
+   {t:'12:30',p:'biff',title:'BIFF 广场 · 国际市场 · 宝水洞书店',d:'现炸爆汁的坚果糖饼（씨앗호떡）香甜酥脆；逛逛国际市场烟火杂货，宝水洞旧书堆到天花板。',tags:['ns','food']},
+   {t:'14:30',p:'airport',title:'前往金海机场 返程',d:'南浦打车到金海机场约 35–40 分钟。国际航班提前 2.5 小时到机场，留足退税与免税店提货时间。',tags:['move'],mv:1},
   ],
-  alt:'🌙 晚班机：下午加甘川文化村，傍晚札嘎其市场吃海鲜，或富平罐头夜市。'},
+  alt:'🌙 晚班机：下午可加甘川文化村看彩色积木小镇，或傍晚札嘎其市场二楼加工新鲜海鲜。'},
 ];
 
 const ZONES = [
@@ -483,33 +519,55 @@ const AUTUMN = [
  {p:'beomeosa',s:5,d:'釜山晚秋红叶巅峰，金井山环抱千年古刹，层林尽染禅意静谧。'},
  {p:'changgyeong',s:4,d:'人少出片，复古白色玻璃温室被秋日金红枫林掩映，与昌德宫无缝相连。'},
  {p:'deoksugung',s:4,d:'古朴石墙映衬漫天金黄银杏与满地落叶金毯，首尔晚秋最浪漫散步道。'},
- {p:'hausdosan',s:3,d:'岛山公园的枫树和银杏，逛 Haus Dosan 顺路。',n:'岛山公园'},
+ {p:'staffpicks',s:4,d:'西村隐蔽院落，院内耸立遮天蔽日百年古银杏，秋风起满院落叶金雨，点一杯咖啡看落叶极为治愈。',n:'Staffpicks 古银杏院落'},
  {p:'seoulforest',s:3,d:'参天古银杏金黄天幕与水杉道，拍照极出片，和圣水逛街无缝衔接。'},
+ {p:'hausdosan',s:3,d:'岛山公园的枫树和银杏，逛 Haus Dosan 顺路。',n:'岛山公园'},
  {p:'gyeongui',s:3,d:'旧铁路改的公园，沿途是延南洞小店，可作为备选半天。'},
  {p:'namsan',s:3,d:'傍晚上山看首尔塔和城市灯火，落叶 + 夜景。'},
  {p:'citizenspark',s:3,d:'釜山市中心绿洲，开阔大草坪与金黄林荫大道，散步拍照非常惬意。'},
  {p:'blueline',s:3,d:'不是红叶是海景：彩色天空胶囊小火车沿海岸慢行，建议预约。'},
 ];
 
+const BRANDS = [
+ {n:'Archivist 维也纳咖啡',ko:'아키비스트 서촌',area:'西村',tag:'☕ 朋友封神推荐',floor:'1楼 · 排队名店',must:'首尔第一维也纳咖啡 (Einspänner) + 无花果费南雪',tip:'奶油浓稠如丝绒、微咸微甜，配深烘黑咖啡堪称天花板！建议下午开门前或避开高峰去取号。',p:'archivist',img:'bukchon'},
+ {n:'One More Bag',ko:'원모어백',area:'西村',tag:'🎒 韩国文创布包',floor:'【藏在2楼】门头极窄',must:'韩国独立插画师帆布包、手提袋、刺绣布艺挂件、文具杂货',tip:'门头非常不起眼！推开 2 楼小门别有洞天，聚集全首尔最可爱的独立小众布包与插画周边，女孩必逛。',p:'onemorebag',img:'seongsu'},
+ {n:'Ofr. Seoul',ko:'오에프알 서울',area:'西村',tag:'📚 巴黎艺术书店',floor:'双层韩式复古老宅',must:'经典英文印字帆布袋、小众艺术画册、Vintage饰品杂货',tip:'巴黎传奇独立书店 Ofr 的首尔分店，老洋房里斑驳木地板与满架书籍，二楼还藏着复古首饰与服饰。',p:'ofrseoul',img:'bosudong'},
+ {n:'Granhand',ko:'그랑핸드 서촌',area:'西村 / 北村',tag:'🪵 手工刻字香氛',floor:'静谧韩屋院落',must:'Susie Salmon、Marine Orchid 麻布挂袋香、香氛喷雾',tip:'天然植物调香，买麻布挂香柜姐会用老式打字机免费敲印你的名字或专属日期，送人自用都超有温度。',p:'granhand_sc',img:'ikseon'},
+ {n:'Mardi Mercredi',ko:'마르디 메크르디 한남',area:'汉南洞',tag:'🌸 K-Fashion顶流',floor:'多栋独栋并排',must:'小雏菊印花卫衣、羊绒针织开衫、复古T恤、运动线',tip:'汉南洞是 Mardi 的大本营，短短一条街上有 Apparel、Shoes、Actif 等多家专门店，款式尺码最全。',p:'mardi',img:'seongsu'},
+ {n:'Matin Kim',ko:'마틴킴 한남',area:'汉南洞',tag:'🖤 Y2K酷飒高街',floor:'独栋概念旗舰店',must:'金属铭牌搭扣包 (Accordion Bag)、做旧短皮衣、工装裙',tip:'韩国千禧辣妹风代表，金属铁牌五金质感高级，包包自重极轻且百搭，汉南旗舰款最全。',p:'matinkim',img:'seongsu'},
+ {n:'EMIS',ko:'이미스 한남',area:'汉南洞',tag:'🧢 爱豆私服标配',floor:'街边独立店铺',must:'复古刺绣棒球帽、印花轻便托特包、毛绒大肠发圈',tip:'几乎每个韩国爱豆人手一顶的棒球帽！版型修饰亚洲人头型显脸小，色系高级耐看，性价比极高。',p:'emis',img:'seongsu'},
+ {n:'Rockfish Weatherwear',ko:'락피쉬웨더웨어 한남',area:'汉南洞',tag:'🩰 英伦复古美学',floor:'复古概念洋楼',must:'丝绒芭蕾平底鞋、玛丽珍鞋、冬日软糯贝雷帽、围巾',tip:'秋冬英伦氛围感的神！丝绒玛丽珍鞋上脚显脚细且非常软，店里装潢宛如英式复古庄园。',p:'rockfish_h',img:'seongsu'},
+ {n:'Nonfiction',ko:'논픽션 한남',area:'汉南洞',tag:'🌿 疗愈系木质沙龙香',floor:'【藏在2楼】通透采光',must:'Santal Cream (白檀)、Gentle Night (温柔之夜) 香水、泵头护手霜',tip:'韩国高端小众沙龙香，不刺鼻的淡雅木质香调。汉南店在静谧二楼，大落地窗前洗手试香仪式感拉满。',p:'nonfiction_h',img:'dosanpark'},
+ {n:'Stand Oil',ko:'스탠드오일 성수',area:'圣水洞',tag:'👜 极简素皮腋下包',floor:'独栋艺术旗舰店',must:'Chubby Bag 保龄球包、Flap Mini 翻盖小方包、大容量托特',tip:'韩剧出镜率极高的轻奢素皮包，自重极轻耐磨。圣水店空间每个季度换一次艺术展装置，逛店像看展。',p:'standoil',img:'seongsu'},
+ {n:'Point of View',ko:'포인트오브뷰 성수',area:'圣水洞',tag:'🖋 文具美学天花板',floor:'1–3整栋艺术空间',must:'黄铜苹果镇纸、复古钢笔墨水、原创手工纸品便签',tip:'圣水绝对不能错过的艺术级文具圣殿！三层楼从基础工具到艺术灵感层层递进，即使不买文具也会被震撼。',p:'pov',img:'seongsu'},
+ {n:'LCDC Seoul',ko:'엘씨디씨 서울',area:'圣水洞',tag:'🏢 工业复合买手空间',floor:'旧修车厂多层空间',must:'Door 集合店精选独立设计师服饰、小众文创杂货、屋顶咖啡',tip:'由旧修车厂改建的复合空间，三楼像小街区一样把几十个精选独立小品牌聚集在独立门面里。',p:'lcdc',img:'seongsu'},
+ {n:'Tamburins',ko:'탬버린즈 성수',area:'圣水洞',tag:'✨ 先锋艺术香氛',floor:'清水混凝土雕塑建筑',must:'蛋形香水 (Egg Perfume)、金属链条护手霜、固体香膏',tip:'Jennie 同款，Gentle Monster 旗下香氛。圣水店是地上地下通透的清水混凝土雕塑，香气前卫有辨识度。',p:'pov',img:'seongsu'},
+];
+
 const SHOPS = [
- {c:'seoul',n:'圣水洞',img:'seongsu',must:1,vibe:'工厂改造 · 快闪之都',buy:'快闪限定、K-fashion、香氛、文具',hi:'延武场街快闪、Olive Young N 圣水、Point of View、Tamburins'},
- {c:'seoul',n:'岛山 · 狎鸥亭罗德奥',img:'dosanpark',vibe:'设计感 · 精品 · 网红甜品',buy:'设计师品牌、眼镜、高端香氛',hi:'Haus Dosan、Nudake、London Bagel 岛山'},
- {c:'seoul',n:'明洞',img:'myeongdong',vibe:'游客区 · 一站式 · 圣诞灯',buy:'彩妆护肤、伴手礼、平价杂货',hi:'Olive Young 旗舰、Daiso、新世界/乐天百货'},
- {c:'seoul',n:'益善洞 · 北村',img:'ikseon',vibe:'韩屋 · 慢节奏 · 拍照',buy:'传统工艺小物、香水、茶',hi:'韩屋咖啡、Granhand 等本土香氛店'},
- {c:'seoul',n:'新沙林荫道 · 汉南洞',img:'garosu',vibe:'林荫道品牌店 · 文艺买手店',buy:'K-fashion、生活方式店',hi:'林荫道两侧品牌旗舰，汉南洞坡道选物店'},
- {c:'seoul',n:'弘大 · 延南 · 望远',img:'gyeongui',vibe:'学生 · 独立 · 本地生活',buy:'平价服饰、独立设计、古着',hi:'object 寄售店、京义线林荫道、望远市场'},
- {c:'busan',n:'西面 · 田浦',img:'jeonpo',vibe:'最热闹商圈 + 独立街区',buy:'平价服饰、文具、选物',hi:'田浦咖啡街小店、西面地下街'},
- {c:'busan',n:'海云台 · Centum',img:'centum',vibe:'度假感 · 大型百货',buy:'大牌、美妆、品牌集合',hi:'新世界 Centum City（含 Spa Land）、海理团路'},
- {c:'busan',n:'南浦洞 · 光复路',img:'gukje',vibe:'老城 · 市场 · 烟火气',buy:'伴手礼、平价美妆、小吃',hi:'光复路时装街、国际市场、富平罐头市场'},
- {c:'busan',n:'广安里 · 水营',img:'millac',vibe:'海边 · 文化空间',buy:'书、设计小物、海景咖啡',hi:'Millac the Market、F1963'},
+ {c:'seoul',n:'汉南洞',img:'garosu',must:1,vibe:'依山坡道 · 顶流买手 · 明星私服',buy:'K-fashion、棒球帽、小雏菊卫衣、芭蕾平底鞋、沙龙香水',hi:'Mardi Mercredi、Matin Kim、EMIS、Rockfish、Nonfiction'},
+ {c:'seoul',n:'西村 · 北村',img:'ikseon',must:1,vibe:'韩屋小巷 · 独立设计 · 慢调探宝',buy:'独立插画帆布包、艺术画册、定制刻字香氛、维也纳咖啡',hi:'One More Bag (2楼)、Ofr. Seoul、Archivist、Granhand'},
+ {c:'seoul',n:'圣水洞',img:'seongsu',must:1,vibe:'精选锚点 · 仓储改造 · 艺术概念店',buy:'极简皮质包、艺术文具、快闪周边、概念香氛',hi:'Point of View (1–3层)、Stand Oil 旗舰、LCDC Seoul、大林仓库'},
+ {c:'seoul',n:'明洞 · 乙支路',img:'myeongdong',vibe:'轻量过渡 · 圣诞巨幕 · 印刷街酒馆',buy:'彩妆小样、旅行急用物资、平价杂货',hi:'新世界百货圣诞外墙巨幕、Olive Young 旗舰、乙支路隐秘酒馆'},
+ {c:'seoul',n:'岛山 · 狎鸥亭罗德奥',img:'dosanpark',vibe:'设计感 · 精品 · 装置艺术',buy:'设计师品牌、先锋墨镜、网红甜品',hi:'Haus Dosan、Nudake、London Bagel 岛山'},
+ {c:'seoul',n:'弘大 · 延南 · 望远',img:'gyeongui',vibe:'学生 · 独立 · 本地生活',buy:'平价服饰、独立设计、古着旧货',hi:'object 寄售店、京义线林荫道、望远市场'},
+ {c:'busan',n:'西面 · 田浦',img:'jeonpo',vibe:'最热闹商圈 + 独立小店街',buy:'平价服饰、独立文具、咖啡选物',hi:'田浦咖啡街小店、西面地下街'},
+ {c:'busan',n:'海云台 · Centum',img:'centum',vibe:'海边漫步 · 度假感 · 大型百货',buy:'海边咖啡、Spa Land 汗蒸、品牌集合',hi:'海理团路老街、新世界 Centum City、天空胶囊'},
+ {c:'busan',n:'影岛 · 广安里',img:'millac',vibe:'海港工业改造 · 悬崖海景',buy:'特色伴手礼、三进鱼糕、海景精酿',hi:'白浅滩文化村、Piaq 造船厂咖啡、Millac the Market'},
+ {c:'busan',n:'南浦洞 · 光复路',img:'gukje',vibe:'老城 · 传统市场 · 烟火气',buy:'坚果糖饼、传统伴手礼、复古旧书',hi:'光复路时装街、国际市场、宝水洞书店胡同'},
 ];
 
 const NS = [
+ {p:'onemorebag',c:'seoul',ty:'popup',n:'One More Bag (2楼)',d:'【藏在2楼】韩国独立插画师布艺帆布包、挂件设计店，门头很小，里面超好逛。'},
+ {p:'ofrseoul',c:'seoul',ty:'book',n:'Ofr. Seoul 独立复古书店',d:'巴黎独立书店在首尔的双层复古韩屋店，艺术画册、Vintage饰品与经典帆布包。'},
+ {p:'archivist',c:'seoul',ty:'popup',n:'Archivist 维也纳咖啡',d:'本地朋友认证首尔天花板级 Einspänner，奶盖如丝绒般醇厚，搭配无花果费南雪。'},
+ {p:'standoil',c:'seoul',ty:'popup',n:'Stand Oil 圣水旗舰店',d:'韩国当红包包品牌，店铺陈列充满未来主义艺术感。'},
+ {p:'lcdc',c:'seoul',ty:'popup',n:'LCDC Seoul',d:'旧修车厂改建的复合空间，三楼像小街区一样聚合几十家小众独立生活方式品牌。'},
+ {p:'pov',c:'seoul',ty:'popup',n:'Point of View',d:'「给创作者的工具店」，文具纸品像逛一个策展，3层美学殿堂。'},
  {p:'seongsu',c:'seoul',ty:'popup',n:'圣水快闪街区',d:'品牌每周轮换快闪，免费小样、打卡装置、限定周边。'},
  {p:'gwangjang',c:'seoul',ty:'vintage',n:'广藏市场二楼古着区',d:'一楼小吃、二楼古着。大衣针织皮衣性价比高，可小幅讲价。'},
  {p:'dongmyo',c:'seoul',ty:'vintage',n:'东庙跳蚤市场',d:'地摊式旧货街，衣服论件卖，混着黑胶旧相机老物件。'},
  {p:'hausdosan',c:'seoul',ty:'popup',n:'Gentle Monster Haus Dosan',d:'眼镜店做成沉浸式装置展，楼里有 Nudake 和 Tamburins。'},
- {p:'pov',c:'seoul',ty:'popup',n:'Point of View',d:'「给创作者的工具店」，文具纸品像逛一个策展。'},
  {p:'object',c:'seoul',ty:'popup',n:'object 独立设计寄售店',d:'本地创作者的手作首饰、贴纸、陶瓷，挑小众伴手礼。'},
  {p:'mangwon',c:'seoul',ty:'market',n:'望远市场',d:'本地人的菜市场，炸鸡、可乐饼便宜好吃，隔壁望理团路小店街。'},
  {p:'euljiro',c:'seoul',ty:'book',n:'乙支路 · 世运商街',d:'老电子楼和印刷街里藏着咖啡馆、小酒馆、工作室。'},
@@ -536,8 +594,9 @@ const XMAS = [
 const RESTOS = [
  {p:'r_kyoja',day:'d1',how:'walk',hl:'现场排队',d:'刀切面 + 饺子，翻台很快，排队 10–20 分钟。'},
  {p:'r_bagel',day:'d2',how:'wait',hl:'开门前排队 / 现场取号',d:'开门前 30 分钟到，周末更夸张；工作日相对好些。'},
+ {p:'archivist',day:'d2',how:'wait',hl:'朋友力荐 · 现场取号',d:'本地朋友认证首尔天花板级维也纳咖啡 (Einspänner)！丝滑厚奶盖，配无花果费南雪。'},
+ {p:'samcheongdong',day:'d2',how:'walk',hl:'米其林推荐',d:'三清洞瓦片面片汤老店，小瓮盛装，蛤蜊汤底鲜甜，配自制爽口泡菜。'},
  {p:'r_gwangjang',day:'d2',how:'walk',hl:'随到随吃',d:'绿豆煎饼、生拌牛肉、麻药紫菜包饭，挑人多的摊位坐。'},
- {p:'r_nudake',day:'d4',how:'wait',hl:'现场排队',d:'造型甜品，拍照为主，口味偏甜。'},
  {p:'r_bonjeon',day:'d4',how:'walk',hl:'随到随吃',d:'釜山站对面，汤饭老店，排队一般不久。'},
  {p:'dongnae',day:'d5',how:'walk',hl:'现场排队',d:'东莱葱饼老店，饭点人多，建议 11:30 前到。'},
  {p:'r_geumsu',day:'d5',how:'walk',hl:'随到随吃',d:'海云台河豚汤老店，适合冷天，也可当早餐。'},
@@ -576,8 +635,8 @@ function links(p){
   return `<a class="lnk" href="${naver(p.ko)}" target="_blank" rel="noopener">N Naver</a>`+
          `<a class="lnk" href="${kakao(p.ko)}" target="_blank" rel="noopener">K Kakao</a>`;
 }
-const TAGS = {autumn:['t-autumn','秋景'],shop:['t-shop','逛街'],food:['t-food','美食'],night:['t-night','夜景'],move:['t-move','交通'],culture:['t-culture','文化'],ns:['t-ns','非标']};
-const tagHTML = arr => (arr||[]).map(t => `<span class="tag ${TAGS[t][0]}">${TAGS[t][1]}</span>`).join('');
+const TAGS = {autumn:['t-autumn','秋景'],shop:['t-shop','逛街'],food:['t-food','美食'],night:['t-night','夜景'],move:['t-move','交通'],culture:['t-culture','文化'],ns:['t-ns','非标'],book:['t-culture','书店']};
+const tagHTML = arr => (arr||[]).map(t => TAGS[t] ? `<span class="tag ${TAGS[t][0]}">${TAGS[t][1]}</span>` : '').join('');
 const dayOf = id => DAYS.find(d => d.id === id);
 function placeDays(pid){ return DAYS.filter(d => d.items.some(i => i.p === pid)).map(d => d.id.toUpperCase()); }
 
@@ -960,17 +1019,25 @@ $('#zoneList').addEventListener('click', e => {
 });
 
 /* ================= DISCOVER ================= */
-let discK = 'autumn', discCity = 'all', discType = 'all';
+let discK = 'autumn', discCity = 'all', discType = 'all', discBrandArea = 'all';
 function cityTag(c){ return `<span class="city ${c==='busan'?'bs':''}">${c==='seoul'?'首尔':'釜山'}</span>`; }
 function renderDisc(){
   $$('#discSeg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.k === discK));
-  let chips = [['all','全部'],['seoul','首尔'],['busan','釜山']].map(([k,t]) => `<button type="button" class="chip sm" data-c="${k}" aria-pressed="${discCity===k}">${t}</button>`).join('');
-  if (discK === 'ns') chips += '<span style="width:6px"></span>' + [['all','全部类型'],...Object.entries(NSTYPE)].map(([k,t]) => `<button type="button" class="chip sm" data-t="${k}" aria-pressed="${discType===k}">${t}</button>`).join('');
+  let chips = '';
+  if (discK === 'brand'){
+    chips = [['all','全部地区'],['西村','西村/北村'],['汉南洞','汉南洞'],['圣水洞','圣水洞']].map(([k,t]) =>
+      `<button type="button" class="chip sm" data-ba="${k}" aria-pressed="${discBrandArea===k}">${t}</button>`).join('');
+  } else if (discK === 'ns'){
+    chips = [['all','全部城市'],['seoul','首尔'],['busan','釜山']].map(([k,t]) => `<button type="button" class="chip sm" data-c="${k}" aria-pressed="${discCity===k}">${t}</button>`).join('') +
+      '<span style="width:6px"></span>' + [['all','全部类型'],...Object.entries(NSTYPE)].map(([k,t]) => `<button type="button" class="chip sm" data-t="${k}" aria-pressed="${discType===k}">${t}</button>`).join('');
+  } else {
+    chips = [['all','全部城市'],['seoul','首尔'],['busan','釜山']].map(([k,t]) => `<button type="button" class="chip sm" data-c="${k}" aria-pressed="${discCity===k}">${t}</button>`).join('');
+  }
   $('#discChips').innerHTML = chips;
   const okC = c => discCity === 'all' || c === discCity;
   let html = '';
   if (discK === 'autumn'){
-    html = `<div class="banner"><b>🍁 11 月下旬 = 晚秋 / 落叶季</b>首尔银杏多已落下，主要看<b>落叶地毯</b>和<b>宫苑最晚的枫树</b>；釜山梵鱼寺还有机会看到最后一波红。出发前 2–3 天在 Naver 搜「창덕궁 단풍」「범어사 단풍」看实拍。</div>`;
+    html = `<div class="banner"><b>🍁 11 月下旬 = 晚秋 / 落叶季</b>首尔银杏多已落下，主要看<b>落叶金毯</b>和<b>宫苑最晚的枫树</b>；釜山梵鱼寺还有机会看到最后一波红。出发前 2–3 天在 Naver 搜「창덕궁 단풍」「범어사 단풍」看实拍。</div>`;
     html += '<div class="pgrid">' + AUTUMN.filter(a => okC(PL[a.p].c)).map(a => {
       const p = PL[a.p], ds = placeDays(a.p);
       return `<article class="card pcard"><div class="ph">${pic(p.img, a.n || p.n, '🍁')}</div><div class="bd">
@@ -978,16 +1045,44 @@ function renderDisc(){
         <div class="meta">${cityTag(p.c)}<span class="small muted">${ds.join(' ')}</span></div>
         <div class="acts" style="display:flex;gap:4px;flex-wrap:wrap;margin-top:6px">${links(p)}</div></div></article>`;
     }).join('') + '</div>';
+  } else if (discK === 'brand'){
+    const okA = a => discBrandArea === 'all' || a.area.includes(discBrandArea);
+    html = `<div class="banner"><b>💡 当地朋友掏心掏肺逛街秘笈</b>
+    ① <b>汉南洞顺坡下行</b>：汉江镇站 3 号口出顺下坡逛，不爬坡最省力；打车到首尔站仅 15 分钟。<br>
+    ② <b>西村北村绕宫一圈</b>：从北村穿景福宫北石墙到西村，沿途银杏金黄，喝首尔第一维也纳咖啡 Archivist。<br>
+    ③ <b>好店藏在二三楼</b>：首尔小众独立设计店（如 One More Bag、Nonfiction 等）常藏在 2 楼或深巷，门头不起眼极易错过，务必提前码好地址。<br>
+    ④ <b>圣水精选锚点</b>：圣水洞游客极多且部分支巷杂乱，不必盲目乱逛，锁定核心旗舰（Point of View、Stand Oil、LCDC）即可。<br>
+    ⑤ <b>随身带护照退税</b>：单笔满 15,000 韩元即可退税，很多旗舰店支持现场立减退税。</div>`;
+    html += '<div class="pgrid">' + BRANDS.filter(okA).map(b => {
+      const p = PL[b.p];
+      return `<article class="card pcard">
+        <div class="ph">${pic(b.img || (p ? p.img : ''), b.n, '🛍')}</div>
+        <div class="bd brand-bd">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:4px">
+            <span class="floor-tag">${b.floor}</span>
+            <span class="city">${b.area}</span>
+          </div>
+          <h3>${b.n}</h3>
+          <div class="ko-name">${b.ko}</div>
+          <p><b>✨ 必买招牌</b>：${b.must}</p>
+          <p><b>💡 探店贴士</b>：${b.tip}</p>
+          <div class="acts" style="display:flex;gap:4px;flex-wrap:wrap;margin-top:auto;padding-top:6px">
+            ${p ? links(p) : `<a class="lnk" href="${naver(b.ko)}" target="_blank" rel="noopener">N Naver</a><a class="lnk" href="${kakao(b.ko)}" target="_blank" rel="noopener">K Kakao</a>`}
+            ${p ? `<button class="lnk" type="button" data-fly="${b.p}">🗺 地图上看</button>` : ''}
+          </div>
+        </div>
+      </article>`;
+    }).join('') + '</div>';
   } else if (discK === 'shop'){
-    html = `<div class="banner"><b>K-fashion 品牌在哪？</b>Matin Kim、Mardi Mercredi、Marithé、Emis、Stand Oil、Rest &amp; Recreation 等在圣水 / 岛山 / 新沙都有旗舰或集合店，用 Naver 地图搜「品牌名 + 地区」。逛街带护照，可即时退税。</div>`;
+    html = `<div class="banner"><b>🛍 首尔 · 釜山 重点逛街商圈</b>每个商圈气质大不相同：汉南洞适合买手店与大热品牌，西村适合文艺小店与韩屋咖啡，圣水适合工业改造与艺术概念店，明洞适合买日用耗品，釜山则以海边散步和西面田浦为代表。</div>`;
     html += '<div class="pgrid">' + SHOPS.filter(s => okC(s.c)).map(s => `
       <article class="card pcard"><div class="ph">${pic(s.img, s.n, '🛍')}</div><div class="bd">
-        <h3>${s.n} ${s.must ? '<span class="tag t-shop">必去</span>' : ''}</h3>
+        <h3>${s.n} ${s.must ? '<span class="tag t-shop">必逛</span>' : ''}</h3>
         <p><b>氛围</b> ${s.vibe}<br><b>适合买</b> ${s.buy}<br><b>亮点</b> ${s.hi}</p>
         <div class="meta">${cityTag(s.c)}</div></div></article>`).join('') + '</div>';
   } else if (discK === 'ns'){
     const list = NS.filter(x => okC(x.c) && (discType === 'all' || x.ty === discType));
-    html = `<p class="small muted pad" style="margin:8px 0">共 ${list.length} 个地点 · 快闪/网红店变化快，去之前看下 Naver 最新评论</p>`;
+    html = `<p class="small muted pad" style="margin:8px 0">共 ${list.length} 个非标探索地 · 包含二楼小众店、旧工厂改造、旧书巷与古着市场</p>`;
     html += '<div class="pgrid">' + list.map(x => { const p = PL[x.p];
       return `<article class="card pcard"><div class="ph">${pic(p.img, x.n, '✨')}</div><div class="bd">
         <h3>${x.n}</h3><p>${x.d}</p>
@@ -1004,8 +1099,12 @@ function renderDisc(){
 }
 $('#discSeg').addEventListener('click', e => { const b = e.target.closest('[data-k]'); if (!b) return; discK = b.dataset.k; discType = 'all'; renderDisc(); });
 $('#discChips').addEventListener('click', e => {
-  const c = e.target.closest('[data-c]'), t = e.target.closest('[data-t]');
-  if (c) discCity = c.dataset.c; if (t) discType = t.dataset.t; if (c || t) renderDisc();
+  const c = e.target.closest('[data-c]'), t = e.target.closest('[data-t]'), ba = e.target.closest('[data-ba]');
+  if (c) discCity = c.dataset.c; if (t) discType = t.dataset.t; if (ba) discBrandArea = ba.dataset.ba;
+  if (c || t || ba) renderDisc();
+});
+$('#discPanel').addEventListener('click', e => {
+  const f = e.target.closest('[data-fly]'); if (f){ location.hash = 'map/' + f.dataset.fly; }
 });
 
 /* ================= FOOD ================= */
