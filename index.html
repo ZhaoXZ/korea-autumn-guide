@@ -802,12 +802,17 @@ img{display:block;max-width:100%}
 .zone-card h3{font-size:1rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .zone-card .rec{font-size:.68rem;background:var(--maple);color:#fff;padding:1px 8px;border-radius:99px}
 .zone-card .rec.b{background:#a39282}
+.zone-card .rec.booked{background:#16a34a;box-shadow:0 1px 4px rgba(22,163,74,0.3)}
+.zone-card.booked-card{border:2px solid #10b981;background:#f7fdf9;box-shadow:0 4px 16px rgba(16,185,129,0.12)}
+.booked-address-box{background:#fff;border:1px solid #d1fae5;border-radius:10px;padding:10px 12px;margin:8px 0 10px;font-size:.82rem;line-height:1.6}
+.ko-code{background:#f0fdf4;padding:2px 6px;border-radius:4px;color:#166534;font-family:inherit;font-weight:600}
 .zone-card ul{margin:6px 0 8px;padding-left:1.1em;font-size:.84rem}
 .zone-card li{margin:1px 0}
 .pros{color:var(--pine)} .cons{color:#a0522d}
 .mk{display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-weight:700;font-size:12px;border:2px solid #fff;box-shadow:0 1px 4px rgb(0 0 0/.35)}
 .mk-food{background:#fff;color:#000;font-size:15px;border:2px solid var(--ginkgo)}
 .zone-label{background:rgb(255 255 255/.92);border:1px solid var(--line);border-radius:8px;padding:2px 7px;font-size:11px;font-weight:700;white-space:nowrap;color:var(--ink);box-shadow:0 1px 3px rgb(0 0 0/.15)}
+.zone-label.booked{background:#ecfdf5!important;border-color:#10b981!important;color:#065f46!important;box-shadow:0 2px 6px rgba(16,185,129,0.3)}
 .leaflet-popup-content{margin:10px 12px;font:13px/1.5 var(--sans)}
 .pop h4{font-size:14px;margin-bottom:2px}
 .pop .ko{color:var(--ink2);font-size:12px}
@@ -1307,21 +1312,24 @@ const PL = {
   r_geumsu:{n:'锦绣河豚汤 海云台本店',ko:'금수복국 해운대본점',xhs:'锦绣河豚汤 海云台',c:'busan',ll:[35.1617,129.1636],img:'',emo:'🐡',food:1},
   r_millac:{n:'Millac the Market 美食层',ko:'밀락더마켓',xhs:'Millac the Market 美食 釜山',c:'busan',ll:[35.1557,129.1303],img:'millac',food:1},
   r_jagalchi:{n:'札嘎其 二楼海鲜加工',ko:'자갈치시장',xhs:'札嘎其 二楼海鲜加工 釜山',c:'busan',ll:[35.0968,129.0310],img:'jagalchi',food:1},
+
+  // 住宿（首尔已预订）
+  stay_seoul:{n:'首尔已订住宿（东大门DDP·退溪路68街）',ko:'서울특별시 중구 퇴계로68길 14',en:'14, Toegye-ro 68-gil, Jung-gu, Seoul',xhs:'东大门 DDP 住宿',c:'seoul',ll:[37.5636,127.0115],img:'',emo:'🏨',booked:1,gate:'Left gate (左侧门)',zip:'04614',subway:'2/4/5 号线东大门历史文化公园站 5 号口步行 3 分钟；6 号线青丘站步行 6 分钟',tip:'韩文地址：서울특별시 중구 퇴계로68길 14 (우편번호 04614) · Left gate'},
 };
 
 const DAYS = [
  {id:'d1',md:'11/24',wd:'周二',city:'seoul',title:'抵达 · 德寿宫石墙落叶 + 新世界圣诞巨幕',area:'市厅 · 明洞 · 乙支路（轻松漫步过渡）',cover:'shinsegae',
-  stay:'明洞 / 乙支路',eat:'明洞饺子（米其林刀切面，翻台快）或乙支路烤肉',
+  stay:'🎉 东大门退溪路68街（已订 3 晚）',eat:'明洞饺子（米其林刀切面，翻台快）或乙支路烤肉',
   items:[
-   {t:'午后',title:'仁川机场 → 酒店入住',d:'AREX 直达车到首尔站约 43 分钟；住明洞也可坐机场巴士 6001/6015。在机场取 eSIM、充好 T-money / WOWPASS。',tags:['move'],mv:1},
+   {t:'午后',p:'stay_seoul',title:'仁川机场 → 酒店入住（退溪路68街）',d:'从仁川机场乘坐 AREX 直达车到首尔站，站内换乘地铁 4 号线直达「东大门历史文化公园站」5号口（仅 4 站 8 分钟），出站步行 3 分钟即达民宿（认准 Left gate）；或直接乘坐机场大巴 6001 路至退溪路大路口直达。在机场取 eSIM、充好 T-money / WOWPASS。',tags:['move']},
    {t:'16:00',p:'deoksugung',title:'德寿宫石墙路 · 贞洞路',d:'首尔晚秋最负盛名的银杏散步道，夕阳下满地落叶金毯，映衬古朴石墙与红砖教堂。趁 17:15 日落斜光拍照。',tags:['autumn']},
    {t:'17:30',p:'shinsegae',title:'新世界百货本店 圣诞外墙巨幕',d:'整面百货大楼外墙的梦幻圣诞灯光动画（11 月中旬点亮），首尔圣诞季必拍地标。在主路十字路口仰拍最震撼。',tags:['night']},
    {t:'18:30',p:'myeongdong',title:'明洞随性逛逛 · 补齐消耗品',d:'朋友提醒：明洞商业感重、游客扎堆，不必在此花大量体力购物；简单逛逛 Olive Young 明洞旗舰或 Daiso 补齐润唇膏、暖宝宝等旅行用品即可。',tags:['shop']},
    {t:'19:30',p:'r_kyoja',title:'晚饭 · 明洞饺子 / 乙支路',d:'热气腾腾的刀切面 + 蒸饺，米其林推荐老店；吃完散步至清溪川或乙支路感受初冬凉夜。',tags:['food']},
   ],
-  tip:'景福宫<b>周二闭馆</b>，今天别安排；明洞仅作初抵轻量过渡，真正精彩的小众设计好店都在后几天的西村、汉南洞和圣水。'},
+  tip:'景福宫<b>周二闭馆</b>，今天别安排；从民宿坐地铁 4 号线去明洞仅 2 站（4 分钟），往返非常轻松。'},
  {id:'d2',md:'11/25',wd:'周三',city:'seoul',title:'秘苑晚枫 · 绕景福宫一圈 · 西村神仙咖啡与小店',area:'安国 · 昌德宫 · 景福宫石墙 · 西村（步行环线）',cover:'huwon',
-  stay:'明洞 / 乙支路',eat:'早餐 London Bagel / Onion；下午 Archivist 维也纳咖啡；晚饭通仁市场/广藏市场',
+  stay:'🎉 东大门退溪路68街（第 2 晚）',eat:'早餐 London Bagel / Onion；下午 Archivist 维也纳咖啡；晚饭通仁市场/广藏市场',
   items:[
    {t:'08:30',p:'onion',title:'安国早餐 · 韩屋咖啡',d:'London Bagel Museum 安国店（开门前取号）或韩屋庭院 Onion 安国，烘焙香气唤醒清晨。',tags:['food']},
    {t:'10:00',p:'changdeok',title:'昌德宫 · 后苑（秘苑红叶）',d:'首尔<b>秋色保留最晚、最震撼</b>的皇家秘苑！芙蓉池、爱莲池的枫叶晚红倒映水面，美不胜收。需官网提前预约导览。',tags:['autumn','culture']},
@@ -1336,9 +1344,9 @@ const DAYS = [
   ],
   tip:'安国到西村沿景福宫外墙步行体验极佳；Archivist 咖啡馆如遇排队，可以先登记手机号，步行 2 分钟逛对面的 One More Bag 或 Ofr. Seoul。'},
  {id:'d3',md:'11/26',wd:'周四',city:'seoul',title:'首尔林金叶 · 圣水精准锚点 · 蚕室欧式圣诞',area:'首尔林（金叶水杉）→ 圣水核心旗舰 → 晚上蚕室（2号线）',cover:'seoulforest',
-  stay:'明洞 / 乙支路',eat:'午餐大林仓库画廊咖啡；圣水热门餐厅用 Catch Table 远程取号；蚕室市集小吃',
+  stay:'🎉 东大门退溪路68街（第 3 晚）',eat:'午餐大林仓库画廊咖啡；圣水热门餐厅用 Catch Table 远程取号；蚕室市集小吃',
   items:[
-   {t:'09:30',p:'seoulforest',title:'首尔林 · 银杏森林与水杉步道',d:'早晨阳光通透，金黄银杏天幕与金叶地毯，人少景美出片极佳，先在自然绿意中治愈身心。',tags:['autumn']},
+   {t:'09:30',p:'seoulforest',title:'首尔林 · 银杏森林与水杉步道',d:'从民宿步行 3 分钟至 DDP 站，坐地铁 2 号线直达纛岛/首尔林（仅 11 分钟！）；早晨阳光通透，金黄银杏天幕与金叶地毯，人少景美出片极佳。',tags:['autumn']},
    {t:'11:00',p:'pov',title:'圣水洞 · 核心锚点精准逛',d:'朋友提醒：圣水洞游人较多且部分支巷略显杂乱破旧，不必盲目乱转，锁定核心必逛美学地标：',tags:['shop','ns']},
    {t:'11:15',p:'pov',title:'Point of View (1–3层)',d:'首尔文具美学天花板！3 层策展式空间，黄铜苹果镇纸、复古钢笔墨水与原创手作纸品，审美极高。',tags:['ns']},
    {t:'12:15',p:'standoil',title:'Stand Oil 圣水旗舰店',d:'当红轻奢极简包包，Chubby Bag 保龄球包与腋下包，独栋展厅宛如摩登现代美术馆。',tags:['shop']},
@@ -1348,9 +1356,9 @@ const DAYS = [
   ],
   tip:'圣水快闪店每周都在轮换，出发前在 Instagram 搜 <b>#성수팝업</b> 挑选 1–2 家心仪快闪；逛街随身带护照退税。'},
  {id:'d4',md:'11/27',wd:'周五',city:'seoul',title:'汉南洞顺坡血拼 · KTX 南下 · 广安里海风',area:'上午 汉南洞（6号线汉江镇站）→ 下午 KTX → 晚上 釜山海边/田浦',cover:'dosanpark',
-  stay:'釜山 西面（或广安里海景）',eat:'汉南洞 Brunch；釜山站对面本钱猪肉汤饭（随到随吃）',
+  stay:'釜山待订：西面（或广安里海景）',eat:'汉南洞 Brunch；釜山站对面本钱猪肉汤饭（随到随吃）',
   items:[
-   {t:'09:30',p:'hannam',title:'退房行李寄存 → 汉江镇站 3号口出',d:'朋友独家秘笈：汉南洞依山坡而建，坚决不要逆坡爬山！坐地铁 6 号线到<b>汉江镇站 3 号口</b>出，顺着下坡一路逛最省力。',tags:['shop','move']},
+   {t:'09:00',p:'stay_seoul',title:'退房出发 → 汉江镇站 3号口出（汉南洞）',d:'从退溪路68街步行 6 分钟到「青丘站」，乘地铁 6 号线直达「汉江镇站」（仅 3 站 6 分钟！）；朋友独家秘笈：汉南洞依山坡而建，坚决不要逆坡爬山！坐 6 号线到<b>汉江镇站 3 号口</b>出，顺着下坡一路逛最省力。',tags:['shop','move']},
    {t:'10:00',p:'emis',title:'EMIS 汉南店 · 抢手帽型与配饰',d:'韩国爱豆私服标配，复古刺绣棒球帽版型绝佳，托特包和发圈性价比极高。',tags:['shop']},
    {t:'10:45',p:'mardi',title:'Mardi Mercredi 汉南旗舰店',d:'多栋独栋并排（女装、鞋履、运动系列）。经典小雏菊刺绣卫衣、针织开衫与复古T恤。',tags:['shop']},
    {t:'11:30',p:'rockfish_h',title:'Rockfish Weatherwear 汉南概念店',d:'英伦复古庄园风！丝绒玛丽珍平底鞋、软糯贝雷帽、围巾与防雨靴，秋冬搭配神器。',tags:['shop']},
@@ -1387,7 +1395,24 @@ const DAYS = [
 ];
 
 const ZONES = [
- {id:'z_md',c:'seoul',name:'明洞 · 乙支路',ll:[37.5640,126.9880],r:650,rec:'首选',nights:'11/24 – 11/27（3 晚）',
+ {id:'z_ddp_booked',c:'seoul',name:'【已订】东大门 DDP · 退溪路68街',ll:[37.5636,127.0115],r:350,rec:'已预订 🎉',nights:'11/24 – 11/27（3 晚 · 确认入住）',
+  booked:true,
+  addr:'14, Toegye-ro 68-gil, Jung-gu, Seoul, Left gate',
+  addrKo:'서울특별시 중구 퇴계로68길 14',
+  zip:'04614',
+  gate:'Left gate (左侧门)',
+  pros:[
+    '【已预订确认】入住：2026.11.24（周日）~ 2026.11.27（周三）共 3 晚',
+    '【核心交通大枢纽】步行 3 分钟到 2/4/5 号线「东大门历史文化公园站」5号口，步行 6 分钟到 6 号线「青丘站」',
+    '【直达核心商圈】2号线11分钟直达圣水洞、4号线4分钟直达明洞、6号线6分钟直达汉南洞',
+    '【赶 KTX 极速省心】D4 坐 4 号线直达首尔站仅 8 分钟（4 站免换乘），打车约 10 分钟（约 7,000 韩元）',
+    '【机场大巴直达】仁川机场乘坐 6001 / 6702 路直达退溪路路口，下车步行 3 分钟即可进门',
+    '【深夜食堂】紧邻东大门商圈与新堂洞辣炒年糕街，烤肉、东大门一只鸡等深夜美食选择极多'
+  ],
+  cons:['门牌注意：认准「Left gate（左侧门）」，提前查看房东发来的入住指引与门禁密码'],
+  q:'서울특별시 중구 퇴계로68길 14',
+  tip:'韩文地址：서울특별시 중구 퇴계로68길 14 (우편번호 04614) · Left gate'},
+ {id:'z_md',c:'seoul',name:'明洞 · 乙支路',ll:[37.5640,126.9880],r:650,rec:'备选参考',nights:'11/24 – 11/27（备选参考）',
   pros:['离首尔站近：AREX 进城、D4 坐 KTX 都方便','D1、D2、D4 的活动都在附近','2 号线 / 4 号线直达圣水、蚕室','晚上逛街吃饭都在楼下'],
   cons:['游客多、比较吵','房间普遍偏小'],
   q:'명동 호텔',tip:'搜「明洞站 / 乙支路入口站 / 乙支路 3 街站」步行 5 分钟内。'},
@@ -2011,9 +2036,38 @@ function tiles(map){
 }
 function popHTML(pid){
   const p = PL[pid]; const ds = placeDays(pid);
+  if (!p) return '';
+  if (p.booked) {
+    return `<div class="pop" style="min-width:230px">
+      <div style="font-size:11px;font-weight:700;color:#16a34a;background:#ecfdf5;display:inline-block;padding:2px 8px;border-radius:99px;margin-bottom:4px;border:1px solid #a7f3d0">🎉 首尔已订住宿</div>
+      <h4 style="margin:2px 0 4px">${p.n}</h4>
+      <div class="ko" style="font-size:12px;color:#166534;font-weight:600">${p.ko}</div>
+      <div style="font-size:11px;color:#444;margin:4px 0"><b>英文地址：</b>${p.en}</div>
+      <div style="font-size:11px;color:#555;margin:2px 0"><b>门牌：</b>${p.gate} · 邮编 <b>${p.zip}</b></div>
+      <div style="font-size:11px;color:#555;margin:2px 0"><b>交通：</b>${p.subway}</div>
+      <div class="acts" style="margin-top:6px">
+        <button class="lnk" type="button" onclick="navigator.clipboard&&navigator.clipboard.writeText('${p.ko}').then(()=>{alert('已复制韩文地址给司机：\\n${p.ko}');})">📋 复制韩文地址</button>
+        ${links(p)}
+      </div>
+    </div>`;
+  }
   return `<div class="pop"><h4>${p.n}</h4><div class="ko">${p.ko}${ds.length ? ' · ' + ds.join(' / ') : ''}</div>${src(p.img) ? `<img src="${src(p.img)}" alt="">` : ''}<div class="acts">${links(p)}</div></div>`;
 }
 function zonePop(z){
+  if (z.booked) {
+    return `<div class="pop" style="min-width:240px">
+      <div style="font-size:11px;font-weight:700;color:#16a34a;background:#ecfdf5;display:inline-block;padding:2px 8px;border-radius:99px;margin-bottom:4px;border:1px solid #a7f3d0">🎉 确认入住 · 3 晚</div>
+      <h4 style="margin:2px 0 4px">${z.name}</h4>
+      <div class="ko" style="font-size:12px;color:#166534;font-weight:600">${z.addrKo}</div>
+      <div style="font-size:11px;color:#444;margin:4px 0"><b>英文地址：</b>${z.addr}</div>
+      <div style="font-size:11px;color:#555;margin:2px 0"><b>门牌注意：</b>${z.gate} · 邮编 <b>${z.zip}</b></div>
+      <div class="acts" style="margin-top:8px">
+        <button class="lnk" type="button" onclick="navigator.clipboard&&navigator.clipboard.writeText('${z.addrKo}').then(()=>{alert('已复制韩文地址给司机：\\n${z.addrKo}');})">📋 复制韩文地址</button>
+        <a class="lnk" href="${naver(z.addrKo)}" target="_blank" rel="noopener">N Naver 地图</a>
+        <a class="lnk" href="${kakao(z.addrKo)}" target="_blank" rel="noopener">K Kakao 导航</a>
+      </div>
+    </div>`;
+  }
   return `<div class="pop"><h4>🏨 ${z.name}（${z.rec}）</h4><div class="ko">${z.nights}</div><p style="margin:4px 0">${z.tip}</p><div class="acts"><a class="lnk" href="${naver(z.q)}" target="_blank" rel="noopener">在 Naver 搜酒店</a></div></div>`;
 }
 function drawDayMap(d){
@@ -2050,7 +2104,7 @@ function drawDayMap(d){
       return;
     }
     n++; pts.push(p.ll);
-    L.marker(p.ll, {icon: p.food ? foodIcon : numIcon(n, col)}).bindPopup(popHTML(it.p)).addTo(g);
+    L.marker(p.ll, {icon: p.food ? foodIcon : (p.booked ? numIcon('🏨', '#16a34a', 26) : numIcon(n, col))}).bindPopup(popHTML(it.p)).addTo(g);
   });
 
   if (d.id === 'd4'){
@@ -2063,12 +2117,13 @@ function drawDayMap(d){
     L.polyline(cityPts, {color:col, weight:3, opacity:.7, dashArray:'6 6'}).addTo(dayMap);
   }
 
-  ZONES.filter(z => z.c === d.city && z.rec === '首选').forEach(z => {
-    L.circle(z.ll, {radius:z.r, color:'#b4442a', weight:1, fillColor:'#b4442a', fillOpacity:.08}).bindPopup(zonePop(z)).addTo(g);
+  ZONES.filter(z => z.c === d.city && (z.booked || z.rec === '首选')).forEach(z => {
+    const isBooked = !!z.booked;
+    L.circle(z.ll, {radius:z.r, color: isBooked ? '#16a34a' : '#b4442a', weight: isBooked ? 2 : 1, fillColor: isBooked ? '#22c55e' : '#b4442a', fillOpacity: isBooked ? .16 : .08}).bindPopup(zonePop(z)).addTo(g);
   });
 
   if (d.id === 'd4') {
-    ZONES.filter(z => z.id === 'z_md').forEach(z => L.circle(z.ll, {radius:z.r, color:'#b4442a', weight:1, fillOpacity:.08}).addTo(g));
+    ZONES.filter(z => z.id === 'z_ddp_booked').forEach(z => L.circle(z.ll, {radius:z.r, color:'#16a34a', weight:2, fillColor:'#22c55e', fillOpacity:.16}).bindPopup(zonePop(z)).addTo(g));
   }
 
   L.control.zoom({position:'topright'}).addTo(dayMap);
@@ -2173,10 +2228,13 @@ function initBigMap(){
   // zones
   const zg = L.featureGroup();
   ZONES.forEach(z => {
-    const main = z.rec === '首选';
-    L.circle(z.ll, {radius:z.r, color: main ? '#b4442a' : '#8a7a6c', weight: main ? 2 : 1, dashArray: main ? null : '4 4', fillColor: main ? '#b4442a' : '#8a7a6c', fillOpacity: main ? .12 : .06})
+    const isBooked = !!z.booked;
+    const main = z.rec === '首选' || isBooked;
+    const strokeColor = isBooked ? '#16a34a' : (main ? '#b4442a' : '#8a7a6c');
+    const fillColor = isBooked ? '#22c55e' : (main ? '#b4442a' : '#8a7a6c');
+    L.circle(z.ll, {radius:z.r, color: strokeColor, weight: isBooked ? 2.5 : (main ? 2 : 1), dashArray: (isBooked || main) ? null : '4 4', fillColor: fillColor, fillOpacity: isBooked ? .18 : (main ? .12 : .06)})
       .bindPopup(zonePop(z)).addTo(zg);
-    L.marker(z.ll, {icon:L.divIcon({className:'', html:`<span class="zone-label">🏨 ${z.name}${main ? ' ★' : ''}</span>`, iconSize:null})}).bindPopup(zonePop(z)).addTo(zg);
+    L.marker(z.ll, {icon:L.divIcon({className:'', html:`<span class="zone-label ${isBooked ? 'booked' : ''}">${isBooked ? '🎉 ' : '🏨 '}${z.name}${isBooked ? ' (已订)' : (main ? ' ★' : '')}</span>`, iconSize:null})}).bindPopup(zonePop(z)).addTo(zg);
   });
   bigLayers.zones = zg;
 
@@ -2222,9 +2280,35 @@ function mapFocus(arg){
   setTimeout(() => { bigMap.invalidateSize(); bigMap.setView(p.ll, 16); markerIndex[arg] && markerIndex[arg].openPopup(); }, 80);
 }
 function renderZones(){
-  $('#zoneList').innerHTML = ZONES.filter(z => z.c === mapCity).map(z => `
+  $('#zoneList').innerHTML = ZONES.filter(z => z.c === mapCity).map(z => {
+    if (z.booked) {
+      return `
+      <div class="card zone-card booked-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <h3 style="margin:0;color:#065f46">🏨 ${z.name}</h3>
+          <span class="rec booked">🎉 已预订确认</span>
+        </div>
+        <div class="small" style="color:#047857;font-weight:700;margin:6px 0 4px">📅 ${z.nights}</div>
+        <div class="booked-address-box">
+          <div><b>📍 英文地址：</b>${z.addr}</div>
+          <div style="margin-top:4px"><b>📍 韩文地址（给出租车司机）：</b><code class="ko-code">${z.addrKo}</code></div>
+          <div style="margin-top:4px"><b>🚪 门牌注意：</b>${z.gate} · 邮编 <b>${z.zip}</b></div>
+          <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+            <button class="lnk" type="button" onclick="navigator.clipboard&&navigator.clipboard.writeText('${z.addrKo}').then(()=>{alert('已复制韩文地址给司机：\\n${z.addrKo}');})">📋 复制韩文地址</button>
+            <a class="lnk" href="${naver(z.addrKo)}" target="_blank" rel="noopener">N Naver 地图</a>
+            <a class="lnk" href="${kakao(z.addrKo)}" target="_blank" rel="noopener">K Kakao 导航</a>
+          </div>
+        </div>
+        <ul>${z.pros.map(x => `<li class="pros">${x}</li>`).join('')}${z.cons.map(x => `<li class="cons">${x}</li>`).join('')}</ul>
+        <div class="small">💡 ${z.tip}</div>
+        <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
+          <button class="lnk" type="button" data-zone="${z.id}">🗺 在地图上看</button>
+        </div>
+      </div>`;
+    }
+    return `
     <div class="card zone-card">
-      <h3>🏨 ${z.name} <span class="rec ${z.rec==='首选'?'':'b'}">${z.rec}</span></h3>
+      <h3>🏨 ${z.name} <span class="rec ${z.rec==='首选'?'':(z.rec==='备选参考'?'b':'')}">${z.rec}</span></h3>
       <div class="small muted">${z.nights}</div>
       <ul>${z.pros.map(x => `<li class="pros">${x}</li>`).join('')}${z.cons.map(x => `<li class="cons">${x}</li>`).join('')}</ul>
       <div class="small">💡 ${z.tip}</div>
@@ -2232,8 +2316,9 @@ function renderZones(){
         <button class="lnk" type="button" data-zone="${z.id}">🗺 在地图上看</button>
         <a class="lnk" href="${naver(z.q)}" target="_blank" rel="noopener">在 Naver 搜酒店</a>
       </div>
-    </div>`).join('') +
-    `<div class="banner" style="margin-top:0"><b>订酒店小贴士</b>两个人选「Twin（两张床）」或「Double」看习惯；韩国城市酒店房间普遍小，买东西多的话选面积 ≥ 20㎡ 的房型。重点看「离地铁站步行几分钟」。</div>`;
+    </div>`;
+  }).join('') +
+  `<div class="banner" style="margin-top:0"><b>订酒店小贴士</b>首尔住宿已确认，釜山建议关注<b>西面站</b>（交通枢纽去哪都顺）或<b>广安里</b>（海景房正对广安大桥）。</div>`;
 }
 $('#zoneList').addEventListener('click', e => {
   const b = e.target.closest('[data-zone]'); if (!b) return;
@@ -2829,7 +2914,7 @@ function renderPrep(){
   $('#prepPanel').innerHTML = `
   <details class="acc" open><summary>✅ 出发前待办</summary><div class="in">
     <ul class="checklist" id="todo">
-      ${[['visa','签证 C-3-9（已办好 🎉）',1],['ktx','订 11/27 首尔→釜山 KTX（Korail 官网 / Korail Talk）'],['huwon2','预约昌德宫后苑导览（官网）'],['hotel_s','订首尔酒店：明洞 / 乙支路 3 晚'],['hotel_b','订釜山酒店：西面 2 晚（或 1 晚换广安里海景）'],['app','装好 Naver Map / Kakao T / Papago / Catch Table'],['popup','出发前 3 天查 #성수팝업 和红叶实拍']]
+      ${[['visa','签证 C-3-9（已办好 🎉）',1],['hotel_s','首尔住宿：东大门退溪路68街 3晚（已预订 🎉）',1],['ktx','订 11/27 首尔→釜山 KTX（Korail 官网 / Korail Talk）'],['huwon2','预约昌德宫后苑导览（官网）'],['hotel_b','订釜山酒店：西面 2 晚（或 1 晚换广安里海景）'],['app','装好 Naver Map / Kakao T / Papago / Catch Table'],['popup','出发前 3 天查 #성수팝업 和红叶实拍']]
         .map(([k,t,def]) => `<li><label><input type="checkbox" data-id="todo_${k}" ${def?'data-def="1"':''}><span>${t}</span></label></li>`).join('')}
     </ul></div></details>
   <details class="acc"><summary>🛂 签证 <span class="ok">已办好</span></summary><div class="in">
