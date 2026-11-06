@@ -907,6 +907,25 @@ img{display:block;max-width:100%}
 .ootd-xhs-link:active{transform:translateY(0)}
 
 /* ---------- food ---------- */
+.food-spotlight-grid{padding:0 14px;display:grid;gap:12px}
+@media (min-width:760px){.food-spotlight-grid{grid-template-columns:1fr 1fr}}
+.food-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:8px}
+.food-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.food-card-title-wrap{flex:1;min-width:0}
+.food-card-title-wrap h4{font-size:1.02rem;margin:0;color:var(--ink);display:flex;align-items:center;gap:6px}
+.food-card-ko{font-size:.76rem;color:var(--ink2);margin-top:2px}
+.food-badge{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.food-badge.bbq{background:#fde8e4;color:#b4442a;border:1px solid #f6c4bc}
+.food-badge.samgye{background:#fef5e7;color:#9b5a1a;border:1px solid #f6deb6}
+.food-badge.noodle{background:#fdf2d9;color:#8a5f0d;border:1px solid #fae1a6}
+.food-tag-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+.food-tag{font-size:.72rem;background:#f3ecdf;color:var(--ink);padding:2px 7px;border-radius:6px;font-weight:600}
+.food-dish-rec{background:#fdfaf5;border:1px dashed #ebd8c3;border-radius:10px;padding:8px 10px;font-size:.8rem;line-height:1.5}
+.food-dish-rec b{color:#7a3420}
+.food-card p{font-size:.82rem;color:var(--ink2);line-height:1.5;margin:0}
+.food-tip-box{font-size:.76rem;color:#6b5a4f;background:#f8f4ee;border-radius:8px;padding:6px 10px;display:flex;align-items:flex-start;gap:5px;line-height:1.45}
+.food-links{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+
 .rlist{padding:0 14px;display:grid;gap:10px}
 @media (min-width:760px){.rlist{grid-template-columns:1fr 1fr}}
 .rcard{padding:12px 14px;display:flex;gap:12px;align-items:flex-start}
@@ -1074,11 +1093,70 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
 
 <!-- ============ 美食 ============ -->
 <section class="view" id="v-food" aria-label="美食">
-  <div class="sec-title"><h2>📒 订位 / 排队清单</h2><span class="sub">按日期排</span></div>
-  <div class="banner"><b>怎么订？</b>韩国热门店多用 <b>Catch Table</b>（캐치테이블）线上订位或远程排队，有英文界面；没有订位的店就是现场排队，饭点前 30 分钟到最稳。很多店<b>不接一人份</b>，两个人点两份主食起。</div>
-  <div class="rlist" id="restoList"></div>
-  <div class="sec-title"><h2>😋 必吃清单</h2></div>
-  <div class="pgrid" id="dishGrid"></div>
+  <div class="stickybar">
+    <div class="seg" id="foodSeg" role="group" aria-label="美食分类">
+      <button type="button" data-fk="all" aria-pressed="true">全部美食</button>
+      <button type="button" data-fk="bbq" aria-pressed="false">🥩 韩国烤肉</button>
+      <button type="button" data-fk="samgye" aria-pressed="false">🍲 暖冬参鸡汤</button>
+      <button type="button" data-fk="noodle" aria-pressed="false">🍜 拉面面食</button>
+      <button type="button" data-fk="resto" aria-pressed="false">📒 订位餐厅</button>
+      <button type="button" data-fk="street" aria-pressed="false">😋 经典小吃</button>
+    </div>
+  </div>
+
+  <div class="banner" id="foodTipsBanner">
+    <b>💡 韩国烤肉 · 参鸡汤 · 吃面地道秘籍：</b>
+    ① <b>烤肉点单起步</b>：正规烤肉店首单同款肉<b>必须 2 人份起订</b>（2인분 이상），两人推荐“2 份五花肉 + 1 份猪颈肉或牛排骨 + 1 碗石锅大酱汤配饭”；<br>
+    ② <b>一口包肉法则</b>：手掌摊开苏子叶（或生菜），放上一片焦香五花肉 + 烤熟蒜片 + 包饭酱 + 腌芥菜/大葱丝 + 少许山葵芥末，一口闷风味最惊艳；<br>
+    ③ <b>参鸡汤正宗吃法</b>：附赠的人参酒可直接倒进滚烫石锅提香，鸡肉蘸少许粗盐胡椒，肚内糯米充分吸饱参汤变成热粥，配脆爽辣萝卜块绝配；<br>
+    ④ <b>便利店泡面神仙吃法</b>：拉面煮好后打入鸡蛋撒芝士，面吃完后将一个金枪鱼蛋黄酱三角饭团捏碎拌入浓汤，即成神级拉面泡饭！
+  </div>
+
+  <!-- 韩国烤肉特辑 -->
+  <div id="sec-bbq">
+    <div class="sec-title">
+      <h2>🥩 韩国烤肉精选指南</h2>
+      <span class="sub">首尔与釜山老饕封神烤肉店</span>
+    </div>
+    <div class="food-spotlight-grid" id="bbqGrid"></div>
+  </div>
+
+  <!-- 暖冬参鸡汤特辑 -->
+  <div id="sec-samgye" style="margin-top:24px">
+    <div class="sec-title">
+      <h2>🍲 暖冬参鸡汤名店</h2>
+      <span class="sub">滋补原盅童子鸡 · 软糯吸汁参米粥 · 赠人参酒</span>
+    </div>
+    <div class="food-spotlight-grid" id="samgyeGrid"></div>
+  </div>
+
+  <!-- 韩国拉面与面食特辑 -->
+  <div id="sec-noodle" style="margin-top:24px">
+    <div class="sec-title">
+      <h2>🍜 韩国拉面与特色面食</h2>
+      <span class="sub">北村砂锅辣拉面 · 青沙浦海鲜面 · 汉江泡面 · 刀切面 · 小麦冷面</span>
+    </div>
+    <div class="food-spotlight-grid" id="noodleGrid"></div>
+  </div>
+
+  <!-- 订位排队餐厅 -->
+  <div id="sec-resto" style="margin-top:24px">
+    <div class="sec-title">
+      <h2>📒 订位 / 排队清单</h2>
+      <span class="sub">按每日行程排</span>
+    </div>
+    <div class="banner"><b>怎么订？</b>韩国热门店多用 <b>Catch Table</b>（캐치테이블）线上订位或远程排队，有英文界面；没有订位的店就是现场排队，饭点前 30 分钟到最稳。很多店<b>不接一人份</b>，两个人点两份主食起。</div>
+    <div class="rlist" id="restoList"></div>
+  </div>
+
+  <!-- 必吃小吃清单 -->
+  <div id="sec-street" style="margin-top:24px">
+    <div class="sec-title">
+      <h2>😋 必吃清单</h2>
+      <span class="sub">街头小吃与传统特色</span>
+    </div>
+    <div class="pgrid" id="dishGrid"></div>
+  </div>
 </section>
 
 <!-- ============ 准备 ============ -->
@@ -1382,6 +1460,253 @@ const XMAS = [
  {p:'gwangalli',n:'广安里无人机秀',when:'每周六晚 · 免费',d:'上千架无人机在广安大桥前组成图案，冬季场次查官方 Instagram。',day:'d5'},
 ];
 
+const BBQ_SPOTS = [
+  {
+    id: 'matnam',
+    name: '味赞王盐烤肉',
+    ko: '맛찬들 왕소금구이',
+    city: '釜山 · 西面店 / 海云台店',
+    badge: '【3.5cm 熟成厚切五花肉神店】',
+    hl: '店员手持红外测温枪全程代烤 · 外脆里嫩爆汁',
+    dish: '3.5cm 熟成生五花肉 (숙성 생삼겹살) + 石锅大酱汤 + 腌山蒜叶 (명이나물)',
+    desc: '全韩数一数二的高口碑五花肉！肉质经过 14 天熟成，店员用测温枪严格检测烤盘达到 220°C 才会下锅，两面烤到金黄焦香后剪成厚实肉条。搭配微酸微甜的腌山蒜叶与现磨芥末，油脂香浓却丝毫不腻。',
+    tip: '住在釜山西面（或在海云台）极其方便，不接预约，建议 17:00 前往避开 18:30 晚高峰排队。',
+    xhs: '味赞王盐烤肉 釜山',
+    naver: '맛찬들왕소금구이 서면점',
+    kakao: '맛찬들왕소금구이 서면점'
+  },
+  {
+    id: 'obanjang',
+    name: '海云台 伍班长烤肉',
+    ko: '오반장',
+    city: '釜山 · 海云台',
+    badge: '【自带芝士烤蛋液圈 · 海风烟火气】',
+    hl: '炭火烤肉顶流 · 烤盘外圈倒入鲜蛋液边烤边挖',
+    dish: '调味护心肉/海鸥肉 (갈매기살) + 生五花肉 + 烤盘鸡蛋羹 (계란찜)',
+    desc: '海云台最具市井氛围的炭火烤肉店，无数艺人和综艺打卡！特制圆形烤盘外圈有一条深槽，店员会倒满调味蛋液，伴随炭火慢慢烘烤成金黄松软的鸡蛋糕，挖一口滚烫嫩蛋配多汁紧实的护心肉，喝一口冰啤酒，幸福感爆棚。',
+    tip: '有户外露天座和室内座，海风吹拂的露天位更有韩剧质感；护心肉肉质弹韧无肥油，吃多也无负担。',
+    xhs: '海云台 伍班长烤肉',
+    naver: '오반장',
+    kakao: '오반장'
+  },
+  {
+    id: 'goldpig',
+    name: '金猪食堂',
+    ko: '금돼지식당',
+    city: '首尔 · 中区药水站（近汉南洞/东大门）',
+    badge: '【米其林必比登 · BTS & 明星常客】',
+    hl: '全韩仅 0.3% 的顶级优质杂交猪肉 · 铸铁烤盘大葱同烤',
+    dish: '带骨五花肉 (본삼겹 2人份起) + 雪花猪颈肉 (눈꽃목살) + 猪皮',
+    desc: '常年荣登米其林必比登榜单，防弹少年团、贝克汉姆打卡地。选用极其稀有的优质 YBD 猪肉，肉香比普通猪肉浓郁数倍。厚切带骨五花肉在铸铁烤盘上烤至微焦，蘸上特调大葱甜酸酱汁与喜马拉雅粉盐，入口即化。',
+    tip: '首尔排队王之一，建议上午 11:30 开门前或下午 15:30 现场或 Catch Table 取号，人多可备选附近分流。',
+    xhs: '金猪食堂 首尔',
+    naver: '금돼지식당',
+    kakao: '금돼지식당'
+  },
+  {
+    id: 'yukjeon',
+    name: '肉典食堂',
+    ko: '육전식당',
+    city: '首尔 · 新设洞总店 / 市厅店',
+    badge: '【首尔厚切五花肉鼻祖】',
+    hl: '严谨测温翻面 · 搭配生山葵与腌芥菜叶绝配',
+    dish: '特级厚切五花肉 (통삼겹살) + 猪颈肉 + 芝士泡菜炒饭',
+    desc: '首尔把“厚切烤肉”做到极致的先锋鼻祖。肉块厚度惊人，店员戴着计时器专业翻面剪块，把肉汁牢牢锁在脆壳之内。最经典吃法是放上一撮鲜磨山葵芥末与清口脆爽的腌芥菜叶，肉香四溢；最后必点铁板芝士泡菜炒饭！',
+    tip: '市厅店离明洞很近；吃完记得留一点肚子点炒饭，底部焦香的锅巴是精华。',
+    xhs: '肉典食堂 首尔',
+    naver: '육전식당 본점',
+    kakao: '육전식당 본점'
+  },
+  {
+    id: 'wangbijib',
+    name: '王妃家',
+    ko: '왕비집',
+    city: '首尔 · 明洞总店 / 钟路店',
+    badge: '【明洞老牌优质韩牛与烤猪排】',
+    hl: '明洞安心不踩雷 · 排烟好身上无油烟 · 全程代烤',
+    dish: '调味韩牛排骨 (양념갈비) + 特选五花肉 + 赠送拌豆芽面',
+    desc: '明洞口碑屹立不倒的老字号烤肉名店。如果 D1 落地首尔奔波较累、看完全新世界圣诞巨幕后不想跑远，王妃家是步行 5 分钟的绝佳慰藉。特制果泥腌制调味排骨肉质极嫩，小菜摆满整桌，送的冰凉拌面酸辣开胃。',
+    tip: '饭点排队一般 15–30 分钟，翻台率快，店员中文/英文流畅，点餐沟通零障碍。',
+    xhs: '王妃家 明洞本店',
+    naver: '왕비집 명동본점',
+    kakao: '왕비집 명동본점'
+  },
+  {
+    id: 'nari',
+    name: '罗莉家冷冻五花肉',
+    ko: '나리의집',
+    city: '首尔 · 汉南洞',
+    badge: '【汉南洞复古冷五花传奇】',
+    hl: '80年代铝箔铁板复古烤肉 · 潮流主理人深夜食堂',
+    dish: '薄切冷冻五花肉 (냉동삼겹살) + 辣清麹酱汤 (청국장) + 拌大葱丝',
+    desc: '汉南洞逛街不可错过的复古市井传奇！区别于厚切，这里是薄切冷冻五花肉放在铺铝箔纸的铁板上快烤，边缘烤得咔嚓脆，撒上黑胡椒，卷入大葱丝塞进嘴里，焦香酥脆！配上一碗浓郁滚烫的清麹酱汤拌饭，是首尔潮人的深夜标配。',
+    tip: '就在汉南洞下坡逛街主街附近，营业至凌晨，非常适合汉南洞逛完当晚餐或宵夜。',
+    xhs: '汉南洞 罗莉家 冷冻五花肉',
+    naver: '나리의집',
+    kakao: '나리의집'
+  }
+];
+
+const NOODLE_SPOTS = [
+  {
+    id: 'ramen_day',
+    name: '拉面叫作炒面日',
+    ko: '라면땡기는날',
+    city: '首尔 · 安国 / 北村小巷（D2 行程）',
+    badge: '【白钟元三大天王力荐 · 砂锅辣拉面】',
+    hl: '30年韩屋老店 · 滚沸黑色老砂锅中吸溜劲道辛拉面',
+    dish: '砂锅芝士辣拉面 (치즈 뚝배기 라면) + 年糕 (떡추가) + 米饭',
+    desc: '《白钟元的三大天王》认证的北村传奇拉面店！隐藏在三清洞北村木门韩屋深处，脱鞋坐在传统暖炕矮桌前。特制辣味牛骨高汤在老砂锅里剧烈沸腾，面条爽脆 Q 弹，趁热拌入浓郁芝士片和荷包蛋，热辣与奶香在舌尖交融，秋寒一扫而光！',
+    tip: '离安国站和北村韩屋极近；面吃完后一定要倒一碗米饭拌进浓汤里，这就是韩国人最爱的神级拉面泡饭！',
+    xhs: '拉面叫作炒面日 北村',
+    naver: '라면땡기는날',
+    kakao: '라면땡기는날'
+  },
+  {
+    id: 'cheongsapo_ramyun',
+    name: '青沙浦 海鲜鲍鱼大葱拉面',
+    ko: '청사포 해물라면',
+    city: '釜山 · 青沙浦海边（D4 行程）',
+    badge: '【大海边整只鲍鱼花蟹海鲜锅】',
+    hl: '天空胶囊列车下车即达 · 吹着海风吃整锅豪华海鲜辣汤面',
+    dish: '特级海鲜拉面 (해물라면) + 烤大扇贝 + 海鲜葱饼',
+    desc: 'D4 坐完梦幻天空胶囊列车抵达青沙浦后的梦幻午餐/傍晚餐！铝锅里堆满整只新鲜鲍鱼、大章鱼足、红蛤、花蟹和大葱，汤底鲜浓香辣，满口大海的原汁原味。坐在面朝大海的露天座，在红白灯塔和碧波前吃热气腾腾的泡面，电影感拉满。',
+    tip: '拍照超级出片，两人可以点一份海鲜拉面加一份烤扇贝或海鲜葱饼分享。',
+    xhs: '青沙浦 海鲜拉面',
+    naver: '청사포 해물라면',
+    kakao: '청사포 해물라면'
+  },
+  {
+    id: 'hangang_ramyun',
+    name: '汉江公园 / 便利店 自动煮面机泡面',
+    ko: '한강 편의점 즉석라면',
+    city: '首尔 · 汉江公园 / 全韩各大 GS25 & CU 便利店',
+    badge: '【韩国国民级治愈体验】',
+    hl: '锡纸碗扫码自动电磁烹煮 · 3分钟精准出锅',
+    dish: '辛拉面/安城汤面/黑色三养 + 鸡蛋 + 芝士片 + 冰杯香蕉牛奶 + 金枪鱼蛋黄酱三角饭团',
+    desc: '韩剧男女主角最经典的松弛感名场面！在便利店挑好拉面锡纸碗，放到自动煮面机上按键，机器自动注入滚水并电磁加热 3 分钟。最后一分钟打入生鸡蛋撒上芝士。吹着晚秋微凉的清风，在公园长椅或便利店临窗高脚凳上品尝，又暖又惬意。',
+    tip: '灵魂秘籍：面吃剩 1/3 汤汁时，将金枪鱼三角饭团整块捏碎倒进汤里拌匀，海苔米饭吸饱汤汁，绝顶美味！',
+    xhs: '汉江 自动煮泡面 攻略',
+    naver: '한강라면',
+    kakao: '한강라면'
+  },
+  {
+    id: 'myeongdong_kyoja',
+    name: '明洞饺子 本店',
+    ko: '명동교자 본점',
+    city: '首尔 · 明洞（D1/D2 行程）',
+    badge: '【米其林必比登连霸 · 浓郁鸡汤手工刀切面】',
+    hl: '麻油焦香肉末浓汤 · 蒜香风暴泡菜 · 汤面免费续加',
+    dish: '鸡汤刀切面 (칼국수) + 蒸饺 (만두) + 拌冷面',
+    desc: '首尔老牌面食天花板。手工宽面浸润在经过慢熬数小时的浓郁鸡骨高汤中，飘着焦香碎肉与润滑馄饨，面条滑爽入味。搭配店内全首尔最狂野的“大蒜特制泡菜”，每一口都层次丰富。',
+    tip: '翻台极快，排队 10–15 分钟即可入座；刀切面吃完可以免费无限续加面条、高汤和泡菜！',
+    xhs: '明洞饺子 本店',
+    naver: '명동교자 본점',
+    kakao: '명동교자 본점'
+  },
+  {
+    id: 'choryang_milmyeon',
+    name: '草梁小麦冷面 / 海云台伽倻小麦冷面',
+    ko: '초량밀면 / 해운대가야밀면',
+    city: '釜山 · 釜山站前（草梁店）& 海云台',
+    badge: '【釜山独有历史名面】',
+    hl: '冰镇牛骨药材酸甜高汤 · 筋道爽滑小麦面 · 巨型手工蒸饺',
+    dish: '水小麦冷面 (물밀면) + 拌小麦冷面 (비빔밀면) + 手工大蒸饺 (왕만두)',
+    desc: '釜山才有的特色面条！口感比一般荞麦冷面更软弹滑爽、容易咬断。冰镇高汤酸甜冰爽中带药材回甘，配黄瓜丝、水煮蛋与特调辣酱，搅拌开来吸溜一大口，清爽提神；热腾腾皮薄肉多的大蒸饺是绝佳伴侣。',
+    tip: '桌上的热高汤壶（온육수）可以免费自助倒着喝，暖胃鲜美，配冷面一冷一热非常过瘾。',
+    xhs: '釜山 小麦冷面',
+    naver: '초량밀면',
+    kakao: '초량밀면'
+  },
+  {
+    id: 'samcheongdong_sujebi',
+    name: '三清洞瓦片面片汤老店',
+    ko: '삼청동수제비',
+    city: '首尔 · 三清洞（D2 行程）',
+    badge: '【米其林推荐 · 陶瓮鲜蛤面片汤】',
+    hl: '野生蛤蜊清甜汤底 · 薄如蝉翼软糯面片 · 香脆土豆煎饼',
+    dish: '面片汤 (수제비) + 土豆煎饼 (감자전) + 马格利米酒',
+    desc: '三清洞数十年人气老铺，米其林指南多次收录。用小陶瓮端上桌，大量野生蛤蜊和银鱼熬出的高汤清鲜无比，毫无腥味；手工掐的面片极薄极滑，入口即溜进喉咙。搭配外脆里糯的纯手工土豆煎饼，是首尔初冬的治愈极致。',
+    tip: '就在三清洞主街，离北村和景福宫神武门步行即达；饭点常有排队，建议 11:30 前或 14:00 后去。',
+    xhs: '三清洞面片汤',
+    naver: '삼청동수제비',
+    kakao: '삼청동수제비'
+  }
+];
+
+const SAMGYETANG_SPOTS = [
+  {
+    id: 'tosokchon',
+    name: '土俗村参鸡汤',
+    ko: '토속촌 삼계탕',
+    city: '首尔 · 景福宫站2号口 / 西村（D2行程）',
+    badge: '【首尔参鸡汤第一名店 · 卢武铉总统生前最爱】',
+    hl: '传统大韩屋四合院 · 浓醇坚果参汤 · 赠人参酒',
+    dish: '土俗村传统参鸡汤 (토속촌 삼계탕) / 山参培养根乌鸡参鸡汤 + 海鲜葱饼 + 人参酒',
+    desc: '全韩国知名度最高的参鸡汤殿堂！大韩屋里席地而坐，石锅端上来时剧烈滚沸。汤底除上等高丽参外，还加入南瓜籽、葵花籽、黑芝麻、松子、银杏等慢火细熬，汤汁奶白浓稠如丝绒。童子鸡肚子里塞满吸饱鸡汁的黏糯糯米与栗子红枣，鸡肉嫩到脱骨！',
+    tip: '离景福宫迎秋门和西村仅几步之遥，建议 11:30 前或 14:00 后来避开排队；附赠的一小盅人参酒倒入热汤能让参香瞬间翻倍。',
+    xhs: '土俗村参鸡汤 景福宫',
+    naver: '토속촌삼계탕',
+    kakao: '토속촌삼계탕'
+  },
+  {
+    id: 'gobong',
+    name: '高峰参鸡汤',
+    ko: '고봉삼계탕',
+    city: '首尔 · 明洞总店 / 乙支路（D1行程）',
+    badge: '【米其林必比登 · 金黄色桑黄药膳浓汤】',
+    hl: '加入桑黄蘑菇 · 汤色金黄发亮 · 浓稠如西式浓汤',
+    dish: '药膳桑黄参鸡汤 (상황삼계탕) / 汉方韩药参鸡汤 (한방삼계탕)',
+    desc: '李英爱实名推荐、米其林必比登榜上有名的药膳参鸡汤。与普通清汤完全不同，它在炖煮过程中加入了珍贵的桑黄蘑菇和多种韩方药材，熬出的汤底金黄稠亮，入口滑润鲜美，回甘明显。初抵首尔在冷风中喝上一整锅，瞬间驱寒回血。',
+    tip: '就在明洞主街旁边，店内现代整洁、暖气充足；吃鸡肉时沾一点店家特制的粗盐胡椒，原汁原味极鲜。',
+    xhs: '高峰参鸡汤 明洞',
+    naver: '고봉삼계탕 명동점',
+    kakao: '고봉삼계탕 명동점'
+  },
+  {
+    id: 'hosoo',
+    name: '元祖湖水参鸡汤',
+    ko: '원조호수삼계탕',
+    city: '首尔 · 永登浦',
+    badge: '【首尔独创野芝麻浓汤流派】',
+    hl: '加入大量研磨白苏子粉 · 汤汁浓白如浓稠奶油浓汤',
+    dish: '野芝麻参鸡汤 (들깨삼계탕) + 鲜脆黄瓜大葱蘸特制辣椒酱',
+    desc: '首尔三大参鸡汤之一，独步天下的“野芝麻（白苏子）流派”。汤底浓稠如同布丁糊，没有一般参鸡汤的药材苦味，全是白苏子炒熟研磨后的坚果浓香！每一口鸡肉和糯米都被浓浆包裹，口感滑糯无比。店里无限供应长条鲜黄瓜，蘸甜辣酱吃极其解腻。',
+    tip: '三十年老店，人气常年爆满，只卖这一道经典野芝麻参鸡汤，专一而极致。',
+    xhs: '元祖湖水参鸡汤 首尔',
+    naver: '원조호수삼계탕',
+    kakao: '원조호수삼계탕'
+  },
+  {
+    id: 'nampo_samgye',
+    name: '南浦参鸡汤',
+    ko: '남포삼계탕',
+    city: '釜山 · 南浦洞（D6行程）',
+    badge: '【釜山1959年创立 · 60年老字号清汤派】',
+    hl: '清澈见底的醇厚鸡汤 · 釜山海港限定加鲜活大鲍鱼',
+    dish: '传统元祖参鸡汤 (원조삼계탕) / 鲜活鲍鱼参鸡汤 (전복삼계탕)',
+    desc: '釜山南浦洞创立于 1959 年的 60 年老铺！不同于首尔的浓浆流派，釜山南浦参鸡汤走的是“清澈见底却极其醇厚甘甜”的路线。高丽参香气温润通透，鸡腹内的糯米软烂吸汁。招牌鲍鱼参鸡汤会放入两只鲜活饱满的活鲍鱼，海陆鲜味交融，暖心又暖胃。',
+    tip: '离南浦洞 BIFF 广场、宝水洞书店街步行仅 3 分钟，D6 逛街寻味回国前的完美午餐。',
+    xhs: '南浦参鸡汤 釜山',
+    naver: '남포삼계탕',
+    kakao: '남포삼계탕'
+  },
+  {
+    id: 'dongnae_samgye',
+    name: '东莱参鸡汤',
+    ko: '동래삼계탕',
+    city: '釜山 · 东莱区',
+    badge: '【釜山当地人排队老铺 · 满锅翠绿大葱】',
+    hl: '铺满厚厚一层鲜翠大葱丝 · 汤清甘甜解腻',
+    dish: '宫中药鸡汤 (궁중약계탕) + 赠送人参酒',
+    desc: '釜山本地老饕私藏了几十年的参鸡汤老铺。最显著标志是热腾腾的石锅上铺了满满一整层翠绿细切大葱丝！热汤将大葱烫至半熟，葱的清甜完全融入鸡汤之中，不仅完全祛除了油腻感，更带来极其爽口的清甜回味，连喝三碗汤都不觉腻。',
+    tip: '本地食客极多，饭点需排号；赠送的人参酒香气馥郁，倒进汤里或者小酌都极棒。',
+    xhs: '东莱参鸡汤 釜山',
+    naver: '동래삼계탕',
+    kakao: '동래삼계탕'
+  }
+];
+
 const RESTOS = [
  {p:'r_kyoja',day:'d1',how:'walk',hl:'现场排队',d:'刀切面 + 饺子，翻台很快，排队 10–20 分钟。'},
  {p:'r_bagel',day:'d2',how:'wait',hl:'开门前排队 / 现场取号',d:'开门前 30 分钟到，周末更夸张；工作日相对好些。'},
@@ -1397,12 +1722,15 @@ const RESTOS = [
 ];
 
 const DISHES = [
+ {img:'samgyeopsal',n:'烤五花肉',ko:'삼겹살',c:'seoul',d:'韩式烤肉代表，两人点 3 人份刚好'},
+ {img:'samgyeopsal',n:'调味牛排骨',ko:'양념소갈비',c:'seoul',d:'果泥腌制炭火烤排骨，肉嫩香甜'},
+ {img:'kalguksu',n:'砂锅辣拉面',ko:'뚝배기 라면',c:'seoul',d:'芝士年糕辣拉面，暖炕上滚沸吸溜'},
+ {img:'kalguksu',n:'海鲜鲍鱼拉面',ko:'해물라면',c:'busan',d:'釜山海边整锅大鲍鱼大花蟹泡面'},
+ {img:'kalguksu',n:'刀切面 + 饺子',ko:'칼국수',c:'seoul',d:'明洞饺子的招牌，浓郁肉末鸡汤'},
+ {img:'milmyeon',n:'小麦冷面',ko:'밀면',c:'busan',d:'釜山特色，冰爽高汤配大蒸饺'},
+ {img:'gukbap',n:'猪肉汤饭',ko:'돼지국밥',c:'busan',d:'釜山灵魂食物，天冷必吃'},
  {img:'bindaetteok',n:'绿豆煎饼',ko:'빈대떡',c:'seoul',d:'广藏市场现炸，外脆内软'},
  {img:'yukhoe',n:'生拌牛肉',ko:'육회',c:'seoul',d:'广藏市场名物，配生蛋黄'},
- {img:'kalguksu',n:'刀切面 + 饺子',ko:'칼국수',c:'seoul',d:'明洞饺子的招牌'},
- {img:'samgyeopsal',n:'烤五花肉',ko:'삼겹살',c:'seoul',d:'两人点 3 人份刚好'},
- {img:'gukbap',n:'猪肉汤饭',ko:'돼지국밥',c:'busan',d:'釜山灵魂食物，天冷必吃'},
- {img:'milmyeon',n:'小麦冷面',ko:'밀면',c:'busan',d:'釜山特色，可选拌的'},
  {img:'pajeon',n:'东莱葱饼',ko:'동래파전',c:'busan',d:'海鲜多到像蛋饼'},
  {img:'hotteok',n:'坚果糖饼',ko:'씨앗호떡',c:'busan',d:'BIFF 广场必吃'},
  {img:'eomuk',n:'鱼糕',ko:'어묵',c:'busan',d:'三进鱼糕 / 市场现炸'},
@@ -2209,15 +2537,138 @@ $('#ootdFilters').addEventListener('click', e => {
 });
 
 /* ================= FOOD ================= */
+let foodK = 'all';
+
 function renderFood(){
+  // 1. 韩国烤肉
+  const bbqEl = $('#bbqGrid');
+  if (bbqEl){
+    bbqEl.innerHTML = BBQ_SPOTS.map(b => `
+      <article class="food-card">
+        <div class="food-card-head">
+          <div class="food-card-title-wrap">
+            <h4>🥩 ${b.name}</h4>
+            <div class="food-card-ko">${b.ko} · <span style="color:var(--ink)">${b.city}</span></div>
+          </div>
+          <span class="food-badge bbq">烤肉名店</span>
+        </div>
+        <div class="food-tag-row">
+          <span class="food-tag">${b.badge}</span>
+        </div>
+        <div class="food-dish-rec">
+          <b>🍽️ 招牌必点：</b>${b.dish}
+        </div>
+        <p>${b.desc}</p>
+        <div class="food-tip-box">
+          <span>💡</span><span>${b.tip}</span>
+        </div>
+        <div class="food-links">
+          <a class="lnk lnk-xhs" href="${xhs(b.xhs)}" target="_blank" rel="noopener">📕 小红书实拍</a>
+          <a class="lnk" href="${naver(b.naver)}" target="_blank" rel="noopener">N Naver</a>
+          <a class="lnk" href="${kakao(b.kakao)}" target="_blank" rel="noopener">K Kakao</a>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  // 2. 暖冬参鸡汤
+  const samgyeEl = $('#samgyeGrid');
+  if (samgyeEl){
+    samgyeEl.innerHTML = SAMGYETANG_SPOTS.map(s => `
+      <article class="food-card">
+        <div class="food-card-head">
+          <div class="food-card-title-wrap">
+            <h4>🍲 ${s.name}</h4>
+            <div class="food-card-ko">${s.ko} · <span style="color:var(--ink)">${s.city}</span></div>
+          </div>
+          <span class="food-badge samgye">暖冬参鸡汤</span>
+        </div>
+        <div class="food-tag-row">
+          <span class="food-tag">${s.badge}</span>
+        </div>
+        <div class="food-dish-rec">
+          <b>🥣 招牌特色：</b>${s.dish}
+        </div>
+        <p>${s.desc}</p>
+        <div class="food-tip-box">
+          <span>💡</span><span>${s.tip}</span>
+        </div>
+        <div class="food-links">
+          <a class="lnk lnk-xhs" href="${xhs(s.xhs)}" target="_blank" rel="noopener">📕 小红书实拍</a>
+          <a class="lnk" href="${naver(s.naver)}" target="_blank" rel="noopener">N Naver</a>
+          <a class="lnk" href="${kakao(s.kakao)}" target="_blank" rel="noopener">K Kakao</a>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  // 3. 韩国拉面与面食
+  const noodleEl = $('#noodleGrid');
+  if (noodleEl){
+    noodleEl.innerHTML = NOODLE_SPOTS.map(n => `
+      <article class="food-card">
+        <div class="food-card-head">
+          <div class="food-card-title-wrap">
+            <h4>🍜 ${n.name}</h4>
+            <div class="food-card-ko">${n.ko} · <span style="color:var(--ink)">${n.city}</span></div>
+          </div>
+          <span class="food-badge noodle">拉面面食</span>
+        </div>
+        <div class="food-tag-row">
+          <span class="food-tag">${n.badge}</span>
+        </div>
+        <div class="food-dish-rec">
+          <b>🥢 必吃特色：</b>${n.dish}
+        </div>
+        <p>${n.desc}</p>
+        <div class="food-tip-box">
+          <span>💡</span><span>${n.tip}</span>
+        </div>
+        <div class="food-links">
+          <a class="lnk lnk-xhs" href="${xhs(n.xhs)}" target="_blank" rel="noopener">📕 小红书实拍</a>
+          <a class="lnk" href="${naver(n.naver)}" target="_blank" rel="noopener">N Naver</a>
+          <a class="lnk" href="${kakao(n.kakao)}" target="_blank" rel="noopener">K Kakao</a>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  // 4. 订位 / 排队清单
   $('#restoList').innerHTML = RESTOS.map(r => { const p = PL[r.p], d = dayOf(r.day);
     return `<div class="card rcard"><div class="th">${pic(p.img, p.n, '🍲')}</div><div style="flex:1;min-width:0">
       <h4>${p.n}</h4><div class="small muted">${p.ko} · <a href="#days/${r.day}">${r.day.toUpperCase()} ${d.md}</a></div>
       <span class="how ${r.how}">${r.hl}</span><p>${r.d}</p>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px">${links(p)}<a class="lnk" href="#map/${r.p}">🗺 地图</a></div></div></div>`; }).join('');
+
+  // 5. 经典必吃清单
   $('#dishGrid').innerHTML = DISHES.map(x => `<article class="card pcard"><div class="ph">${pic(x.img, x.n, '🍲')}</div><div class="bd">
     <h3>${x.n} <span class="small muted" style="font-weight:400">${x.ko}</span></h3><p>${x.d}</p><div class="meta">${cityTag(x.c)}</div></div></article>`).join('');
+
+  filterFoodView();
 }
+
+function filterFoodView(){
+  $$('#foodSeg button').forEach(b => {
+    b.setAttribute('aria-pressed', b.dataset.fk === foodK);
+  });
+  const secBbq = $('#sec-bbq');
+  const secSamgye = $('#sec-samgye');
+  const secNoodle = $('#sec-noodle');
+  const secResto = $('#sec-resto');
+  const secStreet = $('#sec-street');
+  if (secBbq) secBbq.style.display = (foodK === 'all' || foodK === 'bbq') ? 'block' : 'none';
+  if (secSamgye) secSamgye.style.display = (foodK === 'all' || foodK === 'samgye') ? 'block' : 'none';
+  if (secNoodle) secNoodle.style.display = (foodK === 'all' || foodK === 'noodle') ? 'block' : 'none';
+  if (secResto) secResto.style.display = (foodK === 'all' || foodK === 'resto') ? 'block' : 'none';
+  if (secStreet) secStreet.style.display = (foodK === 'all' || foodK === 'street') ? 'block' : 'none';
+}
+
+$('#foodSeg').addEventListener('click', e => {
+  const b = e.target.closest('[data-fk]');
+  if (!b) return;
+  foodK = b.dataset.fk;
+  filterFoodView();
+});
 
 /* ================= PREP ================= */
 const PACK = [['passport','护照 + 签证确认书打印件'],['ticket','机票 / KTX / 酒店确认单'],['huwon','昌德宫后苑预约截图'],['adapter','转换插头 ×2'],['power','充电宝 + 数据线'],['esim','eSIM / 流量卡'],['card','Visa/Master 信用卡 ×2'],['cash','少量韩元现金'],['coat','羽绒服 / 大衣'],['thermal','保暖内衣'],['scarf','围巾 + 手套 + 帽子'],['shoes','好走的鞋'],['umbrella','折叠伞'],['cream','护手霜 + 润唇膏'],['warmer','暖宝宝'],['bag','折叠购物袋 / 半空行李箱'],['list','购物清单截图'],['meds','常用药']];
