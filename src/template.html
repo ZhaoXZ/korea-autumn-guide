@@ -58,9 +58,9 @@ img{display:block;max-width:100%}
 /* ---------- bottom tab bar ---------- */
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgb(255 253 249/.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-top:1px solid var(--line);padding-bottom:var(--safe-b)}
-.tabbar ul{list-style:none;margin:0 auto;padding:0;display:grid;grid-template-columns:repeat(5,1fr);max-width:640px;height:var(--tabh)}
-.tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;height:100%;text-decoration:none;color:var(--ink2);font-size:.7rem}
-.tabbar a .ic{font-size:1.3rem;line-height:1;filter:grayscale(.85);opacity:.75;transition:transform .15s}
+.tabbar ul{list-style:none;margin:0 auto;padding:0;display:grid;grid-template-columns:repeat(6,1fr);max-width:680px;height:var(--tabh)}
+.tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;height:100%;text-decoration:none;color:var(--ink2);font-size:.68rem}
+.tabbar a .ic{font-size:1.25rem;line-height:1;filter:grayscale(.85);opacity:.75;transition:transform .15s}
 .tabbar a[aria-current="page"]{color:var(--maple);font-weight:700}
 .tabbar a[aria-current="page"] .ic{filter:none;opacity:1;transform:translateY(-1px) scale(1.1)}
 
@@ -192,6 +192,59 @@ img{display:block;max-width:100%}
 .banner{margin:12px 14px;padding:12px 14px;border-radius:14px;background:#fff4ec;border:1px solid #f0c9ad;font-size:.84rem;line-height:1.6}
 .banner b:first-child{display:block;margin-bottom:2px}
 
+/* ---------- ootd (fashion & style) ---------- */
+.ootd-intro{margin:12px 14px 16px;background:linear-gradient(135deg,#fff8f0,#fff1e5);border:1px solid #ebd0bc;border-radius:14px;padding:14px 16px;box-shadow:var(--sh)}
+.ootd-intro h3{font-size:1.02rem;color:#7a3420;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.ootd-intro p{font-size:.84rem;color:var(--ink2);line-height:1.55;margin:4px 0}
+.ootd-rule-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;margin-top:12px}
+.ootd-rule-item{background:#fffdf9;border:1px solid #ebd0bc;border-radius:10px;padding:10px 12px;font-size:.8rem;line-height:1.55}
+.ootd-rule-item b{color:#7a3420;display:flex;align-items:center;gap:5px;margin-bottom:3px;font-size:.85rem}
+
+.ootd-filters{display:flex;gap:6px;overflow-x:auto;padding:8px 14px 14px;scrollbar-width:none}
+.ootd-filters::-webkit-scrollbar{display:none}
+
+.ootd-card-list{padding:0 14px;display:grid;gap:16px}
+@media (min-width:768px){.ootd-card-list{grid-template-columns:1fr 1fr}}
+
+.ootd-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column}
+.ootd-head{padding:14px 16px 12px;background:linear-gradient(to bottom,#fdf8f2,#fffdf9);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.ootd-head-top{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.ootd-day-badge{font-size:.78rem;font-weight:700;color:#fff;background:var(--maple);padding:2px 10px;border-radius:99px}
+.ootd-weather-badge{font-size:.74rem;color:#8a4d1f;background:#faecd8;border:1px solid #ebd0bc;padding:2px 9px;border-radius:99px;display:inline-flex;align-items:center;gap:4px;font-weight:600}
+.ootd-head h3{font-size:1.02rem;line-height:1.35;margin:4px 0 0;color:var(--ink)}
+.ootd-spots-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+.ootd-spot-pill{font-size:.72rem;background:#f2ebdf;color:var(--ink2);padding:2px 7px;border-radius:6px}
+
+.ootd-palette-box{margin:10px 16px 4px;padding:9px 12px;background:#fcf8f2;border:1px dashed #e3d5c1;border-radius:10px}
+.ootd-palette-label{font-size:.74rem;color:var(--ink2);font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:4px}
+.ootd-swatches{display:flex;gap:6px;flex-wrap:wrap}
+.ootd-swatch{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;padding:3px 8px;border-radius:99px;border:1px solid rgba(0,0,0,0.08);box-shadow:0 1px 2px rgba(0,0,0,0.04);font-weight:600}
+.ootd-swatch-dot{width:11px;height:11px;border-radius:50%;border:1px solid rgba(0,0,0,0.18);flex-shrink:0}
+
+.ootd-body{padding:12px 16px 14px;display:flex;flex-direction:column;gap:12px;flex:1}
+.ootd-outfit-box{background:#fff;border:1px solid #efe4d6;border-radius:12px;padding:11px 12px}
+.ootd-outfit-title{font-size:.84rem;font-weight:700;display:flex;align-items:center;gap:6px;margin-bottom:8px}
+.ootd-outfit-title.boy{color:#2d3a55}
+.ootd-outfit-title.girl{color:#b4442a}
+.ootd-item-row{display:grid;grid-template-columns:46px 1fr;gap:6px;font-size:.79rem;line-height:1.5;margin-bottom:4px}
+.ootd-item-row:last-child{margin-bottom:0}
+.ootd-item-k{color:var(--ink2);font-weight:600}
+.ootd-item-v{color:var(--ink)}
+
+.ootd-couple-box{background:linear-gradient(135deg,#fcf5e9,#fff9f2);border:1px solid #e8d7be;border-radius:12px;padding:11px 12px;font-size:.8rem;line-height:1.55}
+.ootd-couple-title{font-size:.82rem;font-weight:700;color:#8a5f0d;display:flex;align-items:center;gap:5px;margin-bottom:4px}
+.ootd-couple-box p{margin:0;color:#61421b}
+
+.ootd-photo-box{background:#f8f9fa;border:1px solid #e5e7eb;border-radius:10px;padding:8px 12px;font-size:.78rem;color:var(--ink2);line-height:1.5}
+.ootd-photo-box b{color:var(--ink)}
+
+.ootd-xhs-wrap{padding:10px 16px 14px;border-top:1px dashed var(--line);background:#fffdfb;display:flex;flex-direction:column;gap:6px}
+.ootd-xhs-title{font-size:.74rem;color:var(--ink2);font-weight:600}
+.ootd-xhs-btns{display:flex;flex-wrap:wrap;gap:6px}
+.ootd-xhs-link{display:inline-flex;align-items:center;gap:4px;font-size:.74rem;padding:4px 10px;border-radius:99px;background:#fff5f6;border:1px solid #ffccd2;color:#ff2442;text-decoration:none;font-weight:600;transition:all .15s}
+.ootd-xhs-link:hover{background:#ffebee;transform:translateY(-1px)}
+.ootd-xhs-link:active{transform:translateY(0)}
+
 /* ---------- food ---------- */
 .rlist{padding:0 14px;display:grid;gap:10px}
 @media (min-width:760px){.rlist{grid-template-columns:1fr 1fr}}
@@ -310,6 +363,54 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
   <div id="discPanel"></div>
 </section>
 
+<!-- ============ 穿搭 ============ -->
+<section class="view" id="v-ootd" aria-label="穿搭指南">
+  <div class="sec-title">
+    <h2>🧣 晚秋穿搭指南</h2>
+    <span class="sub">11.24–11.29 · 首尔与釜山 OOTD</span>
+  </div>
+
+  <div class="ootd-intro">
+    <h3>🍂 晚秋出行 · 气候与配色法则</h3>
+    <p><b>首尔 (11.24–11.27)</b>：气温 0°C ~ 11°C，早晚干冷风大，室内与地铁暖气充沛（22~25°C）。核心采用<b>「三层洋葱式穿搭」</b>。</p>
+    <p><b>釜山 (11.27–11.29)</b>：气温 6°C ~ 15°C，气候较首尔温和，但海岸与海崖（海云台、白浅滩、广安里）<b>海风偏大且冷冽</b>，防风长外套与围巾是关键。</p>
+    <div class="ootd-rule-grid">
+      <div class="ootd-rule-item">
+        <b>🧅 洋葱式三层穿搭法</b>
+        内层超薄发热衣排汗 + 中层单穿好看的羊绒/卫衣/针织 + 外层防风厚羊毛大衣/轻羽绒。进室内脱外套优雅不闷热，出室外保暖抗风。
+      </div>
+      <div class="ootd-rule-item">
+        <b>👟 鞋履绝对生死线</b>
+        汉南洞、北村西村、白浅滩均为大陡坡和石板台阶，单日步数 15,000~20,000 步。<b>严禁新拆封硬底鞋与细高跟</b>，务必带 2 双已磨合好的防滑软底鞋交替穿。
+      </div>
+      <div class="ootd-rule-item">
+        <b>🎨 晚秋出片配色秘诀</b>
+        银杏与红枫背景大片金黄朱红，<b>切忌穿明黄色衣服</b>（容易与背景融合隐形）。推荐<b>米白、燕麦色、墨绿、驼色与酒红</b>，特写与景致层次分明。
+      </div>
+      <div class="ootd-rule-item">
+        <b>👫 情侣低调默契呼应</b>
+        拒绝死板同款情侣装！采用<b>「同色系深浅呼应」</b>（如一深一浅驼色）或<b>「围巾/配饰互换」</b>（一浅一格纹互换），画面高级又具韩剧氛围感。
+      </div>
+    </div>
+  </div>
+
+  <div class="ootd-filters" id="ootdFilters">
+    <button class="chip sm" data-filter="all" aria-pressed="true">全部天数 (D1-D6)</button>
+    <button class="chip sm" data-filter="seoul" aria-pressed="false">首尔行程 (D1-D3)</button>
+    <button class="chip sm" data-filter="busan" aria-pressed="false">釜山行程 (D4-D6)</button>
+  </div>
+
+  <div class="ootd-card-list" id="ootdCardList"></div>
+
+  <div class="sec-title" style="margin-top:28px">
+    <h2>📕 小红书穿搭灵感直达</h2>
+    <span class="sub">点击关键词直达实拍穿搭与避坑参考</span>
+  </div>
+  <div style="padding:0 14px 16px">
+    <div class="ootd-xhs-btns" id="ootdGlobalXhs"></div>
+  </div>
+</section>
+
 <!-- ============ 美食 ============ -->
 <section class="view" id="v-food" aria-label="美食">
   <div class="sec-title"><h2>📒 订位 / 排队清单</h2><span class="sub">按日期排</span></div>
@@ -331,6 +432,7 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
     <li><a href="#days" data-v="days"><span class="ic">🗓</span>行程</a></li>
     <li><a href="#map" data-v="map"><span class="ic">🗺</span>地图</a></li>
     <li><a href="#discover" data-v="discover"><span class="ic">🍁</span>发现</a></li>
+    <li><a href="#ootd" data-v="ootd"><span class="ic">🧣</span>穿搭</a></li>
     <li><a href="#food" data-v="food"><span class="ic">🍜</span>美食</a></li>
     <li><a href="#prep" data-v="prep"><span class="ic">🧳</span>准备</a></li>
   </ul>
@@ -672,7 +774,7 @@ const dayOf = id => DAYS.find(d => d.id === id);
 function placeDays(pid){ return DAYS.filter(d => d.items.some(i => i.p === pid)).map(d => d.id.toUpperCase()); }
 
 /* ================= ROUTER ================= */
-const VIEWS = ['days','map','discover','food','prep'];
+const VIEWS = ['days','map','discover','ootd','food','prep'];
 let curDay = 'd1';
 function route(){
   const h = location.hash.slice(1);
@@ -683,6 +785,7 @@ function route(){
   if (v === 'days'){ if (arg && dayOf(arg)) curDay = arg; renderDay(curDay); }
   else if (v === 'map'){ initBigMap(); if (arg) mapFocus(arg); setTimeout(() => bigMap && bigMap.invalidateSize(), 60); }
   else if (v === 'discover'){ renderDisc(); }
+  else if (v === 'ootd'){ renderOotd(); }
   else if (v === 'food'){ renderFood(); }
   else if (v === 'prep'){ renderPrep(); }
   window.scrollTo(0, 0);
@@ -1148,6 +1251,295 @@ $('#discChips').addEventListener('click', e => {
 });
 $('#discPanel').addEventListener('click', e => {
   const f = e.target.closest('[data-fly]'); if (f){ location.hash = 'map/' + f.dataset.fly; }
+});
+
+/* ================= OOTD ================= */
+const OOTD_DAYS = [
+  {
+    id: 'd1',
+    dayNum: 'D1 · 11.24 周日',
+    city: 'seoul',
+    cityName: '首尔',
+    title: '汉南洞斜坡漫步 · 傍晚新世界百货圣诞梦幻光影',
+    weather: '首尔 2°C ~ 11°C · 早晚干冷风大 · 室内暖气 24°C',
+    spots: ['仁川机场', '汉南洞坡道', '新世界百货总店圣诞秀', '明洞商圈'],
+    palette: [
+      { n: '燕麦米白', hex: '#f4ede4', c: '#423325' },
+      { n: '焦糖暖棕', hex: '#9e5b32', c: '#ffffff' },
+      { n: '炭黑冷淡', hex: '#262626', c: '#ffffff' },
+      { n: '复古枫红', hex: '#b4442a', c: '#ffffff' }
+    ],
+    boy: {
+      top: '深炭灰/黑色中长挺括毛呢大衣，内搭厚磅燕麦色圆领卫衣（内着发热内衣）',
+      bottom: '垂坠直筒水洗黑/深蓝牛仔裤，或宽松休闲西裤',
+      shoes: '极度舒适且防滑软底鞋（Samba/德训鞋/New Balance 990）——汉南洞多大斜坡，鞋底千万别选硬底！',
+      acc: '黑色冷帽（Beanie）或藏青羊毛围巾，兼具挡风与街头层次'
+    },
+    girl: {
+      top: '燕麦白/奶咖色双面羊毛大衣，内搭亲肤半高领羊绒衫（进店试衣脱穿优雅）',
+      bottom: '浅米白高腰阔腿西装裤，或毛呢百褶长裙 + 120D 防风加厚发热打底袜',
+      shoes: '软皮低跟方头切尔西靴或复古球鞋，严禁细高跟（汉南洞坡度高达 25°）',
+      acc: '焦糖暖棕色羊绒大围巾 + 复古腋下包，涂抹水光感枫叶红唇釉'
+    },
+    couple: '【深浅同色系呼应】男生深炭黑外衣搭配女生浅奶白大衣；佩戴同为羊绒质感但一深一浅的围巾，松弛自然又高级。傍晚 17:30 新世界金色圣诞灯光墙亮起时，两人站在对街合影，深浅对比立体出片！',
+    photoTip: '汉南洞适合在咖啡馆落地玻璃窗边抓拍侧影；新世界百货总店对街仰拍，金色圣诞巨幕为背景，深色大衣最能压住周围车流杂光。',
+    xhs: ['汉南洞 穿搭', '首尔 11月 穿搭', '新世界百货圣诞 穿搭', '首尔 情侣 穿搭']
+  },
+  {
+    id: 'd2',
+    dayNum: 'D2 · 11.25 周一',
+    city: 'seoul',
+    cityName: '首尔',
+    title: '古宫深秋画卷 · 昌德宫后苑秘苑 · 北村西村文艺慢行',
+    weather: '首尔 0°C ~ 9°C · 清晨微寒 · 古树林荫处偏冷 · 步数超 20,000',
+    spots: ['昌德宫后苑秘苑', '景福宫东十字阁银杏', '北村韩屋村', '西村独立小店', 'Archivist咖啡'],
+    palette: [
+      { n: '纯净米白', hex: '#f9f6f0', c: '#3b2f21' },
+      { n: '暖卡其驼', hex: '#b3804d', c: '#ffffff' },
+      { n: '常青墨绿', hex: '#274431', c: '#ffffff' },
+      { n: '复古酒红', hex: '#722230', c: '#ffffff' }
+    ],
+    boy: {
+      top: '经典驼色/深橄榄绿中长羊毛大衣，叠穿米白麻花粗织毛衣 + 浅蓝牛津纺衬衫',
+      bottom: '深咖色或墨绿色复古灯芯绒长裤（保暖且极具英伦常青藤感）',
+      shoes: '已磨合好的防滑工装皮鞋或复古跑鞋，古宫石阶与北村石坡抓地稳固',
+      acc: '苏格兰复古格纹羊毛围巾 + 复古细金属框眼镜，文青质感拉满'
+    },
+    girl: {
+      top: '奶白/燕麦色羊毛大衣，或复古牛角扣毛呢外套，内搭奶杏色羊绒打底',
+      bottom: '棕红格纹毛呢伞裙（配加厚防风发热连裤袜），在韩屋木门前摆动极其灵动',
+      shoes: '复古深棕乐福鞋（搭配加厚羊毛袜）或圆头软皮马丁靴',
+      acc: '【出片神器】焦糖色或深米色贝雷帽！再斜挎一个小巧复古马鞍包'
+    },
+    couple: '【古建避坑禁忌】景福宫与昌德宫后苑满眼皆是铺天盖地的金黄银杏与红枫，两人绝对不要穿明黄色衣服（会与树叶撞色导致人物完全隐形！）。推荐“纯白/燕麦色 + 驼色/墨绿”，在银杏落叶铺满的石板路上拍特写，气质清冷而典雅。',
+    photoTip: '昌德宫芙蓉池与后苑水阁适合拍摄水面倒影；北村韩屋村石阶推荐顺光俯拍，青瓦木窗当延伸景深。',
+    xhs: ['昌德宫后苑 穿搭', '景福宫银杏 穿搭', '北村韩屋村 拍照穿搭', '韩系 文艺情侣穿搭']
+  },
+  {
+    id: 'd3',
+    dayNum: 'D3 · 11.26 周二',
+    city: 'seoul',
+    cityName: '首尔',
+    title: '落叶黄金大道 · 首尔林漫步 · 圣水洞工业风买手店',
+    weather: '首尔 1°C ~ 10°C · 首尔林微风拂面 · 室内外频繁进出',
+    spots: ['首尔林银杏落叶林', '圣水洞买手店街', 'Point of View', 'Stand Oil', '大林仓库'],
+    palette: [
+      { n: '先锋酷黑', hex: '#1c1c1c', c: '#ffffff' },
+      { n: '水泥灰', hex: '#8c8c8c', c: '#ffffff' },
+      { n: '暖灰燕麦', hex: '#d9d0c3', c: '#382f25' },
+      { n: '跳色明橙', hex: '#ea6e20', c: '#ffffff' }
+    ],
+    boy: {
+      top: '黑色机车皮衣夹克 / 哑光质感短款廓形面包羽绒服，内搭深灰连帽卫衣露出内搭白T边缘',
+      bottom: '炭黑直筒微宽阔腿牛仔裤，或松弛机能工装裤',
+      shoes: 'Salomon 越野跑鞋 / 银色复古慢跑鞋 / 厚底德训鞋',
+      acc: '极简黑色无檐冷帽（Beanie）+ 哑光银色细项链，圣水潮男氛围拉满'
+    },
+    girl: {
+      top: '复古黑棕色皮衣短外套 / 廓形深灰毛呢西装，内搭修身半高领黑色羊毛打底',
+      bottom: '高腰拖地垂感深灰阔腿西裤（超显腿长）或直筒复古水洗牛仔裤',
+      shoes: '复古厚底乐福鞋或银色金属感球鞋',
+      acc: '【潮店点睛】高饱和跳色腋下包（亮黄/正红/银色），戴一副极简金属大耳圈'
+    },
+    couple: '【韩系 Clean Fit 潮人情侣】今日告别温婉，化身圣水洞主理人情侣！以黑、灰、水泥调为主色，皮质与金属配件呼应。上午在首尔林银杏林拍抓捧落叶动态抓拍，下午在圣水洞红砖旧厂房前随性街拍，反差感极具冲击力。',
+    photoTip: '首尔林银杏树林建议低机位仰拍天空与金黄树冠；圣水洞各品牌概念店（Stand Oil、Point of View）门头与旋转楼梯是绝佳几何人像点。',
+    xhs: ['首尔林 银杏穿搭', '圣水洞 ootd', '首尔 潮人街拍穿搭', '韩系 极简情侣穿搭']
+  },
+  {
+    id: 'd4',
+    dayNum: 'D4 · 11.27 周三',
+    city: 'busan',
+    cityName: '釜山',
+    title: 'KTX南下釜山 · 梦幻天空胶囊列车 · 青沙浦海风晚霞',
+    weather: '釜山 7°C ~ 15°C · 较首尔暖和 5°C · 海边阵风 4~5 级 · 防海风是核心',
+    spots: ['KTX高铁', '尾浦站天空胶囊列车', '青沙浦红白双灯塔', '灌篮高手海边铁道'],
+    palette: [
+      { n: '奶润纯白', hex: '#fdfbf7', c: '#45382b' },
+      { n: '浅海雾蓝', hex: '#7ea4ba', c: '#ffffff' },
+      { n: '明媚奶黄', hex: '#f1d17a', c: '#3d3013' },
+      { n: '沉稳藏青', hex: '#1d2c40', c: '#ffffff' }
+    ],
+    boy: {
+      top: '防风浅卡其连帽夹克 / 牛仔外套叠穿羊羔毛内胆，内搭舒适连帽衫（坐 KTX 很松弛）',
+      bottom: '浅蓝直筒牛仔裤或米咖色休闲裤',
+      shoes: '轻便白鞋或复古跑鞋，踩海滩沙子与木栈道极轻便',
+      acc: '深色防风墨镜——海面阳光与海风很大，墨镜是拍海边侧脸利器'
+    },
+    girl: {
+      top: '浅奶白中长防风风衣 / 软乎乎奶油色马海毛开衫 / 浅粉或浅蓝软糯针织',
+      bottom: '垂感白色直筒裤，或纯色雪纺/针织长裙（海风吹拂时裙摆轻扬极具电影感）',
+      shoes: '平底小白鞋或轻便玛丽珍鞋',
+      acc: '软绵绵米白大围巾或毛线帽，海风大时护头防吹痛，抓拍碎发超温柔'
+    },
+    couple: '【胶囊车厢防撞色指南】海云台天空胶囊列车车厢颜色浓艳（红/黄/绿/蓝），背景是大海。两人切忌穿花哨大红大绿！选择“纯奶白+牛仔蓝”或“浅灰+藏青”，坐在车厢窗边自然对视或看海，车厢内自然漫射光让皮肤通透白皙，唯美如日系纯爱电影。',
+    photoTip: '胶囊列车内从对向侧面拍侧颜与海面；青沙浦铁道等红白电车驶过那一刻抓拍《灌篮高手》镰仓同款构图。',
+    xhs: ['釜山 天空胶囊列车 穿搭', '青沙浦 拍照穿搭', '釜山 海边穿搭', '海边 治愈系情侣穿搭']
+  },
+  {
+    id: 'd5',
+    dayNum: 'D5 · 11.28 周四',
+    city: 'busan',
+    cityName: '釜山',
+    title: '金井山梵鱼寺秋枫 · 影岛白浅滩海崖村 · 广安里大桥海滩夜景',
+    weather: '釜山 6°C ~ 14°C · 山间石阶微凉 · 白浅滩台阶多 · 广安里夜间海风冷冽',
+    spots: ['梵鱼寺秋枫', '白浅滩文化村', '影岛海岸步道', '广安里海水浴场夜景'],
+    palette: [
+      { n: '海崖纯白', hex: '#ffffff', c: '#333333' },
+      { n: '深海湛蓝', hex: '#264a70', c: '#ffffff' },
+      { n: '暖阳姜黄', hex: '#d99426', c: '#ffffff' },
+      { n: '防风卡其', hex: '#997148', c: '#ffffff' }
+    ],
+    boy: {
+      top: '山系防风软壳夹克 / 短款立领防风轻羽绒，内搭透气棉长袖（爬山不闷汗，海边不灌风）',
+      bottom: '耐磨深色工装休闲裤',
+      shoes: '防滑抓地力强的运动徒步鞋，梵鱼寺石板台阶与白浅滩窄崖台阶必穿！',
+      acc: '多功能防风颈圈 / 羊毛围巾，晚间广安里海滩沙滩漫步防风必备'
+    },
+    girl: {
+      top: '经典卡其双排扣风衣（抗海风第一名），内搭一件吸睛的克莱因蓝或姜黄色羊毛衫',
+      bottom: '高腰直筒深蓝牛仔裤（便于在陡峭海崖台阶行动且防风保暖）',
+      shoes: '防滑舒适运动鞋，绝对不要穿硬底单鞋或高跟',
+      acc: '复古平顶草帽或渔夫帽（拍照道具），傍晚记得戴上厚围巾抵御广安里海风'
+    },
+    couple: '【山海两相宜穿搭】上午在梵鱼寺是深山红枫与古寺石阶，下午在白浅滩是“韩国圣托里尼”的蓝白村落。两人外套选防风卡其与深蓝，内搭点缀一抹亮色（姜黄或暖白），拍山景有秋意，拍海崖有明度！晚上广安里沙滩遥望发光大桥，依偎合照最浪漫。',
+    photoTip: '白浅滩必拍海岸隧道框景剪影与沿海防波堤小窗；广安里大桥 19:00 亮灯，在沙滩木椅上拍大桥背景背影照。',
+    xhs: ['白浅滩文化村 穿搭', '梵鱼寺 秋天穿搭', '广安里海滩 夜景穿搭', '釜山 山海情侣穿搭']
+  },
+  {
+    id: 'd6',
+    dayNum: 'D6 · 11.29 周五',
+    city: 'busan',
+    cityName: '釜山',
+    title: '影岛巨型海景咖啡 · 老街寻味 · 满载轻松归国',
+    weather: '釜山 5°C ~ 13°C · 室内海景温度舒适 · 返程搬运免税品较多',
+    spots: ['P.ARK/Piaq 巨幅海景咖啡', '南浦洞/宝水洞旧书巷', '金海国际机场'],
+    palette: [
+      { n: '松弛奶灰', hex: '#d6d1c7', c: '#3b342b' },
+      { n: '静谧藏青', hex: '#212d3d', c: '#ffffff' },
+      { n: '轻柔燕麦', hex: '#e8e2d8', c: '#3b342b' }
+    ],
+    boy: {
+      top: '纯棉厚实连帽卫衣，外披轻便羽绒服或羊毛大衣（过安检与飞机机舱冷暖可调）',
+      bottom: '松弛弹力休闲裤 / 宽松慢跑卫裤',
+      shoes: '一脚蹬懒人鞋或舒适软底跑鞋（机场过安检穿脱方便）',
+      acc: '轻便双肩包或腰包，放置证件护照与充电宝'
+    },
+    girl: {
+      top: '软糯针织开衫 + 亲肤纯棉内搭，外穿保暖羊毛外套',
+      bottom: '垂坠舒适阔腿针织裤或松弛慢跑裤，坐飞机久坐不勒腹部',
+      shoes: '软底小白鞋或棉花糖运动鞋',
+      acc: '随身带一个大号轻便折叠旅行尼龙袋，装免税店提货的化妆品和伴手礼'
+    },
+    couple: '【松弛感机场旅人 (Airport Chic)】整套搭配遵循“轻盈、柔软、好脱穿”。在 P.ARK 阶梯式落地玻璃窗前，两人手握热咖啡，窗外是釜山港繁忙的船只与碧蓝海水，享受旅程最后的惬意与回甘。',
+    photoTip: 'P.ARK 的大阶梯与整面无遮挡海景玻璃是出片神位，坐姿侧拍、手捧咖啡杯随性抓拍。',
+    xhs: ['韩国秋冬 机场穿搭', '釜山 咖啡厅拍照穿搭', '松弛感 旅行情侣穿搭']
+  }
+];
+
+let ootdFilter = 'all';
+
+function renderOotd(){
+  $$('#ootdFilters .chip').forEach(btn => {
+    btn.setAttribute('aria-pressed', btn.dataset.filter === ootdFilter);
+  });
+
+  const filtered = OOTD_DAYS.filter(d => {
+    if (ootdFilter === 'all') return true;
+    return d.city === ootdFilter;
+  });
+
+  $('#ootdCardList').innerHTML = filtered.map(d => {
+    const swatchesHtml = d.palette.map(sw => `
+      <span class="ootd-swatch" style="background:${sw.hex};color:${sw.c};">
+        <span class="ootd-swatch-dot" style="background:${sw.hex};"></span>
+        ${sw.n}
+      </span>
+    `).join('');
+
+    const spotsHtml = d.spots.map(s => `<span class="ootd-spot-pill">${s}</span>`).join('');
+
+    const xhsBtnsHtml = d.xhs.map(q => `
+      <a class="ootd-xhs-link" href="${xhs(q)}" target="_blank" rel="noopener">
+        <span>📕</span> ${q}
+      </a>
+    `).join('');
+
+    return `
+      <article class="ootd-card">
+        <div class="ootd-head">
+          <div class="ootd-head-top">
+            <span class="ootd-day-badge">${d.dayNum}</span>
+            <span class="ootd-weather-badge">🌡️ ${d.weather}</span>
+          </div>
+          <h3>${d.title}</h3>
+          <div class="ootd-spots-tags">${spotsHtml}</div>
+        </div>
+
+        <div class="ootd-palette-box">
+          <div class="ootd-palette-label">🎨 当日秋景呼应色谱</div>
+          <div class="ootd-swatches">${swatchesHtml}</div>
+        </div>
+
+        <div class="ootd-body">
+          <div class="ootd-outfit-box">
+            <div class="ootd-outfit-title boy">👦 他（男生搭配建议）</div>
+            <div class="ootd-item-row"><span class="ootd-item-k">外套</span><span class="ootd-item-v">${d.boy.top}</span></div>
+            <div class="ootd-item-row"><span class="ootd-item-k">裤装</span><span class="ootd-item-v">${d.boy.bottom}</span></div>
+            <div class="ootd-item-row"><span class="ootd-item-k">鞋履</span><span class="ootd-item-v">${d.boy.shoes}</span></div>
+            <div class="ootd-item-row"><span class="ootd-item-k">配饰</span><span class="ootd-item-v">${d.boy.acc}</span></div>
+          </div>
+
+          <div class="ootd-outfit-box">
+            <div class="ootd-outfit-title girl">👧 她（女生搭配建议）</div>
+            <div class="ootd-item-row"><span class="ootd-item-k">外套</span><span class="ootd-item-v">${d.girl.top}</span></div>
+            <div class="ootd-item-row"><span class="ootd-item-k">下装</span><span class="ootd-item-v">${d.girl.bottom}</span></div>
+            <div class="ootd-item-row"><span class="ootd-item-k">鞋履</span><span class="ootd-item-v">${d.girl.shoes}</span></div>
+            <div class="ootd-item-row"><span class="ootd-item-k">配饰</span><span class="ootd-item-v">${d.girl.acc}</span></div>
+          </div>
+
+          <div class="ootd-couple-box">
+            <div class="ootd-couple-title">👫 小夫妻默契呼应</div>
+            <p>${d.couple}</p>
+          </div>
+
+          <div class="ootd-photo-box">
+            <b>📸 拍照出片技巧：</b>${d.photoTip}
+          </div>
+        </div>
+
+        <div class="ootd-xhs-wrap">
+          <div class="ootd-xhs-title">📕 小红书实拍穿搭参考（点击一键直达）：</div>
+          <div class="ootd-xhs-btns">${xhsBtnsHtml}</div>
+        </div>
+      </article>
+    `;
+  }).join('');
+
+  const globalQueries = [
+    '首尔 11月 穿搭',
+    '首尔 深秋 情侣穿搭',
+    '景福宫 银杏 拍照穿搭',
+    '昌德宫后苑 穿搭',
+    '汉南洞 穿搭',
+    '圣水洞 ootd',
+    '釜山 海边 穿搭',
+    '天空胶囊列车 穿搭',
+    '白浅滩文化村 穿搭',
+    '韩国 洋葱式 穿搭',
+    '首尔 咖啡馆 拍照穿搭'
+  ];
+  $('#ootdGlobalXhs').innerHTML = globalQueries.map(q => `
+    <a class="ootd-xhs-link" href="${xhs(q)}" target="_blank" rel="noopener">
+      <span>📕</span> 搜 “${q}”
+    </a>
+  `).join('');
+}
+
+$('#ootdFilters').addEventListener('click', e => {
+  const btn = e.target.closest('[data-filter]');
+  if (!btn) return;
+  ootdFilter = btn.dataset.filter;
+  renderOotd();
 });
 
 /* ================= FOOD ================= */
