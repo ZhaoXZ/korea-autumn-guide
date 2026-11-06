@@ -161,6 +161,17 @@ img{display:block;max-width:100%}
 .city{font-size:.64rem;padding:1px 7px;border-radius:6px;background:var(--maple-s);color:var(--maple);font-weight:700;white-space:nowrap}
 .city.bs{background:var(--night-s);color:var(--night)}
 .floor-tag{display:inline-block;font-size:.66rem;font-weight:700;color:var(--maple);background:var(--maple-s);padding:1px 7px;border-radius:6px;white-space:nowrap}
+.brand-card{overflow:hidden}
+.brand-hero{padding:14px 12px 12px;border-bottom:1px solid rgba(0,0,0,.06);display:flex;flex-direction:column;gap:10px}
+.brand-hero-inner{display:flex;align-items:center;gap:10px}
+.brand-big-icon{font-size:2rem;line-height:1;filter:drop-shadow(0 2px 3px rgba(0,0,0,.08))}
+.brand-hero-title{flex:1;min-width:0}
+.brand-hero-title b{display:block;font-size:1.02rem;line-height:1.25}
+.brand-hero-title .ko-sub{font-size:.76rem;color:var(--ink2);margin-top:2px;display:block}
+.xhs-hero-btn{display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#ff2442,#e01934);color:#fff!important;font-size:.76rem;font-weight:700;padding:6px 12px;border-radius:99px;text-decoration:none;box-shadow:0 2px 6px rgba(224,25,52,.25)}
+.xhs-hero-btn:active{transform:scale(.98);opacity:.95}
+.lnk.lnk-xhs{color:#ff2442;border-color:#ffccd2;background:#fff5f6;font-weight:700}
+.lnk.lnk-xhs:active{background:#ffe4e8}
 .brand-bd{padding:10px;display:flex;flex-direction:column;gap:3px;flex:1}
 .brand-bd h3{font-size:.92rem;margin-top:2px}
 .brand-bd .ko-name{font-size:.74rem;color:var(--ink2);margin-bottom:2px}
@@ -330,84 +341,84 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
 /* ================= DATA ================= */
 const DAYCOLOR = {d1:'#b4442a',d2:'#d49a2a',d3:'#c2577a',d4:'#4f6b4a',d5:'#2d3a55',d6:'#2a7f8f'};
 
-// 地点：n 中文名, ko 韩文(用于 Naver/Kakao 搜索), c 城市, ll 坐标(大致), img 照片
+// 地点：n 中文名, ko 韩文(用于 Naver/Kakao 搜索), xhs 小红书搜索词, c 城市, ll 坐标, img 照片, emo 图标
 const PL = {
-  deoksugung:{n:'德寿宫石墙路',ko:'덕수궁 돌담길',c:'seoul',ll:[37.5658,126.9752],img:'deoksugung'},
-  shinsegae:{n:'新世界百货本店',ko:'신세계백화점 본점',c:'seoul',ll:[37.5610,126.9811],img:'shinsegae'},
-  myeongdong:{n:'明洞',ko:'올리브영 명동타운',c:'seoul',ll:[37.5634,126.9853],img:'myeongdong'},
-  onion:{n:'Onion 安国 / London Bagel',ko:'어니언 안국',c:'seoul',ll:[37.5779,126.9876],img:'bukchon'},
-  changdeok:{n:'昌德宫 · 后苑',ko:'창덕궁',c:'seoul',ll:[37.5794,126.9910],img:'huwon'},
-  changgyeong:{n:'昌庆宫 · 大温室',ko:'창경궁 대온실',c:'seoul',ll:[37.5830,126.9940],img:'changgyeong'},
-  ikseon:{n:'益善洞韩屋巷',ko:'익선동 한옥거리',c:'seoul',ll:[37.5744,126.9898],img:'ikseon'},
-  dongmyo:{n:'东庙跳蚤市场',ko:'동묘벼룩시장',c:'seoul',ll:[37.5732,127.0163],img:'dongmyo'},
-  gwangjang:{n:'广藏市场',ko:'광장시장',c:'seoul',ll:[37.5700,126.9999],img:'gwangjang'},
-  euljiro:{n:'乙支路 Hipjiro',ko:'을지로3가역',c:'seoul',ll:[37.5663,126.9915],img:'euljiro'},
-  seoulforest:{n:'首尔林',ko:'서울숲',c:'seoul',ll:[37.5447,127.0392],img:'seoulforest'},
-  seongsu:{n:'圣水 · 延武场街',ko:'성수동 연무장길',c:'seoul',ll:[37.5432,127.0560],img:'seongsu'},
-  daelim:{n:'大林仓库',ko:'대림창고',c:'seoul',ll:[37.5418,127.0565],img:'seongsu'},
-  pov:{n:'Point of View · Tamburins',ko:'포인트오브뷰 성수',c:'seoul',ll:[37.5446,127.0558],img:'seongsu'},
-  lotte:{n:'乐天世界购物中心 · 石村湖',ko:'롯데월드몰',c:'seoul',ll:[37.5115,127.1030],img:'lotteworld'},
-  hausdosan:{n:'Gentle Monster Haus Dosan',ko:'하우스 도산',c:'seoul',ll:[37.5246,127.0373],img:'dosanpark'},
-  garosu:{n:'新沙洞林荫道',ko:'가로수길',c:'seoul',ll:[37.5206,127.0232],img:'garosu'},
-  seoulst:{n:'首尔站（KTX）',ko:'서울역',c:'seoul',ll:[37.5547,126.9707],img:''},
-  gyeongui:{n:'京义线林荫道',ko:'경의선숲길 연남동',c:'seoul',ll:[37.5600,126.9250],img:'gyeongui'},
-  namsan:{n:'南山 · 首尔塔',ko:'남산서울타워',c:'seoul',ll:[37.5512,126.9882],img:'namsan'},
-  hyundai:{n:'The Hyundai Seoul',ko:'더현대 서울',c:'seoul',ll:[37.5259,126.9284],img:''},
-  mangwon:{n:'望远市场',ko:'망원시장',c:'seoul',ll:[37.5566,126.9060],img:'mangwon'},
-  object:{n:'object 独立设计店',ko:'오브젝트 서교점',c:'seoul',ll:[37.5540,126.9190],img:''},
+  deoksugung:{n:'德寿宫石墙路',ko:'덕수궁 돌담길',xhs:'德寿宫石墙路 银杏',c:'seoul',ll:[37.5658,126.9752],img:'deoksugung'},
+  shinsegae:{n:'新世界百货本店',ko:'신세계백화점 본점',xhs:'新世界百货本店 圣诞',c:'seoul',ll:[37.5610,126.9811],img:'shinsegae'},
+  myeongdong:{n:'明洞',ko:'올리브영 명동타운',xhs:'明洞 Olive Young 逛街',c:'seoul',ll:[37.5634,126.9853],img:'myeongdong'},
+  onion:{n:'Onion 安国 / London Bagel',ko:'어니언 안국',xhs:'Onion 安国',c:'seoul',ll:[37.5779,126.9876],img:'bukchon'},
+  changdeok:{n:'昌德宫 · 后苑',ko:'창덕궁',xhs:'昌德宫 秘苑 枫叶',c:'seoul',ll:[37.5794,126.9910],img:'huwon'},
+  changgyeong:{n:'昌庆宫 · 大温室',ko:'창경궁 대온실',xhs:'昌庆宫 大温室 枫叶',c:'seoul',ll:[37.5830,126.9940],img:'changgyeong'},
+  ikseon:{n:'益善洞韩屋巷',ko:'익선동 한옥거리',xhs:'益善洞 韩屋',c:'seoul',ll:[37.5744,126.9898],img:'ikseon'},
+  dongmyo:{n:'东庙跳蚤市场',ko:'동묘벼룩시장',xhs:'东庙 跳蚤市场 古着',c:'seoul',ll:[37.5732,127.0163],img:'dongmyo'},
+  gwangjang:{n:'广藏市场',ko:'광장시장',xhs:'广藏市场 美食 生拌牛肉',c:'seoul',ll:[37.5700,126.9999],img:'gwangjang'},
+  euljiro:{n:'乙支路 Hipjiro',ko:'을지로3가역',xhs:'乙支路 hipjiro 小酒馆',c:'seoul',ll:[37.5663,126.9915],img:'euljiro'},
+  seoulforest:{n:'首尔林',ko:'서울숲',xhs:'首尔林 银杏',c:'seoul',ll:[37.5447,127.0392],img:'seoulforest'},
+  seongsu:{n:'圣水 · 延武场街',ko:'성수동 연무장길',xhs:'圣水洞 延武场街 快闪',c:'seoul',ll:[37.5432,127.0560],img:'seongsu'},
+  daelim:{n:'大林仓库',ko:'대림창고',xhs:'圣水 大林仓库 咖啡',c:'seoul',ll:[37.5418,127.0565],img:'seongsu'},
+  pov:{n:'Point of View · Tamburins',ko:'포인트오브뷰 성수',xhs:'Point of View 圣水 文具',c:'seoul',ll:[37.5446,127.0558],img:'',emo:'🖋'},
+  lotte:{n:'乐天世界购物中心 · 石村湖',ko:'롯데월드몰',xhs:'蚕室 乐天世界 圣诞市集',c:'seoul',ll:[37.5115,127.1030],img:'lotteworld'},
+  hausdosan:{n:'Gentle Monster Haus Dosan',ko:'하우스 도산',xhs:'Haus Dosan 岛山公园',c:'seoul',ll:[37.5246,127.0373],img:'dosanpark'},
+  garosu:{n:'新沙洞林荫道',ko:'가로수길',xhs:'新沙洞林荫道 逛街',c:'seoul',ll:[37.5206,127.0232],img:'garosu'},
+  seoulst:{n:'首尔站（KTX）',ko:'서울역',xhs:'首尔站 KTX',c:'seoul',ll:[37.5547,126.9707],img:'',emo:'🚆'},
+  gyeongui:{n:'京义线林荫道',ko:'경의선숲길 연남동',xhs:'延南洞 京义线林荫道',c:'seoul',ll:[37.5600,126.9250],img:'gyeongui'},
+  namsan:{n:'南山 · 首尔塔',ko:'남산서울타워',xhs:'南山塔 首尔塔 夜景',c:'seoul',ll:[37.5512,126.9882],img:'namsan'},
+  hyundai:{n:'The Hyundai Seoul',ko:'더현대 서울',xhs:'The Hyundai Seoul 圣诞',c:'seoul',ll:[37.5259,126.9284],img:'',emo:'🏬'},
+  mangwon:{n:'望远市场',ko:'망원시장',xhs:'望远市场 美食',c:'seoul',ll:[37.5566,126.9060],img:'mangwon'},
+  object:{n:'object 独立设计店',ko:'오브젝트 서교점',xhs:'object 弘大 独立设计',c:'seoul',ll:[37.5540,126.9190],img:'',emo:'🧸'},
 
   // 朋友力荐 · 西村 & 景福宫
-  archivist:{n:'Archivist 维也纳咖啡',ko:'아키비스트 서촌',c:'seoul',ll:[37.5818,126.9712],img:'bukchon',food:1},
-  onemorebag:{n:'One More Bag (2楼)',ko:'원모어백',c:'seoul',ll:[37.5794,126.9718],img:'seongsu'},
-  ofrseoul:{n:'Ofr. Seoul 独立复古书店',ko:'오에프알 서울',c:'seoul',ll:[37.5810,126.9702],img:'bosudong'},
-  staffpicks:{n:'Staffpicks 银杏院落咖啡',ko:'스태프픽스',c:'seoul',ll:[37.5762,126.9678],img:'seoulforest',food:1},
-  granhand_sc:{n:'Granhand 西村香氛',ko:'그랑핸드 서촌',c:'seoul',ll:[37.5778,126.9725],img:'ikseon'},
-  samcheongdong:{n:'三清洞 瓦片面片汤',ko:'삼청동수제비',c:'seoul',ll:[37.5852,126.9822],img:'kalguksu',food:1},
+  archivist:{n:'Archivist 维也纳咖啡',ko:'아키비스트 서촌',xhs:'Archivist 西村 维也纳咖啡',c:'seoul',ll:[37.5818,126.9712],img:'',emo:'☕',food:1},
+  onemorebag:{n:'One More Bag (2楼)',ko:'원모어백',xhs:'One More Bag 西村 帆布包',c:'seoul',ll:[37.5794,126.9718],img:'',emo:'🎒'},
+  ofrseoul:{n:'Ofr. Seoul 独立复古书店',ko:'오에프알 서울',xhs:'Ofr Seoul 西村 独立书店',c:'seoul',ll:[37.5810,126.9702],img:'',emo:'📚'},
+  staffpicks:{n:'Staffpicks 银杏院落咖啡',ko:'스태프픽스',xhs:'Staffpicks 西村 银杏咖啡',c:'seoul',ll:[37.5762,126.9678],img:'seoulforest',emo:'🍂',food:1},
+  granhand_sc:{n:'Granhand 西村香氛',ko:'그랑핸드 서촌',xhs:'Granhand 西村 香氛',c:'seoul',ll:[37.5778,126.9725],img:'',emo:'🪵'},
+  samcheongdong:{n:'三清洞 瓦片面片汤',ko:'삼청동수제비',xhs:'三清洞 面片汤',c:'seoul',ll:[37.5852,126.9822],img:'kalguksu',emo:'🍲',food:1},
 
   // 朋友力荐 · 汉南洞顺坡买手街
-  hannam:{n:'汉南洞 坡道买手街',ko:'한남동 카페거리',c:'seoul',ll:[37.5385,127.0010],img:'garosu'},
-  mardi:{n:'Mardi Mercredi 汉南旗舰店',ko:'마르디 메크르디 한남',c:'seoul',ll:[37.5372,127.0006],img:'seongsu'},
-  matinkim:{n:'Matin Kim 汉南旗舰店',ko:'마틴킴 한남',c:'seoul',ll:[37.5358,127.0015],img:'seongsu'},
-  emis:{n:'EMIS 汉南店',ko:'이미스 한남',c:'seoul',ll:[37.5376,127.0002],img:'seongsu'},
-  rockfish_h:{n:'Rockfish Weatherwear 汉南',ko:'락피쉬웨더웨어 한남',c:'seoul',ll:[37.5365,127.0008],img:'seongsu'},
-  nonfiction_h:{n:'Nonfiction 汉南香氛',ko:'논픽션 한남',c:'seoul',ll:[37.5352,127.0028],img:'dosanpark'},
+  hannam:{n:'汉南洞 坡道买手街',ko:'한남동 카페거리',xhs:'汉南洞 逛街 路线',c:'seoul',ll:[37.5385,127.0010],img:'garosu',emo:'🛍'},
+  mardi:{n:'Mardi Mercredi 汉南旗舰店',ko:'마르디 메크르디 한남',xhs:'Mardi Mercredi 汉南洞',c:'seoul',ll:[37.5372,127.0006],img:'',emo:'🌸'},
+  matinkim:{n:'Matin Kim 汉南旗舰店',ko:'마틴킴 한남',xhs:'Matin Kim 汉南旗舰店',c:'seoul',ll:[37.5358,127.0015],img:'',emo:'🖤'},
+  emis:{n:'EMIS 汉南店',ko:'이미스 한남',xhs:'EMIS 汉南店',c:'seoul',ll:[37.5376,127.0002],img:'',emo:'🧢'},
+  rockfish_h:{n:'Rockfish Weatherwear 汉南',ko:'락피쉬웨더웨어 한남',xhs:'Rockfish 汉南店 玛丽珍',c:'seoul',ll:[37.5365,127.0008],img:'',emo:'🩰'},
+  nonfiction_h:{n:'Nonfiction 汉南香氛',ko:'논픽션 한남',xhs:'Nonfiction 汉南店 香水',c:'seoul',ll:[37.5352,127.0028],img:'',emo:'🌿'},
 
   // 朋友力荐 · 圣水洞精选锚点
-  standoil:{n:'Stand Oil 圣水旗舰店',ko:'스탠드오일 성수',c:'seoul',ll:[37.5445,127.0570],img:'seongsu'},
-  lcdc:{n:'LCDC Seoul 复合空间',ko:'엘씨디씨 서울',c:'seoul',ll:[37.5420,127.0600],img:'seongsu'},
+  standoil:{n:'Stand Oil 圣水旗舰店',ko:'스탠드오일 성수',xhs:'Stand Oil 圣水店 包包',c:'seoul',ll:[37.5445,127.0570],img:'',emo:'👜'},
+  lcdc:{n:'LCDC Seoul 复合空间',ko:'엘씨디씨 서울',xhs:'LCDC Seoul 圣水 复合空间',c:'seoul',ll:[37.5420,127.0600],img:'',emo:'🏢'},
 
-  busanst:{n:'釜山站（KTX）',ko:'부산역',c:'busan',ll:[35.1155,129.0426],img:'busanstation'},
-  jeonpo:{n:'田浦咖啡街',ko:'전포카페거리',c:'busan',ll:[35.1555,129.0645],img:'jeonpo'},
-  beomeosa:{n:'梵鱼寺',ko:'범어사',c:'busan',ll:[35.2841,129.0687],img:'beomeosa'},
-  dongnae:{n:'东莱奶奶葱饼',ko:'동래할매파전',c:'busan',ll:[35.2047,129.0838],img:'pajeon'},
-  f1963:{n:'F1963',ko:'F1963',c:'busan',ll:[35.1771,129.1149],img:'f1963'},
-  haeridan:{n:'海理团路',ko:'해리단길',c:'busan',ll:[35.1654,129.1576],img:'haeridan'},
-  centum:{n:'新世界 Centum City',ko:'신세계 센텀시티',c:'busan',ll:[35.1688,129.1297],img:'centum'},
-  haeundae:{n:'海云台 · 灯光节',ko:'해운대해수욕장',c:'busan',ll:[35.1587,129.1604],img:'haeundae'},
-  gwangalli:{n:'广安里海滩',ko:'광안리해수욕장',c:'busan',ll:[35.1532,129.1186],img:'gwangalli'},
-  millac:{n:'Millac the Market',ko:'밀락더마켓',c:'busan',ll:[35.1555,129.1300],img:'millac'},
-  huinnyeoul:{n:'白浅滩文化村',ko:'흰여울문화마을',c:'busan',ll:[35.0774,129.0456],img:'huinnyeoul'},
-  piaq:{n:'Piaq 造船厂咖啡',ko:'피아크',c:'busan',ll:[35.0864,129.0767],img:'yeongdo'},
-  samjin:{n:'三进鱼糕 影岛本店',ko:'삼진어묵 영도본점',c:'busan',ll:[35.0918,129.0429],img:'eomuk'},
-  biff:{n:'BIFF 广场',ko:'BIFF광장',c:'busan',ll:[35.0985,129.0283],img:'biff'},
-  gukje:{n:'国际市场',ko:'국제시장',c:'busan',ll:[35.1012,129.0282],img:'gukje'},
-  bosudong:{n:'宝水洞书店胡同',ko:'보수동책방골목',c:'busan',ll:[35.1032,129.0263],img:'bosudong'},
-  kkangtong:{n:'富平罐头夜市',ko:'부평깡통야시장',c:'busan',ll:[35.1017,129.0262],img:'kkangtong'},
-  gamcheon:{n:'甘川文化村',ko:'감천문화마을',c:'busan',ll:[35.0975,129.0106],img:'gamcheon'},
-  jagalchi:{n:'札嘎其市场',ko:'자갈치시장',c:'busan',ll:[35.0966,129.0306],img:'jagalchi'},
-  airport:{n:'金海机场',ko:'김해국제공항',c:'busan',ll:[35.1795,128.9382],img:'airport'},
-  citizenspark:{n:'釜山市民公园',ko:'부산시민공원',c:'busan',ll:[35.1689,129.0573],img:'citizenspark'},
-  blueline:{n:'海云台蓝线公园',ko:'해운대블루라인파크 미포정거장',c:'busan',ll:[35.1582,129.1728],img:'blueline'},
+  busanst:{n:'釜山站（KTX）',ko:'부산역',xhs:'釜山站 KTX',c:'busan',ll:[35.1155,129.0426],img:'busanstation',emo:'🚆'},
+  jeonpo:{n:'田浦咖啡街',ko:'전포카페거리',xhs:'田浦咖啡街 釜山',c:'busan',ll:[35.1555,129.0645],img:'jeonpo'},
+  beomeosa:{n:'梵鱼寺',ko:'범어사',xhs:'梵鱼寺 枫叶 釜山',c:'busan',ll:[35.2841,129.0687],img:'beomeosa'},
+  dongnae:{n:'东莱奶奶葱饼',ko:'동래할매파전',xhs:'东莱奶奶葱饼 釜山',c:'busan',ll:[35.2047,129.0838],img:'pajeon',food:1},
+  f1963:{n:'F1963',ko:'F1963',xhs:'F1963 釜山',c:'busan',ll:[35.1771,129.1149],img:'f1963'},
+  haeridan:{n:'海理团路',ko:'해리단길',xhs:'海理团路 釜山',c:'busan',ll:[35.1654,129.1576],img:'haeridan'},
+  centum:{n:'新世界 Centum City',ko:'신세계 센텀시티',xhs:'新世界 Centum City Spa Land',c:'busan',ll:[35.1688,129.1297],img:'centum'},
+  haeundae:{n:'海云台 · 灯光节',ko:'해운대해수욕장',xhs:'海云台 灯光节 釜山',c:'busan',ll:[35.1587,129.1604],img:'haeundae'},
+  gwangalli:{n:'广安里海滩',ko:'광안리해수욕장',xhs:'广安里 无人机秀 釜山',c:'busan',ll:[35.1532,129.1186],img:'gwangalli'},
+  millac:{n:'Millac the Market',ko:'밀락더마켓',xhs:'Millac the Market 釜山',c:'busan',ll:[35.1555,129.1300],img:'millac'},
+  huinnyeoul:{n:'白浅滩文化村',ko:'흰여울문화마을',xhs:'白浅滩文化村 釜山',c:'busan',ll:[35.0774,129.0456],img:'huinnyeoul'},
+  piaq:{n:'Piaq 造船厂咖啡',ko:'피아크',xhs:'Piaq 影岛 釜山',c:'busan',ll:[35.0864,129.0767],img:'yeongdo'},
+  samjin:{n:'三进鱼糕 影岛本店',ko:'삼진어묵 영도본점',xhs:'三进鱼糕 影岛本店 釜山',c:'busan',ll:[35.0918,129.0429],img:'eomuk'},
+  biff:{n:'BIFF 广场',ko:'BIFF광장',xhs:'BIFF广场 坚果糖饼 釜山',c:'busan',ll:[35.0985,129.0283],img:'biff'},
+  gukje:{n:'国际市场',ko:'국제시장',xhs:'国际市场 釜山',c:'busan',ll:[35.1012,129.0282],img:'gukje'},
+  bosudong:{n:'宝水洞书店胡同',ko:'보수동책방골목',xhs:'宝水洞书店胡同 釜山',c:'busan',ll:[35.1032,129.0263],img:'bosudong'},
+  kkangtong:{n:'富平罐头夜市',ko:'부평깡통야시장',xhs:'富平罐头夜市 釜山',c:'busan',ll:[35.1017,129.0262],img:'kkangtong'},
+  gamcheon:{n:'甘川文化村',ko:'감천문화마을',xhs:'甘川文化村 釜山',c:'busan',ll:[35.0975,129.0106],img:'gamcheon'},
+  jagalchi:{n:'札嘎其市场',ko:'자갈치시장',xhs:'札嘎其市场 釜山',c:'busan',ll:[35.0966,129.0306],img:'jagalchi'},
+  airport:{n:'金海机场',ko:'김해국제공항',xhs:'金海机场 退税',c:'busan',ll:[35.1795,128.9382],img:'airport',emo:'✈️'},
+  citizenspark:{n:'釜山市民公园',ko:'부산시민공원',xhs:'釜山市民公园 银杏',c:'busan',ll:[35.1689,129.0573],img:'citizenspark'},
+  blueline:{n:'海云台蓝线公园',ko:'해운대블루라인파크 미포정거장',xhs:'海云台蓝线公园 天空胶囊',c:'busan',ll:[35.1582,129.1728],img:'blueline'},
 
   // 餐厅
-  r_kyoja:{n:'明洞饺子 本店',ko:'명동교자 본점',c:'seoul',ll:[37.5625,126.9856],img:'kalguksu',food:1},
-  r_bagel:{n:'London Bagel Museum 安国',ko:'런던베이글뮤지엄 안국점',c:'seoul',ll:[37.5787,126.9862],img:'',food:1},
-  r_gwangjang:{n:'广藏市场 小吃',ko:'광장시장 먹자골목',c:'seoul',ll:[37.5703,126.9993],img:'bindaetteok',food:1},
-  r_nudake:{n:'Nudake (Haus Dosan)',ko:'누데이크 하우스도산',c:'seoul',ll:[37.5247,127.0370],img:'',food:1},
-  r_bonjeon:{n:'本钱猪肉汤饭',ko:'본전돼지국밥',c:'busan',ll:[35.1150,129.0398],img:'gukbap',food:1},
-  r_geumsu:{n:'锦绣河豚汤 海云台本店',ko:'금수복국 해운대본점',c:'busan',ll:[35.1617,129.1636],img:'',food:1},
-  r_millac:{n:'Millac the Market 美食层',ko:'밀락더마켓',c:'busan',ll:[35.1557,129.1303],img:'millac',food:1},
-  r_jagalchi:{n:'札嘎其 二楼海鲜加工',ko:'자갈치시장',c:'busan',ll:[35.0968,129.0310],img:'jagalchi',food:1},
+  r_kyoja:{n:'明洞饺子 本店',ko:'명동교자 본점',xhs:'明洞饺子 本店',c:'seoul',ll:[37.5625,126.9856],img:'kalguksu',food:1},
+  r_bagel:{n:'London Bagel Museum 安国',ko:'런던베이글뮤지엄 안국점',xhs:'London Bagel 安国店',c:'seoul',ll:[37.5787,126.9862],img:'',emo:'🥯',food:1},
+  r_gwangjang:{n:'广藏市场 小吃',ko:'광장시장 먹자골목',xhs:'广藏市场 美食 绿豆煎饼',c:'seoul',ll:[37.5703,126.9993],img:'bindaetteok',food:1},
+  r_nudake:{n:'Nudake (Haus Dosan)',ko:'누데이크 하우스도산',xhs:'Nudake 岛山 甜品',c:'seoul',ll:[37.5247,127.0370],img:'',emo:'🍰',food:1},
+  r_bonjeon:{n:'本钱猪肉汤饭',ko:'본전돼지국밥',xhs:'本钱猪肉汤饭 釜山',c:'busan',ll:[35.1150,129.0398],img:'gukbap',food:1},
+  r_geumsu:{n:'锦绣河豚汤 海云台本店',ko:'금수복국 해운대본점',xhs:'锦绣河豚汤 海云台',c:'busan',ll:[35.1617,129.1636],img:'',emo:'🐡',food:1},
+  r_millac:{n:'Millac the Market 美食层',ko:'밀락더마켓',xhs:'Millac the Market 美食 釜山',c:'busan',ll:[35.1557,129.1303],img:'millac',food:1},
+  r_jagalchi:{n:'札嘎其 二楼海鲜加工',ko:'자갈치시장',xhs:'札嘎其 二楼海鲜加工 釜山',c:'busan',ll:[35.0968,129.0310],img:'jagalchi',food:1},
 };
 
 const DAYS = [
@@ -529,19 +540,20 @@ const AUTUMN = [
 ];
 
 const BRANDS = [
- {n:'Archivist 维也纳咖啡',ko:'아키비스트 서촌',area:'西村',tag:'☕ 朋友封神推荐',floor:'1楼 · 排队名店',must:'首尔第一维也纳咖啡 (Einspänner) + 无花果费南雪',tip:'奶油浓稠如丝绒、微咸微甜，配深烘黑咖啡堪称天花板！建议下午开门前或避开高峰去取号。',p:'archivist',img:'bukchon'},
- {n:'One More Bag',ko:'원모어백',area:'西村',tag:'🎒 韩国文创布包',floor:'【藏在2楼】门头极窄',must:'韩国独立插画师帆布包、手提袋、刺绣布艺挂件、文具杂货',tip:'门头非常不起眼！推开 2 楼小门别有洞天，聚集全首尔最可爱的独立小众布包与插画周边，女孩必逛。',p:'onemorebag',img:'seongsu'},
- {n:'Ofr. Seoul',ko:'오에프알 서울',area:'西村',tag:'📚 巴黎艺术书店',floor:'双层韩式复古老宅',must:'经典英文印字帆布袋、小众艺术画册、Vintage饰品杂货',tip:'巴黎传奇独立书店 Ofr 的首尔分店，老洋房里斑驳木地板与满架书籍，二楼还藏着复古首饰与服饰。',p:'ofrseoul',img:'bosudong'},
- {n:'Granhand',ko:'그랑핸드 서촌',area:'西村 / 北村',tag:'🪵 手工刻字香氛',floor:'静谧韩屋院落',must:'Susie Salmon、Marine Orchid 麻布挂袋香、香氛喷雾',tip:'天然植物调香，买麻布挂香柜姐会用老式打字机免费敲印你的名字或专属日期，送人自用都超有温度。',p:'granhand_sc',img:'ikseon'},
- {n:'Mardi Mercredi',ko:'마르디 메크르디 한남',area:'汉南洞',tag:'🌸 K-Fashion顶流',floor:'多栋独栋并排',must:'小雏菊印花卫衣、羊绒针织开衫、复古T恤、运动线',tip:'汉南洞是 Mardi 的大本营，短短一条街上有 Apparel、Shoes、Actif 等多家专门店，款式尺码最全。',p:'mardi',img:'seongsu'},
- {n:'Matin Kim',ko:'마틴킴 한남',area:'汉南洞',tag:'🖤 Y2K酷飒高街',floor:'独栋概念旗舰店',must:'金属铭牌搭扣包 (Accordion Bag)、做旧短皮衣、工装裙',tip:'韩国千禧辣妹风代表，金属铁牌五金质感高级，包包自重极轻且百搭，汉南旗舰款最全。',p:'matinkim',img:'seongsu'},
- {n:'EMIS',ko:'이미스 한남',area:'汉南洞',tag:'🧢 爱豆私服标配',floor:'街边独立店铺',must:'复古刺绣棒球帽、印花轻便托特包、毛绒大肠发圈',tip:'几乎每个韩国爱豆人手一顶的棒球帽！版型修饰亚洲人头型显脸小，色系高级耐看，性价比极高。',p:'emis',img:'seongsu'},
- {n:'Rockfish Weatherwear',ko:'락피쉬웨더웨어 한남',area:'汉南洞',tag:'🩰 英伦复古美学',floor:'复古概念洋楼',must:'丝绒芭蕾平底鞋、玛丽珍鞋、冬日软糯贝雷帽、围巾',tip:'秋冬英伦氛围感的神！丝绒玛丽珍鞋上脚显脚细且非常软，店里装潢宛如英式复古庄园。',p:'rockfish_h',img:'seongsu'},
- {n:'Nonfiction',ko:'논픽션 한남',area:'汉南洞',tag:'🌿 疗愈系木质沙龙香',floor:'【藏在2楼】通透采光',must:'Santal Cream (白檀)、Gentle Night (温柔之夜) 香水、泵头护手霜',tip:'韩国高端小众沙龙香，不刺鼻的淡雅木质香调。汉南店在静谧二楼，大落地窗前洗手试香仪式感拉满。',p:'nonfiction_h',img:'dosanpark'},
- {n:'Stand Oil',ko:'스탠드오일 성수',area:'圣水洞',tag:'👜 极简素皮腋下包',floor:'独栋艺术旗舰店',must:'Chubby Bag 保龄球包、Flap Mini 翻盖小方包、大容量托特',tip:'韩剧出镜率极高的轻奢素皮包，自重极轻耐磨。圣水店空间每个季度换一次艺术展装置，逛店像看展。',p:'standoil',img:'seongsu'},
- {n:'Point of View',ko:'포인트오브뷰 성수',area:'圣水洞',tag:'🖋 文具美学天花板',floor:'1–3整栋艺术空间',must:'黄铜苹果镇纸、复古钢笔墨水、原创手工纸品便签',tip:'圣水绝对不能错过的艺术级文具圣殿！三层楼从基础工具到艺术灵感层层递进，即使不买文具也会被震撼。',p:'pov',img:'seongsu'},
- {n:'LCDC Seoul',ko:'엘씨디씨 서울',area:'圣水洞',tag:'🏢 工业复合买手空间',floor:'旧修车厂多层空间',must:'Door 集合店精选独立设计师服饰、小众文创杂货、屋顶咖啡',tip:'由旧修车厂改建的复合空间，三楼像小街区一样把几十个精选独立小品牌聚集在独立门面里。',p:'lcdc',img:'seongsu'},
- {n:'Tamburins',ko:'탬버린즈 성수',area:'圣水洞',tag:'✨ 先锋艺术香氛',floor:'清水混凝土雕塑建筑',must:'蛋形香水 (Egg Perfume)、金属链条护手霜、固体香膏',tip:'Jennie 同款，Gentle Monster 旗下香氛。圣水店是地上地下通透的清水混凝土雕塑，香气前卫有辨识度。',p:'pov',img:'seongsu'},
+ {n:'Archivist 维也纳咖啡',ko:'아키비스트 서촌',xhs:'Archivist 西村 维也纳咖啡',area:'西村',tag:'☕ 朋友封神推荐',floor:'1楼 · 建议先取号',icon:'☕',theme:'#3b2518',bg:'#f5eee6',must:'首尔第一维也纳咖啡 (Einspänner) + 无花果费南雪',tip:'奶油浓稠如丝绒、微咸微甜，配深烘黑咖啡堪称天花板！建议下午开门前或避开高峰去取号。',p:'archivist'},
+ {n:'One More Bag',ko:'원모어백',xhs:'One More Bag 西村 帆布包',area:'西村',tag:'🎒 韩国文创布包',floor:'【藏在2楼】门头极窄',icon:'🎒',theme:'#7a4225',bg:'#fcf4ec',must:'韩国独立插画师帆布包、手提袋、刺绣布艺挂件、文具杂货',tip:'门头非常不起眼！推开 2 楼小门别有洞天，聚集全首尔最可爱的独立小众布包与插画周边，女孩必逛。',p:'onemorebag'},
+ {n:'Ofr. Seoul',ko:'오에프알 서울',xhs:'Ofr Seoul 西村 独立书店',area:'西村',tag:'📚 巴黎艺术书店',floor:'双层复古老宅',icon:'📚',theme:'#443b35',bg:'#f7f2ed',must:'经典英文印字帆布袋、小众艺术画册、Vintage饰品杂货',tip:'巴黎传奇独立书店 Ofr 的首尔分店，老洋房里斑驳木地板与满架书籍，二楼还藏着复古首饰与服饰。',p:'ofrseoul'},
+ {n:'Granhand',ko:'그랑핸드 서촌',xhs:'Granhand 西村 香氛',area:'西村 / 北村',tag:'🪵 手工刻字香氛',floor:'静谧韩屋小院',icon:'🪵',theme:'#54463a',bg:'#f6f2ec',must:'Susie Salmon、Marine Orchid 麻布挂袋香、香氛喷雾',tip:'天然植物调香，买麻布挂香柜姐会用老式打字机免费敲印你的名字或专属日期，送人自用都超有温度。',p:'granhand_sc'},
+ {n:'Staffpicks',ko:'스태프픽스',xhs:'Staffpicks 西村 银杏咖啡',area:'西村',tag:'🍂 百年古银杏庭院',floor:'独栋庭院空间',icon:'🍂',theme:'#8a6218',bg:'#fcf6e8',must:'古银杏树落叶庭院、手冲咖啡、磅蛋糕',tip:'西村秋天最震撼的私藏咖啡馆，院子里伫立一棵遮天蔽日的百年古银杏，秋风一吹满院金雨。',p:'staffpicks'},
+ {n:'Mardi Mercredi',ko:'마르디 메크르디 한남',xhs:'Mardi Mercredi 汉南洞',area:'汉南洞',tag:'🌸 K-Fashion顶流',floor:'多栋独栋并排',icon:'🌸',theme:'#2a4836',bg:'#edf4ef',must:'小雏菊印花卫衣、羊绒针织开衫、复古T恤、运动线',tip:'汉南洞是 Mardi 的大本营，短短一条街上有 Apparel、Shoes、Actif 等多家专门店，款式尺码最全。',p:'mardi'},
+ {n:'Matin Kim',ko:'마틴킴 한남',xhs:'Matin Kim 汉南旗舰店',area:'汉南洞',tag:'🖤 Y2K酷飒高街',floor:'独栋概念旗舰',icon:'🖤',theme:'#222222',bg:'#f0f0f0',must:'金属铭牌搭扣包 (Accordion Bag)、做旧短皮衣、工装裙',tip:'韩国千禧辣妹风代表，金属铁牌五金质感高级，包包自重极轻且百搭，汉南旗舰款最全。',p:'matinkim'},
+ {n:'EMIS',ko:'이미스 한남',xhs:'EMIS 汉南店',area:'汉南洞',tag:'🧢 爱豆私服标配',floor:'街边独立店面',icon:'🧢',theme:'#1a365d',bg:'#edf2f9',must:'复古刺绣棒球帽、印花轻便托特包、毛绒大肠发圈',tip:'几乎每个韩国爱豆人手一顶的棒球帽！版型修饰亚洲人头型显脸小，色系高级耐看，性价比极高。',p:'emis'},
+ {n:'Rockfish Weatherwear',ko:'락피쉬웨더웨어 한남',xhs:'Rockfish 汉南店 玛丽珍',area:'汉南洞',tag:'🩰 英伦复古美学',floor:'复古庄园概念店',icon:'🩰',theme:'#782838',bg:'#fbeff1',must:'丝绒芭蕾平底鞋、玛丽珍鞋、冬日软糯贝雷帽、围巾',tip:'秋冬英伦氛围感的神！丝绒玛丽珍鞋上脚显脚细且非常软，店里装潢宛如英式复古庄园。',p:'rockfish_h'},
+ {n:'Nonfiction',ko:'논픽션 한남',xhs:'Nonfiction 汉南店 香水',area:'汉南洞',tag:'🌿 疗愈系木质沙龙香',floor:'【藏在2楼】通透采光',icon:'🌿',theme:'#38483b',bg:'#f0f4f1',must:'Santal Cream (白檀)、Gentle Night (温柔之夜) 香水、泵头护手霜',tip:'韩国高端小众沙龙香，不刺鼻的淡雅木质香调。汉南店在静谧二楼，大落地窗前洗手试香仪式感拉满。',p:'nonfiction_h'},
+ {n:'Stand Oil',ko:'스탠드오일 성수',xhs:'Stand Oil 圣水店 包包',area:'圣水洞',tag:'👜 极简素皮腋下包',floor:'独栋艺术旗舰店',icon:'👜',theme:'#9c6615',bg:'#fbf3e6',must:'Chubby Bag 保龄球包、Flap Mini 翻盖小方包、大容量托特',tip:'韩剧出镜率极高的轻奢素皮包，自重极轻耐磨。圣水店空间每个季度换一次艺术展装置，逛店像看展。',p:'standoil'},
+ {n:'Point of View',ko:'포인트오브뷰 성수',xhs:'Point of View 圣水 文具',area:'圣水洞',tag:'🖋 文具美学天花板',floor:'1–3整栋艺术空间',icon:'🖋',theme:'#613926',bg:'#f8f1eb',must:'黄铜苹果镇纸、复古钢笔墨水、原创手工纸品便签',tip:'圣水绝对不能错过的艺术级文具圣殿！三层楼从基础工具到艺术灵感层层递进，即使不买文具也会被震撼。',p:'pov'},
+ {n:'LCDC Seoul',ko:'엘씨디씨 서울',xhs:'LCDC Seoul 圣水 复合空间',area:'圣水洞',tag:'🏢 工业复合买手空间',floor:'旧修车厂多层空间',icon:'🏢',theme:'#3a4454',bg:'#eef2f7',must:'Door 集合店精选独立设计师服饰、小众文创杂货、屋顶咖啡',tip:'由旧修车厂改建的复合空间，三楼像小街区一样把几十个精选独立小品牌聚集在独立门面里。',p:'lcdc'},
+ {n:'Tamburins',ko:'탬버린즈 성수',xhs:'Tamburins 圣水 香水',area:'圣水洞',tag:'✨ 先锋艺术香氛',floor:'清水混凝土雕塑建筑',icon:'✨',theme:'#292929',bg:'#f3f3f3',must:'蛋形香水 (Egg Perfume)、金属链条护手霜、固体香膏',tip:'Jennie 同款，Gentle Monster 旗下香氛。圣水店是地上地下通透的清水混凝土雕塑，香气前卫有辨识度。',p:'pov'},
 ];
 
 const SHOPS = [
@@ -631,9 +643,17 @@ function pic(k, alt, emo){
 }
 const naver = q => 'https://map.naver.com/p/search/' + encodeURIComponent(q);
 const kakao = q => 'https://map.kakao.com/link/search/' + encodeURIComponent(q);
-function links(p){
+const xhs = q => {
+  const clean = String(q).trim().split(/\s+/).map(encodeURIComponent).join('+');
+  return 'https://www.xiaohongshu.com/search_result_ai?keyword=' + clean;
+};
+function links(p, q){
+  const xq = q || (p ? (p.xhs || p.n) : '');
+  const xhsBtn = xq ? `<a class="lnk lnk-xhs" href="${xhs(xq)}" target="_blank" rel="noopener">📕 小红书</a>` : '';
+  if (!p) return xhsBtn;
   return `<a class="lnk" href="${naver(p.ko)}" target="_blank" rel="noopener">N Naver</a>`+
-         `<a class="lnk" href="${kakao(p.ko)}" target="_blank" rel="noopener">K Kakao</a>`;
+         `<a class="lnk" href="${kakao(p.ko)}" target="_blank" rel="noopener">K Kakao</a>`+
+         xhsBtn;
 }
 const TAGS = {autumn:['t-autumn','秋景'],shop:['t-shop','逛街'],food:['t-food','美食'],night:['t-night','夜景'],move:['t-move','交通'],culture:['t-culture','文化'],ns:['t-ns','非标'],book:['t-culture','书店']};
 const tagHTML = arr => (arr||[]).map(t => TAGS[t] ? `<span class="tag ${TAGS[t][0]}">${TAGS[t][1]}</span>` : '').join('');
@@ -714,10 +734,12 @@ function renderDay(id){
   const items = d.items.map(it => {
     const p = PL[it.p] || null;
     const num = (p && !it.mv) ? ++n : null;
+    const defEmo = it.mv ? '🚆' : (d.city==='seoul'?'🏯':'🌊');
+    const emo = (p && p.emo) || defEmo;
     return `<li style="--dc:${col}">
       <span class="num ${num ? '' : 'mv'}">${num || '🚆'}</span>
       <div class="card item">
-        <div class="th">${pic(p ? p.img : '', p ? p.n : it.title, it.mv ? '🚆' : (d.city==='seoul'?'🏯':'🌊'))}</div>
+        <div class="th">${pic(p ? p.img : '', p ? p.n : it.title, emo)}</div>
         <div class="bd">
           <time>${it.t}</time>
           <h4>${it.title}</h4>
@@ -1055,19 +1077,29 @@ function renderDisc(){
     ⑤ <b>随身带护照退税</b>：单笔满 15,000 韩元即可退税，很多旗舰店支持现场立减退税。</div>`;
     html += '<div class="pgrid">' + BRANDS.filter(okA).map(b => {
       const p = PL[b.p];
-      return `<article class="card pcard">
-        <div class="ph">${pic(b.img || (p ? p.img : ''), b.n, '🛍')}</div>
+      const xq = b.xhs || (p ? p.xhs : b.n);
+      return `<article class="card pcard brand-card">
+        <div class="brand-hero" style="background:${b.bg || '#f9f6f0'}">
+          <div class="brand-hero-inner">
+            <span class="brand-big-icon">${b.icon || '🛍'}</span>
+            <div class="brand-hero-title" style="color:${b.theme || 'var(--ink)'}">
+              <b>${b.n}</b>
+              <span class="ko-sub">${b.ko}</span>
+            </div>
+          </div>
+          <a class="xhs-hero-btn" href="${xhs(xq)}" target="_blank" rel="noopener">
+            <span>📕 查看小红书实拍与试穿</span> <i>&rarr;</i>
+          </a>
+        </div>
         <div class="bd brand-bd">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:4px">
             <span class="floor-tag">${b.floor}</span>
             <span class="city">${b.area}</span>
           </div>
-          <h3>${b.n}</h3>
-          <div class="ko-name">${b.ko}</div>
           <p><b>✨ 必买招牌</b>：${b.must}</p>
           <p><b>💡 探店贴士</b>：${b.tip}</p>
           <div class="acts" style="display:flex;gap:4px;flex-wrap:wrap;margin-top:auto;padding-top:6px">
-            ${p ? links(p) : `<a class="lnk" href="${naver(b.ko)}" target="_blank" rel="noopener">N Naver</a><a class="lnk" href="${kakao(b.ko)}" target="_blank" rel="noopener">K Kakao</a>`}
+            ${links(p, xq)}
             ${p ? `<button class="lnk" type="button" data-fly="${b.p}">🗺 地图上看</button>` : ''}
           </div>
         </div>
