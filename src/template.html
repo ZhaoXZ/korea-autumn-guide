@@ -122,6 +122,29 @@ img{display:block;max-width:100%}
 .note{margin:4px 14px 10px;font-size:.84rem;padding:10px 12px;border-radius:12px;line-height:1.55}
 .note.tip{background:#fbf3df;color:#6b5320;border:1px solid #f0dfb5}
 .note.alt{background:var(--night-s);color:var(--night);border:1px solid #cbd3e6}
+
+/* ---------- timeline transit connectors ---------- */
+.tl-transit{position:relative;padding-left:40px;list-style:none}
+.tl-transit.simple{height:22px;display:flex;align-items:center;margin:-3px 0 7px}
+.tl-transit.simple .tl-transit-icon{
+  position:absolute;left:5px;top:50%;transform:translateY(-50%);
+  width:22px;height:22px;border-radius:50%;background:var(--paper);
+  border:1px dashed #d1c0a5;display:flex;align-items:center;justify-content:center;
+  font-size:12px;box-shadow:0 0 0 3px var(--bg);z-index:1;
+}
+.tl-transit.complex{display:flex;align-items:center;min-height:30px;margin:2px 0 10px}
+.tl-transit.complex .tl-transit-icon{
+  position:absolute;left:4px;top:50%;transform:translateY(-50%);
+  width:24px;height:24px;border-radius:50%;background:#fffaf3;
+  border:1.5px solid #d49a2a;display:flex;align-items:center;justify-content:center;
+  font-size:13px;box-shadow:0 0 0 3px var(--bg);z-index:1;
+}
+.tl-transit-card{
+  background:#fdfcf9;border:1px solid #eadbc7;border-left:3px solid var(--dc, #d49a2a);
+  border-radius:8px;padding:6px 11px;font-size:.76rem;color:var(--ink);
+  line-height:1.45;box-shadow:0 1px 3px rgba(0,0,0,0.03);display:flex;align-items:center;gap:6px;width:100%;
+}
+.tl-transit-desc{display:inline-block;flex:1}
 .daynav{display:flex;justify-content:space-between;gap:10px;margin:14px}
 .daynav button{flex:1;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:10px;cursor:pointer;font-size:.86rem}
 .daynav button:disabled{opacity:.35}
@@ -652,74 +675,112 @@ const DAYS = [
  {id:'d1',md:'11/24',wd:'周二',city:'seoul',title:'抵达 · 德寿宫石墙落叶 + 新世界圣诞巨幕',area:'市厅 · 明洞 · 乙支路（轻松漫步过渡）',cover:'shinsegae',
   stay:'🎉 东大门退溪路68街（已订 3 晚）',eat:'明洞饺子（米其林刀切面，翻台快）或乙支路烤肉',
   items:[
-   {t:'午后',p:'stay_seoul',title:'仁川机场 → 酒店入住（退溪路68街）',d:'从仁川机场乘坐 AREX 直达车到首尔站，站内换乘地铁 4 号线直达「东大门历史文化公园站」5号口（仅 4 站 8 分钟），出站步行 3 分钟即达民宿（认准 Left gate）；或直接乘坐机场大巴 6001 路至退溪路大路口直达。在机场取 eSIM、充好 T-money / WOWPASS。',tags:['move']},
-   {t:'16:00',p:'deoksugung',title:'德寿宫石墙路 · 贞洞路',d:'首尔晚秋最负盛名的银杏散步道，夕阳下满地落叶金毯，映衬古朴石墙与红砖教堂。趁 17:15 日落斜光拍照。',tags:['autumn']},
-   {t:'17:30',p:'shinsegae',title:'新世界百货本店 圣诞外墙巨幕',d:'整面百货大楼外墙的梦幻圣诞灯光动画（11 月中旬点亮），首尔圣诞季必拍地标。在主路十字路口仰拍最震撼。',tags:['night']},
-   {t:'18:30',p:'myeongdong',title:'明洞随性逛逛 · 补齐消耗品',d:'朋友提醒：明洞商业感重、游客扎堆，不必在此花大量体力购物；简单逛逛 Olive Young 明洞旗舰或 Daiso 补齐润唇膏、暖宝宝等旅行用品即可。',tags:['shop']},
+   {t:'午后',p:'stay_seoul',title:'仁川机场 → 酒店入住（退溪路68街）',d:'从仁川机场乘坐 AREX 直达车到首尔站，站内换乘地铁 4 号线直达「东大门历史文化公园站」5号口（仅 4 站 8 分钟），出站步行 3 分钟即达民宿（认准 Left gate）；或直接乘坐机场大巴 6001 路至退溪路大路口直达。在机场取 eSIM、充好 T-money / WOWPASS。',tags:['move'],
+    transit:'🚇 地铁 2 号线（东大门历史文化公园站 → 市厅站 1号口，4 站仅 7 分钟直达！出站即是石墙路）'},
+   {t:'16:00',p:'deoksugung',title:'德寿宫石墙路 · 贞洞路',d:'首尔晚秋最负盛名的银杏散步道，夕阳下满地落叶金毯，映衬古朴石墙与红砖教堂。趁 17:15 日落斜光拍照。',tags:['autumn'],
+    transit:'🚶'},
+   {t:'17:30',p:'shinsegae',title:'新世界百货本店 圣诞外墙巨幕',d:'整面百货大楼外墙的梦幻圣诞灯光动画（11 月中旬点亮），首尔圣诞季必拍地标。在主路十字路口仰拍最震撼。',tags:['night'],
+    transit:'🚶'},
+   {t:'18:30',p:'myeongdong',title:'明洞随性逛逛 · 补齐消耗品',d:'朋友提醒：明洞商业感重、游客扎堆，不必在此花大量体力购物；简单逛逛 Olive Young 明洞旗舰或 Daiso 补齐润唇膏、暖宝宝等旅行用品即可。',tags:['shop'],
+    transit:'🚶'},
    {t:'19:30',p:'r_kyoja',title:'晚饭 · 明洞饺子 / 乙支路',d:'热气腾腾的刀切面 + 蒸饺，米其林推荐老店；吃完散步至清溪川或乙支路感受初冬凉夜。',tags:['food']},
   ],
   tip:'景福宫<b>周二闭馆</b>，今天别安排；从民宿坐地铁 4 号线去明洞仅 2 站（4 分钟），往返非常轻松。'},
  {id:'d2',md:'11/25',wd:'周三',city:'seoul',title:'秘苑晚枫 · 绕景福宫一圈 · 西村神仙咖啡与小店',area:'安国 · 昌德宫 · 景福宫石墙 · 西村（步行环线）',cover:'huwon',
   stay:'🎉 东大门退溪路68街（第 2 晚）',eat:'早餐 London Bagel / Onion；下午 Archivist 维也纳咖啡；晚饭通仁市场/广藏市场',
   items:[
-   {t:'08:30',p:'onion',title:'安国早餐 · 韩屋咖啡',d:'London Bagel Museum 安国店（开门前取号）或韩屋庭院 Onion 安国，烘焙香气唤醒清晨。',tags:['food']},
-   {t:'10:00',p:'changdeok',title:'昌德宫 · 后苑（秘苑红叶）',d:'首尔<b>秋色保留最晚、最震撼</b>的皇家秘苑！芙蓉池、爱莲池的枫叶晚红倒映水面，美不胜收。需官网提前预约导览。',tags:['autumn','culture']},
-   {t:'11:45',p:'changgyeong',title:'昌庆宫 · 大温室 或 北村漫步',d:'与昌德宫无缝相连，复古白色玻璃温室与枫林掩映；或漫步北村韩屋屋脊赏金色银杏。',tags:['autumn']},
-   {t:'13:00',p:'staffpicks',title:'绕景福宫北墙漫步至西村',d:'朋友力荐线路：安国与景福宫就一站路！沿景福宫北墙与青瓦台石墙路漫步至西村，正好绕景福宫一圈，沿途满地金黄落叶。',tags:['autumn','move']},
-   {t:'13:30',p:'archivist',title:'Archivist 维也纳咖啡',d:'<b>当地朋友封神认证！首尔最好喝的维也纳咖啡 (Einspänner)</b>！如丝绒般密实醇厚的奶盖入口惊艳，招牌无花果费南雪也是一绝。',tags:['food','ns']},
-   {t:'14:30',p:'onemorebag',title:'One More Bag (2楼)',d:'<b>【藏在2楼，门头极小】</b>韩国独立插画师帆布包、便携袋、布艺刺绣小挂件聚集地，女孩必逛宝藏店。',tags:['shop','ns']},
-   {t:'15:15',p:'ofrseoul',title:'Ofr. Seoul 独立复古书店',d:'巴黎独立艺术书店首尔店，隐匿在双层复古老宅，主打复古帆布包、独立画册、vintage饰品与家居杂货。',tags:['book','shop']},
-   {t:'16:00',p:'granhand_sc',title:'Granhand 西村香氛',d:'韩屋小院里的手工精油香氛，招牌 Susie Salmon，麻布香袋柜姐会用老式打字机免费敲印专属姓名。',tags:['shop']},
-   {t:'17:15',p:'gwangjang',title:'广藏市场 · 小吃与二楼古着',d:'二楼藏着一整片古着档口（구제상가）；下楼吃现炸绿豆煎饼、生拌牛肉与麻药紫菜包饭。',tags:['ns','food']},
+   {t:'08:30',p:'onion',title:'安国早餐 · 韩屋咖啡',d:'London Bagel Museum 安国店（开门前取号）或韩屋庭院 Onion 安国，烘焙香气唤醒清晨。',tags:['food'],
+    transit:'🚶'},
+   {t:'10:00',p:'changdeok',title:'昌德宫 · 后苑（秘苑红叶）',d:'首尔<b>秋色保留最晚、最震撼</b>的皇家秘苑！芙蓉池、爱莲池的枫叶晚红倒映水面，美不胜收。需官网提前预约导览。',tags:['autumn','culture'],
+    transit:'🚶'},
+   {t:'11:45',p:'changgyeong',title:'昌庆宫 · 大温室 或 北村漫步',d:'与昌德宫无缝相连，复古白色玻璃温室与枫林掩映；或漫步北村韩屋屋脊赏金色银杏。',tags:['autumn'],
+    transit:'🚶'},
+   {t:'13:00',p:'staffpicks',title:'绕景福宫北墙漫步至西村',d:'朋友力荐线路：安国与景福宫就一站路！沿景福宫北墙与青瓦台石墙路漫步至西村，正好绕景福宫一圈，沿途满地金黄落叶。',tags:['autumn','move'],
+    transit:'🚶'},
+   {t:'13:30',p:'archivist',title:'Archivist 维也纳咖啡',d:'<b>当地朋友封神认证！首尔最好喝的维也纳咖啡 (Einspänner)</b>！如丝绒般密实醇厚的奶盖入口惊艳，招牌无花果费南雪也是一绝。',tags:['food','ns'],
+    transit:'🚶'},
+   {t:'14:30',p:'onemorebag',title:'One More Bag (2楼)',d:'<b>【藏在2楼，门头极小】</b>韩国独立插画师帆布包、便携袋、布艺刺绣小挂件聚集地，女孩必逛宝藏店。',tags:['shop','ns'],
+    transit:'🚶'},
+   {t:'15:15',p:'ofrseoul',title:'Ofr. Seoul 独立复古书店',d:'巴黎独立艺术书店首尔店，隐匿在双层复古老宅，主打复古帆布包、独立画册、vintage饰品与家居杂货。',tags:['book','shop'],
+    transit:'🚶'},
+   {t:'16:00',p:'granhand_sc',title:'Granhand 西村香氛',d:'韩屋小院里的手工精油香氛，招牌 Susie Salmon，麻布香袋柜姐会用老式打字机免费敲印专属姓名。',tags:['shop'],
+    transit:'🚇 地铁 3号线转1号线（景福宫站 → 钟路3街站转 1 号线至钟路5街站 8号口直达，约 12 分钟；或打车约 10 分钟/6,000韩元）'},
+   {t:'17:15',p:'gwangjang',title:'广藏市场 · 小吃与二楼古着',d:'二楼藏着一整片古着档口（구제상가）；下楼吃现炸绿豆煎饼、生拌牛肉与麻药紫菜包饭。',tags:['ns','food'],
+    transit:'🚶'},
    {t:'19:30',p:'euljiro',title:'乙支路「Hipjiro」复古小酒馆',d:'五金印刷老街深处，藏着没招牌的二楼小酒馆、黑胶吧与精酿馆，感受首尔年轻人的夜生活。',tags:['night']},
   ],
   tip:'安国到西村沿景福宫外墙步行体验极佳；Archivist 咖啡馆如遇排队，可以先登记手机号，步行 2 分钟逛对面的 One More Bag 或 Ofr. Seoul。'},
  {id:'d3',md:'11/26',wd:'周四',city:'seoul',title:'首尔林金叶 · 圣水精准锚点 · 蚕室欧式圣诞',area:'首尔林（金叶水杉）→ 圣水核心旗舰 → 晚上蚕室（2号线）',cover:'seoulforest',
   stay:'🎉 东大门退溪路68街（第 3 晚）',eat:'午餐大林仓库画廊咖啡；圣水热门餐厅用 Catch Table 远程取号；蚕室市集小吃',
   items:[
-   {t:'09:30',p:'seoulforest',title:'首尔林 · 银杏森林与水杉步道',d:'从民宿步行 3 分钟至 DDP 站，坐地铁 2 号线直达纛岛/首尔林（仅 11 分钟！）；早晨阳光通透，金黄银杏天幕与金叶地毯，人少景美出片极佳。',tags:['autumn']},
-   {t:'11:00',p:'pov',title:'圣水洞 · 核心锚点精准逛',d:'朋友提醒：圣水洞游人较多且部分支巷略显杂乱破旧，不必盲目乱转，锁定核心必逛美学地标：',tags:['shop','ns']},
-   {t:'11:15',p:'pov',title:'Point of View (1–3层)',d:'首尔文具美学天花板！3 层策展式空间，黄铜苹果镇纸、复古钢笔墨水与原创手作纸品，审美极高。',tags:['ns']},
-   {t:'12:15',p:'standoil',title:'Stand Oil 圣水旗舰店',d:'当红轻奢极简包包，Chubby Bag 保龄球包与腋下包，独栋展厅宛如摩登现代美术馆。',tags:['shop']},
-   {t:'13:00',p:'daelim',title:'午餐 · 大林仓库画廊咖啡',d:'旧精米厂改造的挑高红砖厂房，圣水「工业风改造」的代表鼻祖，在此享用手冲咖啡与披萨意面。',tags:['food']},
-   {t:'14:30',p:'lcdc',title:'LCDC Seoul 复合生活空间',d:'旧修车厂改建的复合空间，三楼 Door 集合店精选独立生活方式品牌与文艺小物。顺逛 Tamburins 艺术香氛。',tags:['shop','ns']},
+   {t:'09:30',p:'seoulforest',title:'首尔林 · 银杏森林与水杉步道',d:'从民宿步行 3 分钟至 DDP 站，坐地铁 2 号线直达纛岛/首尔林（仅 11 分钟！）；早晨阳光通透，金黄银杏天幕与金叶地毯，人少景美出片极佳。',tags:['autumn'],
+    transit:'🚶'},
+   {t:'11:00',p:'pov',title:'圣水洞 · 核心锚点精准逛',d:'朋友提醒：圣水洞游人较多且部分支巷略显杂乱破旧，不必盲目乱转，锁定核心必逛美学地标：',tags:['shop','ns'],
+    transit:'🚶'},
+   {t:'11:15',p:'pov',title:'Point of View (1–3层)',d:'首尔文具美学天花板！3 层策展式空间，黄铜苹果镇纸、复古钢笔墨水与原创手作纸品，审美极高。',tags:['ns'],
+    transit:'🚶'},
+   {t:'12:15',p:'standoil',title:'Stand Oil 圣水旗舰店',d:'当红轻奢极简包包，Chubby Bag 保龄球包与腋下包，独栋展厅宛如摩登现代美术馆。',tags:['shop'],
+    transit:'🚶'},
+   {t:'13:00',p:'daelim',title:'午餐 · 大林仓库画廊咖啡',d:'旧精米厂改造的挑高红砖厂房，圣水「工业风改造」的代表鼻祖，在此享用手冲咖啡与披萨意面。',tags:['food'],
+    transit:'🚶'},
+   {t:'14:30',p:'lcdc',title:'LCDC Seoul 复合生活空间',d:'旧修车厂改建的复合空间，三楼 Door 集合店精选独立生活方式品牌与文艺小物。顺逛 Tamburins 艺术香氛。',tags:['shop','ns'],
+    transit:'🚇 地铁 2 号线直达（从圣水站乘 2 号线至蚕室站 1/2号口，4 站仅 9 分钟免换乘，直通乐天世界购物中心与圣诞市集）'},
    {t:'18:00',p:'lotte',title:'蚕室 · 乐天欧式圣诞市集 + 石村湖',d:'地铁 2 号线约 15 分钟直达。欧式木屋圣诞市集、巨型发光圣诞树与旋转木马，湖畔远眺乐天世界塔夜景。',tags:['night','shop']},
   ],
   tip:'圣水快闪店每周都在轮换，出发前在 Instagram 搜 <b>#성수팝업</b> 挑选 1–2 家心仪快闪；逛街随身带护照退税。'},
  {id:'d4',md:'11/27',wd:'周五',city:'seoul',title:'汉南洞顺坡血拼 · KTX 南下 · 广安里海风',area:'上午 汉南洞（6号线汉江镇站）→ 下午 KTX → 晚上 釜山海边/田浦',cover:'dosanpark',
   stay:'釜山待订：西面（或广安里海景）',eat:'汉南洞 Brunch；釜山站对面本钱猪肉汤饭（随到随吃）',
   items:[
-   {t:'09:00',p:'stay_seoul',title:'退房出发 → 汉江镇站 3号口出（汉南洞）',d:'从退溪路68街步行 6 分钟到「青丘站」，乘地铁 6 号线直达「汉江镇站」（仅 3 站 6 分钟！）；朋友独家秘笈：汉南洞依山坡而建，坚决不要逆坡爬山！坐 6 号线到<b>汉江镇站 3 号口</b>出，顺着下坡一路逛最省力。',tags:['shop','move']},
-   {t:'10:00',p:'emis',title:'EMIS 汉南店 · 抢手帽型与配饰',d:'韩国爱豆私服标配，复古刺绣棒球帽版型绝佳，托特包和发圈性价比极高。',tags:['shop']},
-   {t:'10:45',p:'mardi',title:'Mardi Mercredi 汉南旗舰店',d:'多栋独栋并排（女装、鞋履、运动系列）。经典小雏菊刺绣卫衣、针织开衫与复古T恤。',tags:['shop']},
-   {t:'11:30',p:'rockfish_h',title:'Rockfish Weatherwear 汉南概念店',d:'英伦复古庄园风！丝绒玛丽珍平底鞋、软糯贝雷帽、围巾与防雨靴，秋冬搭配神器。',tags:['shop']},
-   {t:'12:15',p:'matinkim',title:'Matin Kim 汉南旗舰店',d:'高街酷飒千禧风，银色金属铁牌包（Accordion Bag）、做旧短皮衣与工装伞裙。',tags:['shop']},
-   {t:'12:45',p:'nonfiction_h',title:'Nonfiction 汉南香氛',d:'<b>【藏在2楼】</b>静谧通透的木质调沙龙香氛，Santal Cream、Gentle Night 试香与洗手体验。',tags:['shop','ns']},
-   {t:'13:15',p:'hannam',title:'汉南洞精致午餐 / 咖啡小憩',d:'街区内有很多露台早午餐与法式烘焙甜品店，补充体力准备南下。',tags:['food']},
-   {t:'13:45',p:'seoulst',title:'汉南洞打车直达首尔站（约 15 分钟）',d:'汉南洞紧邻首尔站！取行李后打车只要约 15 分钟即可直达 KTX 进站口，极其顺路省时。',tags:['move'],mv:1},
-   {t:'14:30',p:'seoulst',title:'首尔站 KTX → 釜山站',d:'约 2 小时 20 分 – 2 小时 50 分。周五下午为热门时段，提前在 Korail 订票。',tags:['move'],mv:1},
-   {t:'17:30',p:'r_bonjeon',title:'釜山站 · 本钱猪肉汤饭',d:'出站正对面就是釜山灵魂名物！乳白热汤配嫩肉片、生韭菜与特制虾酱，一碗下肚全身暖洋洋。',tags:['food']},
+   {t:'09:00',p:'stay_seoul',title:'退房出发 → 汉江镇站 3号口出（汉南洞）',d:'从退溪路68街步行 6 分钟到「青丘站」，乘地铁 6 号线直达「汉江镇站」（仅 3 站 6 分钟！）；朋友独家秘笈：汉南洞依山坡而建，坚决不要逆坡爬山！坐 6 号线到<b>汉江镇站 3 号口</b>出，顺着下坡一路逛最省力。',tags:['shop','move'],
+    transit:'🚶'},
+   {t:'10:00',p:'emis',title:'EMIS 汉南店 · 抢手帽型与配饰',d:'韩国爱豆私服标配，复古刺绣棒球帽版型绝佳，托特包和发圈性价比极高。',tags:['shop'],
+    transit:'🚶'},
+   {t:'10:45',p:'mardi',title:'Mardi Mercredi 汉南旗舰店',d:'多栋独栋并排（女装、鞋履、运动系列）。经典小雏菊刺绣卫衣、针织开衫与复古T恤。',tags:['shop'],
+    transit:'🚶'},
+   {t:'11:30',p:'rockfish_h',title:'Rockfish Weatherwear 汉南概念店',d:'英伦复古庄园风！丝绒玛丽珍平底鞋、软糯贝雷帽、围巾与防雨靴，秋冬搭配神器。',tags:['shop'],
+    transit:'🚶'},
+   {t:'12:15',p:'matinkim',title:'Matin Kim 汉南旗舰店',d:'高街酷飒千禧风，银色金属铁牌包（Accordion Bag）、做旧短皮衣与工装伞裙。',tags:['shop'],
+    transit:'🚶'},
+   {t:'12:45',p:'nonfiction_h',title:'Nonfiction 汉南香氛',d:'<b>【藏在2楼】</b>静谧通透的木质调沙龙香氛，Santal Cream、Gentle Night 试香与洗手体验。',tags:['shop','ns'],
+    transit:'🚶'},
+   {t:'13:15',p:'hannam',title:'汉南洞精致午餐 / 咖啡小憩',d:'街区内有很多露台早午餐与法式烘焙甜品店，补充体力准备南下。',tags:['food'],
+    transit:'🚖 打车直达首尔站（约 15 分钟，车费约 8,000~10,000 韩元；取行李上车最省心）'},
+   {t:'13:45',p:'seoulst',title:'汉南洞打车直达首尔站（约 15 分钟）',d:'汉南洞紧邻首尔站！取行李后打车只要约 15 分钟即可直达 KTX 进站口，极其顺路省时。',tags:['move'],mv:1,
+    transit:'🚄 提前 15 分钟进站，乘 KTX 极速前往釜山站（约 2 小时 30 分钟）'},
+   {t:'14:30',p:'seoulst',title:'首尔站 KTX → 釜山站',d:'约 2 小时 20 分 – 2 小时 50 分。周五下午为热门时段，提前在 Korail 订票。',tags:['move'],mv:1,
+    transit:'🚶 釜山站 1 号口出，过斑马线正对面即是（步行 2 分钟）'},
+   {t:'17:30',p:'r_bonjeon',title:'釜山站 · 本钱猪肉汤饭',d:'出站正对面就是釜山灵魂名物！乳白热汤配嫩肉片、生韭菜与特制虾酱，一碗下肚全身暖洋洋。',tags:['food'],
+    transit:'🚇 地铁 1 号线转 2 号线（釜山站坐 1 号线到西面站转 2 号线至广安站 3/5号口，约 35 分钟；两人建议直接打车约 25 分钟/12,000韩元）'},
    {t:'19:30',p:'gwangalli',title:'入住酒店 → 广安里海边吹风看大桥',d:'朋友推荐：釜山无需赶场，海边散步吹海风最治愈。漫步沙滩看广安大桥璀璨灯火；或去田浦咖啡街闲逛。',tags:['night']},
   ],
   tip:'汉南洞到首尔站打车极其方便（约 15 分钟，车费约 8,000–10,000 韩元），不必拖着行李挤地铁转线。'},
  {id:'d5',md:'11/28',wd:'周六',city:'busan',title:'千年古刹晚红 · 海边松弛漫步 · 广安里无人机秀',area:'北边梵鱼寺 → 东莱 → 海云台海滩 → 广安里跨海大桥',cover:'gwangalli',
   stay:'釜山 西面（或广安里海景）',eat:'东莱奶奶葱饼（现场排队）；海云台锦绣河豚汤；广安里 Millac 美食集市',
   items:[
-   {t:'09:00',p:'beomeosa',title:'梵鱼寺 · 金井山秋色',d:'釜山<b>晚秋红叶巅峰胜地</b>，千年古寺被层林尽染的山峦环抱，禅意静谧，是这趟最有希望看到满山红叶的地方。',tags:['autumn','culture']},
-   {t:'12:00',p:'dongnae',title:'东莱 · 传统海鲜大葱饼',d:'老字号东莱葱饼（동래할매파전），海鲜多到像瀑布般倾泻在热脆葱饼上，配马格利米酒绝绝子。',tags:['food']},
-   {t:'14:00',p:'f1963',title:'F1963 绿意工业书店 或 Centum City',d:'旧钢丝工厂改造：YES24 复古二手书店、Terarosa 咖啡与竹林；想逛百货或泡温泉可去 Centum City Spa Land。',tags:['ns','culture']},
-   {t:'16:00',p:'haeridan',title:'海云台海滩散步 · 海理团路',d:'朋友建议：釜山无需繁琐攻略，海边散步吹风拍照最治愈！踩着细软沙滩看海鸥，或逛老铁路边的文艺小店。',tags:['autumn','shop']},
-   {t:'18:00',p:'haeundae',title:'海云台灯光节（开幕日）',d:'第 13 届海云台灯光节 <b>11/28 盛大开幕</b>，海滩与主街亮起连绵梦幻的灯光艺术装置，免费观赏。',tags:['night']},
+   {t:'09:00',p:'beomeosa',title:'梵鱼寺 · 金井山秋色',d:'釜山<b>晚秋红叶巅峰胜地</b>，千年古寺被层林尽染的山峦环抱，禅意静谧，是这趟最有希望看到满山红叶的地方。',tags:['autumn','culture'],
+    transit:'🚌 社区小巴 90 路下山至梵鱼寺站，换乘地铁 1 号线直达东莱站（约 30 分钟；打车约 20 分钟/11,000韩元）'},
+   {t:'12:00',p:'dongnae',title:'东莱 · 传统海鲜大葱饼',d:'老字号东莱葱饼（동래할매파전），海鲜多到像瀑布般倾泻在热脆葱饼上，配马格利米酒绝绝子。',tags:['food'],
+    transit:'🚖 打车约 15–20 分钟（约 9,000 韩元；两地间公交稍绕，打车沿大路直达水营江畔）'},
+   {t:'14:00',p:'f1963',title:'F1963 绿意工业书店 或 Centum City',d:'旧钢丝工厂改造：YES24 复古二手书店、Terarosa 咖啡与竹林；想逛百货或泡温泉可去 Centum City Spa Land。',tags:['ns','culture'],
+    transit:'🚇 地铁 2 号线（水营站/民乐站 → 海云台站 5/7号口，4 站约 10 分钟；打车约 15 分钟/8,000韩元）'},
+   {t:'16:00',p:'haeridan',title:'海云台海滩散步 · 海理团路',d:'朋友建议：釜山无需繁琐攻略，海边散步吹风拍照最治愈！踩着细软沙滩看海鸥，或逛老铁路边的文艺小店。',tags:['autumn','shop'],
+    transit:'🚶'},
+   {t:'18:00',p:'haeundae',title:'海云台灯光节（开幕日）',d:'第 13 届海云台灯光节 <b>11/28 盛大开幕</b>，海滩与主街亮起连绵梦幻的灯光艺术装置，免费观赏。',tags:['night'],
+    transit:'🚇 地铁 2 号线（海云台站 → 广安站/金莲山站，约 15 分钟；周六晚两海滩间严重拥堵，坐地铁最快免堵车）'},
    {t:'20:00',p:'millac',title:'广安里 · 无人机光影秀 + Millac the Market',d:'广安里<b>每周六晚</b>千架无人机在跨海大桥前组成震撼图案。Millac 二楼阶梯落地窗正对广安大桥夜景，喝啤酒吃炸鸡。',tags:['night','food']},
   ],
   tip:'海云台打车到广安里约 15 分钟；周六无人机秀结束后打车较难，建议提前用 Kakao T 或坐地铁 2 号线回酒店。'},
  {id:'d6',md:'11/29',wd:'周日',city:'busan',title:'影岛海崖小巷 · 造船厂咖啡 · 烟火老城返程',area:'影岛白浅滩 → 工业海港咖啡 → 南浦老城 → 金海机场',cover:'huinnyeoul',
   stay:'返程',eat:'三进鱼糕现炸热吃；BIFF 广场坚果糖饼；海鲜市场',
   items:[
-   {t:'09:00',p:'huinnyeoul',title:'影岛 · 白浅滩文化村',d:'悬崖峭壁边的纯白小巷，一边是无际的蔚蓝大海，一边是彩绘阶梯与文艺小铺，被称为「釜山的圣托里尼」，拍照极度治愈。',tags:['autumn']},
-   {t:'10:30',p:'piaq',title:'造船厂咖啡 Piaq / Momos',d:'万吨造船厂与老仓库改建的巨幕海景咖啡馆；Momos 是世界咖啡师冠军名店，坐在窗边看大货轮慢悠悠驶过港口。',tags:['ns','food']},
-   {t:'11:30',p:'samjin',title:'三进鱼糕 影岛本店',d:'像烘焙面包店一样的鱼糕总店，几十种芝士、鲜虾、辣椒现做热气腾腾，真空包装适合当伴手礼。',tags:['food']},
-   {t:'12:30',p:'biff',title:'BIFF 广场 · 国际市场 · 宝水洞书店',d:'现炸爆汁的坚果糖饼（씨앗호떡）香甜酥脆；逛逛国际市场烟火杂货，宝水洞旧书堆到天花板。',tags:['ns','food']},
+   {t:'09:00',p:'huinnyeoul',title:'影岛 · 白浅滩文化村',d:'悬崖峭壁边的纯白小巷，一边是无际的蔚蓝大海，一边是彩绘阶梯与文艺小铺，被称为「釜山的圣托里尼」，拍照极度治愈。',tags:['autumn'],
+    transit:'🚖 打车沿影岛海岸线行驶约 12 分钟（约 6,500 韩元；岛内公交班次较少，推荐打车）'},
+   {t:'10:30',p:'piaq',title:'造船厂咖啡 Piaq / Momos',d:'万吨造船厂与老仓库改建的巨幕海景咖啡馆；Momos 是世界咖啡师冠军名店，坐在窗边看大货轮慢悠悠驶过港口。',tags:['ns','food'],
+    transit:'🚖 打车约 8 分钟（约 5,000 韩元）或乘公交 6 路/8 路（约 12 分钟）直达'},
+   {t:'11:30',p:'samjin',title:'三进鱼糕 影岛本店',d:'像烘焙面包店一样的鱼糕总店，几十种芝士、鲜虾、辣椒现做热气腾腾，真空包装适合当伴手礼。',tags:['food'],
+    transit:'🚶 走上海景人行道过影岛大桥步行约 12 分钟（体验开桥历史地标），或打车 5 分钟过桥直达 BIFF 广场'},
+   {t:'12:30',p:'biff',title:'BIFF 广场 · 国际市场 · 宝水洞书店',d:'现炸爆汁的坚果糖饼（씨앗호떡）香甜酥脆；逛逛国际市场烟火杂货，宝水洞旧书堆到天花板。',tags:['ns','food'],
+    transit:'🚖 打车直达金海国际机场约 35–40 分钟（约 18,000~20,000 韩元，两人带行李最省力）；或坐 1 号线到西面换 2 号线至沙上转轻轨（约 65 分钟）'},
    {t:'14:30',p:'airport',title:'前往金海机场 返程',d:'南浦打车到金海机场约 35–40 分钟。国际航班提前 2.5 小时到机场，留足退税与免税店提货时间。',tags:['move'],mv:1},
   ],
   alt:'🌙 晚班机：下午可加甘川文化村看彩色积木小镇，或傍晚札嘎其市场二楼加工新鲜海鲜。'},
@@ -1289,12 +1350,13 @@ function renderDay(id){
   const btn = $(`#dayChips [data-d="${id}"]`); btn && btn.scrollIntoView({inline:'center', block:'nearest'});
   const d = dayOf(id), i = DAYS.indexOf(d), col = DAYCOLOR[id];
   let n = 0;
-  const items = d.items.map(it => {
+  const items = [];
+  d.items.forEach(it => {
     const p = PL[it.p] || null;
     const num = (p && !it.mv) ? ++n : null;
     const defEmo = it.mv ? '🚆' : (d.city==='seoul'?'🏯':'🌊');
     const emo = (p && p.emo) || defEmo;
-    return `<li style="--dc:${col}">
+    items.push(`<li style="--dc:${col}">
       <span class="num ${num ? '' : 'mv'}">${num || '🚆'}</span>
       <div class="card item">
         <div class="th">${pic(p ? p.img : '', p ? p.n : it.title, emo)}</div>
@@ -1305,8 +1367,27 @@ function renderDay(id){
           ${tagHTML(it.tags)}
           ${p ? `<div class="acts">${links(p)}<button class="lnk" type="button" data-fly="${it.p}">🗺 地图上看</button></div>` : ''}
         </div>
-      </div></li>`;
-  }).join('');
+      </div></li>`);
+
+    if (it.transit){
+      const icon = Array.from(it.transit)[0];
+      const desc = it.transit.slice(icon.length).trim();
+      const isSimple = !desc || desc === '步行';
+      if (isSimple){
+        items.push(`<li class="tl-transit simple" style="--dc:${col}">
+          <span class="tl-transit-icon" title="步行">🚶</span>
+        </li>`);
+      } else {
+        items.push(`<li class="tl-transit complex" style="--dc:${col}">
+          <span class="tl-transit-icon">${icon}</span>
+          <div class="tl-transit-card">
+            <span class="tl-transit-desc">${desc}</span>
+          </div>
+        </li>`);
+      }
+    }
+  });
+  const itemsHTML = items.join('');
   $('#dayPanel').innerHTML = `
     <div class="daygrid">
       <div class="main">
@@ -1318,7 +1399,7 @@ function renderDay(id){
           <div class="card"><b>🏨 今晚住</b>${d.stay}</div>
           <div class="card"><b>🍽 吃饭/订位</b>${d.eat}</div>
         </div>
-        <ol class="tl">${items}</ol>
+        <ol class="tl">${itemsHTML}</ol>
         ${d.tip ? `<div class="note tip">💡 ${d.tip}</div>` : ''}
         ${d.alt ? `<div class="note alt">${d.alt}</div>` : ''}
       </div>
