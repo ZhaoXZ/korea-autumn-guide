@@ -245,6 +245,33 @@ img{display:block;max-width:100%}
 .ootd-xhs-link:hover{background:#ffebee;transform:translateY(-1px)}
 .ootd-xhs-link:active{transform:translateY(0)}
 
+/* ---------- snow guide (first snow in seoul) ---------- */
+.snow-banner{background:linear-gradient(135deg,#edf5fc,#f4f8fc);border:1px solid #c9e0f3;border-radius:14px;padding:14px 16px;margin:12px 14px;box-shadow:var(--sh);line-height:1.6}
+.snow-banner b{color:#1f4b73}
+.snow-banner h3{font-size:1.05rem;color:#1f4b73;margin:0 0 6px;display:flex;align-items:center;gap:6px}
+.snow-quick-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.snow-quick-pill{display:inline-flex;align-items:center;gap:4px;font-size:.76rem;font-weight:700;color:#1f629c;background:#fff;border:1px solid #b7d6ee;padding:5px 12px;border-radius:99px;text-decoration:none;box-shadow:0 1px 3px rgba(31,98,156,0.1);transition:all .15s}
+.snow-quick-pill:hover{background:#e2f0fb;transform:translateY(-1px)}
+.snow-quick-pill:active{transform:translateY(0)}
+
+.snow-card{background:var(--paper);border:1px solid #d5e4f1;border-radius:16px;box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column}
+.snow-card-head{background:linear-gradient(135deg,#f4f9fd,#fcfdff);padding:14px 16px 12px;border-bottom:1px solid #e2edf6}
+.snow-card-head h3{font-size:1.05rem;margin:2px 0 0;color:#1f4b73;display:flex;align-items:center;gap:6px}
+.snow-badge{font-size:.72rem;font-weight:700;color:#fff;background:linear-gradient(135deg,#3b82f6,#1d4ed8);padding:2px 8px;border-radius:99px}
+.snow-card-bd{padding:12px 16px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.snow-card-theme{font-size:.82rem;font-weight:700;color:#2c5d88;background:#edf5fc;border-radius:8px;padding:6px 10px}
+.snow-card-text{font-size:.8rem;color:var(--ink2);line-height:1.55;margin:0}
+.snow-card-tip{background:#fdfdfc;border:1px dashed #dbe5ee;border-radius:10px;padding:8px 10px;font-size:.78rem;line-height:1.5}
+.snow-card-tip b{color:#1f4b73}
+
+.snow-card-actions{padding:10px 16px 14px;border-top:1px dashed #e2edf6;display:flex;gap:8px;flex-wrap:wrap;background:#fcfdff}
+.snow-action-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:100%;font-size:.82rem;font-weight:700;padding:8px 14px;border-radius:12px;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff!important;text-decoration:none;box-shadow:0 2px 8px rgba(37,99,235,0.25);transition:all .15s}
+.snow-action-btn:hover{background:linear-gradient(135deg,#2563eb,#1d4ed8);transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,0.3)}
+.snow-action-btn:active{transform:translateY(0)}
+
+.appbar-snow-pill{font-size:.72rem;font-weight:700;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.35);color:#fff;padding:3px 9px;border-radius:99px;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:3px;text-decoration:none;transition:background .15s}
+.appbar-snow-pill:hover{background:rgba(255,255,255,0.3)}
+
 /* ---------- food ---------- */
 .food-spotlight-grid{padding:0 14px;display:grid;gap:12px}
 @media (min-width:760px){.food-spotlight-grid{grid-template-columns:1fr 1fr}}
@@ -340,7 +367,10 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
       <img src="/*COUPLE_AVATAR_SRC*/" alt="夫妻晚秋旅行头像" class="appbar-couple-avatar" width="34" height="34">
       <h1>首尔 · 釜山 晚秋<small>11.24 – 11.29 · 2人漫游</small></h1>
     </div>
-    <span class="count-chip" id="countChip"></span>
+    <div style="display:flex;align-items:center;gap:6px">
+      <a href="#discover/snow" class="appbar-snow-pill" title="查看首尔初雪赏雪指南">❄️ 初雪特辑</a>
+      <span class="count-chip" id="countChip"></span>
+    </div>
   </div>
 </header>
 
@@ -372,6 +402,7 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
   <div class="stickybar">
     <div class="seg" id="discSeg" role="group" aria-label="分类">
       <button type="button" data-k="autumn" aria-pressed="true">🍁 秋景</button>
+      <button type="button" data-k="snow" aria-pressed="false">❄️ 初雪赏雪</button>
       <button type="button" data-k="brand" aria-pressed="false">🏷 品牌好店</button>
       <button type="button" data-k="shop" aria-pressed="false">🛍 逛街商圈</button>
       <button type="button" data-k="ns" aria-pressed="false">✨ 隐蔽非标</button>
@@ -717,17 +748,80 @@ const ZONES = [
 ];
 
 const AUTUMN = [
- {p:'changdeok',s:5,d:'首尔晚秋第一胜景！秘苑芙蓉池、爱莲亭枫叶如火，水面倒影如画。需提前预约导览。'},
- {p:'beomeosa',s:5,d:'釜山晚秋红叶巅峰，金井山环抱千年古刹，层林尽染禅意静谧。'},
- {p:'changgyeong',s:4,d:'人少出片，复古白色玻璃温室被秋日金红枫林掩映，与昌德宫无缝相连。'},
- {p:'deoksugung',s:4,d:'古朴石墙映衬漫天金黄银杏与满地落叶金毯，首尔晚秋最浪漫散步道。'},
- {p:'staffpicks',s:4,d:'西村隐蔽院落，院内耸立遮天蔽日百年古银杏，秋风起满院落叶金雨，点一杯咖啡看落叶极为治愈。',n:'Staffpicks 古银杏院落'},
- {p:'seoulforest',s:3,d:'参天古银杏金黄天幕与水杉道，拍照极出片，和圣水逛街无缝衔接。'},
- {p:'hausdosan',s:3,d:'岛山公园的枫树和银杏，逛 Haus Dosan 顺路。',n:'岛山公园'},
- {p:'gyeongui',s:3,d:'旧铁路改的公园，沿途是延南洞小店，可作为备选半天。'},
- {p:'namsan',s:3,d:'傍晚上山看首尔塔和城市灯火，落叶 + 夜景。'},
- {p:'citizenspark',s:3,d:'釜山市中心绿洲，开阔大草坪与金黄林荫大道，散步拍照非常惬意。'},
- {p:'blueline',s:3,d:'不是红叶是海景：彩色天空胶囊小火车沿海岸慢行，建议预约。'},
+  {p:'changdeok',s:5,d:'首尔晚秋第一胜景！秘苑芙蓉池、爱莲亭枫叶如火，水面倒影如画。需提前预约导览。'},
+  {p:'beomeosa',s:5,d:'釜山晚秋红叶巅峰，金井山环抱千年古刹，层林尽染禅意静谧。'},
+  {p:'changgyeong',s:4,d:'人少出片，复古白色玻璃温室被秋日金红枫林掩映，与昌德宫无缝相连。'},
+  {p:'deoksugung',s:4,d:'古朴石墙映衬漫天金黄银杏与满地落叶金毯，首尔晚秋最浪漫散步道。'},
+  {p:'staffpicks',s:4,d:'西村隐蔽院落，院内耸立遮天蔽日百年古银杏，秋风起满院落叶金雨，点一杯咖啡看落叶极为治愈。',n:'Staffpicks 古银杏院落'},
+  {p:'seoulforest',s:3,d:'参天古银杏金黄天幕与水杉道，拍照极出片，和圣水逛街无缝衔接。'},
+  {p:'hausdosan',s:3,d:'岛山公园的枫树和银杏，逛 Haus Dosan 顺路。',n:'岛山公园'},
+  {p:'gyeongui',s:3,d:'旧铁路改的公园，沿途是延南洞小店，可作为备选半天。'},
+  {p:'namsan',s:3,d:'傍晚上山看首尔塔和城市灯火，落叶 + 夜景。'},
+  {p:'citizenspark',s:3,d:'釜山市中心绿洲，开阔大草坪与金黄林荫大道，散步拍照非常惬意。'},
+  {p:'blueline',s:3,d:'不是红叶是海景：彩色天空胶囊小火车沿海岸慢行，建议预约。'},
+];
+
+const SNOW_SPOTS = [
+  {
+    id: 'snow_palace',
+    n: '景福宫 · 昌德宫后苑',
+    ko: '경복궁 · 창덕궁 후원 설경',
+    area: '安国 / 景福宫 · 对应 D2 行程',
+    theme: '【白雪红墙青瓦 · 朝鲜王室古建神韵】',
+    p: 'huwon',
+    highlight: '香远亭浮冰池水、后苑芙蓉池飞檐积雪、朱红木柱与雕梁画栋素裹',
+    photoTip: '两人租一套带毛领的浅色/浅金韩服（雪天穿韩服免宫殿门票！），在飘雪的古宫回廊下同撑一把油纸伞，出片极具震撼感。',
+    tip: '昌德宫后苑古树参天，积雪不易融化，雪景比普通街道能多维持一整天；景福宫周二闭馆，注意避开。',
+    xhs: '景福宫 雪景 韩服'
+  },
+  {
+    id: 'snow_deoksu',
+    n: '德寿宫石墙路',
+    ko: '덕수궁 돌담길 설경',
+    area: '市厅 / 明洞 · 对应 D1 行程',
+    theme: '【金黄银杏落叶与白雪交织的晚秋奇景】',
+    p: 'deoksugung',
+    highlight: '地面未扫净的金黄银杏地毯，覆上一层晶莹初雪，红砖石墙蜿蜒',
+    photoTip: '只有在 11 月下旬晚秋与初冬相遇的这几天，才能同时拍到满地金黄落叶与漫天落雪！两人沿着石墙路往贞洞方向走，抓拍并肩脚印与回眸。',
+    tip: '石墙路全长约 1 公里，走完路口有温暖的咖啡馆，初雪天散步约 30 分钟极其惬意。',
+    xhs: '德寿宫石墙路 雪景'
+  },
+  {
+    id: 'snow_bukchon',
+    n: '北村韩屋村 & 三清洞',
+    ko: '북촌한옥마을 · 삼청동 설경',
+    area: '北村 / 西村 · 对应 D2 行程',
+    theme: '【千家黑瓦落雪 · 转角韩屋热咖啡】',
+    p: 'bukchon',
+    highlight: '居高临下俯瞰青瓦木檐层叠落雪、石板阶梯银白素裹、韩屋窗内泛着橘暖灯光',
+    photoTip: '在北村嘉会洞高处阶梯，以层叠瓦房和落雪为景深；抓拍女生手捧热纸杯咖啡、鼻尖微红的治愈侧影。',
+    tip: '下雪后石坡较滑，走路需踩稳；冷了随时进三清洞或西村的韩屋咖啡馆（如 Archivist）烤暖气喝浓郁维也纳咖啡。',
+    xhs: '北村韩屋村 雪天 穿搭'
+  },
+  {
+    id: 'snow_seoulforest',
+    n: '首尔林水杉林道',
+    ko: '서울숲 메타세콰이어 설경',
+    area: '圣水洞旁 · 对应 D3 行程',
+    theme: '【水杉雪道几何美感 · 童话森林鹿园】',
+    p: 'seoulforest',
+    highlight: '挺拔入云的水杉林道被纯白积雪覆盖、小鹿在覆雪的林木间探头',
+    photoTip: '站在笔直高耸的水杉大道正中央顺光拍摄，红褐树干与纯白雪地构成天然对称纵深感，宛如《冬季恋歌》名场面。',
+    tip: '逛完首尔林雪景，步行 5 分钟直接进圣水洞红砖暖气咖啡馆和大林仓库，冷暖无缝衔接。',
+    xhs: '首尔林 雪景 拍照'
+  },
+  {
+    id: 'snow_shinsegae',
+    n: '新世界百货总店对街',
+    ko: '신세계백화점 본점 크리스마스 설경',
+    area: '明洞商圈 · 对应 D1 行程',
+    theme: '【飘雪夜幕下的金色圣诞星河巨幕】',
+    p: 'shinsegae',
+    highlight: '傍晚 17:30 点亮巨幅金色城堡动画，夜空雪花在璀璨暖金灯光中翩翩起舞',
+    photoTip: '【夜景手机开闪光灯】：对街仰拍，开启手机强制闪光灯，飘落的雪花会被光芒照亮为一颗颗晶莹光斑，与背后金色城堡融为一体！',
+    tip: '傍晚 17:30–18:30 亮灯初时天色呈深邃藏青色（Blue Hour），雪花反光最通透。',
+    xhs: '新世界百货 圣诞 下雪'
+  }
 ];
 
 const BRANDS = [
@@ -1112,7 +1206,7 @@ function route(){
   $$('.tabbar a').forEach(a => { if (a.dataset.v === v) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
   if (v === 'days'){ if (arg && dayOf(arg)) curDay = arg; renderDay(curDay); }
   else if (v === 'map'){ initBigMap(); if (arg) mapFocus(arg); setTimeout(() => bigMap && bigMap.invalidateSize(), 60); }
-  else if (v === 'discover'){ renderDisc(); }
+  else if (v === 'discover'){ if (arg) discK = arg; renderDisc(); }
   else if (v === 'ootd'){ renderOotd(); }
   else if (v === 'food'){ renderFood(); }
   else if (v === 'prep'){ renderPrep(); }
@@ -1488,7 +1582,9 @@ function cityTag(c){ return `<span class="city ${c==='busan'?'bs':''}">${c==='se
 function renderDisc(){
   $$('#discSeg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.k === discK));
   let chips = '';
-  if (discK === 'brand'){
+  if (discK === 'snow'){
+    chips = `<span class="chip sm" aria-pressed="true" style="cursor:default">❄️ 首尔初雪 5 大绝美赏雪胜地</span>`;
+  } else if (discK === 'brand'){
     chips = [['all','全部地区'],['西村','西村/北村'],['汉南洞','汉南洞'],['圣水洞','圣水洞']].map(([k,t]) =>
       `<button type="button" class="chip sm" data-ba="${k}" aria-pressed="${discBrandArea===k}">${t}</button>`).join('');
   } else if (discK === 'ns'){
@@ -1500,7 +1596,64 @@ function renderDisc(){
   $('#discChips').innerHTML = chips;
   const okC = c => discCity === 'all' || c === discCity;
   let html = '';
-  if (discK === 'autumn'){
+  if (discK === 'snow'){
+    const quickQueries = [
+      '首尔 初雪 拍照',
+      '景福宫 雪景 韩服',
+      '德寿宫石墙路 雪景',
+      '昌德宫后苑 下雪',
+      '北村韩屋村 雪天穿搭',
+      '首尔林 雪景 拍照',
+      '新世界百货 圣诞 下雪'
+    ];
+    html = `<div class="snow-banner">
+      <h3>❄️ 首尔初雪 · 浪漫赏雪与拍照指南</h3>
+      <p><b>为什么值得期待？</b>首尔历史平均初雪期通常落在 <b>11 月 20 日至 28 日之间</b>，你们 11.24–11.27 在首尔期间正好处于初雪概率极高的黄金交汇期！相传与心爱的人看初雪会相伴一生，是无数韩剧浪漫名场面的诞生时刻。</p>
+      <div style="font-size:.82rem;color:#1f4b73;margin-top:8px;line-height:1.6">
+        <b>💡 赏雪出片与安全秘诀：</b><br>
+        ① <b>手机强制开闪光灯（Flash On）</b>：夜间或阴天拍雪景，打开手机闪光灯，飘落的雪花瞬间定格成一颗颗发光的晶莹光斑；<br>
+        ② <b>便利店买把透明伞</b>：5,000 韩元大号透明雨伞，不遮光线、不挡古建背景，撑伞漫步充满电影主角感；<br>
+        ③ <b>穿搭对比法则</b>：切忌全身穿白色，推荐<b>驼色/炭灰大衣配一条亮色围巾（酒红/焦糖棕）</b>，在雪地反光衬托下肤色通透气色绝佳；<br>
+        ④ <b>防滑与防水</b>：北村与汉南洞斜坡大，融雪后路滑，请穿深齿纹防滑软底鞋，出发前可喷防水喷雾。
+      </div>
+      <div style="margin-top:12px">
+        <span style="font-size:.76rem;font-weight:700;color:#1f4b73">❄️ 点击雪花按钮，一键在小红书搜索赏雪实拍攻略：</span>
+        <div class="snow-quick-tags">
+          ${quickQueries.map(q => `<a class="snow-quick-pill" href="${xhs(q)}" target="_blank" rel="noopener">❄️ 搜 “${q}”</a>`).join('')}
+        </div>
+      </div>
+    </div>`;
+
+    html += '<div class="pgrid">' + SNOW_SPOTS.map(s => {
+      const p = PL[s.p];
+      return `<article class="card pcard snow-card">
+        <div class="ph">${pic(p ? p.img : '', s.n, '❄️')}</div>
+        <div class="snow-card-head">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:6px">
+            <span class="city">${s.area}</span>
+            <span class="snow-badge">初雪胜地</span>
+          </div>
+          <h3>❄️ ${s.n}</h3>
+          <div class="small muted">${s.ko}</div>
+        </div>
+        <div class="snow-card-bd">
+          <div class="snow-card-theme">${s.theme}</div>
+          <p class="snow-card-text"><b>✨ 雪景绝处：</b>${s.highlight}</p>
+          <div class="snow-card-tip"><b>📸 出片技巧：</b>${s.photoTip}</div>
+          <div class="snow-card-tip" style="background:#f8faff"><b>💡 游玩贴士：</b>${s.tip}</div>
+        </div>
+        <div class="snow-card-actions">
+          <a class="snow-action-btn" href="${xhs(s.xhs)}" target="_blank" rel="noopener">
+            ❄️ 搜 “${s.xhs}” 小红书攻略 <i>&rarr;</i>
+          </a>
+          <div style="display:flex;gap:4px;flex-wrap:wrap;width:100%">
+            ${links(p, s.xhs)}
+            ${p ? `<button class="lnk" type="button" data-fly="${s.p}">🗺 地图上看</button>` : ''}
+          </div>
+        </div>
+      </article>`;
+    }).join('') + '</div>';
+  } else if (discK === 'autumn'){
     html = `<div class="banner"><b>🍁 11 月下旬 = 晚秋 / 落叶季</b>首尔银杏多已落下，主要看<b>落叶金毯</b>和<b>宫苑最晚的枫树</b>；釜山梵鱼寺还有机会看到最后一波红。出发前 2–3 天在 Naver 搜「창덕궁 단풍」「범어사 단풍」看实拍。</div>`;
     html += '<div class="pgrid">' + AUTUMN.filter(a => okC(PL[a.p].c)).map(a => {
       const p = PL[a.p], ds = placeDays(a.p);
