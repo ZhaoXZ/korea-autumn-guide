@@ -7,6 +7,12 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="首尔釜山晚秋">
 <title>首尔 · 釜山 晚秋漫游指南｜11.24–11.29</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
 <style>/*LEAFLET_CSS*/</style>
 <style>
 :root{
@@ -34,7 +40,9 @@ img{display:block;max-width:100%}
 .appbar{position:sticky;top:0;z-index:40;background:linear-gradient(120deg,#4a2618,#7a3420 55%,#a6532a);color:#fff7ea;
   padding:calc(env(safe-area-inset-top,0px) + 10px) 16px 10px}
 .appbar .row{display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:1100px;margin:0 auto}
-.appbar h1{font-family:var(--serif);font-size:1.12rem;letter-spacing:.02em;white-space:nowrap}
+.appbar-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.appbar-couple-avatar{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,253,249,0.85);box-shadow:0 2px 6px rgba(0,0,0,0.22);flex-shrink:0;background:rgba(255,255,255,0.2)}
+.appbar h1{font-family:var(--serif);font-size:1.12rem;letter-spacing:.02em;white-space:nowrap;margin:0}
 .appbar h1 small{font:500 .7rem var(--sans);opacity:.8;margin-left:6px;letter-spacing:.05em}
 .count-chip{font-size:.75rem;background:rgb(255 255 255/.16);border:1px solid rgb(255 255 255/.25);padding:3px 10px;border-radius:99px;white-space:nowrap}
 
@@ -256,7 +264,10 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
 
 <header class="appbar">
   <div class="row">
-    <h1>🍁 首尔 · 釜山 晚秋<small>11.24 – 11.29 · 2人</small></h1>
+    <div class="appbar-brand">
+      <img src="/*COUPLE_AVATAR_SRC*/" alt="夫妻晚秋旅行头像" class="appbar-couple-avatar" width="34" height="34">
+      <h1>首尔 · 釜山 晚秋<small>11.24 – 11.29 · 2人漫游</small></h1>
+    </div>
     <span class="count-chip" id="countChip"></span>
   </div>
 </header>

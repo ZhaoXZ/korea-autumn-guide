@@ -128,10 +128,23 @@ tpl = open(os.path.join(BASE, 'src', 'template.html')).read()
 l_css = open(os.path.join(BASE, 'lib', 'leaflet.css')).read()
 l_js = open(os.path.join(BASE, 'lib', 'leaflet.js')).read()
 
+# Load couple avatar for inline header image
+avatar_path = os.path.join(IMG_DIR, 'couple_avatar_circle.png')
+if os.path.exists(avatar_path):
+    av_im = Image.open(avatar_path)
+    av_im = av_im.resize((128, 128), Image.Resampling.LANCZOS)
+    av_buf = io.BytesIO()
+    av_im.save(av_buf, format='PNG', optimize=True)
+    av_b64 = base64.b64encode(av_buf.getvalue()).decode('ascii')
+    avatar_src = f"data:image/png;base64,{av_b64}"
+else:
+    avatar_src = "favicon-32x32.png"
+
 out = tpl.replace('/*LEAFLET_CSS*/', l_css)
 out = out.replace('/*LEAFLET_JS*/', l_js)
 out = out.replace('/*PHOTOS*/', f"const PHOTOS = {json.dumps(photos_dict)};")
 out = out.replace('/*CREDITS*/', f"const CREDITS = {json.dumps(credits_list, ensure_ascii=False)};")
+out = out.replace('/*COUPLE_AVATAR_SRC*/', avatar_src)
 
 dest = os.path.join(BASE, 'index.html')
 with open(dest, 'w') as f:
