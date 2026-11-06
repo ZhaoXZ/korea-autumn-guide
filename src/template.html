@@ -269,10 +269,7 @@ img{display:block;max-width:100%}
 .snow-card-tip{background:#fdfdfc;border:1px dashed #dbe5ee;border-radius:10px;padding:8px 10px;font-size:.78rem;line-height:1.5}
 .snow-card-tip b{color:#1f4b73}
 
-.snow-card-actions{padding:10px 16px 14px;border-top:1px dashed #e2edf6;display:flex;gap:8px;flex-wrap:wrap;background:#fcfdff}
-.snow-action-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;width:100%;font-size:.82rem;font-weight:700;padding:8px 14px;border-radius:12px;background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff!important;text-decoration:none;box-shadow:0 2px 8px rgba(37,99,235,0.25);transition:all .15s}
-.snow-action-btn:hover{background:linear-gradient(135deg,#2563eb,#1d4ed8);transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,0.3)}
-.snow-action-btn:active{transform:translateY(0)}
+.snow-card-actions{padding:10px 16px 14px;border-top:1px dashed #e2edf6;display:flex;gap:6px;flex-wrap:wrap;background:#fcfdff}
 
 .appbar-snow-pill{font-size:.72rem;font-weight:700;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.35);color:#fff;padding:3px 9px;border-radius:99px;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:3px;text-decoration:none;transition:background .15s}
 .appbar-snow-pill:hover{background:rgba(255,255,255,0.3)}
@@ -1728,10 +1725,7 @@ function renderDisc(){
           <div class="snow-card-tip" style="background:#f8faff"><b>💡 游玩贴士：</b>${s.tip}</div>
         </div>
         <div class="snow-card-actions">
-          <a class="snow-action-btn" href="${xhs(s.xhs)}" target="_blank" rel="noopener">
-            ❄️ 搜 “${s.xhs}” 小红书攻略 <i>&rarr;</i>
-          </a>
-          <div style="display:flex;gap:4px;flex-wrap:wrap;width:100%">
+          <div style="display:flex;gap:6px;flex-wrap:wrap;width:100%">
             ${links(p, s.xhs)}
             ${p ? `<button class="lnk" type="button" data-fly="${s.p}">🗺 地图上看</button>` : ''}
           </div>
