@@ -636,6 +636,7 @@ const PL = {
 
   busanst:{n:'釜山站（KTX）',ko:'부산역',xhs:'釜山站 KTX',c:'busan',ll:[35.1155,129.0426],img:'busanstation',emo:'🚆'},
   jeonpo:{n:'田浦咖啡街',ko:'전포카페거리',xhs:'田浦咖啡街 釜山',c:'busan',ll:[35.1555,129.0645],img:'jeonpo'},
+  strut:{n:'Strut Coffee 田浦',ko:'스트럿커피',xhs:'Strut Coffee 釜山 田浦',c:'busan',ll:[35.1548,129.0665],img:'jeonpo',emo:'☕',food:1},
   beomeosa:{n:'梵鱼寺',ko:'범어사',xhs:'梵鱼寺 枫叶 釜山',c:'busan',ll:[35.2841,129.0687],img:'beomeosa'},
   dongnae:{n:'东莱奶奶葱饼',ko:'동래할매파전',xhs:'东莱奶奶葱饼 釜山',c:'busan',ll:[35.2047,129.0838],img:'pajeon',food:1},
   f1963:{n:'F1963',ko:'F1963',xhs:'F1963 釜山',c:'busan',ll:[35.1771,129.1149],img:'f1963'},
@@ -754,22 +755,24 @@ const DAYS = [
    {t:'19:30',p:'gwangalli',title:'入住酒店 → 广安里海边吹风看大桥',d:'朋友推荐：釜山无需赶场，海边散步吹海风最治愈。漫步沙滩看广安大桥璀璨灯火；或去田浦咖啡街闲逛。',tags:['night']},
   ],
   tip:'汉南洞到首尔站打车极其方便（约 15 分钟，车费约 8,000–10,000 韩元），不必拖着行李挤地铁转线。'},
- {id:'d5',md:'11/28',wd:'周六',city:'busan',title:'千年古刹晚红 · 海边松弛漫步 · 广安里无人机秀',area:'北边梵鱼寺 → 东莱 → 海云台海滩 → 广安里跨海大桥',cover:'gwangalli',
-  stay:'釜山 西面（或广安里海景）',eat:'东莱奶奶葱饼（现场排队）；海云台锦绣河豚汤；广安里 Millac 美食集市',
+ {id:'d5',md:'11/28',wd:'周六',city:'busan',title:'千年古刹晚红 · 田浦咖啡 · 海云台灯光节 · 无人机秀',area:'北边梵鱼寺 → 东莱葱饼 → 田浦 Strut Coffee → 海云台海滩 → 广安里跨海大桥',cover:'gwangalli',
+  stay:'釜山 西面（或广安里海景）',eat:'东莱奶奶葱饼（现场排队）；田浦 Strut Coffee 拿铁；海云台锦绣河豚汤；广安里 Millac 美食集市',
   items:[
    {t:'09:00',p:'beomeosa',title:'梵鱼寺 · 金井山秋色',d:'釜山<b>晚秋红叶巅峰胜地</b>，千年古寺被层林尽染的山峦环抱，禅意静谧，是这趟最有希望看到满山红叶的地方。',tags:['autumn','culture'],
     transit:'🚌 社区小巴 90 路下山至梵鱼寺站，换乘地铁 1 号线直达东莱站（约 30 分钟；打车约 20 分钟/11,000韩元）'},
    {t:'12:00',p:'dongnae',title:'东莱 · 传统海鲜大葱饼',d:'老字号东莱葱饼（동래할매파전），海鲜多到像瀑布般倾泻在热脆葱饼上，配马格利米酒绝绝子。',tags:['food'],
-    transit:'🚖 打车约 15–20 分钟（约 9,000 韩元；两地间公交稍绕，打车沿大路直达水营江畔）'},
-   {t:'14:00',p:'f1963',title:'F1963 绿意工业书店 或 Centum City',d:'旧钢丝工厂改造：YES24 复古二手书店、Terarosa 咖啡与竹林；想逛百货或泡温泉可去 Centum City Spa Land。',tags:['ns','culture'],
+    transit:'🚇 地铁 1 号线直达（东莱站 → 西面站，6 站仅 12 分钟直达西面/田浦咖啡街；或打车约 15 分钟/9,000韩元）'},
+   {t:'13:15',p:'strut',title:'Strut Coffee · 世界百佳咖啡馆',d:'<b>英国《金融时报》(FT) 评选全球 100 佳咖啡馆！</b>旧民宅改建的极简木质独栋自烘焙馆。必点埃塞俄比亚手冲单品（花果香极通透）与<b>梵山牧场有机奶拿铁</b>（浓郁丝滑如冰淇淋）。',tags:['food','ns'],
+    transit:'🚇 地铁 2 号线直达（田浦站 8 号口进站 → 水营站至 F1963 / 或直达海云台站 5/7号口约 20 分钟免换乘）'},
+   {t:'14:45',p:'f1963',title:'F1963 绿意工业书店 或 Centum City',d:'旧钢丝工厂改造：YES24 复古二手书店、Terarosa 咖啡与竹林；想逛百货或泡温泉可去 Centum City Spa Land。',tags:['ns','culture'],
     transit:'🚇 地铁 2 号线（水营站/民乐站 → 海云台站 5/7号口，4 站约 10 分钟；打车约 15 分钟/8,000韩元）'},
-   {t:'16:00',p:'haeridan',title:'海云台海滩散步 · 海理团路',d:'朋友建议：釜山无需繁琐攻略，海边散步吹风拍照最治愈！踩着细软沙滩看海鸥，或逛老铁路边的文艺小店。',tags:['autumn','shop'],
+   {t:'16:15',p:'haeridan',title:'海云台海滩散步 · 海理团路',d:'朋友建议：釜山无需繁琐攻略，海边散步吹风拍照最治愈！踩着细软沙滩看海鸥，或逛老铁路边的文艺小店。',tags:['autumn','shop'],
     transit:'🚶'},
    {t:'18:00',p:'haeundae',title:'海云台灯光节（开幕日）',d:'第 13 届海云台灯光节 <b>11/28 盛大开幕</b>，海滩与主街亮起连绵梦幻的灯光艺术装置，免费观赏。',tags:['night'],
     transit:'🚇 地铁 2 号线（海云台站 → 广安站/金莲山站，约 15 分钟；周六晚两海滩间严重拥堵，坐地铁最快免堵车）'},
    {t:'20:00',p:'millac',title:'广安里 · 无人机光影秀 + Millac the Market',d:'广安里<b>每周六晚</b>千架无人机在跨海大桥前组成震撼图案。Millac 二楼阶梯落地窗正对广安大桥夜景，喝啤酒吃炸鸡。',tags:['night','food']},
   ],
-  tip:'海云台打车到广安里约 15 分钟；周六无人机秀结束后打车较难，建议提前用 Kakao T 或坐地铁 2 号线回酒店。'},
+  tip:'田浦到海云台坐地铁 2 号线直达仅 20 分钟；周六无人机秀结束后打车较难，建议提前用 Kakao T 或坐地铁 2 号线回酒店。'},
  {id:'d6',md:'11/29',wd:'周日',city:'busan',title:'影岛海崖小巷 · 造船厂咖啡 · 烟火老城返程',area:'影岛白浅滩 → 工业海港咖啡 → 南浦老城 → 金海机场',cover:'huinnyeoul',
   stay:'返程',eat:'三进鱼糕现炸热吃；BIFF 广场坚果糖饼；海鲜市场',
   items:[
@@ -922,6 +925,7 @@ const BRANDS = [
  {n:'Point of View',ko:'포인트오브뷰 성수',xhs:'Point of View 圣水 文具',area:'圣水洞',tag:'🖋 文具美学天花板',floor:'1–3整栋艺术空间',icon:'🖋',theme:'#613926',bg:'#f8f1eb',must:'黄铜苹果镇纸、复古钢笔墨水、原创手工纸品便签',tip:'圣水绝对不能错过的艺术级文具圣殿！三层楼从基础工具到艺术灵感层层递进，即使不买文具也会被震撼。',p:'pov'},
  {n:'LCDC Seoul',ko:'엘씨디씨 서울',xhs:'LCDC Seoul 圣水 复合空间',area:'圣水洞',tag:'🏢 工业复合买手空间',floor:'旧修车厂多层空间',icon:'🏢',theme:'#3a4454',bg:'#eef2f7',must:'Door 集合店精选独立设计师服饰、小众文创杂货、屋顶咖啡',tip:'由旧修车厂改建的复合空间，三楼像小街区一样把几十个精选独立小品牌聚集在独立门面里。',p:'lcdc'},
  {n:'Tamburins',ko:'탬버린즈 성수',xhs:'Tamburins 圣水 香水',area:'圣水洞',tag:'✨ 先锋艺术香氛',floor:'清水混凝土雕塑建筑',icon:'✨',theme:'#292929',bg:'#f3f3f3',must:'蛋形香水 (Egg Perfume)、金属链条护手霜、固体香膏',tip:'Jennie 同款，Gentle Monster 旗下香氛。圣水店是地上地下通透的清水混凝土雕塑，香气前卫有辨识度。',p:'pov'},
+ {n:'Strut Coffee',ko:'스트럿커피',xhs:'Strut Coffee 釜山 田浦',area:'西面 / 田浦',tag:'☕ FT 全球百佳咖啡馆',floor:'独栋极简木质老宅',icon:'☕',theme:'#3e2723',bg:'#f7f2ed',must:'埃塞俄比亚手冲单品咖啡 + 梵山牧场有机奶拿铁 (범산목장)',tip:'英国《金融时报》(FT) 全球 100 佳咖啡馆！田浦咖啡街独立自烘焙天花板，手冲风味极通透，有机奶厚乳拿铁丝滑如冰淇淋。',p:'strut'},
 ];
 
 const SHOPS = [
@@ -953,6 +957,7 @@ const NS = [
  {p:'euljiro',c:'seoul',ty:'book',n:'乙支路 · 世运商街',d:'老电子楼和印刷街里藏着咖啡馆、小酒馆、工作室。'},
  {p:'hyundai',c:'seoul',ty:'popup',n:'The Hyundai Seoul',d:'室内花园百货，B2 常年有快闪；雨天首选。'},
  {p:'jeonpo',c:'busan',ty:'popup',n:'田浦咖啡街',d:'原五金工具街，独立咖啡、选物店、文具店聚集。'},
+ {p:'strut',c:'busan',ty:'popup',n:'Strut Coffee · 世界百佳咖啡馆',d:'英国《金融时报》全球百佳咖啡馆。旧民宅改造的极简独栋自烘焙馆，手冲单品与梵山牧场有机奶拿铁封神。'},
  {p:'f1963',c:'busan',ty:'book',n:'F1963',d:'旧钢丝工厂：YES24 二手书店、Terarosa 咖啡、竹林、展览。'},
  {p:'bosudong',c:'busan',ty:'book',n:'宝水洞书店胡同',d:'战后旧书街，书从地面堆到天花板（部分店周日休）。'},
  {p:'kkangtong',c:'busan',ty:'market',n:'富平罐头夜市',d:'韩国第一个常设夜市，傍晚以后摊位陆续出来。'},
@@ -1226,6 +1231,7 @@ const RESTOS = [
  {p:'r_gwangjang',day:'d2',how:'walk',hl:'随到随吃',d:'绿豆煎饼、生拌牛肉、麻药紫菜包饭，挑人多的摊位坐。'},
  {p:'r_bonjeon',day:'d4',how:'walk',hl:'随到随吃',d:'釜山站对面，汤饭老店，排队一般不久。'},
  {p:'dongnae',day:'d5',how:'walk',hl:'现场排队',d:'东莱葱饼老店，饭点人多，建议 11:30 前到。'},
+ {p:'strut',day:'d5',how:'walk',hl:'FT 全球百佳咖啡馆',d:'田浦独栋极简自烘焙馆。埃塞俄比亚手冲单品（花果香通透）+ 梵山牧场有机奶拿铁（丝滑如冰淇淋）。'},
  {p:'r_geumsu',day:'d5',how:'walk',hl:'随到随吃',d:'海云台河豚汤老店，适合冷天，也可当早餐。'},
  {p:'r_millac',day:'d5',how:'walk',hl:'随到随吃',d:'美食集市形式，选择多，无人机秀前早点占位。'},
  {p:'samjin',day:'d6',how:'walk',hl:'随到随买',d:'几十种鱼糕现做，可买真空包装带回国（注意海关规定）。'},
@@ -1430,6 +1436,10 @@ function numIcon(num, color, size=24){
   return L.divIcon({className:'', html:`<div class="mk" style="width:${size}px;height:${size}px;background:${color}">${num}</div>`, iconSize:[size,size], iconAnchor:[size/2,size/2], popupAnchor:[0,-size/2]});
 }
 const foodIcon = L.divIcon({className:'', html:'<div class="mk mk-food" style="width:28px;height:28px">🍜</div>', iconSize:[28,28], iconAnchor:[14,14], popupAnchor:[0,-14]});
+function getFoodIcon(p){
+  const emo = (p && p.emo) || '🍜';
+  return L.divIcon({className:'', html:`<div class="mk mk-food" style="width:28px;height:28px">${emo}</div>`, iconSize:[28,28], iconAnchor:[14,14], popupAnchor:[0,-14]});
+}
 function tiles(map){
   const layer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     maxZoom: 19, subdomains: ['a', 'b', 'c'],
@@ -1516,7 +1526,7 @@ function drawDayMap(d){
       return;
     }
     n++; pts.push(p.ll);
-    L.marker(p.ll, {icon: p.food ? foodIcon : (p.booked ? numIcon('🏨', '#16a34a', 26) : numIcon(n, col))}).bindPopup(popHTML(it.p)).addTo(g);
+    L.marker(p.ll, {icon: p.food ? getFoodIcon(p) : (p.booked ? numIcon('🏨', '#16a34a', 26) : numIcon(n, col))}).bindPopup(popHTML(it.p)).addTo(g);
   });
 
   if (d.id === 'd4'){
@@ -1635,7 +1645,7 @@ function initBigMap(){
   bigLayers.extra = ex;
   // food
   const fg = L.featureGroup();
-  Object.entries(PL).forEach(([k, p]) => { if (!p.food) return; const m = L.marker(p.ll, {icon:foodIcon}).bindPopup(popHTML(k)).addTo(fg); markerIndex[k] = markerIndex[k] || m; });
+  Object.entries(PL).forEach(([k, p]) => { if (!p.food) return; const m = L.marker(p.ll, {icon:getFoodIcon(p)}).bindPopup(popHTML(k)).addTo(fg); markerIndex[k] = markerIndex[k] || m; });
   bigLayers.food = fg;
   // zones
   const zg = L.featureGroup();
