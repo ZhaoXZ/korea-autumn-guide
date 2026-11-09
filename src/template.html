@@ -156,6 +156,79 @@ img{display:block;max-width:100%}
   .swipehint{display:none}
 }
 
+/* ---------- itinerary overview (行程总览) ---------- */
+.badge-back-ov{position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:var(--ink);border-radius:10px;padding:4px 10px;font-size:0.75rem;font-weight:700;text-decoration:none;box-shadow:0 2px 6px rgba(0,0,0,0.18);display:flex;align-items:center;gap:4px;transition:all .15s ease;z-index:5}
+.badge-back-ov:hover{background:#fff;transform:translateY(-1px);color:var(--maple)}
+
+.ov-wrap{padding:4px 14px 30px;max-width:1100px;margin:0 auto}
+.ov-hero-card{background:linear-gradient(135deg,#fcf8f2 0%,#f5eee1 100%);border:1px solid #e7dac8;border-radius:18px;padding:18px;margin:8px 0 16px;box-shadow:var(--sh)}
+.ov-hero-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.ov-hero-title-box{display:flex;align-items:center;gap:12px}
+.ov-hero-avatar{width:46px;height:46px;border-radius:50%;border:2px solid #b4442a;object-fit:cover;box-shadow:0 2px 8px rgba(0,0,0,0.12);background:rgba(255,255,255,0.4);flex-shrink:0}
+.ov-hero-title-box h2{font-family:var(--serif);font-size:1.22rem;margin:0;color:var(--ink);line-height:1.3}
+.ov-hero-title-box p{margin:3px 0 0;font-size:.78rem;color:var(--ink2)}
+.ov-badge-autumn{background:var(--maple-s);color:var(--maple);border:1px solid rgba(180,68,42,0.25);font-weight:700;font-size:.76rem;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.ov-stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
+@media (min-width:768px){.ov-stats-grid{grid-template-columns:repeat(4,1fr);gap:12px}}
+.ov-stat-tile{background:#fff;border:1px solid #ebdccb;border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;box-shadow:0 1px 3px rgba(0,0,0,0.03)}
+.ov-stat-label{font-size:.72rem;color:var(--ink2);display:flex;align-items:center;gap:4px}
+.ov-stat-val{font-size:.92rem;font-weight:700;color:var(--ink)}
+.ov-stat-sub{font-size:.7rem;color:#7a6e62;line-height:1.3}
+
+/* 6天动线节点进度条 */
+.ov-strip-wrap{margin-bottom:20px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--sh)}
+.ov-strip-title{font-size:.86rem;font-weight:700;color:var(--ink);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.ov-strip-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media (min-width:640px){.ov-strip-grid{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:960px){.ov-strip-grid{grid-template-columns:repeat(6,1fr)}}
+.ov-strip-node{background:#fdfbf7;border:1px solid var(--line);border-top:3px solid var(--node-c,#b4442a);border-radius:10px;padding:8px 10px;cursor:pointer;transition:all .15s ease;display:flex;flex-direction:column;gap:2px;text-decoration:none;color:inherit}
+.ov-strip-node:hover{background:#fff;transform:translateY(-2px);box-shadow:0 4px 10px rgba(0,0,0,0.08)}
+.ov-strip-node .node-day{font-size:.78rem;font-weight:800;color:var(--node-c,var(--ink))}
+.ov-strip-node .node-date{font-size:.68rem;color:var(--ink2)}
+.ov-strip-node .node-theme{font-size:.74rem;font-weight:600;color:var(--ink);line-height:1.3;margin-top:2px}
+
+/* 6天总览核心卡片网格 */
+.ov-cards-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:900px){.ov-cards-grid{grid-template-columns:repeat(2,1fr);gap:20px}}
+.ov-day-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--sh);display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease;position:relative}
+.ov-day-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.09)}
+.ov-card-head{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#faf6f0;border-bottom:1px solid var(--line);gap:8px}
+.ov-card-head-left{display:flex;align-items:center;gap:8px}
+.ov-day-badge{background:var(--dc,#b4442a);color:#fff;font-weight:800;font-size:.78rem;padding:2px 9px;border-radius:8px;letter-spacing:.02em}
+.ov-card-date{font-size:.82rem;font-weight:700;color:var(--ink)}
+.ov-city-pill{font-size:.7rem;font-weight:600;padding:2px 7px;border-radius:6px;background:rgba(0,0,0,0.05);color:var(--ink2)}
+.ov-city-pill.seoul{background:var(--maple-s);color:var(--maple)}
+.ov-city-pill.busan{background:var(--night-s);color:var(--night)}
+.ov-city-pill.mv{background:#e8f4ec;color:#2a6940}
+.ov-card-jump-btn{font-size:.74rem;font-weight:600;color:var(--dc,#b4442a);text-decoration:none;display:flex;align-items:center;gap:2px;padding:3px 8px;border-radius:6px;background:rgba(255,255,255,0.7);border:1px solid rgba(0,0,0,0.06)}
+.ov-card-jump-btn:hover{background:var(--dc,#b4442a);color:#fff}
+.ov-card-cover{position:relative;aspect-ratio:21/9;min-height:120px;max-height:160px;overflow:hidden;background:#2a1b15}
+.ov-card-cover img,.ov-card-cover .noimg{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.ov-day-card:hover .ov-card-cover img{transform:scale(1.03)}
+.ov-card-cover-ov{position:absolute;inset:auto 0 0 0;padding:28px 14px 10px;background:linear-gradient(transparent,rgba(16,8,4,0.88));color:#fff}
+.ov-card-title{font-size:1.02rem;font-weight:700;color:#fff;margin:0;line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,0.4)}
+.ov-card-area{font-size:.74rem;color:#f7ede2;margin-top:3px;opacity:.95}
+.ov-flow-box{padding:11px 14px 10px;background:#fff;border-bottom:1px dashed var(--line)}
+.ov-flow-label{font-size:.7rem;font-weight:700;color:var(--ink2);margin-bottom:6px;display:flex;align-items:center;gap:4px}
+.ov-flow-pills{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.ov-flow-item{font-size:.76rem;font-weight:600;color:var(--ink);background:#fbf7f0;border:1px solid #ebdcc9;border-radius:6px;padding:3px 8px;white-space:nowrap}
+.ov-flow-arrow{color:var(--dc,#d49a2a);font-size:.72rem;font-weight:900}
+.ov-card-body{padding:10px 14px 12px;display:flex;flex-direction:column;gap:8px;flex:1;background:var(--paper)}
+.ov-info-row{display:flex;align-items:flex-start;gap:6px;font-size:.78rem;line-height:1.45;color:var(--ink)}
+.ov-info-label{flex-shrink:0;font-weight:700;color:var(--ink2)}
+.ov-info-val{flex:1}
+.ov-card-foot{margin-top:auto;padding:10px 14px;background:#faf6f0;border-top:1px solid var(--line)}
+.ov-card-cta{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:9px 12px;border-radius:10px;background:#fff;border:1px solid var(--line);font-size:.82rem;font-weight:700;color:var(--dc,#b4442a);text-decoration:none;transition:all .15s ease;box-shadow:0 1px 2px rgba(0,0,0,0.03)}
+.ov-card-cta:hover{background:var(--dc,#b4442a);border-color:var(--dc,#b4442a);color:#fff;transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,0,0,0.12)}
+
+/* 底部速查全景表格 */
+.ov-table-wrap{overflow-x:auto;background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh);-webkit-overflow-scrolling:touch;margin-bottom:20px}
+.ov-table{width:100%;border-collapse:collapse;font-size:.8rem;text-align:left;line-height:1.45}
+.ov-table th{background:#f7efe4;color:var(--ink);font-weight:700;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+.ov-table td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--ink);vertical-align:top}
+.ov-table tr:last-child td{border-bottom:none}
+.ov-table tr:hover td{background:#fcf8f2}
+
 /* ---------- map view ---------- */
 #bigMap{height:calc(100vh - 210px);height:calc(100dvh - 210px - var(--safe-b));min-height:320px}
 .legend{display:flex;flex-wrap:wrap;gap:8px 12px;font-size:.74rem;color:var(--ink2);padding:8px 14px 0}
@@ -401,8 +474,14 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
 
 <!-- ============ 行程 ============ -->
 <main>
-<section class="view" id="v-days" aria-label="每日行程">
-  <div class="stickybar"><div class="chiprow" id="dayChips" role="group" aria-label="选择日期"></div></div>
+<section class="view" id="v-days" aria-label="行程规划">
+  <div class="stickybar">
+    <div class="seg" id="dayModeSeg" role="group" aria-label="行程视图模式" style="margin:8px 14px 4px">
+      <button type="button" data-mode="overview" aria-pressed="true">📋 6天全景总览</button>
+      <button type="button" data-mode="daily" aria-pressed="false">⏱ 每日分时时刻</button>
+    </div>
+    <div class="chiprow" id="dayChips" role="group" aria-label="选择日期"></div>
+  </div>
   <div id="dayPanel"></div>
 </section>
 
@@ -1285,15 +1364,27 @@ const dayOf = id => DAYS.find(d => d.id === id);
 function placeDays(pid){ return DAYS.filter(d => d.items.some(i => i.p === pid)).map(d => d.id.toUpperCase()); }
 
 /* ================= ROUTER ================= */
-const VIEWS = ['days','map','discover','ootd','food','prep'];
-let curDay = 'd1';
+const VIEWS = ['days','overview','map','discover','ootd','food','prep'];
+let curDay = 'overview';
 function route(){
   const h = location.hash.slice(1);
   let [v, arg] = h.split('/');
+  if (v === 'overview') { v = 'days'; arg = 'overview'; }
   if (!VIEWS.includes(v)) v = 'days';
   $$('.view').forEach(s => s.classList.toggle('on', s.id === 'v-' + v));
   $$('.tabbar a').forEach(a => { if (a.dataset.v === v) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
-  if (v === 'days'){ if (arg && dayOf(arg)) curDay = arg; renderDay(curDay); }
+  if (v === 'days'){
+    if (!arg || arg === 'overview' || arg === 'all') {
+      curDay = 'overview';
+      renderOverview();
+    } else if (dayOf(arg)) {
+      curDay = arg;
+      renderDay(curDay);
+    } else {
+      curDay = 'overview';
+      renderOverview();
+    }
+  }
   else if (v === 'map'){ initBigMap(); if (arg) mapFocus(arg); setTimeout(() => bigMap && bigMap.invalidateSize(), 60); }
   else if (v === 'discover'){ if (arg) discK = arg; renderDisc(); }
   else if (v === 'ootd'){ renderOotd(); }
@@ -1342,16 +1433,228 @@ addEventListener('hashchange', route);
 
 /* ================= DAY VIEW ================= */
 function renderDayChips(){
-  $('#dayChips').innerHTML = DAYS.map(d =>
+  const isOv = curDay === 'overview';
+  const ovChip = `<button type="button" class="chip" data-d="overview" aria-pressed="${isOv}"><b>📋 6天总览</b><span>${isOv ? '全景速览' : '返回总览'}</span></button>`;
+  $('#dayChips').innerHTML = ovChip + DAYS.map(d =>
     `<button type="button" class="chip" data-d="${d.id}" aria-pressed="${d.id===curDay}"><b>${d.id.toUpperCase()} · ${d.city==='seoul'?'首尔':'釜山'}</b><span>${d.md} ${d.wd}</span></button>`).join('');
 }
 $('#dayChips').addEventListener('click', e => {
-  const b = e.target.closest('[data-d]'); if (b) location.hash = 'days/' + b.dataset.d;
+  const b = e.target.closest('[data-d]');
+  if (b) {
+    if (b.dataset.d === 'overview') location.hash = 'days/overview';
+    else location.hash = 'days/' + b.dataset.d;
+  }
 });
+
+const modeSeg = $('#dayModeSeg');
+if (modeSeg) {
+  modeSeg.addEventListener('click', e => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    const mode = b.dataset.mode;
+    if (mode === 'overview') {
+      location.hash = 'days/overview';
+    } else {
+      location.hash = 'days/' + (curDay && curDay !== 'overview' ? curDay : 'd1');
+    }
+  });
+}
+
+function renderOverview(){
+  curDay = 'overview';
+  const segOv = $('#dayModeSeg [data-mode="overview"]');
+  const segDy = $('#dayModeSeg [data-mode="daily"]');
+  if (segOv) segOv.setAttribute('aria-pressed', 'true');
+  if (segDy) segDy.setAttribute('aria-pressed', 'false');
+
+  renderDayChips();
+  const btn = $('#dayChips [data-d="overview"]'); btn && btn.scrollIntoView({inline:'center', block:'nearest'});
+
+  const cleanTitle = t => t.replace(/^[【\[].*?[】\]]\s*/, '')
+                           .replace(/^(午餐|晚饭|早餐)\s*·\s*/, '')
+                           .replace(/^(退房出发|入住酒店)\s*→\s*/, '')
+                           .replace(/^前往/,'')
+                           .split(' · ')[0]
+                           .split('（')[0]
+                           .split(' / ')[0]
+                           .trim();
+
+  const cardsHTML = DAYS.map(d => {
+    const col = DAYCOLOR[d.id] || '#b4442a';
+    const isMvDay = d.items.some(it => it.mv);
+    const cityText = isMvDay ? '🚄 跨城·首尔→釜山' : (d.city === 'seoul' ? '🏯 首尔' : '🌊 釜山');
+    const cityClass = isMvDay ? 'mv' : (d.city === 'seoul' ? 'seoul' : 'busan');
+
+    const routePills = d.items.map(it => cleanTitle(it.title)).filter(Boolean);
+    const flowHTML = routePills.map((name, i) => `
+      <span class="ov-flow-item">${name}</span>
+      ${i < routePills.length - 1 ? `<span class="ov-flow-arrow" aria-hidden="true">➔</span>` : ''}
+    `).join('');
+
+    return `
+      <article class="ov-day-card" style="--dc:${col}" id="ov-${d.id}">
+        <div class="ov-card-head">
+          <div class="ov-card-head-left">
+            <span class="ov-day-badge">${d.id.toUpperCase()}</span>
+            <span class="ov-card-date">${d.md} ${d.wd}</span>
+            <span class="ov-city-pill ${cityClass}">${cityText}</span>
+          </div>
+          <a class="ov-card-jump-btn" href="#days/${d.id}">详细时刻 ➔</a>
+        </div>
+        <div class="ov-card-cover">
+          ${pic(d.cover, d.title, '🍁')}
+          <div class="ov-card-cover-ov">
+            <h3 class="ov-card-title">${d.title}</h3>
+            <div class="ov-card-area">📍 ${d.area}</div>
+          </div>
+        </div>
+        <div class="ov-flow-box">
+          <div class="ov-flow-label">🚩 核心动线节点流</div>
+          <div class="ov-flow-pills">${flowHTML}</div>
+        </div>
+        <div class="ov-card-body">
+          <div class="ov-info-row">
+            <span class="ov-info-label">🏨 住宿安排：</span>
+            <span class="ov-info-val">${d.stay}</span>
+          </div>
+          <div class="ov-info-row">
+            <span class="ov-info-label">🍽 重点餐饮：</span>
+            <span class="ov-info-val">${d.eat}</span>
+          </div>
+          ${d.tip ? `
+          <div class="ov-info-row">
+            <span class="ov-info-label">💡 贴士要点：</span>
+            <span class="ov-info-val">${d.tip}</span>
+          </div>` : ''}
+        </div>
+        <div class="ov-card-foot">
+          <a class="ov-card-cta" href="#days/${d.id}">
+            <span>查看 ${d.id.toUpperCase()} (${d.md}) 分时时刻表 & 交通指引</span>
+            <span aria-hidden="true">➔</span>
+          </a>
+        </div>
+      </article>
+    `;
+  }).join('');
+
+  const stripHTML = DAYS.map(d => {
+    const col = DAYCOLOR[d.id] || '#b4442a';
+    return `
+      <a class="ov-strip-node" style="--node-c:${col}" href="#days/${d.id}">
+        <div class="node-day">${d.id.toUpperCase()} · ${d.city==='seoul'?'首尔':'釜山'}</div>
+        <div class="node-date">${d.md} ${d.wd}</div>
+        <div class="node-theme">${d.title.split(' · ')[0]}</div>
+      </a>
+    `;
+  }).join('');
+
+  const tableRowsHTML = DAYS.map(d => {
+    const col = DAYCOLOR[d.id] || '#b4442a';
+    const cityText = d.city === 'seoul' ? '首尔' : '釜山';
+    return `
+      <tr>
+        <td>
+          <a href="#days/${d.id}" style="color:${col};font-weight:800;text-decoration:none">
+            ${d.id.toUpperCase()} (${d.md})
+          </a>
+        </td>
+        <td><span class="city ${d.city==='busan'?'bs':''}">${cityText}</span></td>
+        <td><b>${d.title}</b></td>
+        <td class="small muted">${d.area}</td>
+        <td><span class="small">${d.stay}</span></td>
+        <td><span class="small">${d.eat}</span></td>
+      </tr>
+    `;
+  }).join('');
+
+  $('#dayPanel').innerHTML = `
+    <div class="ov-wrap">
+      <div class="ov-hero-card">
+        <div class="ov-hero-header">
+          <div class="ov-hero-title-box">
+            <img class="ov-hero-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23b4442a'/%3E%3Ctext x='50' y='58' font-size='38' text-anchor='middle' fill='white'%3E🍁%3C/text%3E%3C/svg%3E" alt="Korea Autumn" id="ovHeroAvatar">
+            <div>
+              <h2>6 天 5 晚 · 韩国晚秋全景行程总览</h2>
+              <p>首尔晚秋红叶与圣诞浪漫 ➔ 高铁 KTX 极速指南 ➔ 釜山山寺海景与世界百佳咖啡</p>
+            </div>
+          </div>
+          <span class="ov-badge-autumn">🍂 11.24 – 11.29 黄金时段</span>
+        </div>
+        <div class="ov-stats-grid">
+          <div class="ov-stat-tile">
+            <span class="ov-stat-label">🗓 全程跨度</span>
+            <span class="ov-stat-val">6 天 5 晚</span>
+            <span class="ov-stat-sub">11/24(二) ~ 11/29(日)</span>
+          </div>
+          <div class="ov-stat-tile">
+            <span class="ov-stat-label">🏯 首尔段节奏</span>
+            <span class="ov-stat-val">3.5 天 · 核心精选</span>
+            <span class="ov-stat-sub">宫苑晚枫 + 圣水文创 + 圣诞</span>
+          </div>
+          <div class="ov-stat-tile">
+            <span class="ov-stat-label">🚄 跨城高铁 KTX</span>
+            <span class="ov-stat-val">2.5 小时 · 极速直达</span>
+            <span class="ov-stat-sub">D4 14:30 首尔站 ➔ 釜山站</span>
+          </div>
+          <div class="ov-stat-tile">
+            <span class="ov-stat-label">🌊 釜山段节奏</span>
+            <span class="ov-stat-val">2.5 天 · 山海浪漫</span>
+            <span class="ov-stat-sub">梵鱼寺 + 田浦Strut + 无人机秀</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ov-strip-wrap">
+        <div class="ov-strip-title">
+          <span>🚀 6 天动线节奏概览（点击直达任一天时刻表）</span>
+          <span class="small muted">首尔 3.5 天 ➔ 釜山 2.5 天</span>
+        </div>
+        <div class="ov-strip-grid">${stripHTML}</div>
+      </div>
+
+      <div class="sec-title" style="margin:22px 0 12px">
+        <h2>📅 每日详细行程一览</h2>
+        <span class="sub">路线流程 · 重点美食 · 住宿安排</span>
+      </div>
+      <div class="ov-cards-grid">${cardsHTML}</div>
+
+      <div class="sec-title" style="margin:28px 0 12px">
+        <h2>📊 全行程对照速查表</h2>
+        <span class="sub">左右滑动或在电脑宽屏快速对比</span>
+      </div>
+      <div class="ov-table-wrap">
+        <table class="ov-table">
+          <thead>
+            <tr>
+              <th style="min-width:100px">天数/日期</th>
+              <th style="min-width:65px">城市</th>
+              <th style="min-width:180px">当天核心主题</th>
+              <th style="min-width:180px">主要活动区域</th>
+              <th style="min-width:140px">住宿地点</th>
+              <th style="min-width:160px">重点餐饮</th>
+            </tr>
+          </thead>
+          <tbody>${tableRowsHTML}</tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  const heroAv = $('#ovHeroAvatar');
+  const appAv = $('.appbar-couple-avatar');
+  if (heroAv && appAv && appAv.src) {
+    heroAv.src = appAv.src;
+  }
+}
 
 let dayMap, dayLayer;
 function renderDay(id){
   curDay = id;
+  const segOv = $('#dayModeSeg [data-mode="overview"]');
+  const segDy = $('#dayModeSeg [data-mode="daily"]');
+  if (segOv) segOv.setAttribute('aria-pressed', 'false');
+  if (segDy) segDy.setAttribute('aria-pressed', 'true');
+
   renderDayChips();
   const btn = $(`#dayChips [data-d="${id}"]`); btn && btn.scrollIntoView({inline:'center', block:'nearest'});
   const d = dayOf(id), i = DAYS.indexOf(d), col = DAYCOLOR[id];
@@ -1399,6 +1702,7 @@ function renderDay(id){
       <div class="main">
         <div class="day-cover">${pic(d.cover, d.title, '🍁')}
           <span class="badge ${d.city==='busan'?'bs':''}">${id.toUpperCase()} · ${d.md} ${d.wd}</span>
+          <a href="#days/overview" class="badge-back-ov">📋 返回总览</a>
           <div class="ov"><div class="k">${d.city==='seoul'?'SEOUL':'BUSAN'}</div><h2>${d.title}</h2><div class="area">📍 ${d.area}</div></div>
         </div>
         <div class="infobar">
@@ -1601,6 +1905,7 @@ function drawDayMap(d){
   }, {passive:true});
   el.addEventListener('touchend', e => {
     if (x0 === null) return;
+    if (curDay === 'overview') { x0 = null; return; }
     const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
     if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.8 && Date.now() - t0 < 600){
       const i = DAYS.findIndex(d => d.id === curDay), j = i + (dx < 0 ? 1 : -1);
