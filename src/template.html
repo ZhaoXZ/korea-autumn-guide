@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#6b2f1f">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="首尔釜山晚秋">
-<title>首尔 · 釜山 晚秋漫游指南｜11.24–11.29</title>
+<title>首尔 · 釜山 晚秋漫游指南｜11.25–11.29</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -175,7 +175,7 @@ img{display:block;max-width:100%}
 .ov-stat-val{font-size:.92rem;font-weight:700;color:var(--ink)}
 .ov-stat-sub{font-size:.7rem;color:#7a6e62;line-height:1.3}
 
-/* ================= CINEMATIC ACCORDION OVERVIEW (6天电影级动态展开长条) ================= */
+/* ================= CINEMATIC ACCORDION OVERVIEW (5天电影级动态展开长条) ================= */
 .ov-cinema-wrap{margin-bottom:24px}
 .ov-cinema-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
 .ov-cinema-header h2{font-family:var(--serif);font-size:1.18rem;margin:0;color:var(--ink);display:flex;align-items:center;gap:8px}
@@ -562,7 +562,7 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
   <div class="row">
     <div class="appbar-brand">
       <img src="/*COUPLE_AVATAR_SRC*/" alt="夫妻晚秋旅行头像" class="appbar-couple-avatar" width="34" height="34">
-      <h1>首尔 · 釜山 晚秋<small>11.24 – 11.29 · 2人漫游</small></h1>
+      <h1>首尔 · 釜山 晚秋<small>11.25 – 11.29 · 5天4晚漫游</small></h1>
     </div>
     <div style="display:flex;align-items:center;gap:6px">
       <a href="#discover/snow" class="appbar-snow-pill" title="查看首尔初雪赏雪指南">❄️ 初雪特辑</a>
@@ -576,7 +576,7 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
 <section class="view" id="v-days" aria-label="行程规划">
   <div class="stickybar">
     <div class="seg" id="dayModeSeg" role="group" aria-label="行程视图模式" style="margin:8px 14px 4px">
-      <button type="button" data-mode="overview" aria-pressed="true">📋 6天全景总览</button>
+      <button type="button" data-mode="overview" aria-pressed="true">📋 5天全景总览</button>
       <button type="button" data-mode="daily" aria-pressed="false">⏱ 每日分时时刻</button>
     </div>
     <div class="chiprow" id="dayChips" role="group" aria-label="选择日期"></div>
@@ -620,12 +620,12 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
 <section class="view" id="v-ootd" aria-label="穿搭指南">
   <div class="sec-title">
     <h2>🧣 晚秋穿搭指南</h2>
-    <span class="sub">11.24–11.29 · 首尔与釜山 OOTD</span>
+    <span class="sub">11.25–11.29 · 首尔与釜山 OOTD</span>
   </div>
 
   <div class="ootd-intro">
     <h3>🍂 晚秋出行 · 气候与配色法则</h3>
-    <p><b>首尔 (11.24–11.27)</b>：气温 0°C ~ 11°C，早晚干冷风大，室内与地铁暖气充沛（22~25°C）。核心采用<b>「三层洋葱式穿搭」</b>。</p>
+    <p><b>首尔 (11.25–11.27)</b>：气温 0°C ~ 11°C，早晚干冷风大，室内与地铁暖气充沛（22~25°C）。核心采用<b>「三层洋葱式穿搭」</b>。</p>
     <p><b>釜山 (11.27–11.29)</b>：气温 6°C ~ 15°C，气候较首尔温和，但海岸与海崖（海云台、白浅滩、广安里）<b>海风偏大且冷冽</b>，防风长外套与围巾是关键。</p>
     <div class="ootd-rule-grid">
       <div class="ootd-rule-item">
@@ -648,9 +648,9 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
   </div>
 
   <div class="ootd-filters" id="ootdFilters">
-    <button class="chip sm" data-filter="all" aria-pressed="true">全部天数 (D1-D6)</button>
-    <button class="chip sm" data-filter="seoul" aria-pressed="false">首尔行程 (D1-D3)</button>
-    <button class="chip sm" data-filter="busan" aria-pressed="false">釜山行程 (D4-D6)</button>
+    <button class="chip sm" data-filter="all" aria-pressed="true">全部天数 (D1-D5)</button>
+    <button class="chip sm" data-filter="seoul" aria-pressed="false">首尔行程 (D1-D2)</button>
+    <button class="chip sm" data-filter="busan" aria-pressed="false">釜山行程 (D3-D5)</button>
   </div>
 
   <div class="ootd-card-list" id="ootdCardList"></div>
@@ -770,7 +770,7 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
 /*CREDITS*/
 
 /* ================= DATA ================= */
-const DAYCOLOR = {d1:'#b4442a',d2:'#d49a2a',d3:'#c2577a',d4:'#4f6b4a',d5:'#2d3a55',d6:'#2a7f8f'};
+const DAYCOLOR = {d1:'#b4442a', d2:'#d49a2a', d3:'#c2577a', d4:'#2d3a55', d5:'#2a7f8f'};
 
 // 地点：n 中文名, ko 韩文(用于 Naver/Kakao 搜索), xhs 小红书搜索词, c 城市, ll 坐标, img 照片, emo 图标
 const PL = {
@@ -852,15 +852,20 @@ const PL = {
   r_millac:{n:'Millac the Market 美食层',ko:'밀락더마켓',xhs:'Millac the Market 美食 釜山',c:'busan',ll:[35.1557,129.1303],img:'millac',food:1},
   r_jagalchi:{n:'札嘎其 二楼海鲜加工',ko:'자갈치시장',xhs:'札嘎其 二楼海鲜加工 釜山',c:'busan',ll:[35.0968,129.0310],img:'jagalchi',food:1},
 
-  // 住宿（首尔已预订）
-  stay_seoul:{n:'首尔已订住宿（东大门DDP·退溪路68街）',ko:'서울특별시 중구 퇴계로68길 14',en:'14, Toegye-ro 68-gil, Jung-gu, Seoul',xhs:'东大门 DDP 住宿',c:'seoul',ll:[37.5636,127.0115],img:'',emo:'🏨',booked:1,gate:'Left gate (左侧门)',zip:'04614',subway:'2/4/5 号线东大门历史文化公园站 5 号口步行 3 分钟；6 号线青丘站步行 6 分钟',tip:'韩文地址：서울특별시 중구 퇴계로68길 14 (우편번호 04614) · Left gate'},
+  // 医美与高铁枢纽
+  hommage:{n:'HOMMAGE CLINIC (新论岘)',ko:'오마쥬의원',xhs:'HOMMAGE CLINIC 新论岘 皮肤科',c:'seoul',ll:[37.5055, 127.0242],img:'',emo:'✨',subway:'9号线/新分唐线新论岘站4号口步行2分钟（江南大道509 天空眼科大楼4F）',tip:'韩国专业私立皮肤管理诊所，大行李可免费暂存前台'},
+  suseost:{n:'水西站（SRT）',ko:'수서역',xhs:'水西站 SRT 釜山',c:'seoul',ll:[37.4874, 127.1018],img:'',emo:'🚅',subway:'新论岘乘新分唐线转水仁盆唐线至水西站仅约18分钟，或打车约20分钟直达'},
+
+  // 住宿（首尔候选与釜山已订）
+  stay_seoul:{n:'首尔住宿（东大门DDP / 备选 GLAD Mapo / Boutique 9）',ko:'서울특별시 중구 퇴계로68길 14',en:'14, Toegye-ro 68-gil, Jung-gu, Seoul',xhs:'东大门 DDP 住宿',c:'seoul',ll:[37.5636,127.0115],img:'',emo:'🏨',booked:1,gate:'Left gate (左侧门)',zip:'04614',subway:'2/4/5 号线东大门历史文化公园站 5 号口步行 3 分钟；6 号线青丘站步行 6 分钟',tip:'首选东大门退溪路68街（备选孔德 GLAD Mapo / 新设洞 Boutique 9）'},
+  stay_busan:{n:'釜山住宿（西面 Denbasta Central Hotel）',ko:'덴바스타 센트럴 호텔 서면',xhs:'西面 Denbasta Central Hotel 釜山',c:'busan',ll:[35.1550,129.0560],img:'',emo:'🏨',booked:1,subway:'地铁 1/2 号线西面站 7 号口步行 6 分钟',tip:'已订 11/27–11/29（2 晚）；备选 Hotel tt（西面北）与 Grab the Ocean Songdo（松岛海景）'},
 };
 
 const DAYS = [
- {id:'d1',md:'11/24',wd:'周二',city:'seoul',title:'抵达 · 德寿宫石墙落叶 + 新世界圣诞巨幕',area:'市厅 · 明洞 · 乙支路（轻松漫步过渡）',cover:'shinsegae',
-  stay:'🎉 东大门退溪路68街（已订 3 晚）',eat:'明洞饺子（米其林刀切面，翻台快）或乙支路烤肉',
+ {id:'d1',md:'11/25',wd:'周三',city:'seoul',title:'抵达 · 德寿宫石墙落叶 + 新世界圣诞巨幕',area:'市厅 · 明洞 · 乙支路（轻松漫步过渡）',cover:'shinsegae',
+  stay:'首尔住宿（东大门退溪路68街 / 备选 GLAD Mapo / Boutique 9）',eat:'明洞饺子（米其林刀切面，翻台快）或乙支路烤肉',
   items:[
-   {t:'午后',p:'stay_seoul',title:'仁川机场 → 酒店入住（退溪路68街）',d:'从仁川机场乘坐 AREX 直达车到首尔站，站内换乘地铁 4 号线直达「东大门历史文化公园站」5号口（仅 4 站 8 分钟），出站步行 3 分钟即达民宿（认准 Left gate）；或直接乘坐机场大巴 6001 路至退溪路大路口直达。在机场取 eSIM、充好 T-money / WOWPASS。',tags:['move'],
+   {t:'午后',p:'stay_seoul',title:'仁川机场 → 酒店入住（退溪路68街 / 备选酒店）',d:'从仁川机场乘坐 AREX 直达车到首尔站，站内换乘地铁 4 号线直达「东大门历史文化公园站」5号口（仅 4 站 8 分钟），出站步行 3 分钟即达民宿（认准 Left gate）；或直接乘坐机场大巴 6001 路至退溪路大路口直达。在机场取 eSIM、充好 T-money / WOWPASS。',tags:['move'],
     transit:'🚇 地铁 2 号线（东大门历史文化公园站 → 市厅站 1号口，4 站仅 7 分钟直达！出站即是石墙路）'},
    {t:'16:00',p:'deoksugung',title:'德寿宫石墙路 · 贞洞路',d:'首尔晚秋最负盛名的银杏散步道，夕阳下满地落叶金毯，映衬古朴石墙与红砖教堂。趁 17:15 日落斜光拍照。',tags:['autumn'],
     transit:'🚶'},
@@ -870,77 +875,42 @@ const DAYS = [
     transit:'🚶'},
    {t:'19:30',p:'r_kyoja',title:'晚饭 · 明洞饺子 / 乙支路',d:'热气腾腾的刀切面 + 蒸饺，米其林推荐老店；吃完散步至清溪川或乙支路感受初冬凉夜。',tags:['food']},
   ],
-  tip:'景福宫<b>周二闭馆</b>，今天别安排；从民宿坐地铁 4 号线去明洞仅 2 站（4 分钟），往返非常轻松。'},
- {id:'d2',md:'11/25',wd:'周三',city:'seoul',title:'秘苑晚枫 · 绕景福宫一圈 · 西村神仙咖啡与小店',area:'安国 · 昌德宫 · 景福宫石墙 · 西村（步行环线）',cover:'huwon',
-  stay:'🎉 东大门退溪路68街（第 2 晚）',eat:'早餐 London Bagel / Onion；下午 Archivist 维也纳咖啡；晚饭通仁市场/广藏市场',
+  tip:'周三各大商圈与石墙路全天开放；从民宿坐地铁 4 号线去明洞仅 2 站（4 分钟），往返非常轻松。'},
+ {id:'d2',md:'11/26',wd:'周四',city:'seoul',title:'汉南洞坡道买手街 · 圣水美学旗舰 · 蚕室欧式圣诞',area:'汉南洞（坡道买手）→ 圣水洞（文创设计）→ 蚕室（乐天圣诞）',cover:'seoulforest',
+  stay:'首尔住宿（第 2 晚）',eat:'汉南洞精致早午餐；圣水大林仓库咖啡；蚕室圣诞市集小吃 / 烤肉',
   items:[
-   {t:'08:30',p:'onion',title:'安国早餐 · 韩屋咖啡',d:'London Bagel Museum 安国店（开门前取号）或韩屋庭院 Onion 安国，烘焙香气唤醒清晨。',tags:['food'],
+   {t:'09:30',p:'emis',title:'汉南洞坡道买手街 · 顺坡血拼',d:'坐地铁 6 号线到「汉江镇站 3 号口」出，顺着下坡一路逛最省力！重点打卡：EMIS 刺绣帽与配饰、Mardi Mercredi 经典小雏菊女装、Rockfish 玛丽珍与羊毛围巾、Matin Kim 酷飒铁牌包、Nonfiction 木质香氛。',tags:['shop','move'],
     transit:'🚶'},
-   {t:'10:00',p:'changdeok',title:'昌德宫 · 后苑（秘苑红叶）',d:'首尔<b>秋色保留最晚、最震撼</b>的皇家秘苑！芙蓉池、爱莲池的枫叶晚红倒映水面，美不胜收。需官网提前预约导览。',tags:['autumn','culture'],
+   {t:'12:30',p:'hannam',title:'汉南洞早午餐 / 咖啡小憩',d:'街区内聚集众多露台早午餐与法式烘焙甜品店，补充体力小憩，准备前往圣水洞。',tags:['food'],
+    transit:'🚖 打车约 12 分钟跨汉江直达圣水洞（约 7,000~8,500 韩元）；两人出行极其划算省时'},
+   {t:'13:30',p:'seoulforest',title:'首尔林 · 水杉道与金叶漫步',d:'初冬阳光穿透水杉林与银杏步道，落叶铺成金黄地毯，人少景美出片极佳，和圣水逛街无缝衔接。',tags:['autumn'],
     transit:'🚶'},
-   {t:'11:45',p:'changgyeong',title:'昌庆宫 · 大温室 或 北村漫步',d:'与昌德宫无缝相连，复古白色玻璃温室与枫林掩映；或漫步北村韩屋屋脊赏金色银杏。',tags:['autumn'],
-    transit:'🚶'},
-   {t:'13:00',p:'staffpicks',title:'绕景福宫北墙漫步至西村',d:'朋友力荐线路：安国与景福宫就一站路！沿景福宫北墙与青瓦台石墙路漫步至西村，正好绕景福宫一圈，沿途满地金黄落叶。',tags:['autumn','move'],
-    transit:'🚶'},
-   {t:'13:30',p:'archivist',title:'Archivist 维也纳咖啡',d:'<b>当地朋友封神认证！首尔最好喝的维也纳咖啡 (Einspänner)</b>！如丝绒般密实醇厚的奶盖入口惊艳，招牌无花果费南雪也是一绝。',tags:['food','ns'],
-    transit:'🚶'},
-   {t:'14:30',p:'onemorebag',title:'One More Bag (2楼)',d:'<b>【藏在2楼，门头极小】</b>韩国独立插画师帆布包、便携袋、布艺刺绣小挂件聚集地，女孩必逛宝藏店。',tags:['shop','ns'],
-    transit:'🚶'},
-   {t:'15:15',p:'ofrseoul',title:'Ofr. Seoul 独立复古书店',d:'巴黎独立艺术书店首尔店，隐匿在双层复古老宅，主打复古帆布包、独立画册、vintage饰品与家居杂货。',tags:['book','shop'],
-    transit:'🚶'},
-   {t:'16:00',p:'granhand_sc',title:'Granhand 西村香氛',d:'韩屋小院里的手工精油香氛，招牌 Susie Salmon，麻布香袋柜姐会用老式打字机免费敲印专属姓名。',tags:['shop'],
-    transit:'🚇 地铁 3号线转1号线（景福宫站 → 钟路3街站转 1 号线至钟路5街站 8号口直达，约 12 分钟；或打车约 10 分钟/6,000韩元）'},
-   {t:'17:15',p:'gwangjang',title:'广藏市场 · 小吃与二楼古着',d:'二楼藏着一整片古着档口（구제상가）；下楼吃现炸绿豆煎饼、生拌牛肉与麻药紫菜包饭。',tags:['ns','food'],
-    transit:'🚶'},
-   {t:'19:30',p:'euljiro',title:'乙支路「Hipjiro」复古小酒馆',d:'五金印刷老街深处，藏着没招牌的二楼小酒馆、黑胶吧与精酿馆，感受首尔年轻人的夜生活。',tags:['night']},
+   {t:'14:30',p:'pov',title:'圣水洞核心美学 · Point of View & Stand Oil',d:'直奔圣水最顶尖的美学地标：Point of View 3 层文具美学天花板；Stand Oil 独栋美术馆级极简包包；大林仓库挑高挑空工业风画廊咖啡。',tags:['shop','ns'],
+    transit:'🚇 地铁 2 号线直达（圣水站乘 2 号线至蚕室站 1/2号口，4 站仅 9 分钟免换乘，直通乐天世界购物中心与圣诞市集）'},
+   {t:'18:00',p:'lotte',title:'蚕室 · 乐天欧式圣诞市集 + 石村湖',d:'地铁 2 号线 9 分钟直达。欧式木屋圣诞市集、巨型发光圣诞树与旋转木马，湖畔远眺乐天世界塔璀璨夜景。',tags:['night','shop']},
   ],
-  tip:'安国到西村沿景福宫外墙步行体验极佳；Archivist 咖啡馆如遇排队，可以先登记手机号，步行 2 分钟逛对面的 One More Bag 或 Ofr. Seoul。'},
- {id:'d3',md:'11/26',wd:'周四',city:'seoul',title:'首尔林金叶 · 圣水精准锚点 · 蚕室欧式圣诞',area:'首尔林（金叶水杉）→ 圣水核心旗舰 → 晚上蚕室（2号线）',cover:'seoulforest',
-  stay:'🎉 东大门退溪路68街（第 3 晚）',eat:'午餐大林仓库画廊咖啡；圣水热门餐厅用 Catch Table 远程取号；蚕室市集小吃',
+  tip:'今天涵盖首尔两大顶级逛街美学圣地（汉南洞+圣水洞）与蚕室圣诞夜景；圣水到蚕室坐 2 号线直达仅 9 分钟，极为高效顺路。',
+  alt:'🍂 若想看古宫深秋：上午可将汉南洞替换为「昌德宫后苑秘苑导览 + 西村 Archivist 维也纳咖啡」，下午再接圣水与蚕室。'},
+ {id:'d3',md:'11/27',wd:'周五',city:'seoul',title:'新论岘 HOMMAGE 医美 ➔ KTX/SRT 极速南下 ➔ 广安里海风',area:'新论岘（HOMMAGE 医美）→ 高铁南下 → 釜山西面（入住）→ 广安里海风',cover:'dosanpark',
+  stay:'🎉 釜山西面（Denbasta Central Hotel 已订 2 晚）',eat:'新论岘温热清淡轻食；釜山站对面本钱猪肉汤饭 / 广安里 Millac 美食',
   items:[
-   {t:'09:30',p:'seoulforest',title:'首尔林 · 银杏森林与水杉步道',d:'从民宿步行 3 分钟至 DDP 站，坐地铁 2 号线直达纛岛/首尔林（仅 11 分钟！）；早晨阳光通透，金黄银杏天幕与金叶地毯，人少景美出片极佳。',tags:['autumn'],
+   {t:'09:30',p:'stay_seoul',title:'退房出发 · 携带行李前往江南新论岘',d:'退房并带上大行李，直接乘坐地铁或打车前往江南新论岘站（HOMMAGE CLINIC 大行李可免费暂存前台，就诊期间安全稳妥，无需折返跑）。',tags:['move'],
+    transit:'🚇 9号线/新分唐线新论岘站 4 号口出来步行 2 分钟即达'},
+   {t:'10:00',p:'hommage',title:'HOMMAGE CLINIC (오마쥬의원) · 皮肤管理/医美',d:'首尔江南口碑极佳的专业私立皮肤管理诊所，位于江南大道509 天空眼科大楼4F。上午安排做皮肤管理、光子/水光/抗衰等项目，院内医护细致专业，术后做冷敷镇静与补水修护。',tags:['ns'],
     transit:'🚶'},
-   {t:'11:00',p:'pov',title:'圣水洞 · 核心锚点精准逛',d:'朋友提醒：圣水洞游人较多且部分支巷略显杂乱破旧，不必盲目乱转，锁定核心必逛美学地标：',tags:['shop','ns'],
-    transit:'🚶'},
-   {t:'11:15',p:'pov',title:'Point of View (1–3层)',d:'首尔文具美学天花板！3 层策展式空间，黄铜苹果镇纸、复古钢笔墨水与原创手作纸品，审美极高。',tags:['ns'],
-    transit:'🚶'},
-   {t:'12:15',p:'standoil',title:'Stand Oil 圣水旗舰店',d:'当红轻奢极简包包，Chubby Bag 保龄球包与腋下包，独栋展厅宛如摩登现代美术馆。',tags:['shop'],
-    transit:'🚶'},
-   {t:'13:00',p:'daelim',title:'午餐 · 大林仓库画廊咖啡',d:'旧精米厂改造的挑高红砖厂房，圣水「工业风改造」的代表鼻祖，在此享用手冲咖啡与披萨意面。',tags:['food'],
-    transit:'🚶'},
-   {t:'14:30',p:'lcdc',title:'LCDC Seoul 复合生活空间',d:'旧修车厂改建的复合空间，三楼 Door 集合店精选独立生活方式品牌与文艺小物。顺逛 Tamburins 艺术香氛。',tags:['shop','ns'],
-    transit:'🚇 地铁 2 号线直达（从圣水站乘 2 号线至蚕室站 1/2号口，4 站仅 9 分钟免换乘，直通乐天世界购物中心与圣诞市集）'},
-   {t:'18:00',p:'lotte',title:'蚕室 · 乐天欧式圣诞市集 + 石村湖',d:'地铁 2 号线约 15 分钟直达。欧式木屋圣诞市集、巨型发光圣诞树与旋转木马，湖畔远眺乐天世界塔夜景。',tags:['night','shop']},
+   {t:'13:00',p:'hommage',title:'诊所周边温热轻食午餐 / 咖啡',d:'医美后饮食宜温和清淡，诊所周边步行范围内有优质韩式鲍鱼粥、清炖鸡汤或温热三文治，静心舒缓休整。',tags:['food'],
+    transit:'🚅 推荐前往水西站坐 SRT（打车约 20 分钟），或前往首尔站坐 KTX（约 25 分钟）'},
+   {t:'14:00',p:'suseost',title:'水西站 SRT / 首尔站 KTX 极速前往釜山',d:'【首选推荐 SRT 水西站】江南出发坐 SRT（从新论岘打车到水西站仅约 20 分钟，或新分唐线转水仁盆唐线约 18 分钟），乘 SRT 高铁 2 小时 20 分钟直达釜山站！避开首尔站穿城堵车，列车崭新舒适。（亦可在首尔站乘 KTX 约 2 小时 30 分钟）。',tags:['move'],mv:1,
+    transit:'🚄 高铁极速飞驰南下，沿途欣赏半岛丘陵与海岸暮色'},
+   {t:'17:00',p:'r_bonjeon',title:'抵达釜山站 · 本钱猪肉汤饭',d:'出站正对面就是釜山灵魂名物！乳白鲜甜热汤配嫩肉片、生韭菜与特制虾酱，一碗下肚全身暖洋洋。',tags:['food'],
+    transit:'🚇 地铁 1 号线直达西面站（仅 6 站 10 分钟），或打车约 15 分钟'},
+   {t:'18:00',p:'stay_busan',title:'办理入住 Denbasta Central Hotel Seomyeon',d:'入住已预订的西面 Denbasta Central Hotel，放下行李，稍作梳洗休整。',tags:['move'],
+    transit:'🚇 地铁 2 号线（西面站 → 广安站 3/5号口，约 15 分钟免换乘）'},
+   {t:'19:30',p:'gwangalli',title:'广安里海滩漫步 · 遥望广安大桥璀璨灯火',d:'釜山无需赶场，初到海边吹吹海风最治愈！漫步细软沙滩看广安跨海大桥霓虹闪烁，或在沙滩边露台咖啡馆小酌热巧克力，惬意享受海滨第一夜。',tags:['night']},
   ],
-  tip:'圣水快闪店每周都在轮换，出发前在 Instagram 搜 <b>#성수팝업</b> 挑选 1–2 家心仪快闪；逛街随身带护照退税。'},
- {id:'d4',md:'11/27',wd:'周五',city:'seoul',title:'汉南洞顺坡血拼 · KTX 南下 · 广安里海风',area:'上午 汉南洞（6号线汉江镇站）→ 下午 KTX → 晚上 釜山海边/田浦',cover:'dosanpark',
-  stay:'釜山待订：西面（或广安里海景）',eat:'汉南洞 Brunch；釜山站对面本钱猪肉汤饭（随到随吃）',
-  items:[
-   {t:'09:00',p:'stay_seoul',title:'退房出发 → 汉江镇站 3号口出（汉南洞）',d:'从退溪路68街步行 6 分钟到「青丘站」，乘地铁 6 号线直达「汉江镇站」（仅 3 站 6 分钟！）；朋友独家秘笈：汉南洞依山坡而建，坚决不要逆坡爬山！坐 6 号线到<b>汉江镇站 3 号口</b>出，顺着下坡一路逛最省力。',tags:['shop','move'],
-    transit:'🚶'},
-   {t:'10:00',p:'emis',title:'EMIS 汉南店 · 抢手帽型与配饰',d:'韩国爱豆私服标配，复古刺绣棒球帽版型绝佳，托特包和发圈性价比极高。',tags:['shop'],
-    transit:'🚶'},
-   {t:'10:45',p:'mardi',title:'Mardi Mercredi 汉南旗舰店',d:'多栋独栋并排（女装、鞋履、运动系列）。经典小雏菊刺绣卫衣、针织开衫与复古T恤。',tags:['shop'],
-    transit:'🚶'},
-   {t:'11:30',p:'rockfish_h',title:'Rockfish Weatherwear 汉南概念店',d:'英伦复古庄园风！丝绒玛丽珍平底鞋、软糯贝雷帽、围巾与防雨靴，秋冬搭配神器。',tags:['shop'],
-    transit:'🚶'},
-   {t:'12:15',p:'matinkim',title:'Matin Kim 汉南旗舰店',d:'高街酷飒千禧风，银色金属铁牌包（Accordion Bag）、做旧短皮衣与工装伞裙。',tags:['shop'],
-    transit:'🚶'},
-   {t:'12:45',p:'nonfiction_h',title:'Nonfiction 汉南香氛',d:'<b>【藏在2楼】</b>静谧通透的木质调沙龙香氛，Santal Cream、Gentle Night 试香与洗手体验。',tags:['shop','ns'],
-    transit:'🚶'},
-   {t:'13:15',p:'hannam',title:'汉南洞精致午餐 / 咖啡小憩',d:'街区内有很多露台早午餐与法式烘焙甜品店，补充体力准备南下。',tags:['food'],
-    transit:'🚖 打车直达首尔站（约 15 分钟，车费约 8,000~10,000 韩元；取行李上车最省心）'},
-   {t:'13:45',p:'seoulst',title:'汉南洞打车直达首尔站（约 15 分钟）',d:'汉南洞紧邻首尔站！取行李后打车只要约 15 分钟即可直达 KTX 进站口，极其顺路省时。',tags:['move'],mv:1,
-    transit:'🚄 提前 15 分钟进站，乘 KTX 极速前往釜山站（约 2 小时 30 分钟）'},
-   {t:'14:30',p:'seoulst',title:'首尔站 KTX → 釜山站',d:'约 2 小时 20 分 – 2 小时 50 分。周五下午为热门时段，提前在 Korail 订票。',tags:['move'],mv:1,
-    transit:'🚶 釜山站 1 号口出，过斑马线正对面即是（步行 2 分钟）'},
-   {t:'17:30',p:'r_bonjeon',title:'釜山站 · 本钱猪肉汤饭',d:'出站正对面就是釜山灵魂名物！乳白热汤配嫩肉片、生韭菜与特制虾酱，一碗下肚全身暖洋洋。',tags:['food'],
-    transit:'🚇 地铁 1 号线转 2 号线（釜山站坐 1 号线到西面站转 2 号线至广安站 3/5号口，约 35 分钟；两人建议直接打车约 25 分钟/12,000韩元）'},
-   {t:'19:30',p:'gwangalli',title:'入住酒店 → 广安里海边吹风看大桥',d:'朋友推荐：釜山无需赶场，海边散步吹海风最治愈。漫步沙滩看广安大桥璀璨灯火；或去田浦咖啡街闲逛。',tags:['night']},
-  ],
-  tip:'汉南洞到首尔站打车极其方便（约 15 分钟，车费约 8,000–10,000 韩元），不必拖着行李挤地铁转线。'},
- {id:'d5',md:'11/28',wd:'周六',city:'busan',title:'千年古刹晚红 · 田浦咖啡 · 海云台灯光节 · 无人机秀',area:'北边梵鱼寺 → 东莱葱饼 → 田浦 Strut Coffee → 海云台海滩 → 广安里跨海大桥',cover:'gwangalli',
-  stay:'釜山 西面（或广安里海景）',eat:'东莱奶奶葱饼（现场排队）；田浦 Strut Coffee 拿铁；海云台锦绣河豚汤；广安里 Millac 美食集市',
+  tip:'医美后皮肤角质层娇嫩，江南至釜山途中务必做好严格物理防晒（宽檐帽+墨镜+口罩）；大行李在 HOMMAGE 前台寄存极其方便省心；周五下午高铁票热门，提前在 SRT/Korail 官网买好票。'},
+ {id:'d4',md:'11/28',wd:'周六',city:'busan',title:'千年古刹晚红 · 田浦咖啡 · 海云台灯光节 · 无人机秀',area:'北边梵鱼寺 → 东莱葱饼 → 田浦 Strut Coffee → 海云台海滩 → 广安里跨海大桥',cover:'gwangalli',
+  stay:'釜山西面（Denbasta Central Hotel 第 2 晚）',eat:'东莱奶奶葱饼（现场排队）；田浦 Strut Coffee 拿铁；海云台锦绣河豚汤；广安里 Millac 美食集市',
   items:[
    {t:'09:00',p:'beomeosa',title:'梵鱼寺 · 金井山秋色',d:'釜山<b>晚秋红叶巅峰胜地</b>，千年古寺被层林尽染的山峦环抱，禅意静谧，是这趟最有希望看到满山红叶的地方。',tags:['autumn','culture'],
     transit:'🚌 社区小巴 90 路下山至梵鱼寺站，换乘地铁 1 号线直达东莱站（约 30 分钟；打车约 20 分钟/11,000韩元）'},
@@ -957,7 +927,7 @@ const DAYS = [
    {t:'20:00',p:'millac',title:'广安里 · 无人机光影秀 + Millac the Market',d:'广安里<b>每周六晚</b>千架无人机在跨海大桥前组成震撼图案。Millac 二楼阶梯落地窗正对广安大桥夜景，喝啤酒吃炸鸡。',tags:['night','food']},
   ],
   tip:'田浦到海云台坐地铁 2 号线直达仅 20 分钟；周六无人机秀结束后打车较难，建议提前用 Kakao T 或坐地铁 2 号线回酒店。'},
- {id:'d6',md:'11/29',wd:'周日',city:'busan',title:'影岛海崖小巷 · 造船厂咖啡 · 烟火老城返程',area:'影岛白浅滩 → 工业海港咖啡 → 南浦老城 → 金海机场',cover:'huinnyeoul',
+ {id:'d5',md:'11/29',wd:'周日',city:'busan',title:'影岛海崖小巷 · 造船厂咖啡 · 烟火老城返程',area:'影岛白浅滩 → 工业海港咖啡 → 南浦老城 → 金海机场',cover:'huinnyeoul',
   stay:'返程',eat:'三进鱼糕现炸热吃；BIFF 广场坚果糖饼；海鲜市场',
   items:[
    {t:'09:00',p:'huinnyeoul',title:'影岛 · 白浅滩文化村',d:'悬崖峭壁边的纯白小巷，一边是无际的蔚蓝大海，一边是彩绘阶梯与文艺小铺，被称为「釜山的圣托里尼」，拍照极度治愈。',tags:['autumn'],
@@ -974,47 +944,73 @@ const DAYS = [
 ];
 
 const ZONES = [
- {id:'z_ddp_booked',c:'seoul',name:'【已订】东大门 DDP · 退溪路68街',ll:[37.5636,127.0115],r:350,rec:'已预订 🎉',nights:'11/24 – 11/27（3 晚 · 确认入住）',
+ {id:'z_ddp_booked',c:'seoul',name:'【备选/原订】东大门 DDP · 退溪路68街',ll:[37.5636,127.0115],r:350,rec:'首选备选 🌟',nights:'11/25 – 11/27（2 晚 · 核心枢纽）',
   booked:true,
   addr:'14, Toegye-ro 68-gil, Jung-gu, Seoul, Left gate',
   addrKo:'서울특별시 중구 퇴계로68길 14',
   zip:'04614',
   gate:'Left gate (左侧门)',
   pros:[
-    '【已预订确认】入住：2026.11.24（周日）~ 2026.11.27（周三）共 3 晚',
-    '【核心交通大枢纽】步行 3 分钟到 2/4/5 号线「东大门历史文化公园站」5号口，步行 6 分钟到 6 号线「青丘站」',
+    '【交通大枢纽】步行 3 分钟到 2/4/5 号线「东大门历史文化公园站」5号口，步行 6 分钟到 6 号线「青丘站」',
     '【直达核心商圈】2号线11分钟直达圣水洞、4号线4分钟直达明洞、6号线6分钟直达汉南洞',
-    '【赶 KTX 极速省心】D4 坐 4 号线直达首尔站仅 8 分钟（4 站免换乘），打车约 10 分钟（约 7,000 韩元）',
+    '【去江南医美便捷】乘 4 号线转 9 号线急行或打车至新论岘站约 25 分钟',
     '【机场大巴直达】仁川机场乘坐 6001 / 6702 路直达退溪路路口，下车步行 3 分钟即可进门',
-    '【深夜食堂】紧邻东大门商圈与新堂洞辣炒年糕街，烤肉、东大门一只鸡等深夜美食选择极多'
+    '【深夜食堂丰富】紧邻东大门商圈与新堂洞辣炒年糕街，烤肉、东大门一只鸡等深夜美食选择极多'
   ],
   cons:['门牌注意：认准「Left gate（左侧门）」，提前查看房东发来的入住指引与门禁密码'],
   q:'서울특별시 중구 퇴계로68길 14',
   tip:'韩文地址：서울특별시 중구 퇴계로68길 14 (우편번호 04614) · Left gate'},
- {id:'z_md',c:'seoul',name:'明洞 · 乙支路',ll:[37.5640,126.9880],r:650,rec:'备选参考',nights:'11/24 – 11/27（备选参考）',
-  pros:['离首尔站近：AREX 进城、D4 坐 KTX 都方便','D1、D2、D4 的活动都在附近','2 号线 / 4 号线直达圣水、蚕室','晚上逛街吃饭都在楼下'],
+ {id:'z_glad_mapo',c:'seoul',name:'【高阶备选】GLAD Mapo（格莱德麻浦）',ll:[37.5434,126.9517],r:400,rec:'孔德神级枢纽 🚅',nights:'11/25 – 11/27（2 晚备选）',
+  addr:'首尔特别市麻浦区麻浦大路 92 (孔德站9号口地下直连)',
+  pros:[
+    '【四线换乘神级枢纽】孔德站 9 号口直接连入酒店大堂地下！汇聚机场快线 AREX、5/6/京义中央线',
+    '【机场/首尔站零换乘】AREX直达仁川机场；1站5分钟直达首尔站（赶KTX极其轻松省心）',
+    '【去江南医美超顺路】地下乘5号线在汝矣岛换9号线急行，直达新论岘站仅约22分钟',
+    '【现代高星品质保障】现代化精品四星酒店，隔音扎实、床品承托优良、超大景观窗俯瞰首尔',
+    '【周边老饕美食聚集】孔德猪蹄一条街、麻浦传统煎饼一条街都在步行范围内'
+  ],
+  cons:['房价比民宿稍高，热门周末房态较为紧张需尽早锁定'],
+  q:'글래드 마포',
+  tip:'孔德站 9 号口地下通道有直达酒店电梯，雨雪天拖大箱子完全不湿鞋。'},
+ {id:'z_boutique9',c:'seoul',name:'【超大空间备选】Hotel Boutique 9（九号精品酒店）',ll:[37.5755,127.0232],r:350,rec:'超大客房+双人泡池 🛁',nights:'11/25 – 11/27（2 晚备选）',
+  addr:'首尔特别市东大门区往十里路 385 (新设洞站4号口步行1分钟)',
+  pros:[
+    '【地铁口出站即达】新设洞站 4 号口出来步行仅 50 米，1 号线 / 2 号线圣水支线 / 牛耳新设线三线交汇',
+    '【客房面积巨大】面积 35–45㎡，比明洞同价位酒店宽敞一倍以上，双人摊开大行李箱毫无压力',
+    '【豪华双人按摩浴缸】卫生间干湿分离，配备超大深泡按摩浴缸，逛街 2 万步后泡澡回血神物',
+    '【2号线直达圣水】2号线直达圣水洞与首尔林，1号线直达首尔站/钟路'
+  ],
+  cons:['部分房型床垫与枕头偏软（喜好硬床需留意）；周边属于传统居住商街，景观较为普通'],
+  q:'호텔 부티크 9',
+  tip:'新设洞站 4 号口出来直走 50 米即到，周边便利店与传统醒酒汤馆很多。'},
+ {id:'z_md',c:'seoul',name:'明洞 · 乙支路',ll:[37.5640,126.9880],r:650,rec:'商业中心',nights:'11/25 – 11/27（备选参考）',
+  pros:['离首尔站近：AREX 进城、坐 KTX 方便','D1 活动就在附近','2 号线 / 4 号线直达圣水','晚上逛街吃饭都在楼下'],
   cons:['游客多、比较吵','房间普遍偏小'],
   q:'명동 호텔',tip:'搜「明洞站 / 乙支路入口站 / 乙支路 3 街站」步行 5 分钟内。'},
- {id:'z_jg',c:'seoul',name:'钟路 · 安国（韩屋酒店）',ll:[37.5765,126.9865],r:500,rec:'氛围',nights:'可选 1 晚',
-  pros:['可以住韩屋，很有氛围','步行到昌德宫、益善洞、北村'],
-  cons:['韩屋房间小，隔音一般，卫浴可能共用','拖行李走石板路不方便'],
-  q:'익선동 한옥스테이',tip:'适合 11/24 或 11/25 住一晚体验。'},
- {id:'z_ss',c:'seoul',name:'圣水',ll:[37.5440,127.0560],r:550,rec:'逛街党',nights:'备选',
-  pros:['下楼就是快闪店和咖啡馆','离首尔林近'],
-  cons:['离首尔站、机场较远','D1、D2 要多坐 20–30 分钟地铁'],
-  q:'성수 호텔',tip:'适合把重点放在逛街的人。'},
- {id:'z_sm',c:'busan',name:'西面',ll:[35.1577,129.0600],r:700,rec:'首选',nights:'11/27 – 11/29（2 晚）',
-  pros:['1 号线 / 2 号线换乘站，去哪都顺','梵鱼寺（北）、海云台（东）、南浦（南）距离都适中','D4 晚上的田浦咖啡街步行可达','去金海机场打车约 30 分钟'],
-  cons:['没有海景'],
-  q:'서면 호텔',tip:'搜「西面站 / 田浦站」附近的酒店。'},
- {id:'z_gal',c:'busan',name:'广安里',ll:[35.1540,129.1190],r:600,rec:'海景',nights:'可选 11/28 一晚',
-  pros:['海景房正对广安大桥','周六无人机秀结束后直接回酒店，不用抢车','D5 的行程就在这里结束'],
-  cons:['D6 去影岛、机场稍远（打车 40–50 分钟）'],
-  q:'광안리 오션뷰 호텔',tip:'预算够可以「西面 1 晚 + 广安里海景 1 晚」。'},
- {id:'z_hu',c:'busan',name:'海云台',ll:[35.1605,129.1600],r:600,rec:'度假',nights:'备选',
-  pros:['灯光节就在门口','度假氛围、大酒店多'],
-  cons:['离南浦、机场最远（约 1 小时）'],
-  q:'해운대 호텔',tip:'行程更偏海边度假时再考虑。'},
+ {id:'z_sm',c:'busan',name:'【已订】西面 · Denbasta Central Hotel',ll:[35.1550,129.0560],r:700,rec:'已预订 🎉',nights:'11/27 – 11/29（2 晚 · 确认入住）',
+  booked:true,
+  addr:'부산진구 부전로20번길 34 (西面站7号口步行6分钟)',
+  pros:[
+    '【1/2号线双线黄金十字】釜山最核心枢纽西面，去梵鱼寺(1号线)、海云台/广安里(2号线)全免转线',
+    '【高性价比新翻新】客房宽敞整洁、配备独立大浴缸与智能马桶，闹中取静',
+    '【下楼即是美食街】田浦咖啡街、西面猪肉汤饭一条街、乐天百货步行可达',
+    '【往返交通便捷】D3 釜山站坐 1 号线仅 10 分钟到西面；D5 影岛打车约 15 分钟，去机场约 30 分钟'
+  ],
+  cons:['处于繁华商业区，无开阔一线海景'],
+  q:'덴바스타 센트럴 호텔 서면',
+  tip:'地铁西面站 7 号口出来沿大路走，西面是游览釜山各方向最顺畅的中枢。'},
+ {id:'z_hotel_tt',c:'busan',name:'【西面备选】Hotel tt Seomyeon（西面TT酒店）',ll:[35.1612,129.0578],r:400,rec:'干净商务 🏨',nights:'11/27 – 11/29（备选）',
+  pros:['西面站 9 号口或 11 号口步行 4–5 分钟，靠近市民公园，环境更安静','标准现代三星商务酒店，房间采光通透、床品承托力良好、隔音扎实','楼下即有 7-Eleven 与星巴克，生活便利'],
+  cons:['步行到田浦咖啡街相比 Denbasta 需多走 5 分钟'],
+  q:'호텔 티티 서면',tip:'喜欢正规现代商务风格、对睡眠安静要求高可备选。'},
+ {id:'z_grab_ocean',c:'busan',name:'【海景备选】Grab The Ocean Songdo（松岛海景）',ll:[35.0782,129.0180],r:500,rec:'一线全海景 🌊',nights:'11/27 – 11/29（备选）',
+  pros:['正对松岛海水浴场，拉开窗帘就是无遮挡一览无余的蔚蓝大海与跨海缆车','楼下就是松岛海滨漫步道与海鲜烤贝餐厅，度假感极其浓郁','离影岛白浅滩和南浦老城很近，打车仅约 10–12 分钟 (约 7,000~8,500 韩元)'],
+  cons:['无直达地铁，进出市区依赖打车（打车到釜山站约 8,000~10,000 韩元/15分钟，打车到西面约 12,000~14,000 韩元/22分钟）','周六去海云台与梵鱼寺路途较远'],
+  q:'그랩 디 오션 송도',tip:'如果特别执念「醒来看到大海」，且能接受主要依靠 Kakao T 打车出行，松岛海景体验一流。'},
+ {id:'z_gal',c:'busan',name:'广安里',ll:[35.1540,129.1190],r:600,rec:'海景',nights:'备选参考',
+  pros:['海景房正对广安大桥','周六无人机秀结束后直接回酒店，不用抢车','D4 行程就在这里结束'],
+  cons:['D5 去影岛、机场稍远（打车 40–50 分钟）'],
+  q:'광안리 오션뷰 호텔',tip:'预算够可以考虑广安里一线海景房。'},
 ];
 
 const AUTUMN = [
@@ -1409,17 +1405,16 @@ const SAMGYETANG_SPOTS = [
 
 const RESTOS = [
  {p:'r_kyoja',day:'d1',how:'walk',hl:'现场排队',d:'刀切面 + 饺子，翻台很快，排队 10–20 分钟。'},
- {p:'r_bagel',day:'d2',how:'wait',hl:'开门前排队 / 现场取号',d:'开门前 30 分钟到，周末更夸张；工作日相对好些。'},
- {p:'archivist',day:'d2',how:'wait',hl:'朋友力荐 · 现场取号',d:'本地朋友认证首尔天花板级维也纳咖啡 (Einspänner)！丝滑厚奶盖，配无花果费南雪。'},
- {p:'samcheongdong',day:'d2',how:'walk',hl:'米其林推荐',d:'三清洞瓦片面片汤老店，小瓮盛装，蛤蜊汤底鲜甜，配自制爽口泡菜。'},
- {p:'r_gwangjang',day:'d2',how:'walk',hl:'随到随吃',d:'绿豆煎饼、生拌牛肉、麻药紫菜包饭，挑人多的摊位坐。'},
- {p:'r_bonjeon',day:'d4',how:'walk',hl:'随到随吃',d:'釜山站对面，汤饭老店，排队一般不久。'},
- {p:'dongnae',day:'d5',how:'walk',hl:'现场排队',d:'东莱葱饼老店，饭点人多，建议 11:30 前到。'},
- {p:'strut',day:'d5',how:'walk',hl:'FT 全球百佳咖啡馆',d:'田浦独栋极简自烘焙馆。埃塞俄比亚手冲单品（花果香通透）+ 梵山牧场有机奶拿铁（丝滑如冰淇淋）。'},
- {p:'r_geumsu',day:'d5',how:'walk',hl:'随到随吃',d:'海云台河豚汤老店，适合冷天，也可当早餐。'},
- {p:'r_millac',day:'d5',how:'walk',hl:'随到随吃',d:'美食集市形式，选择多，无人机秀前早点占位。'},
- {p:'samjin',day:'d6',how:'walk',hl:'随到随买',d:'几十种鱼糕现做，可买真空包装带回国（注意海关规定）。'},
- {p:'r_jagalchi',day:'d6',how:'walk',hl:'晚班机可选',d:'一楼挑海鲜、二楼加工，先问清价格和加工费。'},
+ {p:'daelim',day:'d2',how:'walk',hl:'随到随吃',d:'圣水挑高红砖厂房画廊咖啡，手冲咖啡与披萨意面。'},
+ {p:'r_bagel',day:'d2',how:'wait',hl:'备选 · 开门前排队',d:'若走古宫路线：开门前 30 分钟到，周末更夸张；工作日相对好些。'},
+ {p:'archivist',day:'d2',how:'wait',hl:'备选 · 朋友力荐',d:'若走古宫路线：首尔天花板级维也纳咖啡 (Einspänner)！丝滑厚奶盖配无花果费南雪。'},
+ {p:'r_bonjeon',day:'d3',how:'walk',hl:'随到随吃',d:'釜山站对面，汤饭老店，出站第一餐灵魂暖胃。'},
+ {p:'dongnae',day:'d4',how:'walk',hl:'现场排队',d:'东莱葱饼老店，饭点人多，建议 11:30 前到。'},
+ {p:'strut',day:'d4',how:'walk',hl:'FT 全球百佳咖啡馆',d:'田浦独栋极简自烘焙馆。埃塞俄比亚手冲单品（花果香通透）+ 梵山牧场有机奶拿铁（丝滑如冰淇淋）。'},
+ {p:'r_geumsu',day:'d4',how:'walk',hl:'随到随吃',d:'海云台河豚汤老店，适合冷天，也可当早餐。'},
+ {p:'r_millac',day:'d4',how:'walk',hl:'随到随吃',d:'美食集市形式，选择多，无人机秀前早点占位。'},
+ {p:'samjin',day:'d5',how:'walk',hl:'随到随买',d:'几十种鱼糕现做，可买真空包装带回国（注意海关规定）。'},
+ {p:'r_jagalchi',day:'d5',how:'walk',hl:'晚班机可选',d:'一楼挑海鲜、二楼加工，先问清价格和加工费。'},
 ];
 
 const DISHES = [
@@ -1501,7 +1496,7 @@ addEventListener('hashchange', route);
 
 /* ================= COUNTDOWN ================= */
 (function(){
-  const start = new Date('2026-11-24T00:00:00+09:00'), end = new Date('2026-11-30T00:00:00+09:00');
+  const start = new Date('2026-11-25T00:00:00+09:00'), end = new Date('2026-11-30T00:00:00+09:00');
   const now = new Date(), chip = $('#countChip');
   if (now < start){ chip.textContent = '还有 ' + Math.ceil((start - now) / 864e5) + ' 天出发'; }
   else if (now < end){
@@ -1539,7 +1534,7 @@ addEventListener('hashchange', route);
 /* ================= DAY VIEW ================= */
 function renderDayChips(){
   const isOv = curDay === 'overview';
-  const ovChip = `<button type="button" class="chip" data-d="overview" aria-pressed="${isOv}"><b>📋 6天总览</b><span>${isOv ? '全景速览' : '返回总览'}</span></button>`;
+  const ovChip = `<button type="button" class="chip" data-d="overview" aria-pressed="${isOv}"><b>📋 5天总览</b><span>${isOv ? '全景速览' : '返回总览'}</span></button>`;
   $('#dayChips').innerHTML = ovChip + DAYS.map(d =>
     `<button type="button" class="chip" data-d="${d.id}" aria-pressed="${d.id===curDay}"><b>${d.id.toUpperCase()} · ${d.city==='seoul'?'首尔':'釜山'}</b><span>${d.md} ${d.wd}</span></button>`).join('');
 }
@@ -1691,39 +1686,39 @@ function renderOverview(){
           <div class="ov-hero-title-box">
             <img class="ov-hero-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23b4442a'/%3E%3Ctext x='50' y='58' font-size='38' text-anchor='middle' fill='white'%3E🍁%3C/text%3E%3C/svg%3E" alt="Korea Autumn" id="ovHeroAvatar">
             <div>
-              <h2>6 天 5 晚 · 韩国晚秋全景行程总览</h2>
-              <p>首尔晚秋红叶与圣诞浪漫 ➔ 高铁 KTX 极速指南 ➔ 釜山山寺海景与世界百佳咖啡</p>
+              <h2>5 天 4 晚 · 韩国晚秋全景行程总览</h2>
+              <p>首尔晚秋落叶、文创与江南医美 ➔ 高铁 KTX/SRT 极速南下 ➔ 釜山海景与世界百佳咖啡</p>
             </div>
           </div>
-          <span class="ov-badge-autumn">🍂 11.24 – 11.29 黄金时段</span>
+          <span class="ov-badge-autumn">🍂 11.25 – 11.29 黄金时段</span>
         </div>
         <div class="ov-stats-grid">
           <div class="ov-stat-tile">
             <span class="ov-stat-label">🗓 全程跨度</span>
-            <span class="ov-stat-val">6 天 5 晚</span>
-            <span class="ov-stat-sub">11/24(二) ~ 11/29(日)</span>
+            <span class="ov-stat-val">5 天 4 晚</span>
+            <span class="ov-stat-sub">11/25(三) ~ 11/29(日)</span>
           </div>
           <div class="ov-stat-tile">
             <span class="ov-stat-label">🏯 首尔段节奏</span>
-            <span class="ov-stat-val">3.5 天 · 核心精选</span>
-            <span class="ov-stat-sub">宫苑晚枫 + 圣水文创 + 圣诞</span>
+            <span class="ov-stat-val">2 天 + 1上午医美</span>
+            <span class="ov-stat-sub">D1落叶圣诞 + D2汉南圣水 + D3医美</span>
           </div>
           <div class="ov-stat-tile">
-            <span class="ov-stat-label">🚄 跨城高铁 KTX</span>
+            <span class="ov-stat-label">🚅 跨城高铁 KTX/SRT</span>
             <span class="ov-stat-val">2.5 小时 · 极速直达</span>
-            <span class="ov-stat-sub">D4 14:30 首尔站 ➔ 釜山站</span>
+            <span class="ov-stat-sub">D3 14:00 新论岘 ➔ 釜山站</span>
           </div>
           <div class="ov-stat-tile">
             <span class="ov-stat-label">🌊 釜山段节奏</span>
             <span class="ov-stat-val">2.5 天 · 山海浪漫</span>
-            <span class="ov-stat-sub">梵鱼寺 + 田浦Strut + 无人机秀</span>
+            <span class="ov-stat-sub">梵鱼寺 + 田浦Strut + 影岛海崖</span>
           </div>
         </div>
       </div>
 
       <div class="ov-cinema-wrap">
         <div class="ov-cinema-header">
-          <h2><span>🎬</span> 6 天电影级风景全景画卷</h2>
+          <h2><span>🎬</span> 5 天电影级风景全景画卷</h2>
           <span class="ov-cinema-hint">💡 鼠标滑过或轻触展开风景 · 点击进入分时行程</span>
         </div>
         <div class="ov-cinema-stack" id="ovCinemaStack">
@@ -2236,7 +2231,7 @@ function renderDisc(){
     ];
     html = `<div class="snow-banner">
       <h3>❄️ 首尔初雪 · 浪漫赏雪与拍照指南</h3>
-      <p><b>为什么值得期待？</b>首尔历史平均初雪期通常落在 <b>11 月 20 日至 28 日之间</b>，你们 11.24–11.27 在首尔期间正好处于初雪概率极高的黄金交汇期！相传与心爱的人看初雪会相伴一生，是无数韩剧浪漫名场面的诞生时刻。</p>
+      <p><b>为什么值得期待？</b>首尔历史平均初雪期通常落在 <b>11 月 20 日至 28 日之间</b>，你们 11.25–11.27 在首尔期间正好处于初雪概率极高的黄金交汇期！相传与心爱的人看初雪会相伴一生，是无数韩剧浪漫名场面的诞生时刻。</p>
       <div style="font-size:.82rem;color:#1f4b73;margin-top:8px;line-height:1.6">
         <b>💡 赏雪出片与安全秘诀：</b><br>
         ① <b>手机强制开闪光灯（Flash On）</b>：夜间或阴天拍雪景，打开手机闪光灯，飘落的雪花瞬间定格成一颗颗发光的晶莹光斑；<br>
@@ -2363,12 +2358,12 @@ $('#discPanel').addEventListener('click', e => {
 const OOTD_DAYS = [
   {
     id: 'd1',
-    dayNum: 'D1 · 11.24 周日',
+    dayNum: 'D1 · 11.25 周三',
     city: 'seoul',
     cityName: '首尔',
-    title: '汉南洞斜坡漫步 · 傍晚新世界百货圣诞梦幻光影',
+    title: '德寿宫石墙落叶 · 傍晚新世界百货圣诞梦幻光影',
     weather: '首尔 2°C ~ 11°C · 早晚干冷风大 · 室内暖气 24°C',
-    spots: ['仁川机场', '汉南洞坡道', '新世界百货总店圣诞秀', '明洞商圈'],
+    spots: ['仁川机场', '德寿宫石墙路', '新世界百货总店圣诞秀', '明洞商圈'],
     palette: [
       { n: '燕麦米白', hex: '#f4ede4', c: '#423325' },
       { n: '焦糖暖棕', hex: '#9e5b32', c: '#ffffff' },
@@ -2378,57 +2373,27 @@ const OOTD_DAYS = [
     boy: {
       top: '深炭灰/黑色中长挺括毛呢大衣，内搭厚磅燕麦色圆领卫衣（内着发热内衣）',
       bottom: '垂坠直筒水洗黑/深蓝牛仔裤，或宽松休闲西裤',
-      shoes: '极度舒适且防滑软底鞋（Samba/德训鞋/New Balance 990）——汉南洞多大斜坡，鞋底千万别选硬底！',
+      shoes: '极度舒适且防滑软底鞋（Samba/德训鞋/New Balance 990）——明洞石板路与石墙路漫步很省脚力',
       acc: '黑色冷帽（Beanie）或藏青羊毛围巾，兼具挡风与街头层次'
     },
     girl: {
       top: '燕麦白/奶咖色双面羊毛大衣，内搭亲肤半高领羊绒衫（进店试衣脱穿优雅）',
       bottom: '浅米白高腰阔腿西装裤，或毛呢百褶长裙 + 120D 防风加厚发热打底袜',
-      shoes: '软皮低跟方头切尔西靴或复古球鞋，严禁细高跟（汉南洞坡度高达 25°）',
+      shoes: '软皮低跟方头切尔西靴或复古球鞋，防滑舒适软底',
       acc: '焦糖暖棕色羊绒大围巾 + 复古腋下包，涂抹水光感枫叶红唇釉'
     },
     couple: '【深浅同色系呼应】男生深炭黑外衣搭配女生浅奶白大衣；佩戴同为羊绒质感但一深一浅的围巾，松弛自然又高级。傍晚 17:30 新世界金色圣诞灯光墙亮起时，两人站在对街合影，深浅对比立体出片！',
-    photoTip: '汉南洞适合在咖啡馆落地玻璃窗边抓拍侧影；新世界百货总店对街仰拍，金色圣诞巨幕为背景，深色大衣最能压住周围车流杂光。',
-    xhs: ['汉南洞 穿搭', '首尔 11月 穿搭', '新世界百货圣诞 穿搭', '首尔 情侣 穿搭']
+    photoTip: '德寿宫石墙路趁日落斜光拍摄落叶金毯；新世界百货总店对街仰拍，金色圣诞巨幕为背景，深色大衣最能压住周围车流杂光。',
+    xhs: ['首尔 11月 穿搭', '新世界百货圣诞 穿搭', '德寿宫石墙路 拍照', '首尔 情侣 穿搭']
   },
   {
     id: 'd2',
-    dayNum: 'D2 · 11.25 周一',
+    dayNum: 'D2 · 11.26 周四',
     city: 'seoul',
     cityName: '首尔',
-    title: '古宫深秋画卷 · 昌德宫后苑秘苑 · 北村西村文艺慢行',
-    weather: '首尔 0°C ~ 9°C · 清晨微寒 · 古树林荫处偏冷 · 步数超 20,000',
-    spots: ['昌德宫后苑秘苑', '景福宫东十字阁银杏', '北村韩屋村', '西村独立小店', 'Archivist咖啡'],
-    palette: [
-      { n: '纯净米白', hex: '#f9f6f0', c: '#3b2f21' },
-      { n: '暖卡其驼', hex: '#b3804d', c: '#ffffff' },
-      { n: '常青墨绿', hex: '#274431', c: '#ffffff' },
-      { n: '复古酒红', hex: '#722230', c: '#ffffff' }
-    ],
-    boy: {
-      top: '经典驼色/深橄榄绿中长羊毛大衣，叠穿米白麻花粗织毛衣 + 浅蓝牛津纺衬衫',
-      bottom: '深咖色或墨绿色复古灯芯绒长裤（保暖且极具英伦常青藤感）',
-      shoes: '已磨合好的防滑工装皮鞋或复古跑鞋，古宫石阶与北村石坡抓地稳固',
-      acc: '苏格兰复古格纹羊毛围巾 + 复古细金属框眼镜，文青质感拉满'
-    },
-    girl: {
-      top: '奶白/燕麦色羊毛大衣，或复古牛角扣毛呢外套，内搭奶杏色羊绒打底',
-      bottom: '棕红格纹毛呢伞裙（配加厚防风发热连裤袜），在韩屋木门前摆动极其灵动',
-      shoes: '复古深棕乐福鞋（搭配加厚羊毛袜）或圆头软皮马丁靴',
-      acc: '【出片神器】焦糖色或深米色贝雷帽！再斜挎一个小巧复古马鞍包'
-    },
-    couple: '【古建避坑禁忌】景福宫与昌德宫后苑满眼皆是铺天盖地的金黄银杏与红枫，两人绝对不要穿明黄色衣服（会与树叶撞色导致人物完全隐形！）。推荐“纯白/燕麦色 + 驼色/墨绿”，在银杏落叶铺满的石板路上拍特写，气质清冷而典雅。',
-    photoTip: '昌德宫芙蓉池与后苑水阁适合拍摄水面倒影；北村韩屋村石阶推荐顺光俯拍，青瓦木窗当延伸景深。',
-    xhs: ['昌德宫后苑 穿搭', '景福宫银杏 穿搭', '北村韩屋村 拍照穿搭', '韩系 文艺情侣穿搭']
-  },
-  {
-    id: 'd3',
-    dayNum: 'D3 · 11.26 周二',
-    city: 'seoul',
-    cityName: '首尔',
-    title: '落叶黄金大道 · 首尔林漫步 · 圣水洞工业风买手店',
-    weather: '首尔 1°C ~ 10°C · 首尔林微风拂面 · 室内外频繁进出',
-    spots: ['首尔林银杏落叶林', '圣水洞买手店街', 'Point of View', 'Stand Oil', '大林仓库'],
+    title: '汉南洞斜坡买手街 · 圣水洞工业风美学 · 蚕室欧式圣诞市集',
+    weather: '首尔 1°C ~ 10°C · 汉南洞坡度大 · 室内外频繁进出 · 步数超 18,000',
+    spots: ['汉南洞坡道', '首尔林水杉步道', '圣水洞买手店', 'Point of View', '蚕室乐天圣诞'],
     palette: [
       { n: '先锋酷黑', hex: '#1c1c1c', c: '#ffffff' },
       { n: '水泥灰', hex: '#8c8c8c', c: '#ffffff' },
@@ -2438,57 +2403,57 @@ const OOTD_DAYS = [
     boy: {
       top: '黑色机车皮衣夹克 / 哑光质感短款廓形面包羽绒服，内搭深灰连帽卫衣露出内搭白T边缘',
       bottom: '炭黑直筒微宽阔腿牛仔裤，或松弛机能工装裤',
-      shoes: 'Salomon 越野跑鞋 / 银色复古慢跑鞋 / 厚底德训鞋',
+      shoes: 'Salomon 越野跑鞋 / 银色复古慢跑鞋 / 厚底德训鞋——汉南洞多大斜坡，鞋底千万别选硬底！',
       acc: '极简黑色无檐冷帽（Beanie）+ 哑光银色细项链，圣水潮男氛围拉满'
     },
     girl: {
       top: '复古黑棕色皮衣短外套 / 廓形深灰毛呢西装，内搭修身半高领黑色羊毛打底',
       bottom: '高腰拖地垂感深灰阔腿西裤（超显腿长）或直筒复古水洗牛仔裤',
-      shoes: '复古厚底乐福鞋或银色金属感球鞋',
+      shoes: '复古厚底乐福鞋或银色金属感球鞋，严禁细高跟（汉南洞坡度高达 25°）',
       acc: '【潮店点睛】高饱和跳色腋下包（亮黄/正红/银色），戴一副极简金属大耳圈'
     },
-    couple: '【韩系 Clean Fit 潮人情侣】今日告别温婉，化身圣水洞主理人情侣！以黑、灰、水泥调为主色，皮质与金属配件呼应。上午在首尔林银杏林拍抓捧落叶动态抓拍，下午在圣水洞红砖旧厂房前随性街拍，反差感极具冲击力。',
-    photoTip: '首尔林银杏树林建议低机位仰拍天空与金黄树冠；圣水洞各品牌概念店（Stand Oil、Point of View）门头与旋转楼梯是绝佳几何人像点。',
-    xhs: ['首尔林 银杏穿搭', '圣水洞 ootd', '首尔 潮人街拍穿搭', '韩系 极简情侣穿搭']
+    couple: '【韩系 Clean Fit 潮人情侣】今日告别温婉，化身汉南洞与圣水洞主理人情侣！以黑、灰、水泥调为主色，皮质与金属配件呼应。下午在圣水洞红砖旧厂房前随性街拍，傍晚在蚕室金色圣诞木屋与旋转木马前同框，反差感极具冲击力。',
+    photoTip: '汉南洞适合在咖啡馆落地玻璃窗边抓拍侧影；圣水洞各概念店门头与旋转楼梯是绝佳几何人像点；蚕室旋转木马前利用暖光拍虚化梦幻背景。',
+    xhs: ['汉南洞 穿搭', '圣水洞 ootd', '蚕室 乐天世界 圣诞穿搭', '韩系 极简情侣穿搭']
+  },
+  {
+    id: 'd3',
+    dayNum: 'D3 · 11.27 周五',
+    city: 'busan',
+    cityName: '首尔 ➔ 釜山',
+    title: '新论岘医美清透护肤 · 高铁极速南下 · 广安里大桥海滩夜景',
+    weather: '首尔 3°C / 釜山 13°C · 医美后皮肤娇嫩 · 物理防晒是第一位 · 海风冷冽',
+    spots: ['HOMMAGE CLINIC 新论岘', '水西站SRT/首尔站KTX', '釜山西面', '广安里海滩夜景'],
+    palette: [
+      { n: '纯净云白', hex: '#faf7f2', c: '#362f28' },
+      { n: '浅燕麦驼', hex: '#cbbba7', c: '#2b231c' },
+      { n: '静谧深灰', hex: '#40454d', c: '#ffffff' },
+      { n: '广安大桥深蓝', hex: '#1e2c3d', c: '#ffffff' }
+    ],
+    boy: {
+      top: '纯棉透气厚磅连帽卫衣，外搭防风长款羊毛大衣或连帽轻羽绒（高铁冷气/海边海风随时调节）',
+      bottom: '宽松松弛直筒慢跑裤 / 弹力休闲长裤，坐高铁 2.5 小时久坐无束缚',
+      shoes: '舒适透气软底慢跑鞋，高铁进出站与海滩散步极度舒适',
+      acc: '深色墨镜 + 黑色防尘透气口罩（陪同医美与海风防风两用）'
+    },
+    girl: {
+      top: '极度亲肤柔软纯棉内搭，外穿宽松连帽开衫 + 长款防风羊毛大衣（医美诊所内穿脱轻柔，不蹭脸部）',
+      bottom: '垂感高腰阔腿针织裤或松弛慢跑卫裤，腹部零压迫',
+      shoes: '一脚蹬懒人平底鞋或软底小白鞋，轻便舒适',
+      acc: '【医美术后神器】遮阳防晒宽檐渔夫帽（严密遮蔽前额脸颊紫外线）+ 防紫外线大框墨镜 + 无菌透气口罩'
+    },
+    couple: '【松弛治愈 · 旅人与护肤修养】今日以“极致柔软、好脱穿、严密防晒”为第一法则。两人佩戴同色系简约墨镜与黑色口罩，内搭纯白与燕麦灰，高铁车厢内手捧热咖啡松弛靠坐；傍晚抵达广安里，裹上温暖大衣在海风中看跨海大桥霓虹，自在又治愈。',
+    photoTip: '广安里海滩夜晚以亮起彩灯的广安大桥为背景，在沙滩上拍背影或侧身低头微笑，海风吹起围巾与发丝极具电影质感。',
+    xhs: ['韩国医美 穿搭', '首尔到釜山 高铁穿搭', '广安里海滩 夜景穿搭', '旅行 舒适情侣穿搭']
   },
   {
     id: 'd4',
-    dayNum: 'D4 · 11.27 周三',
+    dayNum: 'D4 · 11.28 周六',
     city: 'busan',
     cityName: '釜山',
-    title: 'KTX南下釜山 · 梦幻天空胶囊列车 · 青沙浦海风晚霞',
-    weather: '釜山 7°C ~ 15°C · 较首尔暖和 5°C · 海边阵风 4~5 级 · 防海风是核心',
-    spots: ['KTX高铁', '尾浦站天空胶囊列车', '青沙浦红白双灯塔', '灌篮高手海边铁道'],
-    palette: [
-      { n: '奶润纯白', hex: '#fdfbf7', c: '#45382b' },
-      { n: '浅海雾蓝', hex: '#7ea4ba', c: '#ffffff' },
-      { n: '明媚奶黄', hex: '#f1d17a', c: '#3d3013' },
-      { n: '沉稳藏青', hex: '#1d2c40', c: '#ffffff' }
-    ],
-    boy: {
-      top: '防风浅卡其连帽夹克 / 牛仔外套叠穿羊羔毛内胆，内搭舒适连帽衫（坐 KTX 很松弛）',
-      bottom: '浅蓝直筒牛仔裤或米咖色休闲裤',
-      shoes: '轻便白鞋或复古跑鞋，踩海滩沙子与木栈道极轻便',
-      acc: '深色防风墨镜——海面阳光与海风很大，墨镜是拍海边侧脸利器'
-    },
-    girl: {
-      top: '浅奶白中长防风风衣 / 软乎乎奶油色马海毛开衫 / 浅粉或浅蓝软糯针织',
-      bottom: '垂感白色直筒裤，或纯色雪纺/针织长裙（海风吹拂时裙摆轻扬极具电影感）',
-      shoes: '平底小白鞋或轻便玛丽珍鞋',
-      acc: '软绵绵米白大围巾或毛线帽，海风大时护头防吹痛，抓拍碎发超温柔'
-    },
-    couple: '【胶囊车厢防撞色指南】海云台天空胶囊列车车厢颜色浓艳（红/黄/绿/蓝），背景是大海。两人切忌穿花哨大红大绿！选择“纯奶白+牛仔蓝”或“浅灰+藏青”，坐在车厢窗边自然对视或看海，车厢内自然漫射光让皮肤通透白皙，唯美如日系纯爱电影。',
-    photoTip: '胶囊列车内从对向侧面拍侧颜与海面；青沙浦铁道等红白电车驶过那一刻抓拍《灌篮高手》镰仓同款构图。',
-    xhs: ['釜山 天空胶囊列车 穿搭', '青沙浦 拍照穿搭', '釜山 海边穿搭', '海边 治愈系情侣穿搭']
-  },
-  {
-    id: 'd5',
-    dayNum: 'D5 · 11.28 周四',
-    city: 'busan',
-    cityName: '釜山',
-    title: '金井山梵鱼寺秋枫 · 影岛白浅滩海崖村 · 广安里大桥海滩夜景',
-    weather: '釜山 6°C ~ 14°C · 山间石阶微凉 · 白浅滩台阶多 · 广安里夜间海风冷冽',
-    spots: ['梵鱼寺秋枫', '白浅滩文化村', '影岛海岸步道', '广安里海水浴场夜景'],
+    title: '金井山梵鱼寺秋枫 · 田浦百佳咖啡 · 海云台灯光节 · 无人机秀',
+    weather: '釜山 6°C ~ 14°C · 山间石阶微凉 · 海云台与广安里夜间海风冷冽',
+    spots: ['梵鱼寺秋枫', '东莱葱饼', '田浦 Strut 咖啡', '海云台灯光节', '广安里无人机秀'],
     palette: [
       { n: '海崖纯白', hex: '#ffffff', c: '#333333' },
       { n: '深海湛蓝', hex: '#264a70', c: '#ffffff' },
@@ -2498,27 +2463,27 @@ const OOTD_DAYS = [
     boy: {
       top: '山系防风软壳夹克 / 短款立领防风轻羽绒，内搭透气棉长袖（爬山不闷汗，海边不灌风）',
       bottom: '耐磨深色工装休闲裤',
-      shoes: '防滑抓地力强的运动徒步鞋，梵鱼寺石板台阶与白浅滩窄崖台阶必穿！',
-      acc: '多功能防风颈圈 / 羊毛围巾，晚间广安里海滩沙滩漫步防风必备'
+      shoes: '防滑抓地力强的运动徒步鞋，梵鱼寺石板台阶抓地必穿！',
+      acc: '多功能防风颈圈 / 羊毛围巾，晚间海边漫步防风必备'
     },
     girl: {
-      top: '经典卡其双排扣风衣（抗海风第一名），内搭一件吸睛的克莱因蓝或姜黄色羊毛衫',
-      bottom: '高腰直筒深蓝牛仔裤（便于在陡峭海崖台阶行动且防风保暖）',
+      top: '经典卡其双排扣风衣（抗海风第一名），内搭一件吸睛的姜黄色或克莱因蓝羊毛衫',
+      bottom: '高腰直筒深蓝牛仔裤（便于在石阶行动且防风保暖）',
       shoes: '防滑舒适运动鞋，绝对不要穿硬底单鞋或高跟',
-      acc: '复古平顶草帽或渔夫帽（拍照道具），傍晚记得戴上厚围巾抵御广安里海风'
+      acc: '复古贝雷帽或针织毛线帽，傍晚记得戴上厚围巾抵御海云台与广安里海风'
     },
-    couple: '【山海两相宜穿搭】上午在梵鱼寺是深山红枫与古寺石阶，下午在白浅滩是“韩国圣托里尼”的蓝白村落。两人外套选防风卡其与深蓝，内搭点缀一抹亮色（姜黄或暖白），拍山景有秋意，拍海崖有明度！晚上广安里沙滩遥望发光大桥，依偎合照最浪漫。',
-    photoTip: '白浅滩必拍海岸隧道框景剪影与沿海防波堤小窗；广安里大桥 19:00 亮灯，在沙滩木椅上拍大桥背景背影照。',
-    xhs: ['白浅滩文化村 穿搭', '梵鱼寺 秋天穿搭', '广安里海滩 夜景穿搭', '釜山 山海情侣穿搭']
+    couple: '【山海两相宜穿搭】上午在梵鱼寺是深山红枫与古寺石阶，下午在田浦是精品咖啡馆文艺松弛，晚上在海云台灯光节与广安里无人机秀。两人外套选防风卡其与深蓝，内搭点缀一抹亮色（姜黄或暖白），拍山景有秋意，拍夜景有明度！',
+    photoTip: '梵鱼寺朱红山门与金黄枫树是合影位；海云台灯光节开幕装置可借助地灯光影拍梦幻人像；广安里沙滩仰拍无人机天幕。',
+    xhs: ['梵鱼寺 秋天穿搭', '田浦咖啡街 穿搭', '海云台灯光节 拍照', '广安里海滩 夜景穿搭']
   },
   {
-    id: 'd6',
-    dayNum: 'D6 · 11.29 周五',
+    id: 'd5',
+    dayNum: 'D5 · 11.29 周日',
     city: 'busan',
     cityName: '釜山',
-    title: '影岛巨型海景咖啡 · 老街寻味 · 满载轻松归国',
-    weather: '釜山 5°C ~ 13°C · 室内海景温度舒适 · 返程搬运免税品较多',
-    spots: ['P.ARK/Piaq 巨幅海景咖啡', '南浦洞/宝水洞旧书巷', '金海国际机场'],
+    title: '影岛白浅滩海崖村 · 造船厂巨幕咖啡 · 老街寻味返程',
+    weather: '釜山 5°C ~ 13°C · 室内海景温度舒适 · 白浅滩石阶多 · 携带伴手礼返程',
+    spots: ['白浅滩文化村', 'P.ARK/Momos 巨幅海景咖啡', '三进鱼糕影岛本店', 'BIFF广场', '金海国际机场'],
     palette: [
       { n: '松弛奶灰', hex: '#d6d1c7', c: '#3b342b' },
       { n: '静谧藏青', hex: '#212d3d', c: '#ffffff' },
@@ -2533,12 +2498,12 @@ const OOTD_DAYS = [
     girl: {
       top: '软糯针织开衫 + 亲肤纯棉内搭，外穿保暖羊毛外套',
       bottom: '垂坠舒适阔腿针织裤或松弛慢跑裤，坐飞机久坐不勒腹部',
-      shoes: '软底小白鞋或棉花糖运动鞋',
+      shoes: '软底小白鞋或棉花糖运动鞋，白浅滩上下台阶轻便省力',
       acc: '随身带一个大号轻便折叠旅行尼龙袋，装免税店提货的化妆品和伴手礼'
     },
     couple: '【松弛感机场旅人 (Airport Chic)】整套搭配遵循“轻盈、柔软、好脱穿”。在 P.ARK 阶梯式落地玻璃窗前，两人手握热咖啡，窗外是釜山港繁忙的船只与碧蓝海水，享受旅程最后的惬意与回甘。',
-    photoTip: 'P.ARK 的大阶梯与整面无遮挡海景玻璃是出片神位，坐姿侧拍、手捧咖啡杯随性抓拍。',
-    xhs: ['韩国秋冬 机场穿搭', '釜山 咖啡厅拍照穿搭', '松弛感 旅行情侣穿搭']
+    photoTip: '白浅滩海岸隧道框景剪影与沿海小道；P.ARK 的大阶梯与整面无遮挡海景玻璃是出片神位，坐姿侧拍、手捧咖啡杯随性抓拍。',
+    xhs: ['白浅滩文化村 穿搭', '韩国秋冬 机场穿搭', '釜山 咖啡厅拍照穿搭', '松弛感 旅行情侣穿搭']
   }
 ];
 
