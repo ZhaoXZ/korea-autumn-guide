@@ -255,18 +255,19 @@ img{display:block;max-width:100%}
   .ov-strip.is-expanded .ov-strip-expand-hint{opacity:0;transform:translateY(-50%) translateX(12px)}
 }
 
-/* 右侧半透明黑色磨砂蒙版抽屉 (The Frosted Mask Drawer) */
+/* 右侧半透明浅色冰雪磨砂玻璃蒙版抽屉 (Light Frosted Snow Glass Drawer) */
 .ov-strip-drawer{
   position:absolute;z-index:4;display:flex;flex-direction:column;justify-content:space-between;
-  color:#fff;opacity:0;pointer-events:none;
+  color:#1d242b;opacity:0;pointer-events:none;
   transition:opacity .35s ease,transform .38s cubic-bezier(.2,.9,.3,1);
 }
 @media (min-width: 960px){
   .ov-strip-drawer{
     inset:0 0 0 auto;width:58%;padding:18px 24px;
-    background:linear-gradient(to right,transparent 0%,rgba(12,7,4,.82) 18%,rgba(12,7,4,.96) 42%,rgba(12,7,4,.98) 100%);
-    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-    border-left:1px solid rgba(255,255,255,.12);transform:translateX(30px);
+    background:linear-gradient(to right,rgba(255,255,255,0) 0%,rgba(246,249,252,.78) 16%,rgba(255,255,255,.90) 40%,rgba(255,255,255,.94) 100%);
+    backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);
+    border-left:1px solid rgba(255,255,255,.8);box-shadow:-12px 0 32px rgba(22,34,47,.10);
+    transform:translateX(30px);
   }
   .ov-strip:hover .ov-strip-drawer,.ov-strip:focus-within .ov-strip-drawer,.ov-strip.is-active .ov-strip-drawer{
     opacity:1;pointer-events:auto;transform:translateX(0);
@@ -275,9 +276,9 @@ img{display:block;max-width:100%}
 @media (max-width: 959px){
   .ov-strip-drawer{
     inset:68px 0 0 0;padding:12px 14px 14px;
-    background:linear-gradient(to top,rgba(12,7,4,.98) 0%,rgba(12,7,4,.94) 75%,rgba(12,7,4,.75) 100%);
-    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-    border-top:1px solid rgba(255,255,255,.14);transform:translateY(16px);
+    background:linear-gradient(to top,rgba(255,255,255,.96) 0%,rgba(246,249,252,.90) 76%,rgba(246,249,252,.72) 100%);
+    backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);
+    border-top:1px solid rgba(255,255,255,.85);transform:translateY(16px);
     overflow-y:auto;-webkit-overflow-scrolling:touch;
   }
   .ov-strip.is-expanded .ov-strip-drawer{
@@ -285,45 +286,45 @@ img{display:block;max-width:100%}
   }
 }
 
-/* 抽屉内部元素 */
+/* 抽屉内部元素（浅色冰雪玻璃上的深墨文字） */
 .ov-drawer-flow{margin-bottom:8px}
-.ov-drawer-flow-title{font-size:.68rem;font-weight:800;color:rgba(255,255,255,.6);margin-bottom:5px;display:flex;align-items:center;gap:4px;letter-spacing:.05em}
+.ov-drawer-flow-title{font-size:.68rem;font-weight:800;color:#5a6572;margin-bottom:5px;display:flex;align-items:center;gap:4px;letter-spacing:.05em}
 .ov-drawer-pills{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
-.ov-drawer-pill{font-size:.74rem;font-weight:600;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:2px 7px;white-space:nowrap}
-.ov-drawer-arrow{color:var(--dc,#d49a2a);font-size:.72rem;font-weight:900}
-.ov-drawer-meta{display:flex;flex-direction:column;gap:5px;margin-bottom:10px;font-size:.76rem;line-height:1.42;color:rgba(255,255,255,.92)}
+.ov-drawer-pill{font-size:.74rem;font-weight:600;color:#1d242b;background:rgba(255,255,255,.78);border:1px solid rgba(22,34,47,.12);border-radius:6px;padding:2px 7px;white-space:nowrap;box-shadow:0 1px 2px rgba(22,34,47,.05)}
+.ov-drawer-arrow{color:var(--dc,#9e2a3b);font-size:.72rem;font-weight:900}
+.ov-drawer-meta{display:flex;flex-direction:column;gap:5px;margin-bottom:10px;font-size:.76rem;line-height:1.42;color:#27313b}
 .ov-drawer-meta-row{display:flex;align-items:flex-start;gap:6px}
-.ov-drawer-meta-label{flex-shrink:0;color:rgba(255,255,255,.58);font-weight:700}
+.ov-drawer-meta-label{flex-shrink:0;color:#5a6572;font-weight:700}
 .ov-drawer-cta-box{margin-top:auto;display:flex;justify-content:flex-end}
 .ov-drawer-cta-btn{
   display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:var(--dc,#9e2a3b);
   color:#fff;font-size:.82rem;font-weight:700;border-radius:10px;text-decoration:none;
-  border:1px solid rgba(255,255,255,.25);box-shadow:0 4px 14px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.4);box-shadow:0 4px 14px rgba(22,34,47,.22);
   transition:all .2s ease;cursor:pointer;
 }
-.ov-drawer-cta-btn:hover{filter:brightness(1.15);transform:translateX(4px);box-shadow:0 6px 20px rgba(0,0,0,.45)}
+.ov-drawer-cta-btn:hover{filter:brightness(1.1);transform:translateX(4px);box-shadow:0 6px 20px rgba(22,34,47,.3)}
 
-/* 全屏沉浸式动画转场 (Curtain Transition) */
+/* 全屏沉浸式动画转场 (Light Frost Curtain Transition) */
 .ov-curtain{
-  position:fixed;inset:0;z-index:9999;background:rgba(12,7,4,.94);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  position:fixed;inset:0;z-index:9999;background:rgba(244,247,250,.92);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:16px;color:#fff;opacity:0;pointer-events:none;
+  gap:16px;color:#1d242b;opacity:0;pointer-events:none;
   transition:opacity .3s cubic-bezier(.2,.9,.3,1);
 }
 .ov-curtain.is-active{opacity:1;pointer-events:auto}
 .ov-curtain-spinner{
-  width:40px;height:40px;border:3px solid rgba(255,255,255,.18);
+  width:40px;height:40px;border:3px solid rgba(22,34,47,.12);
   border-top-color:var(--curtain-c,#9e2a3b);border-radius:50%;
   animation:curtainSpin .65s linear infinite;
 }
 @keyframes curtainSpin{to{transform:rotate(360deg)}}
-.ov-curtain-text{font-family:var(--serif);font-size:1.18rem;letter-spacing:.06em;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.4)}
+.ov-curtain-text{font-family:var(--serif);font-size:1.18rem;letter-spacing:.06em;color:#1d242b}
 
 /* 底部速查全景表格 */
 .ov-table-wrap{overflow-x:auto;background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh);-webkit-overflow-scrolling:touch;margin-bottom:20px}
 .ov-table{width:100%;border-collapse:collapse;font-size:.8rem;text-align:left;line-height:1.45}
-.ov-table th{background:#f7efe4;color:var(--ink);font-weight:700;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+.ov-table th{background:#eef2f6;color:var(--ink);font-weight:700;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
 .ov-table td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--ink);vertical-align:top}
 .ov-table tr:last-child td{border-bottom:none}
 .ov-table tr:hover td{background:#fcf8f2}
@@ -793,7 +794,7 @@ const PL = {
   seoulst:{n:'首尔站（KTX）',ko:'서울역',xhs:'首尔站 KTX',c:'seoul',ll:[37.5547,126.9707],img:'',emo:'🚆'},
   gyeongui:{n:'京义线林荫道',ko:'경의선숲길 연남동',xhs:'延南洞 京义线林荫道',c:'seoul',ll:[37.5600,126.9250],img:'gyeongui'},
   namsan:{n:'南山 · 首尔塔',ko:'남산서울타워',xhs:'南山塔 首尔塔 夜景',c:'seoul',ll:[37.5512,126.9882],img:'namsan'},
-  hyundai:{n:'The Hyundai Seoul',ko:'더현대 서울',xhs:'The Hyundai Seoul 圣诞',c:'seoul',ll:[37.5259,126.9284],img:'',emo:'🏬'},
+  hyundai:{n:'The Hyundai Seoul',ko:'더현대 서울',xhs:'The Hyundai Seoul 圣诞',c:'seoul',ll:[37.5259,126.9284],img:'hyundai',emo:'🏬'},
   mangwon:{n:'望远市场',ko:'망원시장',xhs:'望远市场 美食',c:'seoul',ll:[37.5566,126.9060],img:'mangwon'},
   object:{n:'object 独立设计店',ko:'오브젝트 서교점',xhs:'object 弘大 独立设计',c:'seoul',ll:[37.5540,126.9190],img:'',emo:'🧸'},
 
@@ -852,11 +853,11 @@ const PL = {
   r_jagalchi:{n:'札嘎其 二楼海鲜加工',ko:'자갈치시장',xhs:'札嘎其 二楼海鲜加工 釜山',c:'busan',ll:[35.0968,129.0310],img:'jagalchi',food:1},
 
   // 初冬室内美学与圣诞地标
-  leeum:{n:'Leeum 三星美术馆',ko:'리움미술관',xhs:'Leeum 三星美术馆 汉南洞',c:'seoul',ll:[37.5384,126.9991],img:'',emo:'🏛',subway:'6号线汉江镇站 1 号口步行 5 分钟',tip:'室内暖气极足，白色螺旋楼梯必拍，建议提前官网预约'},
-  coex:{n:'COEX 星空图书馆（圣诞树）',ko:'스타필드 코엑스몰 별마당도서관',xhs:'COEX 星空图书馆 圣诞树',c:'seoul',ll:[37.5101,127.0598],img:'',emo:'🎄',subway:'9号线奉恩寺站 7 号口直连 / 2号线三成站直连',tip:'全室内超巨型金色圣诞树与万册书墙，江南医美后顺路 7 分钟直达'},
+  leeum:{n:'Leeum 三星美术馆',ko:'리움미술관',xhs:'Leeum 三星美术馆 汉南洞',c:'seoul',ll:[37.5384,126.9991],img:'leeum',emo:'🏛',subway:'6号线汉江镇站 1 号口步行 5 分钟',tip:'室内暖气极足，白色螺旋楼梯必拍，建议提前官网预约'},
+  coex:{n:'COEX 星空图书馆（圣诞树）',ko:'스타필드 코엑스몰 별마당도서관',xhs:'COEX 星空图书馆 圣诞树',c:'seoul',ll:[37.5101,127.0598],img:'coex',emo:'🎄',subway:'9号线奉恩寺站 7 号口直连 / 2号线三成站直连',tip:'全室内超巨型金色圣诞树与万册书墙，江南医美后顺路 7 分钟直达'},
 
   // 医美与高铁枢纽
-  hommage:{n:'HOMMAGE CLINIC (新论岘)',ko:'오마쥬의원',xhs:'HOMMAGE CLINIC 新论岘 皮肤科',c:'seoul',ll:[37.5055, 127.0242],img:'',emo:'✨',subway:'9号线/新分唐线新论岘站4号口步行2分钟（江南大道509 天空眼科大楼4F）',tip:'韩国专业私立皮肤管理诊所，大行李可免费暂存前台'},
+  hommage:{n:'HOMMAGE CLINIC (新论岘)',ko:'오마쥬의원',xhs:'HOMMAGE CLINIC 新论岘 皮肤科',c:'seoul',ll:[37.5055, 127.0242],img:'hommage',emo:'✨',subway:'9号线/新分唐线新论岘站4号口步行2分钟（江南大道509 天空眼科大楼4F）',tip:'韩国专业私立皮肤管理诊所，大行李可免费暂存前台'},
   suseost:{n:'水西站（SRT）',ko:'수서역',xhs:'水西站 SRT 釜山',c:'seoul',ll:[37.4874, 127.1018],img:'',emo:'🚅',subway:'新论岘乘新分唐线转水仁盆唐线至水西站仅约18分钟，或打车约20分钟直达'},
 
   // 住宿（首尔候选与釜山已订）

@@ -6,7 +6,9 @@ HR = "/tmp/highres_curated"
 TMP = "/tmp"
 CAND = "/Users/zhaoxiaozhi/.gemini/antigravity/brain/f131a7ba-2d71-4259-b4fd-ee18428c1268/scratch/cand"
 IMG_DIR = os.path.join(BASE, 'img')
+CUSTOM_DIR = os.path.join(BASE, 'custom_photos')
 os.makedirs(IMG_DIR, exist_ok=True)
+os.makedirs(CUSTOM_DIR, exist_ok=True)
 
 MAPPING = {
     # 🍁 Autumn Highlights (High-aesthetic golden ginkgo & vibrant red maples)
@@ -65,33 +67,41 @@ MAPPING = {
 }
 
 photos_dict = {}
-total_b64_len = 0
 
-for k, p in MAPPING.items():
-    if not os.path.exists(p):
-        webp_path = os.path.join(IMG_DIR, f"{k}.webp")
-        if os.path.exists(webp_path):
-            with open(webp_path, 'rb') as rf:
-                webp_bytes = rf.read()
-            b64 = base64.b64encode(webp_bytes).decode('ascii')
-            photos_dict[k] = f"data:image/webp;base64,{b64}"
-            total_b64_len += len(b64)
-            continue
-        print(f"Warning: file {p} does not exist!")
-        continue
-    im = Image.open(p).convert('RGB')
-    im.thumbnail((800, 600), Image.Resampling.LANCZOS)
-    
-    buf = io.BytesIO()
-    im.save(buf, format='WEBP', quality=82, method=6)
-    webp_bytes = buf.getvalue()
-    
-    with open(os.path.join(IMG_DIR, f"{k}.webp"), 'wb') as wf:
-        wf.write(webp_bytes)
-        
-    b64 = base64.b64encode(webp_bytes).decode('ascii')
-    photos_dict[k] = f"data:image/webp;base64,{b64}"
-    total_b64_len += len(b64)
+# Collect any additional custom keys dropped in custom_photos/
+all_keys = list(MAPPING.keys())
+for fn in os.listdir(CUSTOM_DIR):
+    stem, ext = os.path.splitext(fn)
+    if ext.lower() in ('.jpg', '.jpeg', '.png', '.webp') and stem not in all_keys:
+        all_keys.append(stem)
+
+def find_custom_photo(key):
+    for ext in ('.jpg', '.jpeg', '.png', '.webp', '.JPG', '.JPEG', '.PNG', '.WEBP'):
+        cand = os.path.join(CUSTOM_DIR, f"{key}{ext}")
+        if os.path.exists(cand):
+            return cand
+    return None
+
+for k in all_keys:
+    webp_path = os.path.join(IMG_DIR, f"{k}.webp")
+    custom_p = find_custom_photo(k)
+    src_p = custom_p or MAPPING.get(k)
+
+    if custom_p:
+        im = Image.open(custom_p).convert('RGB')
+        im.thumbnail((1920, 1440), Image.Resampling.LANCZOS)
+        im.save(webp_path, format='WEBP', quality=90, method=6)
+        print(f"✨ Custom 2K photo applied: {k} -> {os.path.getsize(webp_path)//1024} KB")
+    elif src_p and os.path.exists(src_p):
+        im = Image.open(src_p).convert('RGB')
+        im.thumbnail((1200, 900), Image.Resampling.LANCZOS)
+        im.save(webp_path, format='WEBP', quality=86, method=6)
+
+    if os.path.exists(webp_path):
+        mtime = int(os.path.getmtime(webp_path))
+        photos_dict[k] = f"img/{k}.webp?v={mtime}"
+    else:
+        print(f"Warning: no image found for {k}")
 
 # Build credits list
 cands_file = os.path.join(CAND, 'candidates.json')
