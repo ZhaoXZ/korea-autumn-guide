@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#6b2f1f">
+<meta name="theme-color" content="#16222f">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="首尔釜山晚秋">
-<title>首尔晚秋深度漫游指南｜11.25–11.29</title>
+<title>首尔初冬 · 圣诞暖游指南｜11.25–11.29</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -16,10 +16,10 @@
 <style>/*LEAFLET_CSS*/</style>
 <style>
 :root{
-  --bg:#f7f1e7; --paper:#fffdf9; --ink:#2f241d; --ink2:#75645a; --line:#ebdfcc;
-  --maple:#b4442a; --maple-s:#f6e1d8; --ginkgo:#d49a2a; --ginkgo-s:#fbefd4;
-  --pine:#4f6b4a; --pine-s:#e3ebdc; --night:#2d3a55; --night-s:#e1e6f1;
-  --rose:#c2577a; --rose-s:#f7e2ea;
+  --bg:#f4f5f7; --paper:#ffffff; --ink:#1d242b; --ink2:#5a6572; --line:#e1e6ec;
+  --maple:#9e2a3b; --maple-s:#f9e6e9; --ginkgo:#c49234; --ginkgo-s:#fbf2de;
+  --pine:#2a5849; --pine-s:#e2ede8; --night:#1b2c42; --night-s:#e2e8f2;
+  --rose:#8a495d; --rose-s:#f4e5ea;
   --r:16px; --sh:0 1px 2px rgb(60 40 20/.06),0 4px 16px rgb(60 40 20/.07);
   --tabh:62px; --safe-b:env(safe-area-inset-bottom,0px);
   --sans:"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
@@ -37,7 +37,7 @@ button{font:inherit;color:inherit}
 img{display:block;max-width:100%}
 
 /* ---------- app header ---------- */
-.appbar{position:sticky;top:0;z-index:40;background:linear-gradient(120deg,#4a2618,#7a3420 55%,#a6532a);color:#fff7ea;
+.appbar{position:sticky;top:0;z-index:40;background:linear-gradient(120deg,#16222f,#223846 55%,#2b4a52);color:#f9f6ef;
   padding:calc(env(safe-area-inset-top,0px) + 10px) 16px 10px}
 .appbar .row{display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:1100px;margin:0 auto}
 .appbar-brand{display:flex;align-items:center;gap:10px;min-width:0}
@@ -164,7 +164,7 @@ img{display:block;max-width:100%}
 .ov-hero-card{background:linear-gradient(135deg,#fcf8f2 0%,#f5eee1 100%);border:1px solid #e7dac8;border-radius:18px;padding:18px;margin:8px 0 16px;box-shadow:var(--sh)}
 .ov-hero-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
 .ov-hero-title-box{display:flex;align-items:center;gap:12px}
-.ov-hero-avatar{width:46px;height:46px;border-radius:50%;border:2px solid #b4442a;object-fit:cover;box-shadow:0 2px 8px rgba(0,0,0,0.12);background:rgba(255,255,255,0.4);flex-shrink:0}
+.ov-hero-avatar{width:46px;height:46px;border-radius:50%;border:2px solid #9e2a3b;object-fit:cover;box-shadow:0 2px 8px rgba(0,0,0,0.12);background:rgba(255,255,255,0.4);flex-shrink:0}
 .ov-hero-title-box h2{font-family:var(--serif);font-size:1.22rem;margin:0;color:var(--ink);line-height:1.3}
 .ov-hero-title-box p{margin:3px 0 0;font-size:.78rem;color:var(--ink2)}
 .ov-badge-autumn{background:var(--maple-s);color:var(--maple);border:1px solid rgba(180,68,42,0.25);font-weight:700;font-size:.76rem;padding:3px 10px;border-radius:99px;white-space:nowrap}
@@ -190,7 +190,7 @@ img{display:block;max-width:100%}
     box-shadow:0 4px 14px rgba(0,0,0,.14);border:1.5px solid rgba(255,255,255,.2);background:#1a120c;
   }
   .ov-strip:hover,.ov-strip:focus-within,.ov-strip.is-active{
-    flex:3.6;box-shadow:0 14px 40px rgba(0,0,0,.35);border-color:var(--dc,#b4442a);
+    flex:3.6;box-shadow:0 14px 40px rgba(0,0,0,.35);border-color:var(--dc,#9e2a3b);
   }
 }
 
@@ -204,7 +204,7 @@ img{display:block;max-width:100%}
     background:#1a120c;
   }
   .ov-strip.is-expanded{
-    height:390px;box-shadow:0 10px 30px rgba(0,0,0,.28);border-color:var(--dc,#b4442a);
+    height:390px;box-shadow:0 10px 30px rgba(0,0,0,.28);border-color:var(--dc,#9e2a3b);
   }
 }
 
@@ -234,7 +234,7 @@ img{display:block;max-width:100%}
   .ov-strip.is-expanded .ov-strip-summary{top:14px;transform:translateY(0);max-width:86%}
 }
 .ov-strip-badgerow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.ov-strip-badge{background:var(--dc,#b4442a);color:#fff;font-weight:800;font-size:.78rem;padding:2px 9px;border-radius:6px;letter-spacing:.02em;box-shadow:0 1px 4px rgba(0,0,0,.35)}
+.ov-strip-badge{background:var(--dc,#9e2a3b);color:#fff;font-weight:800;font-size:.78rem;padding:2px 9px;border-radius:6px;letter-spacing:.02em;box-shadow:0 1px 4px rgba(0,0,0,.35)}
 .ov-strip-date{font-size:.8rem;font-weight:700;color:#fcefe2;text-shadow:0 1px 3px rgba(0,0,0,.7)}
 .ov-strip-city{font-size:.7rem;font-weight:600;padding:2px 7px;border-radius:6px;background:rgba(255,255,255,.2);color:#fff;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.15)}
 .ov-strip-title{font-family:var(--serif);font-size:1.08rem;font-weight:700;color:#fff;margin:0;line-height:1.35;text-shadow:0 1px 4px rgba(0,0,0,.85)}
@@ -296,7 +296,7 @@ img{display:block;max-width:100%}
 .ov-drawer-meta-label{flex-shrink:0;color:rgba(255,255,255,.58);font-weight:700}
 .ov-drawer-cta-box{margin-top:auto;display:flex;justify-content:flex-end}
 .ov-drawer-cta-btn{
-  display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:var(--dc,#b4442a);
+  display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:var(--dc,#9e2a3b);
   color:#fff;font-size:.82rem;font-weight:700;border-radius:10px;text-decoration:none;
   border:1px solid rgba(255,255,255,.25);box-shadow:0 4px 14px rgba(0,0,0,.35);
   transition:all .2s ease;cursor:pointer;
@@ -314,7 +314,7 @@ img{display:block;max-width:100%}
 .ov-curtain.is-active{opacity:1;pointer-events:auto}
 .ov-curtain-spinner{
   width:40px;height:40px;border:3px solid rgba(255,255,255,.18);
-  border-top-color:var(--curtain-c,#b4442a);border-radius:50%;
+  border-top-color:var(--curtain-c,#9e2a3b);border-radius:50%;
   animation:curtainSpin .65s linear infinite;
 }
 @keyframes curtainSpin{to{transform:rotate(360deg)}}
@@ -394,11 +394,11 @@ img{display:block;max-width:100%}
 
 /* ---------- ootd (fashion & style) ---------- */
 .ootd-intro{margin:12px 14px 16px;background:linear-gradient(135deg,#fff8f0,#fff1e5);border:1px solid #ebd0bc;border-radius:14px;padding:14px 16px;box-shadow:var(--sh)}
-.ootd-intro h3{font-size:1.02rem;color:#7a3420;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.ootd-intro h3{font-size:1.02rem;color:#1d3842;margin-bottom:6px;display:flex;align-items:center;gap:6px}
 .ootd-intro p{font-size:.84rem;color:var(--ink2);line-height:1.55;margin:4px 0}
 .ootd-rule-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;margin-top:12px}
 .ootd-rule-item{background:#fffdf9;border:1px solid #ebd0bc;border-radius:10px;padding:10px 12px;font-size:.8rem;line-height:1.55}
-.ootd-rule-item b{color:#7a3420;display:flex;align-items:center;gap:5px;margin-bottom:3px;font-size:.85rem}
+.ootd-rule-item b{color:#1d3842;display:flex;align-items:center;gap:5px;margin-bottom:3px;font-size:.85rem}
 
 .ootd-filters{display:flex;gap:6px;overflow-x:auto;padding:8px 14px 14px;scrollbar-width:none}
 .ootd-filters::-webkit-scrollbar{display:none}
@@ -425,7 +425,7 @@ img{display:block;max-width:100%}
 .ootd-outfit-box{background:#fff;border:1px solid #efe4d6;border-radius:12px;padding:11px 12px}
 .ootd-outfit-title{font-size:.84rem;font-weight:700;display:flex;align-items:center;gap:6px;margin-bottom:8px}
 .ootd-outfit-title.boy{color:#2d3a55}
-.ootd-outfit-title.girl{color:#b4442a}
+.ootd-outfit-title.girl{color:#9e2a3b}
 .ootd-item-row{display:grid;grid-template-columns:46px 1fr;gap:6px;font-size:.79rem;line-height:1.5;margin-bottom:4px}
 .ootd-item-row:last-child{margin-bottom:0}
 .ootd-item-k{color:var(--ink2);font-weight:600}
@@ -478,13 +478,13 @@ img{display:block;max-width:100%}
 .food-card-title-wrap h4{font-size:1.02rem;margin:0;color:var(--ink);display:flex;align-items:center;gap:6px}
 .food-card-ko{font-size:.76rem;color:var(--ink2);margin-top:2px}
 .food-badge{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:99px;white-space:nowrap}
-.food-badge.bbq{background:#fde8e4;color:#b4442a;border:1px solid #f6c4bc}
+.food-badge.bbq{background:#fde8e4;color:#9e2a3b;border:1px solid #f6c4bc}
 .food-badge.samgye{background:#fef5e7;color:#9b5a1a;border:1px solid #f6deb6}
 .food-badge.noodle{background:#fdf2d9;color:#8a5f0d;border:1px solid #fae1a6}
 .food-tag-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
 .food-tag{font-size:.72rem;background:#f3ecdf;color:var(--ink);padding:2px 7px;border-radius:6px;font-weight:600}
 .food-dish-rec{background:#fdfaf5;border:1px dashed #ebd8c3;border-radius:10px;padding:8px 10px;font-size:.8rem;line-height:1.5}
-.food-dish-rec b{color:#7a3420}
+.food-dish-rec b{color:#1d3842}
 .food-card p{font-size:.82rem;color:var(--ink2);line-height:1.5;margin:0}
 .food-tip-box{font-size:.76rem;color:#6b5a4f;background:#f8f4ee;border-radius:8px;padding:6px 10px;display:flex;align-items:flex-start;gap:5px;line-height:1.45}
 .food-links{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
@@ -562,7 +562,7 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
   <div class="row">
     <div class="appbar-brand">
       <img src="/*COUPLE_AVATAR_SRC*/" alt="夫妻晚秋旅行头像" class="appbar-couple-avatar" width="34" height="34">
-      <h1>首尔晚秋<small>11.25 – 11.29 · 5天4晚漫游</small></h1>
+      <h1>首尔初冬 · 圣诞<small>11.25 – 11.29 · 0°C暖游</small></h1>
     </div>
     <div style="display:flex;align-items:center;gap:6px">
       <a href="#discover/snow" class="appbar-snow-pill" title="查看首尔初雪赏雪指南">❄️ 初雪特辑</a>
@@ -604,7 +604,7 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
 <section class="view" id="v-discover" aria-label="发现">
   <div class="stickybar">
     <div class="seg" id="discSeg" role="group" aria-label="分类">
-      <button type="button" data-k="autumn" aria-pressed="true">🍁 秋景</button>
+      <button type="button" data-k="autumn" aria-pressed="true">🌿 冬日公园</button>
       <button type="button" data-k="snow" aria-pressed="false">❄️ 初雪赏雪</button>
       <button type="button" data-k="brand" aria-pressed="false">🏷 品牌好店</button>
       <button type="button" data-k="shop" aria-pressed="false">🛍 逛街商圈</button>
@@ -619,14 +619,13 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
 <!-- ============ 穿搭 ============ -->
 <section class="view" id="v-ootd" aria-label="穿搭指南">
   <div class="sec-title">
-    <h2>🧣 晚秋穿搭指南</h2>
+    <h2>🧣 0°C 初冬穿搭指南</h2>
     <span class="sub">11.25–11.29 · 首尔 5 天 OOTD</span>
   </div>
 
   <div class="ootd-intro">
-    <h3>🍂 晚秋出行 · 气候与配色法则</h3>
-    <p><b>首尔 (11.25–11.27)</b>：气温 0°C ~ 11°C，早晚干冷风大，室内与地铁暖气充沛（22~25°C）。核心采用<b>「三层洋葱式穿搭」</b>。</p>
-    <p><b>釜山 (11.27–11.29)</b>：气温 6°C ~ 15°C，气候较首尔温和，但海岸与海崖（海云台、白浅滩、广安里）<b>海风偏大且冷冽</b>，防风长外套与围巾是关键。</p>
+    <h3>❄️ 0°C 初冬出行 · 暖气与圣诞配色法则</h3>
+    <p><b>首尔 (11.25–11.29)</b>：气温接近 -2°C ~ 8°C，早晚寒风凛冽，但室内商场、咖啡馆、美术馆与地铁暖气极足（22~25°C）。核心采用<b>「三层洋葱式穿搭」</b>，外抗寒风、内搭轻薄出片。</p>
     <div class="ootd-rule-grid">
       <div class="ootd-rule-item">
         <b>🧅 洋葱式三层穿搭法</b>
@@ -743,7 +742,7 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
   <ul>
     <li><a href="#days" data-v="days"><span class="ic">🗓</span>行程</a></li>
     <li><a href="#map" data-v="map"><span class="ic">🗺</span>地图</a></li>
-    <li><a href="#discover" data-v="discover"><span class="ic">🍁</span>发现</a></li>
+    <li><a href="#discover" data-v="discover"><span class="ic">🎄</span>发现</a></li>
     <li><a href="#ootd" data-v="ootd"><span class="ic">🧣</span>穿搭</a></li>
     <li><a href="#food" data-v="food"><span class="ic">🍜</span>美食</a></li>
     <li><a href="#prep" data-v="prep"><span class="ic">🧳</span>准备</a></li>
@@ -770,7 +769,7 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
 /*CREDITS*/
 
 /* ================= DATA ================= */
-const DAYCOLOR = {d1:'#b4442a', d2:'#d49a2a', d3:'#c2577a', d4:'#2d3a55', d5:'#2a7f8f'};
+const DAYCOLOR = {d1:'#9e2a3b', d2:'#2a5849', d3:'#8a495d', d4:'#c49234', d5:'#1b2c42'};
 
 // 地点：n 中文名, ko 韩文(用于 Naver/Kakao 搜索), xhs 小红书搜索词, c 城市, ll 坐标, img 照片, emo 图标
 const PL = {
@@ -852,6 +851,10 @@ const PL = {
   r_millac:{n:'Millac the Market 美食层',ko:'밀락더마켓',xhs:'Millac the Market 美食 釜山',c:'busan',ll:[35.1557,129.1303],img:'millac',food:1},
   r_jagalchi:{n:'札嘎其 二楼海鲜加工',ko:'자갈치시장',xhs:'札嘎其 二楼海鲜加工 釜山',c:'busan',ll:[35.0968,129.0310],img:'jagalchi',food:1},
 
+  // 初冬室内美学与圣诞地标
+  leeum:{n:'Leeum 三星美术馆',ko:'리움미술관',xhs:'Leeum 三星美术馆 汉南洞',c:'seoul',ll:[37.5384,126.9991],img:'',emo:'🏛',subway:'6号线汉江镇站 1 号口步行 5 分钟',tip:'室内暖气极足，白色螺旋楼梯必拍，建议提前官网预约'},
+  coex:{n:'COEX 星空图书馆（圣诞树）',ko:'스타필드 코엑스몰 별마당도서관',xhs:'COEX 星空图书馆 圣诞树',c:'seoul',ll:[37.5101,127.0598],img:'',emo:'🎄',subway:'9号线奉恩寺站 7 号口直连 / 2号线三成站直连',tip:'全室内超巨型金色圣诞树与万册书墙，江南医美后顺路 7 分钟直达'},
+
   // 医美与高铁枢纽
   hommage:{n:'HOMMAGE CLINIC (新论岘)',ko:'오마쥬의원',xhs:'HOMMAGE CLINIC 新论岘 皮肤科',c:'seoul',ll:[37.5055, 127.0242],img:'',emo:'✨',subway:'9号线/新分唐线新论岘站4号口步行2分钟（江南大道509 天空眼科大楼4F）',tip:'韩国专业私立皮肤管理诊所，大行李可免费暂存前台'},
   suseost:{n:'水西站（SRT）',ko:'수서역',xhs:'水西站 SRT 釜山',c:'seoul',ll:[37.4874, 127.1018],img:'',emo:'🚅',subway:'新论岘乘新分唐线转水仁盆唐线至水西站仅约18分钟，或打车约20分钟直达'},
@@ -863,78 +866,72 @@ const PL = {
 };
 
 const DAYS = [
- {id:'d1',md:'11/25',wd:'周三',city:'seoul',title:'抵达 · 德寿宫石墙落叶 + 新世界圣诞巨幕',area:'九老出发 → 市厅 · 明洞 · 乙支路（2号线一车直达）',cover:'shinsegae',
-  stay:'🏨 九老福朋喜来登（第 1 晚 · 4晚连住不搬家）',eat:'明洞饺子（米其林刀切面，翻台快）或乙支路烤肉',
+ {id:'d1',md:'11/25',wd:'周三',city:'seoul',title:'抵达 · 新世界圣诞巨幕 + 德寿宫冬韵 + 热汤老店',area:'九老出发 → 市厅 · 明洞 · 乙支路（2号线一车直达）',cover:'shinsegae',
+  stay:'🏨 九老福朋喜来登（第 1 晚 · 4晚连住不搬家）',eat:'明洞饺子（滚烫鸡汤刀切面）或乙支路炭火烤肉',
   items:[
-   {t:'午后',p:'stay_seoul',title:'仁川机场 → 酒店入住（九老福朋喜来登）',d:'从仁川机场乘坐 <b>6004 路机场大巴</b>直达九老数码园区站（约 65–75 分钟，无需搬箱子换乘）；或在机场取 eSIM、买好「气候同行卡 5 日券（15,000 韩元无限坐）」，办理入住放行李。',tags:['move'],
+   {t:'午后',p:'stay_seoul',title:'仁川机场 → 酒店入住（九老福朋喜来登）',d:'从仁川机场乘坐 <b>6004 路机场大巴</b>直达九老数码园区站（约 65–75 分钟，无需搬箱子）；在机场取 eSIM、买好「气候同行卡 5 日券（15,000 韩元无限坐）」，办理入住放好大行李。',tags:['move'],
     transit:'🚇 地铁 2 号线一车直达（九老数码园区站 → 市厅站 1号口，约 28 分钟免换乘）'},
-   {t:'16:00',p:'deoksugung',title:'德寿宫石墙路 · 贞洞路',d:'首尔晚秋最负盛名的银杏散步道，夕阳下满地落叶金毯，映衬古朴石墙与红砖教堂。趁 17:15 日落斜光拍照。',tags:['autumn'],
+   {t:'16:00',p:'deoksugung',title:'德寿宫石墙路 · 初冬漫步',d:'0°C 的首尔黄昏有着清冽的电影感，百年红砖教堂与石墙路安静浪漫（若刚好赶上首尔初雪更是绝美）。不用久吹冷风，漫步 20 分钟拍照即往室内/百货商圈走。',tags:['autumn'],
     transit:'🚶'},
-   {t:'17:30',p:'shinsegae',title:'新世界百货本店 圣诞外墙巨幕',d:'整面百货大楼外墙的梦幻圣诞灯光动画，首尔圣诞季必拍地标。在主路十字路口仰拍最震撼。',tags:['night'],
+   {t:'17:30',p:'shinsegae',title:'新世界百货本店 圣诞光影巨幕',d:'<b>首尔圣诞季王牌第一站！</b>整面百货外墙化身金色流动城堡与圣诞光影巨幕，越冷天黑越早越震撼。拍完立刻钻进旁边的乐天/新世界室内吹暖气看圣诞橱窗。',tags:['night'],
     transit:'🚶'},
-   {t:'18:30',p:'myeongdong',title:'明洞随性逛逛 · 补齐消耗品',d:'逛逛 Olive Young 明洞旗舰或 Daiso 补齐润唇膏、暖宝宝等旅行用品。',tags:['shop'],
+   {t:'18:30',p:'myeongdong',title:'明洞室内逛买 · 补齐御寒好物',d:'去 Olive Young 明洞旗舰或 Daiso 买足足底暖宝宝、热敷眼罩与润唇膏，室内暖气极足。',tags:['shop'],
     transit:'🚶'},
-   {t:'19:30',p:'r_kyoja',title:'晚饭 · 明洞饺子 / 乙支路',d:'热气腾腾的刀切面 + 蒸饺，米其林推荐老店；吃完从乙支路入口站坐 2 号线一车直达回酒店（约 28 分钟，大概率有座）。',tags:['food']},
+   {t:'19:30',p:'r_kyoja',title:'暖冬晚饭 · 明洞饺子 / 乙支路烤肉',d:'0°C 的夜晚最适合一碗滚烫浓郁的鸡汤刀切面 + 热蒸饺！吃完从乙支路入口站坐 2 号线一车直达回酒店（约 28 分钟）。',tags:['food']},
   ],
-  tip:'第一天落地轻节奏过渡：2 号线直达市厅/明洞约 28 分钟，省去换乘爬楼梯，晚上坐着一车直达回酒店很轻松。'},
- {id:'d2',md:'11/26',wd:'周四',city:'seoul',title:'秘苑晚枫 · 绕景福宫至西村咖啡小店 · 广藏市场',area:'安国 · 昌德宫 · 西村 · 广藏市场 · 乙支路（历史文艺环线）',cover:'huwon',
-  stay:'🏨 九老福朋喜来登（第 2 晚）',eat:'早餐 London Bagel / Onion；下午 Archivist 维也纳咖啡；晚饭广藏市场/乙支路',
+  tip:'初冬首尔 17:15 就天黑，刚好无缝衔接新世界圣诞夜景；2 号线直达回酒店不用在站台吹风换乘。'},
+ {id:'d2',md:'11/26',wd:'周四',city:'seoul',title:'昌庆宫玻璃大温室 · 西村暖炉咖啡 · 广藏热食夜酒',area:'安国 · 昌庆宫温室 · 西村室内小店 · 广藏市场 · 乙支路',cover:'changgyeong',
+  stay:'🏨 九老福朋喜来登（第 2 晚）',eat:'London Bagel 热贝果；Archivist 维也纳咖啡；广藏市场现炸绿豆煎饼与热鱼糕汤',
   items:[
-   {t:'08:30',p:'onion',title:'安国早餐 · 韩屋咖啡 / Bagel',d:'从酒店坐 2 号线至乙支路3街换 3 号线到安国站（约 35 分钟）。打卡 London Bagel Museum 安国店或韩屋庭院 Onion 安国。',tags:['food'],
+   {t:'09:00',p:'onion',title:'安国热食早餐 · 韩屋暖炕咖啡 / Bagel',d:'2 号线至乙支路3街换 3 号线到安国站（约 35 分钟）。在温暖的韩屋庭院或 London Bagel 吃刚出炉的热面包配热美式。',tags:['food'],
     transit:'🚶'},
-   {t:'10:00',p:'changdeok',title:'昌德宫 · 后苑（秘苑红叶）',d:'首尔<b>秋色保留最晚、最震撼</b>的皇家秘苑！芙蓉池、爱莲池的枫叶晚红倒映水面，美不胜收。需官网提前预约导览。',tags:['autumn','culture'],
+   {t:'10:30',p:'changgyeong',title:'昌庆宫 · 复古白色玻璃大温室（室内如春！）',d:'<b>0°C 绝佳室内赏景去处！</b>朝鲜王宫里藏着的百年欧式白色玻璃花房，外面零度，里面暖意融融、满眼绿植与复古光影，拍照完全不冷；顺便在昌德宫外墙拍几张冬日古宫照。',tags:['autumn','culture'],
     transit:'🚶'},
-   {t:'11:45',p:'changgyeong',title:'昌庆宫 · 大温室 或 北村漫步',d:'与昌德宫无缝相连，复古白色玻璃温室与枫林掩映；或漫步北村韩屋屋脊赏金色银杏。',tags:['autumn'],
-    transit:'🚶'},
-   {t:'13:00',p:'staffpicks',title:'绕景福宫北墙漫步至西村',d:'沿景福宫北墙与青瓦台石墙路漫步至西村，正好绕景福宫一圈，沿途满地金黄落叶。',tags:['autumn','move'],
-    transit:'🚶'},
-   {t:'13:30',p:'archivist',title:'Archivist 维也纳咖啡 · 西村宝藏小店',d:'当地朋友封神认证的维也纳咖啡（奶盖惊艳）！顺路逛 2 楼的 <b>One More Bag</b>、复古书店 <b>Ofr. Seoul</b> 与 <b>Granhand 西村香氛</b>。',tags:['food','ns','shop'],
+   {t:'13:00',p:'archivist',title:'躲进西村 · Archivist 维也纳咖啡 & 宝藏小店',d:'钻进西村暖洋洋的独立小巷！喝一杯绵密奶盖的 <b>Archivist 维也纳咖啡</b>，顺路逛室内的 <b>One More Bag (2楼)</b>、<b>Ofr. Seoul 复古书店</b> 与 <b>Granhand 香氛</b>，全程都在暖气店里穿梭。',tags:['food','ns','shop'],
     transit:'🚇 地铁 3号线转1号线至钟路5街站 8号口（约 12 分钟）'},
-   {t:'17:15',p:'gwangjang',title:'广藏市场 · 小吃与二楼古着',d:'二楼藏着一整片古着档口；下楼吃现炸绿豆煎饼、生拌牛肉与麻药紫菜包饭。',tags:['ns','food'],
+   {t:'17:00',p:'gwangjang',title:'广藏市场 · 烟火热食与二楼古着',d:'天黑后最治愈的热闹烟火气！坐热凳子吃刚出锅的绿豆煎饼、热腾腾鱼糕汤、现拌生牛肉，上二楼暖气淘古着。',tags:['ns','food'],
     transit:'🚶'},
-   {t:'19:30',p:'euljiro',title:'乙支路「Hipjiro」复古小酒馆',d:'五金印刷老街深处的小酒馆与黑胶吧；结束从乙支路3街站坐 2 号线一车直达回酒店（约 30 分钟）。',tags:['night']},
+   {t:'19:30',p:'euljiro',title:'乙支路「Hipjiro」暖意小酒馆',d:'五金老街二楼的复古炭火烤肉或黑胶小酒馆，喝点热乎的烧酒/马格利；结束从乙支路3街坐 2 号线一车直达回酒店（约 30 分钟）。',tags:['night']},
   ],
-  tip:'不用赶去釜山后，原本被迫舍弃的「昌德宫秘苑 + 西村神仙小店」完整回归！一天走完首尔最有韵味的古宫秋色与复古街区。'},
- {id:'d3',md:'11/27',wd:'周五',city:'seoul',title:'新论岘 HOMMAGE 医美 ➔ 汝矣岛现代百货室内圣诞村',area:'九老（25分）→ 江南新论岘医美 → 9号线急行（16分）→ 汝矣岛（打车15分回酒店）',cover:'dosanpark',
-  stay:'🏨 九老福朋喜来登（第 3 晚）',eat:'江南温热清淡轻食；The Hyundai Seoul B1 美食广场与网红烘焙',
+  tip:'这一天把户外暴走缩减到最少，主打「白色玻璃花房 + 西村暖气独立小店 + 广藏热食」，0°C 也能玩得舒舒服服。'},
+ {id:'d3',md:'11/27',wd:'周五',city:'seoul',title:'新论岘 HOMMAGE 医美 ➔ COEX 金色圣诞树 ➔ 现代百货圣诞村',area:'九老（25分）→ 江南医美 → COEX星空圣诞（室内）→ The Hyundai 圣诞村（全室内！）',cover:'lotteworld',
+  stay:'🏨 九老福朋喜来登（第 3 晚）',eat:'江南热乎鲍鱼粥/参鸡汤；The Hyundai Seoul B1 室内网红美食层',
   items:[
-   {t:'09:20',p:'stay_seoul',title:'九老出发 → 江南新论岘（约 25–28 分钟）',d:'从九老数码园区站乘 2 号线至江南站换 1 站（或至堂山换 9 号线急行），直达新论岘站 4 号口。今天不用拖行李出门，轻装上阵极其舒服！',tags:['move'],
+   {t:'09:20',p:'stay_seoul',title:'九老出发 → 江南新论岘（约 25–28 分钟）',d:'2 号线至江南站换 1 站（或堂山换 9 号线急行），轻装直达新论岘站 4 号口。',tags:['move'],
     transit:'🚇 新论岘站 4 号口出步行 2 分钟即达天空眼科大楼 4F'},
-   {t:'10:00',p:'hommage',title:'HOMMAGE CLINIC (오마쥬의원) · 皮肤管理/医美',d:'江南口碑私立皮肤管理诊所。上午专注做皮肤管理、光子/水光/抗衰项目，术后做院内冷敷镇静与补水修护。',tags:['ns'],
+   {t:'10:00',p:'hommage',title:'HOMMAGE CLINIC (오마쥬의원) · 皮肤管理/医美',d:'江南口碑私立皮肤诊所。做完皮肤管理/光子/水光后，注意物理遮阳防风，避免在室外冷风里久留。',tags:['ns'],
     transit:'🚶'},
-   {t:'13:00',p:'hommage',title:'新论岘温热清淡午餐',d:'医美后饮食宜温和清淡，周边步行吃一碗热乎韩式鲍鱼粥或清炖参鸡汤，舒缓休整。',tags:['food'],
-    transit:'🚇 地铁 9 号线急行直达（新论岘站 → 汝矣岛站，仅 5 站约 16 分钟！）'},
-   {t:'14:30',p:'hyundai',title:'The Hyundai Seoul · 室内童话圣诞村',d:'全韩国冬季最出圈的<b>「室内圣诞村」</b>（5楼空中庭院圣诞屋+巨型圣诞树）！重点是<b>全程室内恒温无冷风</b>，对上午刚做完医美的娇嫩皮肤非常友好，逛买潮牌喝咖啡极其惬意。',tags:['shop','night'],
-    transit:'🚖 打车仅约 15 分钟回酒店（车费约 10,000 韩元 / 仅¥52！）；或坐地铁约 22 分钟'},
-   {t:'19:00',p:'stay_seoul',title:'早回酒店泡澡敷修护面膜 · 九老美食街夜宵',d:'打车 15 分钟回九老福朋躺平休息、敷医美术后修复面膜，晚上精力充沛还可以下楼在九老美食街吃烤肉或炸鸡。',tags:['food']},
+   {t:'13:00',p:'hommage',title:'新论岘热汤轻食午餐',d:'医美后吃一碗温热的韩式鲍鱼粥或清炖参鸡汤，暖胃又修护。',tags:['food'],
+    transit:'🚇 9 号线急行 3 站直达奉恩寺站（仅 7 分钟，全地下直通 COEX！）'},
+   {t:'14:15',p:'coex',title:'COEX 星空图书馆 · 室内巨型金色圣诞树',d:'<b>全程地下室内不吹风！</b>高达十几米的书墙中间矗立着闪耀的金色圣诞树，灯光柔和极出片，打卡 40 分钟刚好出发去现代百货。',tags:['night','ns'],
+    transit:'🚇 9 号线急行直达汝矣岛站（约 18 分钟，直接通过地下连廊走进现代百货！）'},
+   {t:'15:30',p:'hyundai',title:'The Hyundai Seoul · 室内童话圣诞村',d:'全韩国冬季最火的<b>「24°C 恒温室内圣诞小镇」</b>！5 楼空中花园挂满红色丝绒与圣诞树、童话木屋，从早上做完医美到晚上回酒店，几乎可以做到<b>“全程不吹零度冷风”</b>！',tags:['shop','night'],
+    transit:'🚖 打车仅约 15 分钟回酒店（车费约 10,000 韩元 / 仅¥52！）'},
+   {t:'19:30',p:'stay_seoul',title:'打车 15 分钟回九老 · 敷医美修护面膜',d:'拎着战利品打车 15 分钟直接回酒店躺平休息、敷医美术后修复面膜，舒适度满分。',tags:['food']},
   ],
-  tip:'这一天发挥了住九老的黄金优势：去江南医美只要 25 分钟，医美完直奔全室内的现代百货圣诞村不吹风，晚上打车回酒店只要 15 分钟约 50 块钱！'},
- {id:'d4',md:'11/28',wd:'周六',city:'seoul',title:'汉南洞顺坡买手街 · 圣水核心美学 · 蚕室欧式圣诞市集',area:'汉南洞（35分达）→ 圣水洞/首尔林 → 蚕室乐天圣诞（2号线直达回九老）',cover:'seoulforest',
-  stay:'🏨 九老福朋喜来登（第 4 晚）',eat:'汉南洞精致 Brunch；圣水大林仓库画廊咖啡；蚕室市集小吃',
+  tip:'这一天是专门为 0°C + 医美术后设计的「全室内恒温圣诞巡礼」，从江南到 COEX 再到现代百货全在地下连廊和暖气商场里穿梭！'},
+ {id:'d4',md:'11/28',wd:'周六',city:'seoul',title:'Leeum 三星美术馆 · 汉南洞买手店 · 圣水室内美学 · 蚕室圣诞',area:'汉南洞（美术馆+室内买手）→ 圣水洞室内展厅 → 蚕室乐天圣诞市集（2号线直达回九老）',cover:'seoulforest',
+  stay:'🏨 九老福朋喜来登（第 4 晚）',eat:'汉南洞暖意早午餐；圣水大林仓库画廊咖啡；蚕室乐天室内美食街',
   items:[
-   {t:'09:30',p:'emis',title:'汉南洞坡道买手街 · 顺坡血拼',d:'2 号线转 6 号线至汉江镇站 3 号口出（约 35 分钟），顺着下坡一路逛：EMIS 棒球帽、Mardi Mercredi、Rockfish、Matin Kim 铁牌包、Nonfiction 香氛。',tags:['shop','move'],
-    transit:'🚶'},
-   {t:'12:30',p:'hannam',title:'汉南洞早午餐 / 咖啡小憩',d:'在汉南洞露台早午餐店吃午餐补充体力。',tags:['food'],
-    transit:'🚖 打车约 12 分钟跨汉江直达首尔林/圣水洞（约 7,500 韩元）'},
-   {t:'13:30',p:'seoulforest',title:'首尔林 · 银杏水杉大道',d:'阳光穿透金叶步道，拍照出片极佳，与圣水买手店无缝衔接。',tags:['autumn'],
-    transit:'🚶'},
-   {t:'14:30',p:'pov',title:'圣水洞美学地标 · Point of View & Stand Oil',d:'逛 Point of View 3 层文具美学空间、Stand Oil 独栋旗舰店、大林仓库画廊咖啡与 LCDC Seoul，随性打卡热门快闪店。',tags:['shop','ns'],
-    transit:'🚇 地铁 2 号线直达（圣水站 → 蚕室站 1/2号口，4 站仅 9 分钟免换乘）'},
-   {t:'18:00',p:'lotte',title:'蚕室 · 乐天欧式圣诞市集 + 石村湖夜景',d:'欧式木屋圣诞市集、巨型发光圣诞树与旋转木马，湖畔远眺乐天塔夜景。结束从蚕室站坐 <b>2 号线一车坐着直达回九老酒店</b>（约 38 分钟，全程不用换乘站着挤）。',tags:['night','shop']},
+   {t:'10:00',p:'leeum',title:'Leeum 三星美术馆 · 螺旋楼梯建筑美学',d:'2 号线转 6 号线至汉江镇站 1 号口（约 35 分钟）。0°C 的周末上午先钻进韩国顶级室内美术馆看展，标志性纯白螺旋楼梯拍照高级感拉满（需提前官网预约）。',tags:['culture','ns'],
+    transit:'🚶 出馆顺坡往下就是汉南洞买手街'},
+   {t:'11:45',p:'emis',title:'汉南洞买手街 · 室内暖气试穿血拼',d:'一家接一家钻进 EMIS、Mardi Mercredi、Rockfish、Matin Kim、Nonfiction 试衣买买买，累了就近在咖啡馆喝热拿铁。',tags:['shop','move'],
+    transit:'🚖 打车约 12 分钟跨汉江直达圣水洞（约 7,500 韩元，避免在室外等公交）'},
+   {t:'14:00',p:'pov',title:'圣水洞室内美学集群 · Point of View / Stand Oil / 大林仓库',d:'冬天圣水洞不建议在冷风里走首尔林，直接把时间留给暖气足、审美顶级的室内展厅：Point of View 3 层文具馆、Stand Oil、大林仓库红砖咖啡与 LCDC 复合空间。',tags:['shop','ns'],
+    transit:'🚇 地铁 2 号线直达（圣水站 → 蚕室站，4 站仅 9 分钟免换乘）'},
+   {t:'18:00',p:'lotte',title:'蚕室 · 乐天欧式圣诞市集 + 旋转木马',d:'出站直接进入乐天世界购物中心室内吹暖气逛吃；挑好时机出去拍 30 分钟巨型发光圣诞树与旋转木马夜景，结束从蚕室站坐 <b>2 号线一车坐着直达回九老酒店</b>（约 38 分钟）。',tags:['night','shop']},
   ],
-  tip:'周六是全首尔购物潮街大日：虽然住九老去程/回程各约 35–38 分钟，但回程在蚕室上 2 号线一路直达酒店门口，拎着战利品不用换乘爬楼梯反而最省力。'},
- {id:'d5',md:'11/29',wd:'周日',city:'seoul',title:'弘大延南洞漫步 · 望远市场烟火早午 · 仁川机场返程',area:'酒店寄存行李 → 2号线（18分）→ 弘大/延南洞 → 望远市场 → 九老坐大巴去机场',cover:'gyeongui',
-  stay:'返程（仁川国际机场）',eat:'延南洞早午餐咖啡；望远市场现炸鸡丁、绿豆煎饼与手工刀切面',
+  tip:'把冬日冷风里的纯户外公园换成了「Leeum 美术馆 + 圣水室内展厅 + 蚕室室内连廊」，审美浓度更高还完全不冻手！'},
+ {id:'d5',md:'11/29',wd:'周日',city:'seoul',title:'延南洞暖炉咖啡 · 望远市场热食鲫鱼饼 · 仁川机场返程',area:'酒店存行李 → 2号线（18分）→ 延南洞/望远市场 → 九老坐 6004 机场大巴',cover:'gyeongui',
+  stay:'返程（仁川国际机场）',eat:'延南洞早午餐热咖啡；望远市场现炸鸡丁、滚烫刀切面与刚出炉热鲫鱼饼',
   items:[
-   {t:'09:30',p:'stay_seoul',title:'退房寄存行李 → 2号线 18 分钟直达弘大',d:'将大行李免费寄存在九老福朋喜来登前台（24 小时人工前台很稳妥）。轻装上 2 号线一车直达「弘大入口站」（仅 8 站 18 分钟！）。',tags:['move'],
-    transit:'🚶 出弘大入口站 3 号口即是延南洞京义线林荫道'},
-   {t:'10:00',p:'gyeongui',title:'延南洞 · 京义线林荫道 & 独立设计小店',d:'周日清晨的延南洞极度松弛，红砖小巷咖啡馆林立，顺逛 <b>object</b> 等独立文创设计店买最后的伴手礼。',tags:['autumn','shop'],
-    transit:'🚇 6 号线望远站（或打车约 6 分钟/起步价）'},
-   {t:'12:00',p:'mangwon',title:'望远市场 · 首尔本地人烟火早午餐',d:'比起广藏市场更地道实惠！打卡现炸酥脆鸡丁（큐스닭강정）、手工刀切面与热乎乎的鱼糕汤，感受首尔本地烟火气。',tags:['food','ns'],
+   {t:'09:30',p:'stay_seoul',title:'退房寄存行李 → 2号线 18 分钟直达弘大/延南洞',d:'行李免费存九老福朋前台。轻装坐 2 号线 18 分钟直达「弘大入口站」3 号口，钻进延南洞红砖咖啡馆喝早咖、逛 <b>object</b> 独立设计店挑伴手礼。',tags:['move','shop'],
+    transit:'🚖 打车约 6 分钟（起步价）直达望远市场'},
+   {t:'11:45',p:'mangwon',title:'望远市场 · 冬日热食 & 街头热鲫鱼饼',d:'顶棚遮风的本地传统市场！吃现炸热鸡丁、热乎乎的刀切面与鱼糕汤，别忘了买一份 <b>11 月底冬天限定刚出炉的红豆/奶油热鲫鱼饼 (붕어빵)</b> 暖手吃！',tags:['food','ns'],
     transit:'🚇 合井站坐 2 号线一车直达回九老数码园区站（仅 7 站约 16 分钟！）'},
-   {t:'14:00',p:'airport_icn',title:'取行李 → 门口 6004 机场大巴直达仁川机场',d:'回九老福朋拿上大行李，步行到机场大巴站直接坐 <b>6004 路大巴直达仁川机场</b>（约 65–75 分钟，行李放车底箱躺平到航站楼），留足时间退税与免税店提货！',tags:['move'],mv:1},
+   {t:'14:00',p:'airport_icn',title:'取行李 → 门口 6004 机场大巴直达仁川机场',d:'回酒店拿上大行李，步行到车站直上 <b>6004 路机场大巴</b>直达仁川机场（约 65–75 分钟，暖气车厢躺平到航站楼），留足时间退税与免税店提货。',tags:['move'],mv:1},
   ],
-  tip:'最后一天住九老也极度顺滑：去弘大/望远只要 16–18 分钟，回来拿行李直接在家门口坐机场大巴躺着去仁川机场，完美收官。'},
+  tip:'最后一天 18 分钟直达弘大，逛完顶棚市场吃热食，回来在家门口坐暖气机场大巴直达仁川，丝滑收官！'},
 ];
 
 const ZONES = [
@@ -974,17 +971,14 @@ const ZONES = [
 ];
 
 const AUTUMN = [
-  {p:'changdeok',s:5,d:'首尔晚秋第一胜景！秘苑芙蓉池、爱莲亭枫叶如火，水面倒影如画。需提前预约导览。'},
-  {p:'beomeosa',s:5,d:'釜山晚秋红叶巅峰，金井山环抱千年古刹，层林尽染禅意静谧。'},
-  {p:'changgyeong',s:4,d:'人少出片，复古白色玻璃温室被秋日金红枫林掩映，与昌德宫无缝相连。'},
-  {p:'deoksugung',s:4,d:'古朴石墙映衬漫天金黄银杏与满地落叶金毯，首尔晚秋最浪漫散步道。'},
-  {p:'staffpicks',s:4,d:'西村隐蔽院落，院内耸立遮天蔽日百年古银杏，秋风起满院落叶金雨，点一杯咖啡看落叶极为治愈。',n:'Staffpicks 古银杏院落'},
-  {p:'seoulforest',s:3,d:'参天古银杏金黄天幕与水杉道，拍照极出片，和圣水逛街无缝衔接。'},
-  {p:'hausdosan',s:3,d:'岛山公园的枫树和银杏，逛 Haus Dosan 顺路。',n:'岛山公园'},
-  {p:'gyeongui',s:3,d:'旧铁路改的公园，沿途是延南洞小店，可作为备选半天。'},
-  {p:'namsan',s:3,d:'傍晚上山看首尔塔和城市灯火，落叶 + 夜景。'},
-  {p:'citizenspark',s:3,d:'釜山市中心绿洲，开阔大草坪与金黄林荫大道，散步拍照非常惬意。'},
-  {p:'blueline',s:3,d:'不是红叶是海景：彩色天空胶囊小火车沿海岸慢行，建议预约。'},
+  {p:'shinsegae',s:5,d:'首尔圣诞季顶流！整面大楼外墙的金色灯光巨幕动画，0°C 夜幕下极具震撼感。'},
+  {p:'hyundai',s:5,d:'全室内 24°C 恒温「H-Village 圣诞童话村」！免吹冷风就能拍遍欧式圣诞木屋与巨树。'},
+  {p:'coex',s:5,d:'COEX 星空图书馆内高达十几米的金色圣诞树与书墙，全地下直达暖气十足。'},
+  {p:'changgyeong',s:5,d:'初冬隐藏宝藏！百年复古白色玻璃大温室内部四季如春，室外零度也能拍满眼绿植光影。'},
+  {p:'leeum',s:4,d:'汉南洞顶级室内美术馆，纯白螺旋楼梯与世界级艺术展，0°C 上午最优雅的避寒去处。'},
+  {p:'lotte',s:4,d:'蚕室乐天欧式木屋圣诞市集与旋转木马，紧邻室内巨型购物中心，随时进出取暖。'},
+  {p:'deoksugung',s:3,d:'百年红砖与石墙的清冷初冬氛围，若刚好遇到首尔初雪则是封神级画面。'},
+  {p:'gyeongui',s:3,d:'延南洞红砖小巷咖啡馆云集，冷了随时推门喝一杯热拿铁。'},
 ];
 
 const SNOW_SPOTS = [
@@ -1364,13 +1358,13 @@ const SAMGYETANG_SPOTS = [
 ];
 
 const RESTOS = [
- {p:'r_kyoja',day:'d1',how:'walk',hl:'现场排队',d:'刀切面 + 饺子，翻台很快，排队 10–20 分钟。'},
- {p:'r_bagel',day:'d2',how:'wait',hl:'开门前排队 / 现场取号',d:'开门前 30 分钟到，周末更夸张；工作日相对好些。'},
- {p:'archivist',day:'d2',how:'wait',hl:'朋友力荐 · 现场取号',d:'本地朋友认证首尔天花板级维也纳咖啡 (Einspänner)！丝滑厚奶盖，配无花果费南雪。'},
- {p:'r_gwangjang',day:'d2',how:'walk',hl:'随到随吃',d:'绿豆煎饼、生拌牛肉、麻药紫菜包饭，挑人多的摊位坐。'},
- {p:'hyundai',day:'d3',how:'walk',hl:'室内美食层',d:'The Hyundai Seoul B1 美食层聚集各路网红烘焙与暖胃餐食，医美后吹不到风极度舒适。'},
- {p:'daelim',day:'d4',how:'walk',hl:'随到随吃',d:'圣水挑高红砖厂房画廊咖啡，手冲咖啡与披萨意面。'},
- {p:'mangwon',day:'d5',how:'walk',hl:'本地烟火气',d:'望远市场现炸鸡丁、手工刀切面与热乎鱼糕汤，返程前地道一餐。'},
+ {p:'r_kyoja',day:'d1',how:'walk',hl:'现场排队',d:'滚烫鸡汤刀切面 + 饺子，0°C 的晚上吃一碗极度暖胃，翻台很快。'},
+ {p:'r_bagel',day:'d2',how:'wait',hl:'开门前排队 / 现场取号',d:'热腾腾现烤贝果，建议早点到或用 Catch Table 远程取号。'},
+ {p:'archivist',day:'d2',how:'wait',hl:'朋友力荐 · 现场取号',d:'西村暖气小店！招牌维也纳咖啡配无花果费南雪，室外再冷进去瞬间治愈。'},
+ {p:'r_gwangjang',day:'d2',how:'walk',hl:'随到随吃',d:'现炸滚烫绿豆煎饼、鱼糕热汤与生拌牛肉，挑热气腾腾的摊位坐。'},
+ {p:'hyundai',day:'d3',how:'walk',hl:'24°C 室内美食层',d:'The Hyundai Seoul B1 美食层聚集各路网红烘焙与暖胃餐食，医美后完全吹不到冷风。'},
+ {p:'daelim',day:'d4',how:'walk',hl:'随到随吃',d:'圣水挑高红砖厂房画廊咖啡，室内暖气足、咖啡披萨水准在线。'},
+ {p:'mangwon',day:'d5',how:'walk',hl:'本地烟火气',d:'望远市场有顶棚遮风！现炸鸡丁、手工刀切面与冬天限定热鲫鱼饼。'},
 ];
 
 const DISHES = [
@@ -1468,7 +1462,7 @@ addEventListener('hashchange', route);
   const leftBox = document.getElementById('leavesLeft');
   const rightBox = document.getElementById('leavesRight');
   if (!leftBox || !rightBox) return;
-  const glyphs = ['🍁','🍂','🍁','🍂','💛'];
+  const glyphs = ['❄️','✨','❄️','🤍','🎄'];
   const count = 8;
   for (let i = 0; i < count; i++){
     const box = (i % 2 === 0) ? leftBox : rightBox;
@@ -1518,7 +1512,7 @@ if (modeSeg) {
 
 function enterDayWithAnimation(dayId){
   const d = dayOf(dayId);
-  const col = DAYCOLOR[dayId] || '#b4442a';
+  const col = DAYCOLOR[dayId] || '#9e2a3b';
   const curtain = $('#ovCurtain');
   const curtainText = $('#ovCurtainText');
   if (curtain && curtainText && d){
@@ -1557,7 +1551,7 @@ function renderOverview(){
                            .trim();
 
   const stripsHTML = DAYS.map((d, idx) => {
-    const col = DAYCOLOR[d.id] || '#b4442a';
+    const col = DAYCOLOR[d.id] || '#9e2a3b';
     const isMvDay = d.items.some(it => it.mv);
     const cityText = isMvDay ? '✈️ 抵离/机场' : '🏯 首尔';
     const routePills = d.items.map(it => cleanTitle(it.title)).filter(Boolean);
@@ -1617,7 +1611,7 @@ function renderOverview(){
   }).join('');
 
   const tableRowsHTML = DAYS.map(d => {
-    const col = DAYCOLOR[d.id] || '#b4442a';
+    const col = DAYCOLOR[d.id] || '#9e2a3b';
     const cityText = d.city === 'seoul' ? '首尔' : '釜山';
     return `
       <tr>
@@ -1642,11 +1636,11 @@ function renderOverview(){
           <div class="ov-hero-title-box">
             <img class="ov-hero-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23b4442a'/%3E%3Ctext x='50' y='58' font-size='38' text-anchor='middle' fill='white'%3E🍁%3C/text%3E%3C/svg%3E" alt="Korea Autumn" id="ovHeroAvatar">
             <div>
-              <h2>5 天 4 晚 · 首尔晚秋深度慢游总览</h2>
-              <p>九老福朋喜来登 4 晚连住不搬家 ➔ 2号线环线直达全城 ➔ 古宫秘苑 · 江南医美 · 双圣诞市集</p>
+              <h2>5 天 4 晚 · 首尔 0°C 初冬圣诞暖游总览</h2>
+              <p>九老福朋喜来登 4 晚连住 ➔ 全城三大圣诞光影 · 玻璃温室与美术馆 · 热汤暖冬美食（全程少吹冷风）</p>
             </div>
           </div>
-          <span class="ov-badge-autumn">🍂 11.25 – 11.29 全首尔版</span>
+          <span class="ov-badge-autumn">❄️ 11.25 – 11.29 初冬圣诞版</span>
         </div>
         <div class="ov-stats-grid">
           <div class="ov-stat-tile">
@@ -1665,9 +1659,9 @@ function renderOverview(){
             <span class="ov-stat-sub">术后直奔室内圣诞村 · 打车15分回</span>
           </div>
           <div class="ov-stat-tile">
-            <span class="ov-stat-label">🍁 深度慢游</span>
+            <span class="ov-stat-label">🎄 初冬应景</span>
             <span class="ov-stat-val">松弛全覆盖</span>
-            <span class="ov-stat-sub">秘苑晚枫 + 汉南圣水 + 弘大望远</span>
+            <span class="ov-stat-sub">三大圣诞光影 + 玻璃温室 + 美术馆</span>
           </div>
         </div>
       </div>
@@ -1918,7 +1912,7 @@ function drawDayMap(d){
   });
   tiles(dayMap);
 
-  const g = L.featureGroup().addTo(dayMap), col = DAYCOLOR[d.id] || '#b4442a';
+  const g = L.featureGroup().addTo(dayMap), col = DAYCOLOR[d.id] || '#9e2a3b';
   const pts = []; let n = 0;
   d.items.forEach(it => {
     const p = PL[it.p]; if (!p) return;
@@ -1946,7 +1940,7 @@ function drawDayMap(d){
 
   ZONES.filter(z => z.c === d.city && (z.booked || z.rec === '首选')).forEach(z => {
     const isBooked = !!z.booked;
-    L.circle(z.ll, {radius:z.r, color: isBooked ? '#16a34a' : '#b4442a', weight: isBooked ? 2 : 1, fillColor: isBooked ? '#22c55e' : '#b4442a', fillOpacity: isBooked ? .16 : .08}).bindPopup(zonePop(z)).addTo(g);
+    L.circle(z.ll, {radius:z.r, color: isBooked ? '#16a34a' : '#9e2a3b', weight: isBooked ? 2 : 1, fillColor: isBooked ? '#22c55e' : '#9e2a3b', fillOpacity: isBooked ? .16 : .08}).bindPopup(zonePop(z)).addTo(g);
   });
 
   if (d.id === 'd4') {
@@ -2058,8 +2052,8 @@ function initBigMap(){
   ZONES.forEach(z => {
     const isBooked = !!z.booked;
     const main = z.rec === '首选' || isBooked;
-    const strokeColor = isBooked ? '#16a34a' : (main ? '#b4442a' : '#8a7a6c');
-    const fillColor = isBooked ? '#22c55e' : (main ? '#b4442a' : '#8a7a6c');
+    const strokeColor = isBooked ? '#16a34a' : (main ? '#9e2a3b' : '#8a7a6c');
+    const fillColor = isBooked ? '#22c55e' : (main ? '#9e2a3b' : '#8a7a6c');
     L.circle(z.ll, {radius:z.r, color: strokeColor, weight: isBooked ? 2.5 : (main ? 2 : 1), dashArray: (isBooked || main) ? null : '4 4', fillColor: fillColor, fillOpacity: isBooked ? .18 : (main ? .12 : .06)})
       .bindPopup(zonePop(z)).addTo(zg);
     L.marker(z.ll, {icon:L.divIcon({className:'', html:`<span class="zone-label ${isBooked ? 'booked' : ''}">${isBooked ? '🎉 ' : '🏨 '}${z.name}${isBooked ? ' (已订)' : (main ? ' ★' : '')}</span>`, iconSize:null})}).bindPopup(zonePop(z)).addTo(zg);
@@ -2069,7 +2063,7 @@ function initBigMap(){
   $('#mapChips').innerHTML = [['all','全部'],...DAYS.map(d => [d.id, `${d.id.toUpperCase()} ${d.md}`]),['zones','🏨 住宿区'],['food','🍜 餐厅']]
     .map(([k, t]) => `<button type="button" class="chip sm" data-f="${k}" aria-pressed="${k==='all'}">${t}</button>`).join('');
   $('#legend').innerHTML = DAYS.map(d => `<span><i style="background:${DAYCOLOR[d.id]}"></i>${d.id.toUpperCase()}</span>`).join('') +
-    '<span>🍜 餐厅</span><span><i style="background:#b4442a;opacity:.4"></i>推荐住宿区</span><span><i style="background:#a39282"></i>备选景点</span>';
+    '<span>🍜 餐厅</span><span><i style="background:#9e2a3b;opacity:.4"></i>推荐住宿区</span><span><i style="background:#a39282"></i>备选景点</span>';
   applyMap();
 }
 function applyMap(fit = true){
@@ -2324,7 +2318,7 @@ const OOTD_DAYS = [
       { n: '燕麦米白', hex: '#f4ede4', c: '#423325' },
       { n: '焦糖暖棕', hex: '#9e5b32', c: '#ffffff' },
       { n: '炭黑冷淡', hex: '#262626', c: '#ffffff' },
-      { n: '复古枫红', hex: '#b4442a', c: '#ffffff' }
+      { n: '复古枫红', hex: '#9e2a3b', c: '#ffffff' }
     ],
     boy: {
       top: '深炭灰/黑色中长挺括毛呢大衣，内搭厚磅燕麦色圆领卫衣（内着发热内衣）',
@@ -2347,9 +2341,9 @@ const OOTD_DAYS = [
     dayNum: 'D2 · 11.26 周四',
     city: 'seoul',
     cityName: '首尔',
-    title: '古宫秘苑秋色 · 绕景福宫至西村咖啡 · 乙支路复古夜游',
+    title: '昌庆宫玻璃大温室 · 西村暖炉咖啡 · 广藏热食复古夜游',
     weather: '首尔 0°C ~ 9°C · 清晨微寒 · 古树林荫处偏冷 · 步数约 18,000',
-    spots: ['昌德宫后苑秘苑', '景福宫北墙', '西村小店', 'Archivist咖啡', '广藏市场'],
+    spots: ['昌庆宫玻璃大温室', '西村小店', 'Archivist咖啡', '广藏市场', '乙支路'],
     palette: [
       { n: '纯净米白', hex: '#f9f6f0', c: '#3b2f21' },
       { n: '暖卡其驼', hex: '#b3804d', c: '#ffffff' },
@@ -2407,9 +2401,9 @@ const OOTD_DAYS = [
     dayNum: 'D4 · 11.28 周六',
     city: 'seoul',
     cityName: '首尔',
-    title: '汉南洞斜坡买手街 · 圣水洞工业风美学 · 蚕室欧式圣诞市集',
+    title: 'Leeum 三星美术馆 · 汉南圣水室内展厅 · 蚕室欧式圣诞',
     weather: '首尔 1°C ~ 10°C · 汉南洞坡度大 · 室内外频繁进出 · 步数超 18,000',
-    spots: ['汉南洞坡道', '首尔林水杉步道', '圣水洞买手店', 'Point of View', '蚕室乐天圣诞'],
+    spots: ['Leeum 三星美术馆', '汉南洞买手店', '圣水洞室内展厅', '蚕室乐天圣诞'],
     palette: [
       { n: '先锋酷黑', hex: '#1c1c1c', c: '#ffffff' },
       { n: '水泥灰', hex: '#8c8c8c', c: '#ffffff' },
