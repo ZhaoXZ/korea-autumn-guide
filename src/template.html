@@ -237,12 +237,13 @@ img{display:block;max-width:100%}
 @media (max-width: 959px){
   .ov-cinema-stack{
     display:flex;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;
-    gap:14px;padding:4px 14px 14px;margin:0 -14px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    align-items:stretch;gap:14px;padding:4px 14px 14px;margin:0 -14px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
   }
   .ov-cinema-stack::-webkit-scrollbar{display:none}
   .ov-strip{
-    flex:0 0 85vw;max-width:340px;height:465px;scroll-snap-align:center;
+    flex:0 0 86vw;max-width:350px;min-height:490px;height:auto;scroll-snap-align:center;
     position:relative;overflow:hidden;border-radius:20px;cursor:pointer;
+    display:flex;flex-direction:column;justify-content:flex-end;padding-top:168px;padding-bottom:10px;
     box-shadow:0 8px 24px rgba(15,25,38,.14);border:1.5px solid rgba(255,255,255,.55);
     background:#16222f;
   }
@@ -322,12 +323,12 @@ img{display:block;max-width:100%}
 }
 @media (max-width: 959px){
   .ov-strip-drawer{
-    inset:auto 10px 10px 10px;max-height:260px;padding:12px 14px;border-radius:15px;
-    background:rgba(255,255,255,.84);
+    position:relative;inset:auto;margin:0 10px;padding:12px 14px;border-radius:15px;
+    background:rgba(255,255,255,.86);
     backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);
-    border:1px solid rgba(255,255,255,.9);
+    border:1px solid rgba(255,255,255,.92);
     box-shadow:0 8px 26px rgba(15,25,38,.18),inset 0 1px 0 rgba(255,255,255,.95);
-    opacity:1;pointer-events:auto;transform:none;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    opacity:1;pointer-events:auto;transform:none;max-height:none;overflow:visible;
   }
   .ov-drawer-meta{display:none}
   .ov-drawer-flow{margin-bottom:10px}
@@ -395,6 +396,23 @@ img{display:block;max-width:100%}
   .ov-agenda-row{display:flex;align-items:flex-start;gap:6px;font-size:.78rem;line-height:1.45;color:var(--ink2)}
   .ov-agenda-row b{color:var(--ink);flex-shrink:0}
 }
+
+/* 预约清单 & 小地图容器 */
+.ov-book-grid{display:grid;gap:10px;margin-bottom:24px}
+@media (min-width:768px){.ov-book-grid{grid-template-columns:1fr 1fr}}
+.ov-book-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:13px 14px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:5px}
+.ov-book-head{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.ov-book-badge{font-size:.7rem;font-weight:800;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.ov-book-badge.must{background:var(--maple-s);color:var(--maple)}
+.ov-book-badge.queue{background:var(--ginkgo-s);color:#8a5f0d}
+.ov-book-badge.free{background:var(--pine-s);color:var(--pine)}
+.ov-book-title{font-size:.94rem;font-weight:700;color:var(--ink)}
+.ov-book-desc{font-size:.79rem;color:var(--ink2);line-height:1.5;margin:0}
+.brand-map-wrap{margin:10px 14px 14px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--sh);background:#e8eef3;position:relative}
+#brandMap{height:280px;width:100%}
+@media (min-width:960px){#brandMap{height:340px}}
+.brand-map-bar{background:#fff;padding:8px 12px;border-top:1px solid var(--line);font-size:.76rem;color:var(--ink2);display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.brand-map-bar b{color:var(--ink)}
 
 /* ---------- map view ---------- */
 #bigMap{height:calc(100vh - 210px);height:calc(100dvh - 210px - var(--safe-b));min-height:320px}
@@ -882,6 +900,7 @@ const PL = {
   nonfiction_h:{n:'Nonfiction 汉南香氛',ko:'논픽션 한남',xhs:'Nonfiction 汉南店 香水',c:'seoul',ll:[37.5352,127.0028],img:'',emo:'🌿'},
 
   // 朋友力荐 · 圣水洞精选锚点
+  tamburins_ss:{n:'Tamburins 圣水旗舰店',ko:'탬버린즈 성수',xhs:'Tamburins 圣水 香水',c:'seoul',ll:[37.5433,127.0546],img:'',emo:'✨'},
   standoil:{n:'Stand Oil 圣水旗舰店',ko:'스탠드오일 성수',xhs:'Stand Oil 圣水店 包包',c:'seoul',ll:[37.5445,127.0570],img:'',emo:'👜'},
   lcdc:{n:'LCDC Seoul 复合空间',ko:'엘씨디씨 서울',xhs:'LCDC Seoul 圣水 复合空间',c:'seoul',ll:[37.5420,127.0600],img:'',emo:'🏢'},
 
@@ -1114,20 +1133,19 @@ const SNOW_SPOTS = [
 
 const BRANDS = [
  {n:'Archivist 维也纳咖啡',ko:'아키비스트 서촌',xhs:'Archivist 西村 维也纳咖啡',area:'西村',tag:'☕ 朋友封神推荐',floor:'1楼 · 建议先取号',icon:'☕',theme:'#3b2518',bg:'#f5eee6',must:'首尔第一维也纳咖啡 (Einspänner) + 无花果费南雪',tip:'奶油浓稠如丝绒、微咸微甜，配深烘黑咖啡堪称天花板！建议下午开门前或避开高峰去取号。',p:'archivist'},
- {n:'One More Bag',ko:'원모어백',xhs:'One More Bag 西村 帆布包',area:'西村',tag:'🎒 韩国文创布包',floor:'【藏在2楼】门头极窄',icon:'🎒',theme:'#7a4225',bg:'#fcf4ec',must:'韩国独立插画师帆布包、手提袋、刺绣布艺挂件、文具杂货',tip:'门头非常不起眼！推开 2 楼小门别有洞天，聚集全首尔最可爱的独立小众布包与插画周边，女孩必逛。',p:'onemorebag'},
  {n:'Ofr. Seoul',ko:'오에프알 서울',xhs:'Ofr Seoul 西村 独立书店',area:'西村',tag:'📚 巴黎艺术书店',floor:'双层复古老宅',icon:'📚',theme:'#443b35',bg:'#f7f2ed',must:'经典英文印字帆布袋、小众艺术画册、Vintage饰品杂货',tip:'巴黎传奇独立书店 Ofr 的首尔分店，老洋房里斑驳木地板与满架书籍，二楼还藏着复古首饰与服饰。',p:'ofrseoul'},
+ {n:'One More Bag',ko:'원모어백',xhs:'One More Bag 西村 帆布包',area:'西村',tag:'🎒 韩国文创布包',floor:'【藏在2楼】门头极窄',icon:'🎒',theme:'#7a4225',bg:'#fcf4ec',must:'韩国独立插画师帆布包、手提袋、刺绣布艺挂件、文具杂货',tip:'门头非常不起眼！推开 2 楼小门别有洞天，聚集全首尔最可爱的独立小众布包与插画周边，女孩必逛。',p:'onemorebag'},
  {n:'Granhand',ko:'그랑핸드 서촌',xhs:'Granhand 西村 香氛',area:'西村 / 北村',tag:'🪵 手工刻字香氛',floor:'静谧韩屋小院',icon:'🪵',theme:'#54463a',bg:'#f6f2ec',must:'Susie Salmon、Marine Orchid 麻布挂袋香、香氛喷雾',tip:'天然植物调香，买麻布挂香柜姐会用老式打字机免费敲印你的名字或专属日期，送人自用都超有温度。',p:'granhand_sc'},
- {n:'Staffpicks',ko:'스태프픽스',xhs:'Staffpicks 西村 银杏咖啡',area:'西村',tag:'🍂 百年古银杏庭院',floor:'独栋庭院空间',icon:'🍂',theme:'#8a6218',bg:'#fcf6e8',must:'古银杏树落叶庭院、手冲咖啡、磅蛋糕',tip:'西村秋天最震撼的私藏咖啡馆，院子里伫立一棵遮天蔽日的百年古银杏，秋风一吹满院金雨。',p:'staffpicks'},
- {n:'Mardi Mercredi',ko:'마르디 메크르디 한남',xhs:'Mardi Mercredi 汉南洞',area:'汉南洞',tag:'🌸 K-Fashion顶流',floor:'多栋独栋并排',icon:'🌸',theme:'#2a4836',bg:'#edf4ef',must:'小雏菊印花卫衣、羊绒针织开衫、复古T恤、运动线',tip:'汉南洞是 Mardi 的大本营，短短一条街上有 Apparel、Shoes、Actif 等多家专门店，款式尺码最全。',p:'mardi'},
- {n:'Matin Kim',ko:'마틴킴 한남',xhs:'Matin Kim 汉南旗舰店',area:'汉南洞',tag:'🖤 Y2K酷飒高街',floor:'独栋概念旗舰',icon:'🖤',theme:'#222222',bg:'#f0f0f0',must:'金属铭牌搭扣包 (Accordion Bag)、做旧短皮衣、工装裙',tip:'韩国千禧辣妹风代表，金属铁牌五金质感高级，包包自重极轻且百搭，汉南旗舰款最全。',p:'matinkim'},
- {n:'EMIS',ko:'이미스 한남',xhs:'EMIS 汉南店',area:'汉南洞',tag:'🧢 爱豆私服标配',floor:'街边独立店面',icon:'🧢',theme:'#1a365d',bg:'#edf2f9',must:'复古刺绣棒球帽、印花轻便托特包、毛绒大肠发圈',tip:'几乎每个韩国爱豆人手一顶的棒球帽！版型修饰亚洲人头型显脸小，色系高级耐看，性价比极高。',p:'emis'},
- {n:'Rockfish Weatherwear',ko:'락피쉬웨더웨어 한남',xhs:'Rockfish 汉南店 玛丽珍',area:'汉南洞',tag:'🩰 英伦复古美学',floor:'复古庄园概念店',icon:'🩰',theme:'#782838',bg:'#fbeff1',must:'丝绒芭蕾平底鞋、玛丽珍鞋、冬日软糯贝雷帽、围巾',tip:'秋冬英伦氛围感的神！丝绒玛丽珍鞋上脚显脚细且非常软，店里装潢宛如英式复古庄园。',p:'rockfish_h'},
- {n:'Nonfiction',ko:'논픽션 한남',xhs:'Nonfiction 汉南店 香水',area:'汉南洞',tag:'🌿 疗愈系木质沙龙香',floor:'【藏在2楼】通透采光',icon:'🌿',theme:'#38483b',bg:'#f0f4f1',must:'Santal Cream (白檀)、Gentle Night (温柔之夜) 香水、泵头护手霜',tip:'韩国高端小众沙龙香，不刺鼻的淡雅木质香调。汉南店在静谧二楼，大落地窗前洗手试香仪式感拉满。',p:'nonfiction_h'},
- {n:'Stand Oil',ko:'스탠드오일 성수',xhs:'Stand Oil 圣水店 包包',area:'圣水洞',tag:'👜 极简素皮腋下包',floor:'独栋艺术旗舰店',icon:'👜',theme:'#9c6615',bg:'#fbf3e6',must:'Chubby Bag 保龄球包、Flap Mini 翻盖小方包、大容量托特',tip:'韩剧出镜率极高的轻奢素皮包，自重极轻耐磨。圣水店空间每个季度换一次艺术展装置，逛店像看展。',p:'standoil'},
+ {n:'Staffpicks',ko:'스태프픽스',xhs:'Staffpicks 西村 银杏咖啡',area:'西村',tag:'🍂 百年庭院咖啡',floor:'独栋庭院空间',icon:'🍂',theme:'#8a6218',bg:'#fcf6e8',must:'庭院氛围、手冲咖啡、磅蛋糕',tip:'西村极有格调的独栋庭院咖啡馆，从 Granhand 顺步往下即可到达。',p:'staffpicks'},
+ {n:'EMIS',ko:'이미스 한남',xhs:'EMIS 汉南店',area:'汉南洞',tag:'🧢 爱豆私服标配',floor:'汉江镇3号口顺坡第1站',icon:'🧢',theme:'#1a365d',bg:'#edf2f9',must:'复古刺绣棒球帽、印花轻便托特包、毛绒大肠发圈',tip:'几乎每个韩国爱豆人手一顶的棒球帽！版型修饰亚洲人头型显脸小，从坡顶顺路第一家先买。',p:'emis'},
+ {n:'Mardi Mercredi',ko:'마르디 메크르디 한남',xhs:'Mardi Mercredi 汉南洞',area:'汉南洞',tag:'🌸 K-Fashion顶流',floor:'顺坡下行第2站 · 多栋独栋',icon:'🌸',theme:'#2a4836',bg:'#edf4ef',must:'小雏菊印花卫衣、羊绒针织开衫、复古T恤、运动线',tip:'汉南洞是 Mardi 的大本营，短短一条坡道上有 Apparel、Shoes、Actif 等多家专门店，款式尺码最全。',p:'mardi'},
+ {n:'Rockfish Weatherwear',ko:'락피쉬웨더웨어 한남',xhs:'Rockfish 汉南店 玛丽珍',area:'汉南洞',tag:'🩰 英伦复古美学',floor:'顺坡下行第3站 · 概念庄园',icon:'🩰',theme:'#782838',bg:'#fbeff1',must:'丝绒芭蕾平底鞋、玛丽珍鞋、冬日软糯贝雷帽、围巾',tip:'秋冬英伦氛围感的神！丝绒玛丽珍鞋上脚显脚细且非常软，店里装潢宛如英式复古庄园。',p:'rockfish_h'},
+ {n:'Matin Kim',ko:'마틴킴 한남',xhs:'Matin Kim 汉南旗舰店',area:'汉南洞',tag:'🖤 Y2K酷飒高街',floor:'顺坡下行第4站 · 独栋旗舰',icon:'🖤',theme:'#222222',bg:'#f0f0f0',must:'金属铭牌搭扣包 (Accordion Bag)、做旧短皮衣、工装裙',tip:'韩国千禧辣妹风代表，金属铁牌五金质感高级，包包自重极轻且百搭，汉南旗舰款最全。',p:'matinkim'},
+ {n:'Nonfiction',ko:'논픽션 한남',xhs:'Nonfiction 汉南店 香水',area:'汉南洞',tag:'🌿 疗愈系木质沙龙香',floor:'顺坡终点站【2楼】',icon:'🌿',theme:'#38483b',bg:'#f0f4f1',must:'Santal Cream (白檀)、Gentle Night (温柔之夜) 香水、泵头护手霜',tip:'韩国高端小众沙龙香，汉南店在静谧二楼，逛完整个下坡正好在这里大落地窗前洗手试香收尾。',p:'nonfiction_h'},
+ {n:'Tamburins',ko:'탬버린즈 성수',xhs:'Tamburins 圣水 香水',area:'圣水洞',tag:'✨ 先锋艺术香氛',floor:'清水混凝土雕塑建筑',icon:'✨',theme:'#292929',bg:'#f3f3f3',must:'蛋形香水 (Egg Perfume)、金属链条护手霜、固体香膏',tip:'Jennie 同款，Gentle Monster 旗下香氛。圣水店是地上地下通透的清水混凝土雕塑，香气前卫有辨识度。',p:'tamburins_ss'},
  {n:'Point of View',ko:'포인트오브뷰 성수',xhs:'Point of View 圣水 文具',area:'圣水洞',tag:'🖋 文具美学天花板',floor:'1–3整栋艺术空间',icon:'🖋',theme:'#613926',bg:'#f8f1eb',must:'黄铜苹果镇纸、复古钢笔墨水、原创手工纸品便签',tip:'圣水绝对不能错过的艺术级文具圣殿！三层楼从基础工具到艺术灵感层层递进，即使不买文具也会被震撼。',p:'pov'},
+ {n:'Stand Oil',ko:'스탠드오일 성수',xhs:'Stand Oil 圣水店 包包',area:'圣水洞',tag:'👜 极简素皮腋下包',floor:'独栋艺术旗舰店',icon:'👜',theme:'#9c6615',bg:'#fbf3e6',must:'Chubby Bag 保龄球包、Flap Mini 翻盖小方包、大容量托特',tip:'韩剧出镜率极高的轻奢素皮包，自重极轻耐磨。圣水店空间每个季度换一次艺术展装置，逛店像看展。',p:'standoil'},
  {n:'LCDC Seoul',ko:'엘씨디씨 서울',xhs:'LCDC Seoul 圣水 复合空间',area:'圣水洞',tag:'🏢 工业复合买手空间',floor:'旧修车厂多层空间',icon:'🏢',theme:'#3a4454',bg:'#eef2f7',must:'Door 集合店精选独立设计师服饰、小众文创杂货、屋顶咖啡',tip:'由旧修车厂改建的复合空间，三楼像小街区一样把几十个精选独立小品牌聚集在独立门面里。',p:'lcdc'},
- {n:'Tamburins',ko:'탬버린즈 성수',xhs:'Tamburins 圣水 香水',area:'圣水洞',tag:'✨ 先锋艺术香氛',floor:'清水混凝土雕塑建筑',icon:'✨',theme:'#292929',bg:'#f3f3f3',must:'蛋形香水 (Egg Perfume)、金属链条护手霜、固体香膏',tip:'Jennie 同款，Gentle Monster 旗下香氛。圣水店是地上地下通透的清水混凝土雕塑，香气前卫有辨识度。',p:'pov'},
- {n:'Strut Coffee',ko:'스트럿커피',xhs:'Strut Coffee 釜山 田浦',area:'西面 / 田浦',tag:'☕ FT 全球百佳咖啡馆',floor:'独栋极简木质老宅',icon:'☕',theme:'#3e2723',bg:'#f7f2ed',must:'埃塞俄比亚手冲单品咖啡 + 梵山牧场有机奶拿铁 (범산목장)',tip:'英国《金融时报》(FT) 全球 100 佳咖啡馆！田浦咖啡街独立自烘焙天花板，手冲风味极通透，有机奶厚乳拿铁丝滑如冰淇淋。',p:'strut'},
 ];
 
 const SHOPS = [
@@ -1172,10 +1190,10 @@ const NS = [
 const NSTYPE = {popup:'快闪/概念店',vintage:'古着/旧货',market:'市场/夜市',book:'书店/文化空间',exp:'体验'};
 
 const XMAS = [
- {p:'shinsegae',n:'新世界百货本店 圣诞外墙',when:'通常 11 月中旬点亮 · 免费',d:'整面外墙的圣诞灯光动画，17:30 后最美。已排进 D1。',day:'d1'},
- {p:'lotte',n:'乐天世界购物中心 圣诞市集',when:'据报道 11 月中旬开放 · 部分时段预约',d:'欧式市集、大圣诞树、旋转木马。已排进 D3 晚上。',day:'d3'},
- {p:'haeundae',n:'海云台灯光节',when:'据海云台区公布 11/28 开幕 · 免费',d:'你们 28 号正好在釜山，赶上开幕。已排进 D5。',day:'d5'},
- {p:'gwangalli',n:'广安里无人机秀',when:'每周六晚 · 免费',d:'上千架无人机在广安大桥前组成图案，冬季场次查官方 Instagram。',day:'d5'},
+ {p:'shinsegae',n:'新世界百货本店 圣诞外墙',when:'11 月中旬起每晚 17:30 后亮灯 · 免费',d:'整面外墙化身金色流动城堡与圣诞光影巨幕，首尔圣诞季必拍第一站，已排进 D1 傍晚。',day:'d1'},
+ {p:'coex',n:'COEX 星空图书馆 金色圣诞树',when:'11 月中下旬起全天开放 · 全室内免费',d:'高达十几米的书墙中央矗立巨型金色圣诞树，全地下连廊不吹风，已排进 D3 医美后。',day:'d3'},
+ {p:'hyundai',n:'The Hyundai Seoul 室内圣诞村',when:'11 月起开放 · 建议提前预约或现场扫码排队',d:'5 楼 24°C 恒温「H-Village 圣诞童话村」，欧式木屋与圣诞树氛围拉满，已排进 D3 下午。',day:'d3'},
+ {p:'lotte',n:'蚕室 乐天欧式圣诞市集 + 旋转木马',when:'11 月中旬起开放 · 部分晚间时段可预约快通',d:'大型欧式圣诞木屋、旋转木马与石村湖畔夜景，已排进 D4 晚上。',day:'d4'},
 ];
 
 const BBQ_SPOTS = [
@@ -1678,21 +1696,30 @@ function renderOverview(){
     `;
   }).join('');
 
-  const tableRowsHTML = DAYS.map(d => {
-    const col = DAYCOLOR[d.id] || '#9e2a3b';
-    const cityText = d.city === 'seoul' ? '首尔' : '釜山';
+  const COMMUTE = [
+    {id:'d1',md:'11/25 周三',go:'2号线一车直达市厅（约 28 分钟）',back:'乙支路入口 2号线直达回九老（约 28 分钟）',tip:'落地 6004 机场大巴直达酒店，免换乘'},
+    {id:'d2',md:'11/26 周四',go:'2号线转3号线至安国站（约 35 分钟）',back:'乙支路3街 2号线一车直达回九老（约 30 分钟）',tip:'全程室内温室+暖气小巷，回程有座率高'},
+    {id:'d3',md:'11/27 周五',go:'2号线转江南/9号线至新论岘（约 25–28 分钟）',back:'The Hyundai 现代百货打车回仅 15 分钟（约¥52）',tip:'医美去COEX/现代百货全在9号线地下连廊'},
+    {id:'d4',md:'11/28 周六',go:'2号线转6号线至汉江镇（约 35 分钟）',back:'蚕室站 2号线一车坐着直达回九老（约 38 分钟）',tip:'汉南洞顺坡下逛、打车跨江至圣水，拎包不转线'},
+    {id:'d5',md:'11/29 周日',go:'2号线一车直达弘大入口（仅 18 分钟）',back:'回酒店取行李 ➔ 门口 6004 大巴直达仁川（65–75分）',tip:'上午轻松逛延南洞/望远市场，不赶路'}
+  ];
+
+  const BOOKINGS = [
+    {lvl:'must',badge:'必提前约 · D3 10:00',title:'HOMMAGE CLINIC 新论岘医美',desc:'周五上午 10:00 档期热门，务必提前通过微信/官方客服锁定面诊与管理项目。'},
+    {lvl:'must',badge:'必提前约 · D4 10:00',title:'Leeum 三星美术馆（汉南洞）',desc:'常设展免费但实行分时段预约制！通常提前 14 天在官网开放预约，入场必须核验预约码。'},
+    {lvl:'queue',badge:'线上取号 · D2/D3',title:'The Hyundai 圣诞村 / 网红烘焙咖啡',desc:'D3 现代百货 5F 圣诞村若现场人多需扫码候位（或提前关注预约通道）；D2 的 London Bagel / Archivist 建议用 Catch Table 远程取号或开门前到。'},
+    {lvl:'queue',badge:'按需抢票 · D2 备选',title:'昌德宫后苑（秘苑） / eSIM 与气候卡',desc:'只逛昌庆宫玻璃大温室可现场买票免预约；若额外加昌德宫秘苑需提前 6 天官网抢票。出发前买好 eSIM，落地仁川机场直接买「气候同行卡 5日券」。'},
+    {lvl:'free',badge:'免预约 · 随到随看',title:'新世界圣诞巨幕 · COEX圣诞树 · 蚕室市集',desc:'新世界外墙灯光、COEX 星空图书馆圣诞树、德寿宫石墙、圣水展厅与望远市场均免费自由进入，无需提前订票。'}
+  ];
+
+  const tableRowsHTML = COMMUTE.map(c => {
+    const col = DAYCOLOR[c.id] || '#9e2a3b';
     return `
       <tr>
-        <td>
-          <a href="#days/${d.id}" style="color:${col};font-weight:800;text-decoration:none" data-go="${d.id}">
-            ${d.id.toUpperCase()} (${d.md})
-          </a>
-        </td>
-        <td><span class="city ${d.city==='busan'?'bs':''}">${cityText}</span></td>
-        <td><b>${esc(d.title)}</b></td>
-        <td class="small muted">${esc(d.area)}</td>
-        <td><span class="small">${esc(d.stay)}</span></td>
-        <td><span class="small">${esc(d.eat)}</span></td>
+        <td><a href="#days/${c.id}" style="color:${col};font-weight:800;text-decoration:none" data-go="${c.id}">${c.id.toUpperCase()} (${c.md})</a></td>
+        <td><b>${esc(c.go)}</b></td>
+        <td>${esc(c.back)}</td>
+        <td class="small muted">${esc(c.tip)}</td>
       </tr>
     `;
   }).join('');
@@ -1702,21 +1729,30 @@ function renderOverview(){
     return `<button type="button" class="ov-dot-btn ${idx === 0 ? 'is-active' : ''}" data-slide="${idx}" style="--dc:${col}">${d.id.toUpperCase()} · ${d.md}</button>`;
   }).join('');
 
-  const mobileAgendaHTML = DAYS.map(d => {
-    const col = DAYCOLOR[d.id] || '#9e2a3b';
+  const mobileAgendaHTML = COMMUTE.map(c => {
+    const col = DAYCOLOR[c.id] || '#9e2a3b';
     return `
-      <article class="ov-agenda-card" style="--dc:${col}" data-go="${d.id}">
+      <article class="ov-agenda-card" style="--dc:${col}" data-go="${c.id}">
         <div class="ov-agenda-head">
-          <span class="ov-agenda-day">${d.id.toUpperCase()} · ${d.md} ${d.wd}</span>
-          <span class="ov-agenda-go">时刻表 ➔</span>
+          <span class="ov-agenda-day">${c.id.toUpperCase()} · ${c.md}</span>
+          <span class="ov-agenda-go">看时刻表 ➔</span>
         </div>
-        <div class="ov-agenda-title">${esc(d.title)}</div>
-        <div class="ov-agenda-row"><b>📍 动线</b><span>${esc(d.area)}</span></div>
-        <div class="ov-agenda-row"><b>🍽 餐饮</b><span>${esc(d.eat)}</span></div>
-        <div class="ov-agenda-row"><b>🏨 住宿</b><span>${esc(d.stay)}</span></div>
+        <div class="ov-agenda-row"><b>↗ 去程</b><span>${esc(c.go)}</span></div>
+        <div class="ov-agenda-row"><b>↙ 回程</b><span>${esc(c.back)}</span></div>
+        <div class="ov-agenda-row"><b>💡 提示</b><span>${esc(c.tip)}</span></div>
       </article>
     `;
   }).join('');
+
+  const bookingsHTML = BOOKINGS.map(b => `
+    <div class="ov-book-card">
+      <div class="ov-book-head">
+        <span class="ov-book-title">${esc(b.title)}</span>
+        <span class="ov-book-badge ${b.lvl}">${esc(b.badge)}</span>
+      </div>
+      <p class="ov-book-desc">${esc(b.desc)}</p>
+    </div>
+  `).join('');
 
   $('#dayPanel').innerHTML = `
     <div class="ov-wrap">
@@ -1769,21 +1805,25 @@ function renderOverview(){
         </div>
       </div>
 
+      <div class="sec-title" style="margin:26px 0 12px">
+        <h2>🎫 提前订票 · 预约提醒清单</h2>
+        <span class="sub">出发前按优先级搞定，现场零踩空</span>
+      </div>
+      <div class="ov-book-grid">${bookingsHTML}</div>
+
       <div class="sec-title" style="margin:24px 0 12px">
-        <h2>📊 全行程速查一览</h2>
-        <span class="sub">点击任意一天直达详细时刻表</span>
+        <h2>🚇 九老出发 · 每日交通耗时速览</h2>
+        <span class="sub">看清每天来回耗时，点任意一天进入详细时刻表</span>
       </div>
       <div class="ov-mobile-agenda">${mobileAgendaHTML}</div>
       <div class="ov-table-wrap">
         <table class="ov-table">
           <thead>
             <tr>
-              <th style="min-width:100px">天数/日期</th>
-              <th style="min-width:65px">城市</th>
-              <th style="min-width:180px">当天核心主题</th>
-              <th style="min-width:180px">主要活动区域</th>
-              <th style="min-width:140px">住宿地点</th>
-              <th style="min-width:160px">重点餐饮</th>
+              <th style="min-width:115px">日期</th>
+              <th style="min-width:220px">去程地铁与耗时</th>
+              <th style="min-width:220px">回酒店交通</th>
+              <th style="min-width:180px">顺路提示</th>
             </tr>
           </thead>
           <tbody>${tableRowsHTML}</tbody>
@@ -2337,23 +2377,34 @@ function renderDisc(){
       </article>`;
     }).join('') + '</div>';
   } else if (discK === 'autumn'){
-    html = `<div class="banner"><b>🍁 11 月下旬 = 晚秋 / 落叶季</b>首尔银杏多已落下，主要看<b>落叶金毯</b>和<b>宫苑最晚的枫树</b>；釜山梵鱼寺还有机会看到最后一波红。出发前 2–3 天在 Naver 搜「창덕궁 단풍」「범어사 단풍」看实拍。</div>`;
+    html = `<div class="banner"><b>🌿 0°C 初冬赏景 · 温室与圣诞光影</b>11 月底接近 0°C 落叶基本结束，主打<b>全室内百年玻璃大温室 + 全城圣诞光影 + 顶级美术馆</b>，温暖又极其出片！</div>`;
     html += '<div class="pgrid">' + AUTUMN.filter(a => okC(PL[a.p].c)).map(a => {
       const p = PL[a.p], ds = placeDays(a.p);
-      return `<article class="card pcard"><div class="ph">${pic(p.img, a.n || p.n, '🍁')}</div><div class="bd">
+      return `<article class="card pcard"><div class="ph">${pic(p.img, a.n || p.n, '🌿')}</div><div class="bd">
         <h3>${a.n || p.n}</h3><div class="stars" aria-label="${a.s} 星">${'★'.repeat(a.s)}${'☆'.repeat(5-a.s)}</div><p>${a.d}</p>
         <div class="meta">${cityTag(p.c)}<span class="small muted">${ds.join(' ')}</span></div>
         <div class="acts" style="display:flex;gap:4px;flex-wrap:wrap;margin-top:6px">${links(p)}</div></div></article>`;
     }).join('') + '</div>';
   } else if (discK === 'brand'){
     const okA = a => discBrandArea === 'all' || a.area.includes(discBrandArea);
-    html = `<div class="banner"><b>💡 当地朋友掏心掏肺逛街秘笈</b>
-    ① <b>汉南洞顺坡下行</b>：汉江镇站 3 号口出顺下坡逛，不爬坡最省力；打车到首尔站仅 15 分钟。<br>
-    ② <b>西村北村绕宫一圈</b>：从北村穿景福宫北石墙到西村，沿途银杏金黄，喝首尔第一维也纳咖啡 Archivist。<br>
-    ③ <b>好店藏在二三楼</b>：首尔小众独立设计店（如 One More Bag、Nonfiction 等）常藏在 2 楼或深巷，门头不起眼极易错过，务必提前码好地址。<br>
-    ④ <b>圣水精选锚点</b>：圣水洞游客极多且部分支巷杂乱，不必盲目乱逛，锁定核心旗舰（Point of View、Stand Oil、LCDC）即可。<br>
-    ⑤ <b>随身带护照退税</b>：单笔满 15,000 韩元即可退税，很多旗舰店支持现场立减退税。</div>`;
-    html += '<div class="pgrid">' + BRANDS.filter(okA).map(b => {
+    const list = BRANDS.filter(okA);
+    const routeTips = {
+      'all': '点击上方地区标签（西村 / 汉南洞 / 圣水洞），小地图会自动拉近并画出不走回头路的步行顺序！',
+      '西村': '<b>西村步行顺序：</b>1. Archivist ➔ 2. Ofr. Seoul ➔ 3. One More Bag ➔ 4. Granhand ➔ 5. Staffpicks（全程平缓顺走，不走回头路）',
+      '汉南洞': '<b>汉南洞顺坡不累路线：</b>地铁 6 号线汉江镇站 3 号口出，1. EMIS ➔ 2. Mardi Mercredi ➔ 3. Rockfish ➔ 4. Matin Kim ➔ 5. Nonfiction（全程下坡！）',
+      '圣水洞': '<b>圣水精华步行圈：</b>1. Tamburins ➔ 2. Point of View ➔ 3. Stand Oil ➔ 4. LCDC Seoul（300米半径内串完，免在支巷兜圈）'
+    };
+    html = `<div class="brand-map-wrap">
+      <div id="brandMap" role="region" aria-label="品牌好店位置小地图"></div>
+      <div class="brand-map-bar">
+        <span>${routeTips[discBrandArea] || routeTips.all}</span>
+        <span class="small muted">共 ${list.length} 家好店</span>
+      </div>
+    </div>`;
+    html += `<div class="banner"><b>💡 当地朋友逛街秘笈：</b>
+    ① <b>好店常在二三楼</b>（One More Bag、Nonfiction 门头极小，看小地图编号按顺序找）；
+    ② <b>带护照退税</b>（单笔满 15,000 韩元很多旗舰店支持现场立减退税）。</div>`;
+    html += '<div class="pgrid">' + list.map((b, idx) => {
       const p = PL[b.p];
       const xq = b.xhs || (p ? p.xhs : b.n);
       return `<article class="card pcard brand-card">
@@ -2361,13 +2412,10 @@ function renderDisc(){
           <div class="brand-hero-inner">
             <span class="brand-big-icon">${b.icon || '🛍'}</span>
             <div class="brand-hero-title" style="color:${b.theme || 'var(--ink)'}">
-              <b>${b.n}</b>
+              <b><span style="display:inline-block;min-width:18px;text-align:center;border-radius:99px;background:rgba(0,0,0,.08);font-size:.76rem;margin-right:4px">${idx + 1}</span>${b.n}</b>
               <span class="ko-sub">${b.ko}</span>
             </div>
           </div>
-          <a class="xhs-hero-btn" href="${xhs(xq)}" target="_blank" rel="noopener">
-            <span>📕 查看小红书实拍与试穿</span> <i>&rarr;</i>
-          </a>
         </div>
         <div class="bd brand-bd">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:4px">
@@ -2378,7 +2426,7 @@ function renderDisc(){
           <p><b>💡 探店贴士</b>：${b.tip}</p>
           <div class="acts" style="display:flex;gap:4px;flex-wrap:wrap;margin-top:auto;padding-top:6px">
             ${links(p, xq)}
-            ${p ? `<button class="lnk" type="button" data-fly="${b.p}">🗺 地图上看</button>` : ''}
+            ${p ? `<button class="lnk" type="button" data-brand-focus="${b.p}">📍 小地图定位</button>` : ''}
           </div>
         </div>
       </article>`;
@@ -2406,7 +2454,52 @@ function renderDisc(){
       '<p class="small muted pad" style="margin-top:10px">※ 活动日期来自公开报道，以主办方官方公告为准。</p>';
   }
   $('#discPanel').innerHTML = html;
+  if (discK === 'brand'){
+    const okA = a => discBrandArea === 'all' || a.area.includes(discBrandArea);
+    drawBrandMap(BRANDS.filter(okA));
+  }
 }
+
+let brandMap, brandMarkers = {};
+function drawBrandMap(list){
+  if (!window.L) return;
+  const el = document.getElementById('brandMap');
+  if (!el) return;
+  if (brandMap){
+    try { brandMap.remove(); } catch(e){}
+    brandMap = null;
+  }
+  el._leaflet_id = null;
+  brandMarkers = {};
+  brandMap = L.map(el, { zoomControl: false, scrollWheelZoom: false, tap: true }).setView([37.555, 127.01], 12);
+  tiles(brandMap);
+
+  const areaColor = area => area.includes('西村') ? '#2a5849' : (area.includes('汉南') ? '#9e2a3b' : '#c49234');
+  const g = L.featureGroup().addTo(brandMap);
+  const byArea = {};
+  list.forEach((b, idx) => {
+    const p = PL[b.p];
+    if (!p || !p.ll) return;
+    const col = areaColor(b.area);
+    const areaKey = b.area.includes('西村') ? '西村' : (b.area.includes('汉南') ? '汉南' : '圣水');
+    (byArea[areaKey] = byArea[areaKey] || []).push(p.ll);
+    const m = L.marker(p.ll, { icon: numIcon(idx + 1, col, 24) })
+      .bindPopup(`<div class="pop"><h4>${idx + 1}. ${b.n}</h4><div class="ko">${b.ko} · ${b.floor}</div><p style="margin:4px 0;font-size:12px">${b.must}</p><div class="acts">${links(p, b.xhs || p.xhs)}</div></div>`)
+      .addTo(g);
+    brandMarkers[b.p] = m;
+  });
+  Object.entries(byArea).forEach(([k, pts]) => {
+    if (pts.length > 1) {
+      L.polyline(pts, { color: areaColor(k), weight: 3, opacity: .75, dashArray: '5 6' }).addTo(g);
+    }
+  });
+  setTimeout(() => {
+    if (!brandMap) return;
+    brandMap.invalidateSize();
+    if (g.getLayers().length) brandMap.fitBounds(g.getBounds().pad(0.18));
+  }, 60);
+}
+
 $('#discSeg').addEventListener('click', e => { const b = e.target.closest('[data-k]'); if (!b) return; discK = b.dataset.k; discType = 'all'; renderDisc(); });
 $('#discChips').addEventListener('click', e => {
   const c = e.target.closest('[data-c]'), t = e.target.closest('[data-t]'), ba = e.target.closest('[data-ba]');
@@ -2414,6 +2507,20 @@ $('#discChips').addEventListener('click', e => {
   if (c || t || ba) renderDisc();
 });
 $('#discPanel').addEventListener('click', e => {
+  const bf = e.target.closest('[data-brand-focus]');
+  if (bf) {
+    const pid = bf.dataset.brandFocus;
+    const p = PL[pid];
+    const mapWrap = document.querySelector('.brand-map-wrap');
+    if (mapWrap) mapWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (brandMap && p && p.ll) {
+      setTimeout(() => {
+        brandMap.setView(p.ll, 17, { animate: true });
+        brandMarkers[pid] && brandMarkers[pid].openPopup();
+      }, 260);
+    }
+    return;
+  }
   const f = e.target.closest('[data-fly]'); if (f){ location.hash = 'map/' + f.dataset.fly; }
 });
 
