@@ -40,11 +40,22 @@ img{display:block;max-width:100%}
 .appbar{position:sticky;top:0;z-index:40;background:linear-gradient(120deg,#16222f,#223846 55%,#2b4a52);color:#f9f6ef;
   padding:calc(env(safe-area-inset-top,0px) + 10px) 16px 10px}
 .appbar .row{display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:1100px;margin:0 auto}
-.appbar-brand{display:flex;align-items:center;gap:10px;min-width:0}
+.appbar-brand{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
 .appbar-couple-avatar{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,253,249,0.85);box-shadow:0 2px 6px rgba(0,0,0,0.22);flex-shrink:0;background:rgba(255,255,255,0.2)}
-.appbar h1{font-family:var(--serif);font-size:1.12rem;letter-spacing:.02em;white-space:nowrap;margin:0}
-.appbar h1 small{font:500 .7rem var(--sans);opacity:.8;margin-left:6px;letter-spacing:.05em}
+.appbar h1{font-family:var(--serif);font-size:1.12rem;letter-spacing:.02em;white-space:nowrap;margin:0;overflow:hidden;text-overflow:ellipsis}
+.appbar h1 small{font:500 .7rem var(--sans);opacity:.82;margin-left:6px;letter-spacing:.05em}
+.appbar-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
 .count-chip{font-size:.75rem;background:rgb(255 255 255/.16);border:1px solid rgb(255 255 255/.25);padding:3px 10px;border-radius:99px;white-space:nowrap}
+@media (max-width:640px){
+  .appbar{padding:calc(env(safe-area-inset-top,0px) + 8px) 12px 8px}
+  .appbar-brand{gap:8px}
+  .appbar-couple-avatar{width:30px;height:30px}
+  .appbar h1{font-size:.98rem}
+  .appbar h1 small{display:none}
+  .appbar-snow-pill{font-size:.7rem;padding:3px 8px}
+  .appbar-snow-pill .hide-xs{display:none}
+  .count-chip{font-size:.7rem;padding:3px 8px}
+}
 
 /* ---------- views ---------- */
 .view{display:none;max-width:1100px;margin:0 auto;padding:0 0 24px}
@@ -73,8 +84,8 @@ img{display:block;max-width:100%}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
 .chip[aria-pressed="true"] span{color:#e9dccb}
 .chip.sm{padding:5px 12px;border-radius:99px;font-size:.84rem}
-.stickybar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 48px);z-index:30;background:rgb(247 241 231/.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.seg{display:flex;background:#ece2d2;border-radius:12px;padding:3px;margin:12px 14px 4px;gap:2px;overflow-x:auto}
+.stickybar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 46px);z-index:30;background:rgb(244 245 247/.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.seg{display:flex;background:#e5eaef;border-radius:12px;padding:3px;margin:12px 14px 4px;gap:2px;overflow-x:auto}
 .seg button{flex:1;border:0;background:transparent;border-radius:9px;padding:7px 2px;font-size:.82rem;cursor:pointer;color:var(--ink2);white-space:nowrap}
 .seg button[aria-pressed="true"]{background:var(--paper);color:var(--ink);font-weight:700;box-shadow:0 1px 3px rgb(0 0 0/.1)}
 
@@ -160,26 +171,54 @@ img{display:block;max-width:100%}
 .badge-back-ov{position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:var(--ink);border-radius:10px;padding:4px 10px;font-size:0.75rem;font-weight:700;text-decoration:none;box-shadow:0 2px 6px rgba(0,0,0,0.18);display:flex;align-items:center;gap:4px;transition:all .15s ease;z-index:5}
 .badge-back-ov:hover{background:#fff;transform:translateY(-1px);color:var(--maple)}
 
-.ov-wrap{padding:4px 14px 30px;max-width:1100px;margin:0 auto}
-.ov-hero-card{background:linear-gradient(135deg,#fcf8f2 0%,#f5eee1 100%);border:1px solid #e7dac8;border-radius:18px;padding:18px;margin:8px 0 16px;box-shadow:var(--sh)}
-.ov-hero-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.ov-wrap{padding:8px 14px 36px;max-width:1100px;margin:0 auto}
+.ov-hero-card{background:linear-gradient(135deg,#ffffff 0%,#eef3f8 100%);border:1px solid var(--line);border-radius:18px;padding:18px;margin:10px 0 22px;box-shadow:var(--sh)}
+.ov-hero-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
 .ov-hero-title-box{display:flex;align-items:center;gap:12px}
 .ov-hero-avatar{width:46px;height:46px;border-radius:50%;border:2px solid #9e2a3b;object-fit:cover;box-shadow:0 2px 8px rgba(0,0,0,0.12);background:rgba(255,255,255,0.4);flex-shrink:0}
 .ov-hero-title-box h2{font-family:var(--serif);font-size:1.22rem;margin:0;color:var(--ink);line-height:1.3}
-.ov-hero-title-box p{margin:3px 0 0;font-size:.78rem;color:var(--ink2)}
-.ov-badge-autumn{background:var(--maple-s);color:var(--maple);border:1px solid rgba(180,68,42,0.25);font-weight:700;font-size:.76rem;padding:3px 10px;border-radius:99px;white-space:nowrap}
-.ov-stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
+.ov-hero-title-box p{margin:4px 0 0;font-size:.78rem;color:var(--ink2);line-height:1.45}
+.ov-badge-autumn{background:var(--maple-s);color:var(--maple);border:1px solid rgba(158,42,59,0.22);font-weight:700;font-size:.76rem;padding:4px 10px;border-radius:99px;white-space:nowrap}
+.ov-stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
 @media (min-width:768px){.ov-stats-grid{grid-template-columns:repeat(4,1fr);gap:12px}}
-.ov-stat-tile{background:#fff;border:1px solid #ebdccb;border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;box-shadow:0 1px 3px rgba(0,0,0,0.03)}
+.ov-stat-tile{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 12px;display:flex;flex-direction:column;gap:3px;box-shadow:0 1px 4px rgba(22,34,47,0.04)}
 .ov-stat-label{font-size:.72rem;color:var(--ink2);display:flex;align-items:center;gap:4px}
-.ov-stat-val{font-size:.92rem;font-weight:700;color:var(--ink)}
-.ov-stat-sub{font-size:.7rem;color:#7a6e62;line-height:1.3}
+.ov-stat-val{font-size:.9rem;font-weight:700;color:var(--ink)}
+.ov-stat-sub{font-size:.7rem;color:var(--ink2);line-height:1.35}
+@media (max-width:640px){
+  .ov-hero-card{padding:15px 14px;margin:8px 0 20px}
+  .ov-hero-title-box h2{font-size:1.08rem}
+  .ov-hero-avatar{width:40px;height:40px}
+  .ov-stats-grid{gap:9px}
+  .ov-stat-tile{padding:10px}
+}
 
-/* ================= CINEMATIC ACCORDION OVERVIEW (5天电影级动态展开长条) ================= */
-.ov-cinema-wrap{margin-bottom:24px}
-.ov-cinema-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+/* ================= CINEMATIC ACCORDION OVERVIEW (电脑端动态画卷 / 手机端横滑明信片画廊) ================= */
+.ov-cinema-wrap{margin-bottom:28px}
+.ov-cinema-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:6px}
 .ov-cinema-header h2{font-family:var(--serif);font-size:1.18rem;margin:0;color:var(--ink);display:flex;align-items:center;gap:8px}
 .ov-cinema-hint{font-size:.76rem;color:var(--ink2)}
+.ov-cinema-hint .hint-m{display:none}
+@media (max-width:959px){
+  .ov-cinema-hint .hint-d{display:none}
+  .ov-cinema-hint .hint-m{display:inline}
+}
+
+/* 手机端画卷快速定位胶囊条 */
+.ov-mobile-dots{display:none}
+@media (max-width:959px){
+  .ov-mobile-dots{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}
+  .ov-mobile-dots::-webkit-scrollbar{display:none}
+  .ov-dot-btn{
+    flex:0 0 auto;border:1px solid var(--line);background:var(--paper);color:var(--ink2);
+    border-radius:99px;padding:4px 12px;font-size:.74rem;font-weight:700;cursor:pointer;
+    transition:all .2s ease;display:inline-flex;align-items:center;gap:5px;
+  }
+  .ov-dot-btn.is-active{
+    background:var(--dc,var(--ink));border-color:var(--dc,var(--ink));color:#fff;
+    box-shadow:0 2px 8px rgba(15,25,38,.18);
+  }
+}
 
 /* 电脑端纵向堆叠 Accordion (Desktop) */
 @media (min-width: 960px){
@@ -194,33 +233,41 @@ img{display:block;max-width:100%}
   }
 }
 
-/* 手机端平滑手风琴列表 (Mobile) */
+/* 手机端横向滑动电影明信片画廊 (Mobile Horizontal Snap Story Deck) */
 @media (max-width: 959px){
-  .ov-cinema-stack{display:flex;flex-direction:column;gap:12px}
-  .ov-strip{
-    position:relative;overflow:hidden;border-radius:16px;cursor:pointer;
-    box-shadow:0 3px 12px rgba(15,25,38,.10);border:1.5px solid rgba(255,255,255,.35);
-    height:96px;transition:height .42s cubic-bezier(.2,.9,.3,1),box-shadow .3s ease,border-color .3s ease;
-    background:#16222f;
+  .ov-cinema-stack{
+    display:flex;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;
+    gap:14px;padding:4px 14px 14px;margin:0 -14px;scrollbar-width:none;-webkit-overflow-scrolling:touch;
   }
-  .ov-strip.is-expanded{
-    height:390px;box-shadow:0 10px 30px rgba(15,25,38,.22);border-color:var(--dc,#9e2a3b);
+  .ov-cinema-stack::-webkit-scrollbar{display:none}
+  .ov-strip{
+    flex:0 0 85vw;max-width:340px;height:465px;scroll-snap-align:center;
+    position:relative;overflow:hidden;border-radius:20px;cursor:pointer;
+    box-shadow:0 8px 24px rgba(15,25,38,.14);border:1.5px solid rgba(255,255,255,.55);
+    background:#16222f;
   }
 }
 
 /* 长条全屏背景风光 */
 .ov-strip-bg{position:absolute;inset:0;z-index:1;overflow:hidden}
 .ov-strip-bg img,.ov-strip-bg .noimg{width:100%;height:100%;object-fit:cover;object-position:center 38%;transition:transform .6s cubic-bezier(.2,.9,.3,1)}
-.ov-strip:hover .ov-strip-bg img,.ov-strip:focus-within .ov-strip-bg img,.ov-strip.is-active .ov-strip-bg img,.ov-strip.is-expanded .ov-strip-bg img{transform:scale(1.06)}
+@media (min-width:960px){
+  .ov-strip:hover .ov-strip-bg img,.ov-strip:focus-within .ov-strip-bg img,.ov-strip.is-active .ov-strip-bg img{transform:scale(1.06)}
+}
 
-/* 左侧冷调轻遮罩，保障未展开时文字清晰又不显脏 */
+/* 左侧/顶部冷调轻遮罩，保障文字清晰又不显脏 */
 .ov-strip-left-tint{
   position:absolute;inset:0;z-index:2;
   background:linear-gradient(to right,rgba(15,25,38,.68) 0%,rgba(15,25,38,.34) 44%,rgba(15,25,38,.08) 76%,transparent 100%);
   pointer-events:none;transition:opacity .3s ease;
 }
+@media (max-width:959px){
+  .ov-strip-left-tint{
+    background:linear-gradient(to bottom,rgba(15,25,38,.74) 0%,rgba(15,25,38,.28) 38%,transparent 65%);
+  }
+}
 
-/* 左侧常驻概要信息 */
+/* 概要信息 */
 .ov-strip-summary{
   position:absolute;left:20px;top:50%;transform:translateY(-50%);
   z-index:3;display:flex;flex-direction:column;gap:5px;color:#fff;
@@ -230,17 +277,16 @@ img{display:block;max-width:100%}
   .ov-strip:hover .ov-strip-summary,.ov-strip:focus-within .ov-strip-summary,.ov-strip.is-active .ov-strip-summary{top:22px;transform:translateY(0)}
 }
 @media (max-width: 959px){
-  .ov-strip-summary{left:16px;max-width:80%}
-  .ov-strip.is-expanded .ov-strip-summary{top:14px;transform:translateY(0);max-width:86%}
+  .ov-strip-summary{left:16px;right:16px;top:16px;transform:none;max-width:none;gap:6px}
 }
 .ov-strip-badgerow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .ov-strip-badge{background:var(--dc,#9e2a3b);color:#fff;font-weight:800;font-size:.78rem;padding:2px 9px;border-radius:6px;letter-spacing:.02em;box-shadow:0 1px 4px rgba(0,0,0,.35)}
 .ov-strip-date{font-size:.8rem;font-weight:700;color:#fcefe2;text-shadow:0 1px 3px rgba(0,0,0,.7)}
 .ov-strip-city{font-size:.7rem;font-weight:600;padding:2px 7px;border-radius:6px;background:rgba(255,255,255,.2);color:#fff;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.15)}
 .ov-strip-title{font-family:var(--serif);font-size:1.08rem;font-weight:700;color:#fff;margin:0;line-height:1.35;text-shadow:0 1px 4px rgba(0,0,0,.85)}
-.ov-strip-area{font-size:.74rem;color:#ead6c0;margin:0;opacity:.95;text-shadow:0 1px 3px rgba(0,0,0,.8)}
+.ov-strip-area{font-size:.74rem;color:#e6eef5;margin:0;opacity:.95;text-shadow:0 1px 3px rgba(0,0,0,.8)}
 
-/* 未展开时的右侧提示指示器 */
+/* 未展开时的右侧提示指示器 (仅电脑端需要) */
 .ov-strip-expand-hint{
   position:absolute;right:18px;top:50%;transform:translateY(-50%);z-index:3;
   color:rgba(255,255,255,.85);font-size:.76rem;font-weight:600;display:flex;align-items:center;gap:4px;
@@ -252,10 +298,10 @@ img{display:block;max-width:100%}
   .ov-strip:hover .ov-strip-expand-hint,.ov-strip:focus-within .ov-strip-expand-hint,.ov-strip.is-active .ov-strip-expand-hint{opacity:0;transform:translateY(-50%) translateX(12px)}
 }
 @media (max-width: 959px){
-  .ov-strip.is-expanded .ov-strip-expand-hint{opacity:0;transform:translateY(-50%) translateX(12px)}
+  .ov-strip-expand-hint{display:none}
 }
 
-/* 右侧悬浮冰雪磨砂玻璃卡片 (Floating Frosted Ice Glass Panel) */
+/* 悬浮冰雪磨砂玻璃卡片 (Floating Frosted Ice Glass Panel) */
 .ov-strip-drawer{
   position:absolute;z-index:4;display:flex;flex-direction:column;justify-content:space-between;
   color:#1d242b;opacity:0;pointer-events:none;
@@ -276,16 +322,15 @@ img{display:block;max-width:100%}
 }
 @media (max-width: 959px){
   .ov-strip-drawer{
-    inset:66px 10px 10px 10px;padding:12px 14px;border-radius:14px;
-    background:rgba(255,255,255,.80);
+    inset:auto 10px 10px 10px;max-height:260px;padding:12px 14px;border-radius:15px;
+    background:rgba(255,255,255,.84);
     backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);
-    border:1px solid rgba(255,255,255,.88);
-    box-shadow:0 8px 26px rgba(15,25,38,.16),inset 0 1px 0 rgba(255,255,255,.92);
-    transform:translateY(14px);overflow-y:auto;-webkit-overflow-scrolling:touch;
+    border:1px solid rgba(255,255,255,.9);
+    box-shadow:0 8px 26px rgba(15,25,38,.18),inset 0 1px 0 rgba(255,255,255,.95);
+    opacity:1;pointer-events:auto;transform:none;overflow-y:auto;-webkit-overflow-scrolling:touch;
   }
-  .ov-strip.is-expanded .ov-strip-drawer{
-    opacity:1;pointer-events:auto;transform:translateY(0);
-  }
+  .ov-drawer-meta{display:none}
+  .ov-drawer-flow{margin-bottom:10px}
 }
 
 /* 抽屉内部元素（浅色冰雪玻璃上的深墨文字） */
@@ -305,6 +350,9 @@ img{display:block;max-width:100%}
   transition:all .2s ease;cursor:pointer;
 }
 .ov-drawer-cta-btn:hover{filter:brightness(1.1);transform:translateX(4px);box-shadow:0 6px 20px rgba(22,34,47,.3)}
+@media (max-width:959px){
+  .ov-drawer-cta-btn{width:100%;justify-content:center;padding:9px 14px}
+}
 
 /* 全屏沉浸式动画转场 (Light Frost Curtain Transition) */
 .ov-curtain{
@@ -323,13 +371,30 @@ img{display:block;max-width:100%}
 @keyframes curtainSpin{to{transform:rotate(360deg)}}
 .ov-curtain-text{font-family:var(--serif);font-size:1.18rem;letter-spacing:.06em;color:#1d242b}
 
-/* 底部速查全景表格 */
+/* 底部速查全景表格 (Desktop) + 竖向极简卡片时间轴 (Mobile) */
 .ov-table-wrap{overflow-x:auto;background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh);-webkit-overflow-scrolling:touch;margin-bottom:20px}
 .ov-table{width:100%;border-collapse:collapse;font-size:.8rem;text-align:left;line-height:1.45}
 .ov-table th{background:#eef2f6;color:var(--ink);font-weight:700;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
 .ov-table td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--ink);vertical-align:top}
 .ov-table tr:last-child td{border-bottom:none}
-.ov-table tr:hover td{background:#fcf8f2}
+.ov-table tr:hover td{background:#f8fafc}
+.ov-mobile-agenda{display:none}
+@media (max-width:959px){
+  .ov-table-wrap{display:none}
+  .ov-mobile-agenda{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+  .ov-agenda-card{
+    background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--dc,#9e2a3b);
+    border-radius:14px;padding:13px 14px;box-shadow:var(--sh);cursor:pointer;
+    display:flex;flex-direction:column;gap:7px;transition:transform .15s ease;
+  }
+  .ov-agenda-card:active{transform:scale(0.99)}
+  .ov-agenda-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .ov-agenda-day{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:.84rem;color:var(--dc,#9e2a3b)}
+  .ov-agenda-go{font-size:.74rem;font-weight:700;color:var(--ink2);background:#f1f5f9;padding:2px 8px;border-radius:99px}
+  .ov-agenda-title{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--ink);line-height:1.35}
+  .ov-agenda-row{display:flex;align-items:flex-start;gap:6px;font-size:.78rem;line-height:1.45;color:var(--ink2)}
+  .ov-agenda-row b{color:var(--ink);flex-shrink:0}
+}
 
 /* ---------- map view ---------- */
 #bigMap{height:calc(100vh - 210px);height:calc(100dvh - 210px - var(--safe-b));min-height:320px}
@@ -567,8 +632,8 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
       <img src="/*COUPLE_AVATAR_SRC*/" alt="夫妻晚秋旅行头像" class="appbar-couple-avatar" width="34" height="34">
       <h1>首尔初冬 · 圣诞<small>11.25 – 11.29 · 0°C暖游</small></h1>
     </div>
-    <div style="display:flex;align-items:center;gap:6px">
-      <a href="#discover/snow" class="appbar-snow-pill" title="查看首尔初雪赏雪指南">❄️ 初雪特辑</a>
+    <div class="appbar-actions">
+      <a href="#discover/snow" class="appbar-snow-pill" title="查看首尔初雪赏雪指南">❄️ 初雪<span class="hide-xs">特辑</span></a>
       <span class="count-chip" id="countChip"></span>
     </div>
   </div>
@@ -1632,12 +1697,33 @@ function renderOverview(){
     `;
   }).join('');
 
+  const mobileDotsHTML = DAYS.map((d, idx) => {
+    const col = DAYCOLOR[d.id] || '#9e2a3b';
+    return `<button type="button" class="ov-dot-btn ${idx === 0 ? 'is-active' : ''}" data-slide="${idx}" style="--dc:${col}">${d.id.toUpperCase()} · ${d.md}</button>`;
+  }).join('');
+
+  const mobileAgendaHTML = DAYS.map(d => {
+    const col = DAYCOLOR[d.id] || '#9e2a3b';
+    return `
+      <article class="ov-agenda-card" style="--dc:${col}" data-go="${d.id}">
+        <div class="ov-agenda-head">
+          <span class="ov-agenda-day">${d.id.toUpperCase()} · ${d.md} ${d.wd}</span>
+          <span class="ov-agenda-go">时刻表 ➔</span>
+        </div>
+        <div class="ov-agenda-title">${esc(d.title)}</div>
+        <div class="ov-agenda-row"><b>📍 动线</b><span>${esc(d.area)}</span></div>
+        <div class="ov-agenda-row"><b>🍽 餐饮</b><span>${esc(d.eat)}</span></div>
+        <div class="ov-agenda-row"><b>🏨 住宿</b><span>${esc(d.stay)}</span></div>
+      </article>
+    `;
+  }).join('');
+
   $('#dayPanel').innerHTML = `
     <div class="ov-wrap">
       <div class="ov-hero-card">
         <div class="ov-hero-header">
           <div class="ov-hero-title-box">
-            <img class="ov-hero-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23b4442a'/%3E%3Ctext x='50' y='58' font-size='38' text-anchor='middle' fill='white'%3E🍁%3C/text%3E%3C/svg%3E" alt="Korea Autumn" id="ovHeroAvatar">
+            <img class="ov-hero-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%232a5849'/%3E%3Ctext x='50' y='58' font-size='38' text-anchor='middle' fill='white'%3E❄️%3C/text%3E%3C/svg%3E" alt="Korea Winter" id="ovHeroAvatar">
             <div>
               <h2>5 天 4 晚 · 首尔 0°C 初冬圣诞暖游总览</h2>
               <p>九老福朋喜来登 4 晚连住 ➔ 全城三大圣诞光影 · 玻璃温室与美术馆 · 热汤暖冬美食（全程少吹冷风）</p>
@@ -1672,17 +1758,22 @@ function renderOverview(){
       <div class="ov-cinema-wrap">
         <div class="ov-cinema-header">
           <h2><span>🎬</span> 5 天电影级风景全景画卷</h2>
-          <span class="ov-cinema-hint">💡 鼠标滑过或轻触展开风景 · 点击进入分时行程</span>
+          <span class="ov-cinema-hint">
+            <span class="hint-d">💡 鼠标滑过展开风景 · 点击进入分时行程</span>
+            <span class="hint-m">👉 左右滑动浏览每天画卷 · 轻触卡片进入时刻表</span>
+          </span>
         </div>
+        <div class="ov-mobile-dots" id="ovMobileDots">${mobileDotsHTML}</div>
         <div class="ov-cinema-stack" id="ovCinemaStack">
           ${stripsHTML}
         </div>
       </div>
 
-      <div class="sec-title" style="margin:28px 0 12px">
-        <h2>📊 全行程对照速查表</h2>
-        <span class="sub">左右滑动或在电脑宽屏快速对比</span>
+      <div class="sec-title" style="margin:24px 0 12px">
+        <h2>📊 全行程速查一览</h2>
+        <span class="sub">点击任意一天直达详细时刻表</span>
       </div>
+      <div class="ov-mobile-agenda">${mobileAgendaHTML}</div>
       <div class="ov-table-wrap">
         <table class="ov-table">
           <thead>
@@ -1700,6 +1791,36 @@ function renderOverview(){
       </div>
     </div>
   `;
+
+  // 手机端横向画卷滚动同步 + 点击圆点跳转
+  const stackEl = $('#ovCinemaStack');
+  const dotsWrap = $('#ovMobileDots');
+  if (stackEl && dotsWrap) {
+    const cards = $$('.ov-strip', stackEl);
+    const dotBtns = $$('.ov-dot-btn', dotsWrap);
+    dotsWrap.addEventListener('click', e => {
+      const btn = e.target.closest('[data-slide]');
+      if (!btn) return;
+      const idx = parseInt(btn.dataset.slide, 10);
+      if (cards[idx]) {
+        cards[idx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    });
+    let scrollTimer;
+    stackEl.addEventListener('scroll', () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        const center = stackEl.scrollLeft + stackEl.clientWidth / 2;
+        let bestIdx = 0, bestDist = Infinity;
+        cards.forEach((c, i) => {
+          const cCenter = c.offsetLeft + c.offsetWidth / 2;
+          const dist = Math.abs(cCenter - center);
+          if (dist < bestDist) { bestDist = dist; bestIdx = i; }
+        });
+        dotBtns.forEach((b, i) => b.classList.toggle('is-active', i === bestIdx));
+      }, 45);
+    }, { passive: true });
+  }
 
   const heroAv = $('#ovHeroAvatar');
   const appAv = $('.appbar-couple-avatar');
@@ -1805,18 +1926,7 @@ $('#dayPanel').addEventListener('click', e => {
 
   const strip = e.target.closest('.ov-strip');
   if (strip && strip.dataset.day){
-    const dayId = strip.dataset.day;
-    const isMobile = window.matchMedia('(max-width: 959px)').matches;
-    if (isMobile) {
-      if (strip.classList.contains('is-expanded')) {
-        enterDayWithAnimation(dayId);
-      } else {
-        $$('.ov-strip').forEach(s => s.classList.remove('is-expanded'));
-        strip.classList.add('is-expanded');
-      }
-    } else {
-      enterDayWithAnimation(dayId);
-    }
+    enterDayWithAnimation(strip.dataset.day);
     return;
   }
 
@@ -1866,9 +1976,9 @@ function popHTML(pid){
       <div style="font-size:11px;font-weight:700;color:#16a34a;background:#ecfdf5;display:inline-block;padding:2px 8px;border-radius:99px;margin-bottom:4px;border:1px solid #a7f3d0">🎉 首尔已订住宿</div>
       <h4 style="margin:2px 0 4px">${p.n}</h4>
       <div class="ko" style="font-size:12px;color:#166534;font-weight:600">${p.ko}</div>
-      <div style="font-size:11px;color:#444;margin:4px 0"><b>英文地址：</b>${p.en}</div>
-      <div style="font-size:11px;color:#555;margin:2px 0"><b>门牌：</b>${p.gate} · 邮编 <b>${p.zip}</b></div>
-      <div style="font-size:11px;color:#555;margin:2px 0"><b>交通：</b>${p.subway}</div>
+      ${p.en ? `<div style="font-size:11px;color:#444;margin:4px 0"><b>英文地址：</b>${p.en}</div>` : ''}
+      ${p.gate ? `<div style="font-size:11px;color:#555;margin:2px 0"><b>门牌：</b>${p.gate}${p.zip ? ` · 邮编 <b>${p.zip}</b>` : ''}</div>` : ''}
+      ${p.subway ? `<div style="font-size:11px;color:#555;margin:2px 0"><b>交通：</b>${p.subway}</div>` : ''}
       <div class="acts" style="margin-top:6px">
         <button class="lnk" type="button" onclick="navigator.clipboard&&navigator.clipboard.writeText('${p.ko}').then(()=>{alert('已复制韩文地址给司机：\\n${p.ko}');})">📋 复制韩文地址</button>
         ${links(p)}
@@ -1880,11 +1990,11 @@ function popHTML(pid){
 function zonePop(z){
   if (z.booked) {
     return `<div class="pop" style="min-width:240px">
-      <div style="font-size:11px;font-weight:700;color:#16a34a;background:#ecfdf5;display:inline-block;padding:2px 8px;border-radius:99px;margin-bottom:4px;border:1px solid #a7f3d0">🎉 确认入住 · 3 晚</div>
+      <div style="font-size:11px;font-weight:700;color:#16a34a;background:#ecfdf5;display:inline-block;padding:2px 8px;border-radius:99px;margin-bottom:4px;border:1px solid #a7f3d0">🎉 ${z.nights || '确认入住'}</div>
       <h4 style="margin:2px 0 4px">${z.name}</h4>
       <div class="ko" style="font-size:12px;color:#166534;font-weight:600">${z.addrKo}</div>
-      <div style="font-size:11px;color:#444;margin:4px 0"><b>英文地址：</b>${z.addr}</div>
-      <div style="font-size:11px;color:#555;margin:2px 0"><b>门牌注意：</b>${z.gate} · 邮编 <b>${z.zip}</b></div>
+      ${z.addr ? `<div style="font-size:11px;color:#444;margin:4px 0"><b>英文地址：</b>${z.addr}</div>` : ''}
+      ${z.gate ? `<div style="font-size:11px;color:#555;margin:2px 0"><b>门牌注意：</b>${z.gate}${z.zip ? ` · 邮编 <b>${z.zip}</b>` : ''}</div>` : ''}
       <div class="acts" style="margin-top:8px">
         <button class="lnk" type="button" onclick="navigator.clipboard&&navigator.clipboard.writeText('${z.addrKo}').then(()=>{alert('已复制韩文地址给司机：\\n${z.addrKo}');})">📋 复制韩文地址</button>
         <a class="lnk" href="${naver(z.addrKo)}" target="_blank" rel="noopener">N Naver 地图</a>
@@ -2115,9 +2225,9 @@ function renderZones(){
         </div>
         <div class="small" style="color:#047857;font-weight:700;margin:6px 0 4px">📅 ${z.nights}</div>
         <div class="booked-address-box">
-          <div><b>📍 英文地址：</b>${z.addr}</div>
+          ${z.addr ? `<div><b>📍 英文地址：</b>${z.addr}</div>` : ''}
           <div style="margin-top:4px"><b>📍 韩文地址（给出租车司机）：</b><code class="ko-code">${z.addrKo}</code></div>
-          <div style="margin-top:4px"><b>🚪 门牌注意：</b>${z.gate} · 邮编 <b>${z.zip}</b></div>
+          ${z.gate ? `<div style="margin-top:4px"><b>🚪 门牌注意：</b>${z.gate}${z.zip ? ` · 邮编 <b>${z.zip}</b>` : ''}</div>` : ''}
           <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
             <button class="lnk" type="button" onclick="navigator.clipboard&&navigator.clipboard.writeText('${z.addrKo}').then(()=>{alert('已复制韩文地址给司机：\\n${z.addrKo}');})">📋 复制韩文地址</button>
             <a class="lnk" href="${naver(z.addrKo)}" target="_blank" rel="noopener">N Naver 地图</a>
@@ -2143,7 +2253,7 @@ function renderZones(){
       </div>
     </div>`;
   }).join('') +
-  `<div class="banner" style="margin-top:0"><b>订酒店小贴士</b>首尔住宿已确认，釜山建议关注<b>西面站</b>（交通枢纽去哪都顺）或<b>广安里</b>（海景房正对广安大桥）。</div>`;
+  `<div class="banner" style="margin-top:0"><b>住宿与交通小贴士</b>本次 5 天 4 晚全程连住<b>九老福朋喜来登</b>（2 号线环线直达明洞/弘大/江南/圣水），门口 6004 路机场大巴直达仁川机场，免去换酒店搬箱折腾。</div>`;
 }
 $('#zoneList').addEventListener('click', e => {
   const b = e.target.closest('[data-zone]'); if (!b) return;
