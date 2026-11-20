@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#16222f">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="首尔釜山晚秋">
-<title>首尔初冬 · 圣诞暖游指南｜11.25–11.29</title>
+<title>首尔初冬 · 圣诞暖游指南｜11.25–11.28</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -648,7 +648,7 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
   <div class="row">
     <div class="appbar-brand">
       <img src="/*COUPLE_AVATAR_SRC*/" alt="夫妻晚秋旅行头像" class="appbar-couple-avatar" width="34" height="34">
-      <h1>首尔初冬 · 圣诞<small>11.25 – 11.29 · 0°C暖游</small></h1>
+      <h1>首尔初冬 · 圣诞<small>11.25 – 11.28 · 4天3晚</small></h1>
     </div>
     <div class="appbar-actions">
       <a href="#discover/snow" class="appbar-snow-pill" title="查看首尔初雪赏雪指南">❄️ 初雪<span class="hide-xs">特辑</span></a>
@@ -662,7 +662,7 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
 <section class="view" id="v-days" aria-label="行程规划">
   <div class="stickybar">
     <div class="seg" id="dayModeSeg" role="group" aria-label="行程视图模式" style="margin:8px 14px 4px">
-      <button type="button" data-mode="overview" aria-pressed="true">📋 5天全景总览</button>
+      <button type="button" data-mode="overview" aria-pressed="true">📋 4天全景总览</button>
       <button type="button" data-mode="daily" aria-pressed="false">⏱ 每日分时时刻</button>
     </div>
     <div class="chiprow" id="dayChips" role="group" aria-label="选择日期"></div>
@@ -706,12 +706,12 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
 <section class="view" id="v-ootd" aria-label="穿搭指南">
   <div class="sec-title">
     <h2>🧣 0°C 初冬穿搭指南</h2>
-    <span class="sub">11.25–11.29 · 首尔 5 天 OOTD</span>
+    <span class="sub">11.25–11.28 · 首尔 4 天 OOTD</span>
   </div>
 
   <div class="ootd-intro">
     <h3>❄️ 0°C 初冬出行 · 暖气与圣诞配色法则</h3>
-    <p><b>首尔 (11.25–11.29)</b>：气温接近 -2°C ~ 8°C，早晚寒风凛冽，但室内商场、咖啡馆、美术馆与地铁暖气极足（22~25°C）。核心采用<b>「三层洋葱式穿搭」</b>，外抗寒风、内搭轻薄出片。</p>
+    <p><b>首尔 (11.25–11.28)</b>：气温接近 -2°C ~ 8°C，早晚寒风凛冽，但室内商场、咖啡馆、美术馆与地铁暖气极足（22~25°C）。核心采用<b>「三层洋葱式穿搭」</b>，外抗寒风、内搭轻薄出片。</p>
     <div class="ootd-rule-grid">
       <div class="ootd-rule-item">
         <b>🧅 洋葱式三层穿搭法</b>
@@ -733,9 +733,9 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
   </div>
 
   <div class="ootd-filters" id="ootdFilters">
-    <button class="chip sm" data-filter="all" aria-pressed="true">全部天数 (D1-D5)</button>
-    <button class="chip sm" data-filter="d12" aria-pressed="false">古宫圣诞 (D1-D2)</button>
-    <button class="chip sm" data-filter="d35" aria-pressed="false">医美潮街 (D3-D5)</button>
+    <button class="chip sm" data-filter="all" aria-pressed="true">全部天数 (D1-D4)</button>
+    <button class="chip sm" data-filter="d12" aria-pressed="false">暖游古宫 (D1-D2)</button>
+    <button class="chip sm" data-filter="d34" aria-pressed="false">医美潮街返程 (D3-D4)</button>
   </div>
 
   <div class="ootd-card-list" id="ootdCardList"></div>
@@ -855,7 +855,7 @@ dialog.lb .x{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);rig
 /*CREDITS*/
 
 /* ================= DATA ================= */
-const DAYCOLOR = {d1:'#9e2a3b', d2:'#2a5849', d3:'#8a495d', d4:'#c49234', d5:'#1b2c42'};
+const DAYCOLOR = {d1:'#9e2a3b', d2:'#2a5849', d3:'#8a495d', d4:'#c49234'};
 
 // 地点：n 中文名, ko 韩文(用于 Naver/Kakao 搜索), xhs 小红书搜索词, c 城市, ll 坐标, img 照片, emo 图标
 const PL = {
@@ -953,108 +953,95 @@ const PL = {
 };
 
 const DAYS = [
- {id:'d1',md:'11/25',wd:'周三',city:'seoul',title:'抵达 · 新世界圣诞巨幕 + 德寿宫冬韵 + 热汤老店',area:'九老出发 → 市厅 · 明洞 · 乙支路（2号线一车直达）',cover:'shinsegae',
-  stay:'🏨 九老福朋喜来登（第 1 晚 · 4晚连住不搬家）',eat:'明洞饺子（滚烫鸡汤刀切面）或乙支路炭火烤肉',
+ {id:'d1',md:'11/25',wd:'周三',city:'seoul',title:'红眼早抵 · 延南洞暖咖望远市场 · 午休后看新世界圣诞巨幕',area:'仁川T1(08:05) → 酒店存包 → 延南洞/望远市场 → 15:00入住小憩 → 市厅明洞',cover:'shinsegae',
+  stay:'🏨 九老福朋喜来登（第 1 晚 · 同程 #101471974245 已确认）',eat:'望远市场现炸鸡丁/刀切面/热鲫鱼饼；晚饭明洞饺子（滚烫鸡汤面）',
   items:[
-   {t:'午后',p:'stay_seoul',title:'仁川机场 → 酒店入住（九老福朋喜来登）',d:'从仁川机场乘坐 <b>6004 路机场大巴</b>直达九老数码园区站（约 65–75 分钟，无需搬箱子）；在机场取 eSIM、买好「气候同行卡 5 日券（15,000 韩元无限坐）」，办理入住放好大行李。',tags:['move'],
-    transit:'🚇 地铁 2 号线一车直达（九老数码园区站 → 市厅站 1号口，约 28 分钟免换乘）'},
-   {t:'16:00',p:'deoksugung',title:'德寿宫石墙路 · 初冬漫步',d:'0°C 的首尔黄昏有着清冽的电影感，百年红砖教堂与石墙路安静浪漫（若刚好赶上首尔初雪更是绝美）。不用久吹冷风，漫步 20 分钟拍照即往室内/百货商圈走。',tags:['autumn'],
+   {t:'08:05',p:'airport_icn',title:'Parata Air WE854 落地仁川国际机场 T1',d:'03:30 深圳宝安 T3 起飞，08:05 落地仁川 T1（托运行李限 15KG）。入境取 eSIM、在机场购「气候同行卡 5日券（或 T-money）」，乘 <b>6004 路机场大巴</b>直达九老数码园区站（约 65–75 分钟），先到酒店前台免费寄存大件行李。',tags:['move'],
+    transit:'🚇 2 号线一车直达「弘大入口站」（仅 8 站 18 分钟），轻装开启第一顿早午餐！'},
+   {t:'10:30',p:'gyeongui',title:'延南洞暖气咖啡 · 望远市场热食早午',d:'红眼航班落地先不赶远路！钻进延南洞京义线林荫道暖气咖啡馆喝热拿铁醒神，顺逛 <b>object</b> 设计店；中午去顶棚遮风的<b>望远市场</b>吃热腾腾的手工刀切面、现炸鸡丁与刚出炉热鲫鱼饼。',tags:['food','shop'],
+    transit:'🚇 合井站乘 2 号线直达回九老酒店（约 16 分钟）'},
+   {t:'14:30',p:'stay_seoul',title:'办理入住 Nine/Four Points Guro · 补觉 1.5 小时',d:'15:00 办理入住（押金 50,000 韩元/刷卡现金均可），躺在 1.81 米特大床上美美补个觉回血，躲过正午疲惫！',tags:['move'],
+    transit:'🚇 16:30 精力满格出门，2 号线一车直达市厅站 1号口（约 28 分钟免换乘）'},
+   {t:'17:00',p:'deoksugung',title:'德寿宫石墙路初冬散步 ➔ 新世界百货圣诞巨幕',d:'17:15 首尔天黑！趁蓝调夜幕拍完石墙路，步行 5 分钟直抵<b>新世界百货本店</b>（17:30 后外墙化身金色流动城堡圣诞巨幕），拍完立刻进明洞 Olive Young 补齐暖宝宝和热敷贴。',tags:['night','autumn'],
     transit:'🚶'},
-   {t:'17:30',p:'shinsegae',title:'新世界百货本店 圣诞光影巨幕',d:'<b>首尔圣诞季王牌第一站！</b>整面百货外墙化身金色流动城堡与圣诞光影巨幕，越冷天黑越早越震撼。拍完立刻钻进旁边的乐天/新世界室内吹暖气看圣诞橱窗。',tags:['night'],
-    transit:'🚶'},
-   {t:'18:30',p:'myeongdong',title:'明洞室内逛买 · 补齐御寒好物',d:'去 Olive Young 明洞旗舰或 Daiso 买足足底暖宝宝、热敷眼罩与润唇膏，室内暖气极足。',tags:['shop'],
-    transit:'🚶'},
-   {t:'19:30',p:'r_kyoja',title:'暖冬晚饭 · 明洞饺子 / 乙支路烤肉',d:'0°C 的夜晚最适合一碗滚烫浓郁的鸡汤刀切面 + 热蒸饺！吃完从乙支路入口站坐 2 号线一车直达回酒店（约 28 分钟）。',tags:['food']},
+   {t:'19:30',p:'r_kyoja',title:'晚饭 · 明洞饺子滚烫鸡汤刀切面',d:'0°C 的夜晚吃一碗热乎浓郁的鸡汤刀切面 + 蒸饺，结束从乙支路入口站坐 2 号线一车直达回酒店（约 28 分钟）。',tags:['food']},
   ],
-  tip:'初冬首尔 17:15 就天黑，刚好无缝衔接新世界圣诞夜景；2 号线直达回酒店不用在站台吹风换乘。'},
+  tip:'去程是红眼航班（03:30–08:05），最忌落地硬撑暴走！先用 18 分钟去近处的延南洞/望远市场吃热食，下午 15:00 入住睡个午觉再看圣诞巨幕，节奏完美。'},
  {id:'d2',md:'11/26',wd:'周四',city:'seoul',title:'昌庆宫玻璃大温室 · 西村暖炉咖啡 · 广藏热食夜酒',area:'安国 · 昌庆宫温室 · 西村室内小店 · 广藏市场 · 乙支路',cover:'changgyeong',
   stay:'🏨 九老福朋喜来登（第 2 晚）',eat:'London Bagel 热贝果；Archivist 维也纳咖啡；广藏市场现炸绿豆煎饼与热鱼糕汤',
   items:[
-   {t:'09:00',p:'onion',title:'安国热食早餐 · 韩屋暖炕咖啡 / Bagel',d:'2 号线至乙支路3街换 3 号线到安国站（约 35 分钟）。在温暖的韩屋庭院或 London Bagel 吃刚出炉的热面包配热美式。',tags:['food'],
+   {t:'09:00',p:'onion',title:'安国热食早餐 · 韩屋暖炕咖啡 / Bagel',d:'2 号线至乙支路3街换 3 号线到安国站（约 35 分钟）。在温暖的韩屋庭院 Onion 或 London Bagel 吃刚出炉的热面包配热美式。',tags:['food'],
     transit:'🚶'},
-   {t:'10:30',p:'changgyeong',title:'昌庆宫 · 复古白色玻璃大温室（室内如春！）',d:'<b>0°C 绝佳室内赏景去处！</b>朝鲜王宫里藏着的百年欧式白色玻璃花房，外面零度，里面暖意融融、满眼绿植与复古光影，拍照完全不冷；顺便在昌德宫外墙拍几张冬日古宫照。',tags:['autumn','culture'],
+   {t:'10:30',p:'changgyeong',title:'昌庆宫 · 复古白色玻璃大温室（室内如春！）',d:'<b>0°C 绝佳室内赏景去处！</b>朝鲜王宫里的百年欧式白色玻璃花房，外面零度，里面暖意融融、满眼绿植与复古光影，拍照完全不冷；顺便在昌德宫外墙拍几张冬日古宫照。',tags:['autumn','culture'],
     transit:'🚶'},
-   {t:'13:00',p:'archivist',title:'躲进西村 · Archivist 维也纳咖啡 & 宝藏小店',d:'钻进西村暖洋洋的独立小巷！喝一杯绵密奶盖的 <b>Archivist 维也纳咖啡</b>，顺路逛室内的 <b>One More Bag (2楼)</b>、<b>Ofr. Seoul 复古书店</b> 与 <b>Granhand 香氛</b>，全程都在暖气店里穿梭。',tags:['food','ns','shop'],
+   {t:'13:00',p:'archivist',title:'躲进西村 · Archivist 维也纳咖啡 & 宝藏小店',d:'钻进西村暖洋洋的独立小巷！喝一杯绵密奶盖的 <b>Archivist 维也纳咖啡</b>，顺路逛室内的 <b>Ofr. Seoul 复古书店</b>、<b>One More Bag (2楼)</b> 与 <b>Granhand 香氛</b>，全程都在暖气店里穿梭。',tags:['food','ns','shop'],
     transit:'🚇 地铁 3号线转1号线至钟路5街站 8号口（约 12 分钟）'},
-   {t:'17:00',p:'gwangjang',title:'广藏市场 · 烟火热食与二楼古着',d:'天黑后最治愈的热闹烟火气！坐热凳子吃刚出锅的绿豆煎饼、热腾腾鱼糕汤、现拌生牛肉，上二楼暖气淘古着。',tags:['ns','food'],
+   {t:'17:00',p:'gwangjang',title:'广藏市场 · 烟火热食与二楼古着',d:'天黑后最治愈的热闹烟火气！吃刚出锅的绿豆煎饼、热腾腾鱼糕汤、现拌生牛肉，上二楼暖气淘古着。',tags:['ns','food'],
     transit:'🚶'},
-   {t:'19:30',p:'euljiro',title:'乙支路「Hipjiro」暖意小酒馆',d:'五金老街二楼的复古炭火烤肉或黑胶小酒馆，喝点热乎的烧酒/马格利；结束从乙支路3街坐 2 号线一车直达回酒店（约 30 分钟）。',tags:['night']},
+   {t:'19:30',p:'euljiro',title:'乙支路「Hipjiro」暖意小酒馆 / 烤肉',d:'五金老街二楼的复古炭火烤肉或黑胶小酒馆，喝点热乎的烧酒/马格利；结束从乙支路3街坐 2 号线一车直达回酒店（约 30 分钟）。',tags:['night']},
   ],
   tip:'这一天把户外暴走缩减到最少，主打「白色玻璃花房 + 西村暖气独立小店 + 广藏热食」，0°C 也能玩得舒舒服服。'},
  {id:'d3',md:'11/27',wd:'周五',city:'seoul',title:'新论岘 HOMMAGE 医美 ➔ COEX 金色圣诞树 ➔ 现代百货圣诞村',area:'九老（25分）→ 江南医美 → COEX星空圣诞（室内）→ The Hyundai 圣诞村（全室内！）',cover:'lotteworld',
   stay:'🏨 九老福朋喜来登（第 3 晚）',eat:'江南热乎鲍鱼粥/参鸡汤；The Hyundai Seoul B1 室内网红美食层',
   items:[
-   {t:'09:20',p:'stay_seoul',title:'九老出发 → 江南新论岘（约 25–28 分钟）',d:'2 号线至江南站换 1 站（或堂山换 9 号线急行），轻装直达新论岘站 4 号口。',tags:['move'],
+   {t:'09:20',p:'stay_seoul',title:'九老出发 → 江南新论岘（约 25–28 分钟）',d:'2 号线至江南站换 1 站（或堂山换 9 号线急行），轻装直达新论岘站 4 号口。今天不用拖行李，轻装出门极其舒服！',tags:['move'],
     transit:'🚇 新论岘站 4 号口出步行 2 分钟即达天空眼科大楼 4F'},
-   {t:'10:00',p:'hommage',title:'HOMMAGE CLINIC (오마쥬의원) · 皮肤管理/医美',d:'江南口碑私立皮肤诊所。做完皮肤管理/光子/水光后，注意物理遮阳防风，避免在室外冷风里久留。',tags:['ns'],
+   {t:'10:00',p:'hommage',title:'HOMMAGE CLINIC (오마쥬의원) · 皮肤管理/医美',d:'江南口碑私立皮肤诊所（需提前预约 10:00 档期）。做完皮肤管理/光子/水光后，注意物理遮阳防风，避免在室外冷风里久留。',tags:['ns'],
     transit:'🚶'},
    {t:'13:00',p:'hommage',title:'新论岘热汤轻食午餐',d:'医美后吃一碗温热的韩式鲍鱼粥或清炖参鸡汤，暖胃又修护。',tags:['food'],
     transit:'🚇 9 号线急行 3 站直达奉恩寺站（仅 7 分钟，全地下直通 COEX！）'},
    {t:'14:15',p:'coex',title:'COEX 星空图书馆 · 室内巨型金色圣诞树',d:'<b>全程地下室内不吹风！</b>高达十几米的书墙中间矗立着闪耀的金色圣诞树，灯光柔和极出片，打卡 40 分钟刚好出发去现代百货。',tags:['night','ns'],
     transit:'🚇 9 号线急行直达汝矣岛站（约 18 分钟，直接通过地下连廊走进现代百货！）'},
-   {t:'15:30',p:'hyundai',title:'The Hyundai Seoul · 室内童话圣诞村',d:'全韩国冬季最火的<b>「24°C 恒温室内圣诞小镇」</b>！5 楼空中花园挂满红色丝绒与圣诞树、童话木屋，从早上做完医美到晚上回酒店，几乎可以做到<b>“全程不吹零度冷风”</b>！',tags:['shop','night'],
+   {t:'15:30',p:'hyundai',title:'The Hyundai Seoul · 室内童话圣诞村',d:'全韩国冬季最火的<b>「24°C 恒温室内圣诞小镇」</b>！5 楼空中花园挂满红色丝绒与圣诞树、童话木屋，从医美结束到晚上回酒店，几乎可以做到<b>“全程不吹零度冷风”</b>！',tags:['shop','night'],
     transit:'🚖 打车仅约 15 分钟回酒店（车费约 10,000 韩元 / 仅¥52！）'},
-   {t:'19:30',p:'stay_seoul',title:'打车 15 分钟回九老 · 敷医美修护面膜',d:'拎着战利品打车 15 分钟直接回酒店躺平休息、敷医美术后修复面膜，舒适度满分。',tags:['food']},
+   {t:'19:30',p:'stay_seoul',title:'打车 15 分钟回九老 · 敷医美修护面膜整理行李',d:'打车回酒店敷医美术后修复面膜！顺便把今天和前两天买好的物品先规整装进 23KG 大托运箱（明天返程手提仅限 5KG）。',tags:['food']},
   ],
-  tip:'这一天是专门为 0°C + 医美术后设计的「全室内恒温圣诞巡礼」，从江南到 COEX 再到现代百货全在地下连廊和暖气商场里穿梭！'},
- {id:'d4',md:'11/28',wd:'周六',city:'seoul',title:'Leeum 三星美术馆 · 汉南洞买手店 · 圣水室内美学 · 蚕室圣诞',area:'汉南洞（美术馆+室内买手）→ 圣水洞室内展厅 → 蚕室乐天圣诞市集（2号线直达回九老）',cover:'seoulforest',
-  stay:'🏨 九老福朋喜来登（第 4 晚）',eat:'汉南洞暖意早午餐；圣水大林仓库画廊咖啡；蚕室乐天室内美食街',
+  tip:'全天在 9 号线地下与室内恒温商场串联，对上午刚做完医美的娇嫩皮肤极度友好！'},
+ {id:'d4',md:'11/28',wd:'周六',city:'seoul',title:'Leeum 美术馆 · 汉南洞买手 · 圣水展厅 ➔ 22:10 仁川T1 返程',area:'10点退房存包 → 汉南洞(美术馆+买手) → 圣水展厅 → 17:15回九老取包 → 仁川T1(22:10)',cover:'seoulforest',
+  stay:'✈️ 今晚 22:10 起飞（青岛 22:45 过夜中转 ➔ 11/29 12:35 抵广州 T3）',eat:'汉南洞早午餐；圣水大林仓库画廊咖啡；仁川机场T1简餐',
   items:[
-   {t:'10:00',p:'leeum',title:'Leeum 三星美术馆 · 螺旋楼梯建筑美学',d:'2 号线转 6 号线至汉江镇站 1 号口（约 35 分钟）。0°C 的周末上午先钻进韩国顶级室内美术馆看展，标志性纯白螺旋楼梯拍照高级感拉满（需提前官网预约）。',tags:['culture','ns'],
+   {t:'09:30',p:'stay_seoul',title:'退房寄存行李 → 2号线转6号线至汉南洞（约 35 分）',d:'12:00 前退房（建议 09:30 出门把大行李免费存酒店前台，收回 5 万韩元押金）。轻装出发去汉江镇站 1 号口。',tags:['move'],
+    transit:'🚶 出站步行 5 分钟即达 Leeum 三星美术馆'},
+   {t:'10:15',p:'leeum',title:'Leeum 三星美术馆 · 螺旋楼梯建筑美学',d:'<b>需提前官网预约 10:00/10:30 场！</b>室内暖气极足，纯白螺旋楼梯与世界级艺术展高级感拉满。',tags:['culture','ns'],
     transit:'🚶 出馆顺坡往下就是汉南洞买手街'},
-   {t:'11:45',p:'emis',title:'汉南洞买手街 · 室内暖气试穿血拼',d:'一家接一家钻进 EMIS、Mardi Mercredi、Rockfish、Matin Kim、Nonfiction 试衣买买买，累了就近在咖啡馆喝热拿铁。',tags:['shop','move'],
-    transit:'🚖 打车约 12 分钟跨汉江直达圣水洞（约 7,500 韩元，避免在室外等公交）'},
-   {t:'14:00',p:'pov',title:'圣水洞室内美学集群 · Point of View / Stand Oil / 大林仓库',d:'冬天圣水洞不建议在冷风里走首尔林，直接把时间留给暖气足、审美顶级的室内展厅：Point of View 3 层文具馆、Stand Oil、大林仓库红砖咖啡与 LCDC 复合空间。',tags:['shop','ns'],
-    transit:'🚇 地铁 2 号线直达（圣水站 → 蚕室站，4 站仅 9 分钟免换乘）'},
-   {t:'18:00',p:'lotte',title:'蚕室 · 乐天欧式圣诞市集 + 旋转木马',d:'出站直接进入乐天世界购物中心室内吹暖气逛吃；挑好时机出去拍 30 分钟巨型发光圣诞树与旋转木马夜景，结束从蚕室站坐 <b>2 号线一车坐着直达回九老酒店</b>（约 38 分钟）。',tags:['night','shop']},
+   {t:'12:00',p:'emis',title:'汉南洞顺坡血拼 + 早午餐（EMIS / Mardi / Matin Kim）',d:'沿着下坡一路进店逛买：1. EMIS ➔ 2. Mardi Mercredi ➔ 3. Rockfish ➔ 4. Matin Kim ➔ 5. Nonfiction，全下坡不走回头路！逛完在附近吃份精致早午餐。',tags:['shop','food'],
+    transit:'🚖 打车约 12 分钟跨汉江直达圣水洞（约 7,500 韩元）'},
+   {t:'14:30',p:'pov',title:'圣水洞室内美学 · Tamburins / Point of View / Stand Oil / 大林仓库',d:'300 米核心圈逛完圣水顶级门店与大林仓库咖啡。<b>⚠️ 设好闹钟：17:15 务必停手进圣水站！</b>',tags:['shop','ns'],
+    transit:'🚇 17:15 圣水站上 2 号线一车坐着直达回九老数码园区站（约 35 分钟，17:50 抵酒店！）'},
+   {t:'18:10',p:'stay_seoul',title:'回酒店取行李 ➔ 6004 机场大巴直达仁川 T1',d:'拿上寄存的大箱子，门口直上 <b>6004 路机场大巴</b>前往仁川国际机场 T1（约 65–75 分钟，约 19:20 抵达 T1；若遇周六堵车亦可直接打车）。',tags:['move'],
+    transit:'✈️ 留足 2.5+ 小时办理值机、托运（23KG）、退税与免税店提货'},
+   {t:'22:10',p:'airport_icn',title:'SC4620 仁川 T1 起飞 ➔ 青岛过夜中转 ➔ 广州 T3',d:'22:10 准时起飞（手提仅限 5KG！重物全部托运）。22:45 抵达青岛胶东机场，⚠️ <b>行李非直达，须在青岛提取行李并次日重新托运</b>；11/29 08:55 乘 SC4679，12:35 抵达广州白云 T3！',tags:['move'],mv:1},
   ],
-  tip:'把冬日冷风里的纯户外公园换成了「Leeum 美术馆 + 圣水室内展厅 + 蚕室室内连廊」，审美浓度更高还完全不冻手！'},
- {id:'d5',md:'11/29',wd:'周日',city:'seoul',title:'延南洞暖炉咖啡 · 望远市场热食鲫鱼饼 · 仁川机场返程',area:'酒店存行李 → 2号线（18分）→ 延南洞/望远市场 → 九老坐 6004 机场大巴',cover:'gyeongui',
-  stay:'返程（仁川国际机场）',eat:'延南洞早午餐热咖啡；望远市场现炸鸡丁、滚烫刀切面与刚出炉热鲫鱼饼',
-  items:[
-   {t:'09:30',p:'stay_seoul',title:'退房寄存行李 → 2号线 18 分钟直达弘大/延南洞',d:'行李免费存九老福朋前台。轻装坐 2 号线 18 分钟直达「弘大入口站」3 号口，钻进延南洞红砖咖啡馆喝早咖、逛 <b>object</b> 独立设计店挑伴手礼。',tags:['move','shop'],
-    transit:'🚖 打车约 6 分钟（起步价）直达望远市场'},
-   {t:'11:45',p:'mangwon',title:'望远市场 · 冬日热食 & 街头热鲫鱼饼',d:'顶棚遮风的本地传统市场！吃现炸热鸡丁、热乎乎的刀切面与鱼糕汤，别忘了买一份 <b>11 月底冬天限定刚出炉的红豆/奶油热鲫鱼饼 (붕어빵)</b> 暖手吃！',tags:['food','ns'],
-    transit:'🚇 合井站坐 2 号线一车直达回九老数码园区站（仅 7 站约 16 分钟！）'},
-   {t:'14:00',p:'airport_icn',title:'取行李 → 门口 6004 机场大巴直达仁川机场',d:'回酒店拿上大行李，步行到车站直上 <b>6004 路机场大巴</b>直达仁川机场（约 65–75 分钟，暖气车厢躺平到航站楼），留足时间退税与免税店提货。',tags:['move'],mv:1},
-  ],
-  tip:'最后一天 18 分钟直达弘大，逛完顶棚市场吃热食，回来在家门口坐暖气机场大巴直达仁川，丝滑收官！'},
+  tip:'今天核心红线是「17:15 必须从圣水出发回九老」，18:10 坐上机场大巴就能从容在 19:20 到仁川 T1 退税值机，一点不慌！'},
 ];
 
 const ZONES = [
- {id:'z_fp_guro',c:'seoul',name:'【新方案基准】Four Points by Sheraton Seoul, Guro',ll:[37.4836,126.8958],r:450,rec:'万豪4星 · 800档王牌 🏆',nights:'11/25 – 11/29（4 晚连住）',
+ {id:'z_fp_guro',c:'seoul',name:'【已订主单】Four Points by Sheraton Seoul, Guro',ll:[37.4836,126.8958],r:450,rec:'同程 #101471974245 已确认 🎉',nights:'11/25(三) 15:00后入住 – 11/28(六) 12:00前退房（3 晚 · ¥2,772.31）',
   booked:true,
-  addr:'72, Digital-ro 32-gil, Guro-gu, Seoul',
+  addr:'72, Digital-ro 32-gil, Guro-gu, Seoul (1128-1 Guro-dong)',
   addrKo:'서울특별시 구로구 디지털로32길 72',
   pros:[
-    '【价格与品质黄金平衡】临期大促通常在 600–850 元/晚（比市中心同级便宜一半），万豪旗下正经四星',
-    '【2号线环线无痛直达】步行 3–5 分钟上 2 号线：18分钟到弘大、28分钟到市厅/明洞、35–40分钟直达圣水/蚕室（全程免换乘）',
-    '【医美与圣诞村超近】D3 去新论岘医美约 25 分钟；去汝矣岛现代百货圣诞村打车仅 15 分钟（约1万韩元）',
-    '【机场大巴家门口直达】6004 路机场大巴停在附近，往返仁川机场不用搬箱子挤地铁',
-    '【睡眠与服务兜底】床品支撑度稳、隔音佳、24小时前台支持免费寄存行李，周边餐饮实惠不宰客'
+    '【已确认订单】同程行程订单号 101471974245（高级特大床房 1.81米大床 · 登记：ZHAO XIAOZHI; LIU JIALIN）',
+    '【押金与入住】前台需缴 50,000 韩元押金（刷卡/现金，退房原路退）；红眼航班早到可免费先存行李',
+    '【2号线环线无痛直达】步行 3–5 分钟上 2 号线：18分钟到弘大、28分钟到市厅/明洞、35分钟直达圣水（免换乘）',
+    '【医美与圣诞村超近】D3 去新论岘医美约 25 分钟；去汝矣岛现代百货打车仅 15 分钟（约1万韩元）',
+    '【机场大巴直达仁川T1】6004 路机场大巴停在附近，去程落地存包、D4 18:10 取包赶飞机都极顺'
   ],
-  cons:['早晚去市中心/圣水单程约 30–38 分钟，适合早出晚归整天游玩，中午不方便回酒店午休'],
+  cons:['⚠️ 务必核实同程另外两笔早先订单（101468320769 / 101462527293）是否已退订，避免重复扣款'],
   q:'포포인츠 바이 쉐라톤 서울 구로',
-  tip:'韩文地址：서울특별시 구로구 디지털로32길 72 · 2号线九老数码园区站'},
- {id:'z_boutique9',c:'seoul',name:'【已订对比】Hotel Boutique 9（九号精品酒店）',ll:[37.5755,127.0232],r:350,rec:'超大客房+双人泡池 🛁',nights:'11/25 – 11/29（已订备选）',
-  addr:'首尔特别市东大门区往十里路 385 (新设洞站4号口步行1分钟)',
-  pros:[
-    '【东/中轴线超近】1号线10分钟到市厅/明洞，2号线支线8分钟到圣水洞',
-    '【客房面积巨大】35–45㎡ 超大客房 + 豪华双人深泡按摩浴缸，摊开大箱子毫无压力'
-  ],
-  cons:['部分房型床垫与枕头偏软；去江南新论岘医美较远（约 35–42 分钟）且需两次换乘'],
+  tip:'韩文地址：서울특별시 구로구 디지털로32길 72 · 电话 +82-2-6905-9500'},
+ {id:'z_boutique9',c:'seoul',name:'【⚠️ 待取消提醒】9号精品酒店（Hotel Boutique 9）',ll:[37.5755,127.0232],r:350,rec:'明午16点截止免费退 🔴',nights:'携程 #1128152236188926（11/24–27 3晚）',
+  addr:'28 Wangsan-ro, Dongdaemun-gu, Seoul',
+  pros:['新设洞站 4 号口 50 米，客房大'],
+  cons:['🔴 携程今日已发提醒：最晚免费取消截止明天 11/21 北京时间 16:00（韩国 17:00）！请务必尽快取消以免扣费'],
   q:'호텔 부티크 9',
-  tip:'新设洞站 4 号口出来直走 50 米即到。'},
- {id:'z_glad_mapo',c:'seoul',name:'【高价标尺】GLAD Mapo（格莱德麻浦）',ll:[37.5434,126.9517],r:400,rec:'孔德4线直连（临期贵）',nights:'11/25 – 11/29（高价参考）',
-  addr:'首尔特别市麻浦区麻浦大路 92 (孔德站9号口地下直连)',
-  pros:['孔德站 9 号口地下直连 AREX/5/6/京义线，去仁川机场和全城极其方便'],
-  cons:['临期预订约 1,300–1,500 元/晚，超出 800 预算较多'],
-  q:'글래드 마포',
-  tip:'若预算放宽或遇到特价可重点考虑。'},
- {id:'z_md',c:'seoul',name:'明洞 · 乙支路（参考）',ll:[37.5640,126.9880],r:650,rec:'市中心参考',nights:'预算较高参考',
-  pros:['市中心位置极佳，步行可达明洞与新世界百货'],
-  cons:['临期价格高且房间普遍偏小、街头较吵'],
-  q:'명동 호텔',tip:'搜「明洞站 / 乙支路入口站」附近酒店。'},
+  tip:'若不再入住，请立刻在携程 App 取消订单 #1128152236188926。'},
+ {id:'z_fairfield_agoda',c:'seoul',name:'【⚠️ 待核实扣款】永登浦万枫（Fairfield Agoda）',ll:[37.5163,126.9073],r:350,rec:'11/22自动扣款警告 🔴',nights:'Agoda #2063009753（11/24–29 5晚 · ₩935,999）',
+  addr:'870 Gyeongin-ro, Yeongdeungpo-gu, Seoul',
+  pros:['靠近时代广场商场与永登浦站'],
+  cons:['🔴 邮箱确认信显示 11月22日（后天）将自动从尾号 0688 银行卡扣款！若已换福朋请立刻在 Agoda App 核实是否已退订'],
+  q:'페어필드 바이 메리어트 서울',
+  tip:'请登录 Agoda 检查订单 #2063009753 状态，避免被扣 ¥5,000+。'},
 ];
 
 const AUTUMN = [
@@ -1190,10 +1177,10 @@ const NS = [
 const NSTYPE = {popup:'快闪/概念店',vintage:'古着/旧货',market:'市场/夜市',book:'书店/文化空间',exp:'体验'};
 
 const XMAS = [
- {p:'shinsegae',n:'新世界百货本店 圣诞外墙',when:'11 月中旬起每晚 17:30 后亮灯 · 免费',d:'整面外墙化身金色流动城堡与圣诞光影巨幕，首尔圣诞季必拍第一站，已排进 D1 傍晚。',day:'d1'},
- {p:'coex',n:'COEX 星空图书馆 金色圣诞树',when:'11 月中下旬起全天开放 · 全室内免费',d:'高达十几米的书墙中央矗立巨型金色圣诞树，全地下连廊不吹风，已排进 D3 医美后。',day:'d3'},
- {p:'hyundai',n:'The Hyundai Seoul 室内圣诞村',when:'11 月起开放 · 建议提前预约或现场扫码排队',d:'5 楼 24°C 恒温「H-Village 圣诞童话村」，欧式木屋与圣诞树氛围拉满，已排进 D3 下午。',day:'d3'},
- {p:'lotte',n:'蚕室 乐天欧式圣诞市集 + 旋转木马',when:'11 月中旬起开放 · 部分晚间时段可预约快通',d:'大型欧式圣诞木屋、旋转木马与石村湖畔夜景，已排进 D4 晚上。',day:'d4'},
+ {p:'shinsegae',n:'新世界百货本店 圣诞外墙',when:'17:30 后亮灯 · 免费',d:'整面外墙化身金色流动城堡与圣诞光影巨幕，首尔圣诞季必拍第一站，已排进 D1 傍晚。',day:'d1'},
+ {p:'coex',n:'COEX 星空图书馆 金色圣诞树',when:'全天开放 · 全室内免费',d:'高达十几米的书墙中央矗立巨型金色圣诞树，全地下连廊不吹风，已排进 D3 医美后。',day:'d3'},
+ {p:'hyundai',n:'The Hyundai Seoul 室内圣诞村',when:'11 月起开放 · 建议提前预约或现场扫码候位',d:'5 楼 24°C 恒温「H-Village 圣诞童话村」，欧式木屋与圣诞树氛围拉满，已排进 D3 下午。',day:'d3'},
+ {p:'lotte',n:'蚕室 乐天欧式圣诞市集 *(备选加餐)*',when:'若 D1/D2 晚体力充足可加去',d:'大型欧式圣诞木屋与石村湖夜景（2号线直达九老）。',day:'d2'},
 ];
 
 const BBQ_SPOTS = [
@@ -1444,13 +1431,13 @@ const SAMGYETANG_SPOTS = [
 ];
 
 const RESTOS = [
- {p:'r_kyoja',day:'d1',how:'walk',hl:'现场排队',d:'滚烫鸡汤刀切面 + 饺子，0°C 的晚上吃一碗极度暖胃，翻台很快。'},
+ {p:'mangwon',day:'d1',how:'walk',hl:'本地烟火早午餐',d:'红眼落地第一站！有顶棚遮风，吃现炸鸡丁、刀切面与热鲫鱼饼。'},
+ {p:'r_kyoja',day:'d1',how:'walk',hl:'现场排队',d:'滚烫鸡汤刀切面 + 饺子，0°C 晚上吃极度暖胃，翻台很快。'},
  {p:'r_bagel',day:'d2',how:'wait',hl:'开门前排队 / 现场取号',d:'热腾腾现烤贝果，建议早点到或用 Catch Table 远程取号。'},
  {p:'archivist',day:'d2',how:'wait',hl:'朋友力荐 · 现场取号',d:'西村暖气小店！招牌维也纳咖啡配无花果费南雪，室外再冷进去瞬间治愈。'},
  {p:'r_gwangjang',day:'d2',how:'walk',hl:'随到随吃',d:'现炸滚烫绿豆煎饼、鱼糕热汤与生拌牛肉，挑热气腾腾的摊位坐。'},
  {p:'hyundai',day:'d3',how:'walk',hl:'24°C 室内美食层',d:'The Hyundai Seoul B1 美食层聚集各路网红烘焙与暖胃餐食，医美后完全吹不到冷风。'},
- {p:'daelim',day:'d4',how:'walk',hl:'随到随吃',d:'圣水挑高红砖厂房画廊咖啡，室内暖气足、咖啡披萨水准在线。'},
- {p:'mangwon',day:'d5',how:'walk',hl:'本地烟火气',d:'望远市场有顶棚遮风！现炸鸡丁、手工刀切面与冬天限定热鲫鱼饼。'},
+ {p:'daelim',day:'d4',how:'walk',hl:'随到随吃',d:'圣水挑高红砖厂房画廊咖啡，逛买赶飞机前补充能量。'},
 ];
 
 const DISHES = [
@@ -1532,14 +1519,14 @@ addEventListener('hashchange', route);
 
 /* ================= COUNTDOWN ================= */
 (function(){
-  const start = new Date('2026-11-25T00:00:00+09:00'), end = new Date('2026-11-30T00:00:00+09:00');
+  const start = new Date('2026-11-25T00:00:00+09:00'), end = new Date('2026-11-29T00:00:00+09:00');
   const now = new Date(), chip = $('#countChip');
   if (now < start){ chip.textContent = '还有 ' + Math.ceil((start - now) / 864e5) + ' 天出发'; }
   else if (now < end){
     const idx = Math.floor((now - start) / 864e5);
     chip.textContent = '旅途中 · D' + (idx + 1);
     curDay = 'd' + (idx + 1);
-  } else chip.textContent = '旅途愉快 ✨';
+  } else chip.textContent = '返程顺遂 ✨';
 })();
 
 /* ================= FALLING LEAVES (SIDE GUTTERS) ================= */
@@ -1570,7 +1557,7 @@ addEventListener('hashchange', route);
 /* ================= DAY VIEW ================= */
 function renderDayChips(){
   const isOv = curDay === 'overview';
-  const ovChip = `<button type="button" class="chip" data-d="overview" aria-pressed="${isOv}"><b>📋 5天总览</b><span>${isOv ? '全景速览' : '返回总览'}</span></button>`;
+  const ovChip = `<button type="button" class="chip" data-d="overview" aria-pressed="${isOv}"><b>📋 4天总览</b><span>${isOv ? '全景速览' : '返回总览'}</span></button>`;
   $('#dayChips').innerHTML = ovChip + DAYS.map(d =>
     `<button type="button" class="chip" data-d="${d.id}" aria-pressed="${d.id===curDay}"><b>${d.id.toUpperCase()} · ${d.city==='seoul'?'首尔':'釜山'}</b><span>${d.md} ${d.wd}</span></button>`).join('');
 }
@@ -1697,19 +1684,18 @@ function renderOverview(){
   }).join('');
 
   const COMMUTE = [
-    {id:'d1',md:'11/25 周三',go:'2号线一车直达市厅（约 28 分钟）',back:'乙支路入口 2号线直达回九老（约 28 分钟）',tip:'落地 6004 机场大巴直达酒店，免换乘'},
-    {id:'d2',md:'11/26 周四',go:'2号线转3号线至安国站（约 35 分钟）',back:'乙支路3街 2号线一车直达回九老（约 30 分钟）',tip:'全程室内温室+暖气小巷，回程有座率高'},
-    {id:'d3',md:'11/27 周五',go:'2号线转江南/9号线至新论岘（约 25–28 分钟）',back:'The Hyundai 现代百货打车回仅 15 分钟（约¥52）',tip:'医美去COEX/现代百货全在9号线地下连廊'},
-    {id:'d4',md:'11/28 周六',go:'2号线转6号线至汉江镇（约 35 分钟）',back:'蚕室站 2号线一车坐着直达回九老（约 38 分钟）',tip:'汉南洞顺坡下逛、打车跨江至圣水，拎包不转线'},
-    {id:'d5',md:'11/29 周日',go:'2号线一车直达弘大入口（仅 18 分钟）',back:'回酒店取行李 ➔ 门口 6004 大巴直达仁川（65–75分）',tip:'上午轻松逛延南洞/望远市场，不赶路'}
+    {id:'d1',md:'11/25 周三',go:'WE854 08:05 抵仁川T1 ➔ 6004大巴去酒店存包 ➔ 2号线18分到弘大',back:'乙支路入口 2号线一车直达回九老（约 28 分钟）',tip:'15:00 回酒店补觉 1.5h，体力充沛再看圣诞巨幕'},
+    {id:'d2',md:'11/26 周四',go:'2号线转3号线至安国站（约 35 分钟）',back:'乙支路3街 2号线一车直达回九老（约 30 分钟）',tip:'昌庆宫玻璃温室+西村暖气小店，零下不吹冷风'},
+    {id:'d3',md:'11/27 周五',go:'2号线转江南/9号线至新论岘（约 25–28 分钟）',back:'现代百货打车回九老仅 15 分钟（约¥52）',tip:'9号线地下连廊贯通 COEX 圣诞树与现代百货圣诞村'},
+    {id:'d4',md:'11/28 周六',go:'09:30 存包 ➔ 2转6号线至汉南洞（约 35 分钟）',back:'17:15 圣水2号线直达回九老 ➔ 18:10 坐6004去仁川T1',tip:'22:10 SC4620 起飞，青岛过夜中转须提行李重托'}
   ];
 
   const BOOKINGS = [
-    {lvl:'must',badge:'必提前约 · D3 10:00',title:'HOMMAGE CLINIC 新论岘医美',desc:'周五上午 10:00 档期热门，务必提前通过微信/官方客服锁定面诊与管理项目。'},
-    {lvl:'must',badge:'必提前约 · D4 10:00',title:'Leeum 三星美术馆（汉南洞）',desc:'常设展免费但实行分时段预约制！通常提前 14 天在官网开放预约，入场必须核验预约码。'},
-    {lvl:'queue',badge:'线上取号 · D2/D3',title:'The Hyundai 圣诞村 / 网红烘焙咖啡',desc:'D3 现代百货 5F 圣诞村若现场人多需扫码候位（或提前关注预约通道）；D2 的 London Bagel / Archivist 建议用 Catch Table 远程取号或开门前到。'},
-    {lvl:'queue',badge:'按需抢票 · D2 备选',title:'昌德宫后苑（秘苑） / eSIM 与气候卡',desc:'只逛昌庆宫玻璃大温室可现场买票免预约；若额外加昌德宫秘苑需提前 6 天官网抢票。出发前买好 eSIM，落地仁川机场直接买「气候同行卡 5日券」。'},
-    {lvl:'free',badge:'免预约 · 随到随看',title:'新世界圣诞巨幕 · COEX圣诞树 · 蚕室市集',desc:'新世界外墙灯光、COEX 星空图书馆圣诞树、德寿宫石墙、圣水展厅与望远市场均免费自由进入，无需提前订票。'}
+    {lvl:'must',badge:'紧急止损 · 明/后天截止',title:'🔴 退订多余酒店订单（防扣款！）',desc:'① 携程「9号精品酒店 #1128152236188926」最晚免费取消为 11/21 16:00（北京时间）；② Agoda「永登浦万枫 #2063009753」11/22 将自动扣款；③ 核实同程另外两笔福朋订单已退，只留 #101471974245。'},
+    {lvl:'must',badge:'必提前约 · D3 10:00',title:'HOMMAGE CLINIC 新论岘医美',desc:'周五上午 10:00 档期热门，务必提前通过微信/官方客服锁定面诊与皮肤管理时段。'},
+    {lvl:'must',badge:'必提前约 · D4 10:15',title:'Leeum 三星美术馆（汉南洞）',desc:'常设展免费但实行分时段预约制！提前官网预约周六上午 10:00/10:30 场次，入场核验预约码。'},
+    {lvl:'queue',badge:'线上取号 · D2/D3',title:'The Hyundai 圣诞村 / 网红烘焙咖啡',desc:'D3 现代百货 5F 圣诞村现场人多时需扫码候位；D2 的 London Bagel / Archivist 建议用 Catch Table 远程取号或早点到。'},
+    {lvl:'free',badge:'行李红线 · 航班注意',title:'去程托运 15KG · 返程手提仅限 5KG + 青岛重托',desc:'WE854 去程每人托运限 15KG；SC4620 返程手提仅限 5KG（托运 23KG），重物全放托运箱！11/28 22:45 抵青岛过夜转机，行李非直达，须在青岛提取并次日重新托运。'}
   ];
 
   const tableRowsHTML = COMMUTE.map(c => {
@@ -1761,39 +1747,39 @@ function renderOverview(){
           <div class="ov-hero-title-box">
             <img class="ov-hero-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%232a5849'/%3E%3Ctext x='50' y='58' font-size='38' text-anchor='middle' fill='white'%3E❄️%3C/text%3E%3C/svg%3E" alt="Korea Winter" id="ovHeroAvatar">
             <div>
-              <h2>5 天 4 晚 · 首尔 0°C 初冬圣诞暖游总览</h2>
-              <p>九老福朋喜来登 4 晚连住 ➔ 全城三大圣诞光影 · 玻璃温室与美术馆 · 热汤暖冬美食（全程少吹冷风）</p>
+              <h2>4 天 3 晚 · 首尔 0°C 初冬圣诞实战总览</h2>
+              <p>11/25 08:05 抵仁川T1 ➔ 九老福朋 3 晚连住 ➔ 11/28 22:10 仁川T1 飞青岛转广州T3</p>
             </div>
           </div>
-          <span class="ov-badge-autumn">❄️ 11.25 – 11.29 初冬圣诞版</span>
+          <span class="ov-badge-autumn">✈️ 11.25 – 11.28 真实航班版</span>
         </div>
         <div class="ov-stats-grid">
           <div class="ov-stat-tile">
-            <span class="ov-stat-label">🗓 全程跨度</span>
-            <span class="ov-stat-val">5 天 4 晚</span>
-            <span class="ov-stat-sub">11/25(三) ~ 11/29(日)</span>
+            <span class="ov-stat-label">✈️ 真实航班</span>
+            <span class="ov-stat-val">WE854 ➔ SC4620</span>
+            <span class="ov-stat-sub">11/25 08:05抵 ➔ 11/28 22:10离(青岛转广州)</span>
           </div>
           <div class="ov-stat-tile">
-            <span class="ov-stat-label">🏨 酒店锚点</span>
-            <span class="ov-stat-val">九老福朋喜来登</span>
-            <span class="ov-stat-sub">2号线直达全城 · 4晚连住不搬家</span>
+            <span class="ov-stat-label">🏨 已订主单</span>
+            <span class="ov-stat-val">九老福朋 (3晚)</span>
+            <span class="ov-stat-sub">同程 101471974245 · 记得退旧酒店！</span>
           </div>
           <div class="ov-stat-tile">
-            <span class="ov-stat-label">✨ 江南医美日</span>
-            <span class="ov-stat-val">D3 新论岘 + 现代百货</span>
-            <span class="ov-stat-sub">术后直奔室内圣诞村 · 打车15分回</span>
+            <span class="ov-stat-label">✨ 医美与圣诞</span>
+            <span class="ov-stat-val">D3 医美 + 现代百货</span>
+            <span class="ov-stat-sub">9号线全室内连廊 · COEX + 圣诞村</span>
           </div>
           <div class="ov-stat-tile">
-            <span class="ov-stat-label">🎄 初冬应景</span>
-            <span class="ov-stat-val">松弛全覆盖</span>
-            <span class="ov-stat-sub">三大圣诞光影 + 玻璃温室 + 美术馆</span>
+            <span class="ov-stat-label">🧳 行李红线</span>
+            <span class="ov-stat-val">去15kg · 返手提5kg</span>
+            <span class="ov-stat-sub">返程托运23kg · 青岛过夜须提箱重托</span>
           </div>
         </div>
       </div>
 
       <div class="ov-cinema-wrap">
         <div class="ov-cinema-header">
-          <h2><span>🎬</span> 5 天电影级风景全景画卷</h2>
+          <h2><span>🎬</span> 4 天电影级风景全景画卷</h2>
           <span class="ov-cinema-hint">
             <span class="hint-d">💡 鼠标滑过展开风景 · 点击进入分时行程</span>
             <span class="hint-m">👉 左右滑动浏览每天画卷 · 轻触卡片进入时刻表</span>
@@ -2531,30 +2517,30 @@ const OOTD_DAYS = [
     dayNum: 'D1 · 11.25 周三',
     city: 'seoul',
     cityName: '首尔',
-    title: '德寿宫石墙落叶 · 傍晚新世界百货圣诞梦幻光影',
-    weather: '首尔 2°C ~ 11°C · 早晚干冷风大 · 室内暖气 24°C',
-    spots: ['仁川机场', '德寿宫石墙路', '新世界百货总店圣诞秀', '明洞商圈'],
+    title: '红眼落地舒适出行 · 延南洞暖咖 · 傍晚新世界圣诞光影',
+    weather: '首尔 0°C ~ 8°C · 凌晨机场冷 · 下午补觉后进城看夜景',
+    spots: ['仁川T1落地', '延南洞咖啡', '望远市场', '德寿宫石墙路', '新世界圣诞巨幕'],
     palette: [
       { n: '燕麦米白', hex: '#f4ede4', c: '#423325' },
       { n: '焦糖暖棕', hex: '#9e5b32', c: '#ffffff' },
       { n: '炭黑冷淡', hex: '#262626', c: '#ffffff' },
-      { n: '复古枫红', hex: '#9e2a3b', c: '#ffffff' }
+      { n: '圣诞丝绒红', hex: '#9e2a3b', c: '#ffffff' }
     ],
     boy: {
-      top: '深炭灰/黑色中长挺括毛呢大衣，内搭厚磅燕麦色圆领卫衣（内着发热内衣）',
-      bottom: '垂坠直筒水洗黑/深蓝牛仔裤，或宽松休闲西裤',
-      shoes: '极度舒适且防滑软底鞋（Samba/德训鞋/New Balance 990）——石墙路漫步很省脚力',
-      acc: '黑色冷帽（Beanie）或藏青羊毛围巾，兼具挡风与街头层次'
+      top: '深炭灰/黑色毛呢大衣，内搭厚磅燕麦色连帽卫衣（坐红眼航班舒适好睡，落地不换衣直接逛延南洞）',
+      bottom: '垂坠宽松休闲西裤或直筒弹力牛仔裤',
+      shoes: '极度舒适防滑软底鞋（Samba/德训鞋/New Balance 990）',
+      acc: '黑色冷帽 + 藏青羊毛围巾，挡风且遮盖凌晨航班疲惫感'
     },
     girl: {
-      top: '燕麦白/奶咖色双面羊毛大衣，内搭亲肤半高领羊绒衫（进店试衣脱穿优雅）',
-      bottom: '浅米白高腰阔腿西装裤，或毛呢百褶长裙 + 120D 防风加厚发热打底袜',
-      shoes: '软皮低跟方头切尔西靴或复古球鞋，防滑舒适软底',
-      acc: '焦糖暖棕色羊绒大围巾 + 复古腋下包，涂抹水光感枫叶红唇釉'
+      top: '燕麦白/奶咖色双面羊毛大衣，内搭柔软羊绒针织（飞机上穿也零束缚）',
+      bottom: '浅米白高腰阔腿针织/西装裤，加厚防风保暖打底',
+      shoes: '软皮切尔西靴或复古球鞋',
+      acc: '焦糖暖棕色大围巾 + 墨镜，下午酒店补觉后涂水光感正红唇釉拍圣诞夜照'
     },
-    couple: '【深浅同色系呼应】男生深炭黑外衣搭配女生浅奶白大衣；佩戴同为羊绒质感但一深一浅的围巾，松弛自然又高级。傍晚 17:30 新世界金色圣诞灯光墙亮起时，两人站在对街合影，深浅对比立体出片！',
-    photoTip: '德寿宫石墙路趁日落斜光拍摄落叶金毯；新世界百货总店对街仰拍，金色圣诞巨幕为背景，深色大衣最能压住周围车流杂光。',
-    xhs: ['首尔 11月 穿搭', '新世界百货圣诞 穿搭', '德寿宫石墙路 拍照', '首尔 情侣 穿搭']
+    couple: '【红眼舒适 + 圣诞反差】白天坐飞机与逛延南洞时松弛惬意；傍晚补觉后站在新世界金色圣诞巨幕对街，深黑+奶白大衣在夜色灯光下极度高级出片！',
+    photoTip: '新世界百货总店对街仰拍，金色圣诞巨幕为背景，人物站前侧微仰头最能压住周围车流杂光。',
+    xhs: ['首尔 11月 穿搭', '新世界百货圣诞 穿搭', '延南洞 穿搭', '首尔 情侣 穿搭']
   },
   {
     id: 'd2',
@@ -2562,118 +2548,89 @@ const OOTD_DAYS = [
     city: 'seoul',
     cityName: '首尔',
     title: '昌庆宫玻璃大温室 · 西村暖炉咖啡 · 广藏热食复古夜游',
-    weather: '首尔 0°C ~ 9°C · 清晨微寒 · 古树林荫处偏冷 · 步数约 18,000',
+    weather: '首尔 -1°C ~ 7°C · 玻璃温室温暖如春 · 室内外穿脱频繁',
     spots: ['昌庆宫玻璃大温室', '西村小店', 'Archivist咖啡', '广藏市场', '乙支路'],
     palette: [
       { n: '纯净米白', hex: '#f9f6f0', c: '#3b2f21' },
       { n: '暖卡其驼', hex: '#b3804d', c: '#ffffff' },
-      { n: '常青墨绿', hex: '#274431', c: '#ffffff' },
+      { n: '冷杉墨绿', hex: '#2a5849', c: '#ffffff' },
       { n: '复古酒红', hex: '#722230', c: '#ffffff' }
     ],
     boy: {
-      top: '经典驼色/深橄榄绿中长羊毛大衣，叠穿米白麻花粗织毛衣 + 浅蓝牛津纺衬衫',
+      top: '经典驼色/深墨绿羊毛大衣，叠穿米白粗织毛衣 + 浅蓝牛津纺衬衫',
       bottom: '深咖色或墨绿色复古灯芯绒长裤（保暖且极具英伦常青藤感）',
-      shoes: '已磨合好的防滑工装皮鞋或复古跑鞋，古宫石阶抓地稳固',
-      acc: '苏格兰复古格纹羊毛围巾 + 复古细金属框眼镜，文青质感拉满'
+      shoes: '防滑工装皮鞋或复古跑鞋',
+      acc: '复古格纹羊毛围巾 + 细框眼镜，进入温室脱掉大衣单穿毛衣极有书卷气'
     },
     girl: {
-      top: '奶白/燕麦色羊毛大衣，或复古牛角扣毛呢外套，内搭奶杏色羊绒打底',
-      bottom: '棕红格纹毛呢伞裙（配加厚防风发热连裤袜），在韩屋木门前摆动极其灵动',
-      shoes: '复古深棕乐福鞋（搭配加厚羊毛袜）或圆头软皮马丁靴',
-      acc: '【出片神器】焦糖色或深米色贝雷帽！再斜挎一个小巧复古马鞍包'
+      top: '奶白/燕麦色羊毛大衣，内搭修身半高领羊绒针织（进温室脱大衣很显身材）',
+      bottom: '棕红格纹毛呢伞裙（配加厚防风发热连裤袜）',
+      shoes: '复古深棕乐福鞋或软皮短靴',
+      acc: '【出片神器】焦糖色贝雷帽 + 小巧复古马鞍包'
     },
-    couple: '【古建避坑禁忌】昌德宫后苑与北墙满眼皆是金黄银杏与红枫，切忌穿明黄色衣服（容易隐形）。推荐“纯白/燕麦色 + 驼色/墨绿”，气质清冷典雅。',
-    photoTip: '昌德宫芙蓉池适合拍摄水面倒影；西村小巷与 Archivist 咖啡馆窗边抓拍极有电影感。',
-    xhs: ['昌德宫后苑 穿搭', '西村 拍照穿搭', '北村韩屋村 穿搭', '韩系 文艺情侣穿搭']
+    couple: '【百年花房文艺情侣】昌庆宫白色玻璃大温室内满眼绿植，两人穿奶白、驼色与墨绿呼应，脱掉大衣在玻璃光影下拍照，宛如复古文艺电影！',
+    photoTip: '昌庆宫大温室利用玻璃穹顶顺光或侧逆光拍摄；西村 Archivist 咖啡馆窗边抓拍极有电影感。',
+    xhs: ['昌庆宫大温室 拍照', '西村 拍照穿搭', '韩国 冬天 穿搭', '韩系 文艺情侣穿搭']
   },
   {
     id: 'd3',
     dayNum: 'D3 · 11.27 周五',
     city: 'seoul',
     cityName: '首尔',
-    title: '新论岘医美清透护肤 · 汝矣岛 The Hyundai 室内圣诞村',
-    weather: '首尔 2°C ~ 10°C · 医美后皮肤娇嫩 · 下午全程室内恒温约 23°C',
-    spots: ['HOMMAGE CLINIC 新论岘', 'The Hyundai Seoul 圣诞村'],
+    title: '新论岘医美清透护肤 · COEX 圣诞树 · 现代百货室内圣诞村',
+    weather: '首尔 0°C ~ 8°C · 医美后皮肤娇嫩 · 下午全室内恒温约 23°C',
+    spots: ['HOMMAGE CLINIC 新论岘', 'COEX 星空图书馆', 'The Hyundai Seoul 圣诞村'],
     palette: [
       { n: '纯净云白', hex: '#faf7f2', c: '#362f28' },
       { n: '浅燕麦驼', hex: '#cbbba7', c: '#2b231c' },
       { n: '圣诞树绿', hex: '#264734', c: '#ffffff' },
-      { n: '暖意酒红', hex: '#7a252e', c: '#ffffff' }
+      { n: '暖意酒红', hex: '#9e2a3b', c: '#ffffff' }
     ],
     boy: {
-      top: '舒适针织开衫或厚磅纯棉卫衣，外搭挺括大衣（进现代百货暖气足，方便脱穿）',
+      top: '舒适针织开衫或厚磅纯棉卫衣，外搭大衣（进现代百货暖气足，方便脱穿）',
       bottom: '宽松垂坠休闲西裤或直筒牛仔裤',
       shoes: '舒适软底球鞋或乐福鞋',
       acc: '简约墨镜 + 黑色透气口罩（陪同医美遮挡防风）'
     },
     girl: {
       top: '极度亲肤柔软纯棉内搭 + 软糯开衫 + 羊毛大衣（医美诊所内穿脱轻柔不蹭脸，进圣诞村脱掉大衣出片极美）',
-      bottom: '垂感高腰阔腿针织裤或浅色长裙，轻松惬意',
+      bottom: '垂感高腰阔腿针织裤或浅色长裙',
       shoes: '平底玛丽珍鞋或软底小白鞋',
       acc: '【医美术后神器】遮阳宽檐渔夫帽 + 防紫外线大框墨镜 + 无菌透气口罩（室内拍照可暂时摘下）'
     },
-    couple: '【松弛治愈 · 圣诞童话】上午轻松做完皮肤管理，下午直奔全程恒温的 The Hyundai Seoul 室内圣诞小镇，脱下厚外套露出温柔的奶白/酒红/墨绿内搭，在巨型旋转圣诞树前拍照极其温柔。',
-    photoTip: 'The Hyundai Seoul 5 楼空中庭院圣诞村暖色调灯光充足，用人像模式拍背景散景非常梦幻。',
-    xhs: ['韩国医美 穿搭', 'The Hyundai Seoul 圣诞 穿搭', '首尔 室内穿搭', '温柔 情侣穿搭']
+    couple: '【松弛治愈 · 24°C 室内圣诞童话】上午轻松做完皮肤管理，下午全在恒温地下连廊与室内圣诞小镇里穿梭，脱下厚外套露出温柔的奶白/酒红/墨绿内搭，在巨型圣诞树前拍照极其温柔。',
+    photoTip: 'The Hyundai Seoul 5 楼圣诞村与 COEX 星空图书馆金色圣诞树灯光充足，人像模式拍背景散景极梦幻。',
+    xhs: ['韩国医美 穿搭', 'The Hyundai Seoul 圣诞 穿搭', 'COEX 星空图书馆 圣诞', '温柔 情侣穿搭']
   },
   {
     id: 'd4',
     dayNum: 'D4 · 11.28 周六',
     city: 'seoul',
-    cityName: '首尔',
-    title: 'Leeum 三星美术馆 · 汉南圣水室内展厅 · 蚕室欧式圣诞',
-    weather: '首尔 1°C ~ 10°C · 汉南洞坡度大 · 室内外频繁进出 · 步数超 18,000',
-    spots: ['Leeum 三星美术馆', '汉南洞买手店', '圣水洞室内展厅', '蚕室乐天圣诞'],
+    cityName: '首尔 ➔ 机场',
+    title: 'Leeum 三星美术馆 · 汉南洞圣水室内展厅 ➔ 22:10 仁川T1返程',
+    weather: '首尔 -1°C ~ 7°C · 晚上赶 22:10 航班并过夜中转青岛',
+    spots: ['Leeum 三星美术馆', '汉南洞买手店', '圣水室内展厅', '仁川T1 22:10返程'],
     palette: [
       { n: '先锋酷黑', hex: '#1c1c1c', c: '#ffffff' },
       { n: '水泥灰', hex: '#8c8c8c', c: '#ffffff' },
       { n: '暖灰燕麦', hex: '#d9d0c3', c: '#382f25' },
-      { n: '跳色明橙', hex: '#ea6e20', c: '#ffffff' }
+      { n: '香槟金', hex: '#c49234', c: '#ffffff' }
     ],
     boy: {
-      top: '黑色机车皮衣夹克 / 哑光质感短款廓形羽绒服，内搭深灰连帽卫衣',
-      bottom: '炭黑直筒微宽阔腿牛仔裤，或松弛机能工装裤',
-      shoes: 'Salomon 越野跑鞋 / 银色复古慢跑鞋 / 厚底德训鞋——汉南洞多大斜坡，鞋底千万别选硬底！',
-      acc: '极简黑色无檐冷帽（Beanie）+ 哑光银色细项链，圣水潮男氛围拉满'
+      top: '哑光质感短款羽绒服或皮衣夹克，内搭极简连帽卫衣（既潮又方便晚上坐红眼飞机/青岛过夜穿着）',
+      bottom: '炭黑直筒微宽阔腿牛仔裤或舒适工装休闲裤',
+      shoes: 'Salomon / 德训鞋 / 软底球鞋——汉南洞下坡好走，机场过安检也方便',
+      acc: '极简黑色无檐冷帽 + 轻便双肩包（⚠️ 返程手提仅限 5KG，重物提前全塞托运箱）'
     },
     girl: {
-      top: '复古黑棕色皮衣短外套 / 廓形深灰毛呢西装，内搭修身半高领黑色羊毛打底',
-      bottom: '高腰拖地垂感深灰阔腿西裤（超显腿长）或直筒复古水洗牛仔裤',
-      shoes: '复古厚底乐福鞋或银色金属感球鞋，严禁细高跟（汉南洞坡度高达 25°）',
-      acc: '【潮店点睛】高饱和跳色腋下包（亮黄/正红/银色），戴一副极简金属大耳圈'
+      top: '廓形深灰毛呢西装或短款保暖羽绒服，内搭亲肤羊绒打底（坐夜班飞机舒适不勒）',
+      bottom: '高腰拖地垂感深灰阔腿裤（白天在美术馆螺旋楼梯显腿长，晚上坐飞机也松弛）',
+      shoes: '复古厚底球鞋或软皮乐福鞋，严禁高跟',
+      acc: '带一个折叠大尼龙购物袋，回九老后把买的战利品全塞进 23KG 大托运箱！'
     },
-    couple: '【韩系 Clean Fit 潮人情侣】化身汉南洞与圣水洞主理人情侣！以黑、灰、水泥调为主色，皮质与金属配件呼应。傍晚在蚕室金色圣诞木屋与旋转木马前同框，反差感极具冲击力。',
-    photoTip: '圣水洞各概念店门头与旋转楼梯是绝佳几何人像点；蚕室旋转木马前利用暖光拍虚化梦幻背景。',
-    xhs: ['汉南洞 穿搭', '圣水洞 ootd', '蚕室 乐天世界 圣诞穿搭', '韩系 极简情侣穿搭']
-  },
-  {
-    id: 'd5',
-    dayNum: 'D5 · 11.29 周日',
-    city: 'seoul',
-    cityName: '首尔',
-    title: '延南洞京义线林荫道 · 望远市场烟火气 · 仁川机场轻松归国',
-    weather: '首尔 2°C ~ 10°C · 轻松街区漫步 · 返程大巴/飞机舒适为主',
-    spots: ['延南洞京义线林荫道', 'object 设计店', '望远市场', '仁川国际机场'],
-    palette: [
-      { n: '松弛奶灰', hex: '#d6d1c7', c: '#3b342b' },
-      { n: '静谧藏青', hex: '#212d3d', c: '#ffffff' },
-      { n: '轻柔燕麦', hex: '#e8e2d8', c: '#3b342b' }
-    ],
-    boy: {
-      top: '纯棉厚实连帽卫衣，外披轻便羽绒服或羊毛大衣（过安检与飞机机舱冷暖可调）',
-      bottom: '松弛弹力休闲裤 / 宽松慢跑卫裤',
-      shoes: '一脚蹬懒人鞋或舒适软底跑鞋（机场过安检穿脱方便）',
-      acc: '轻便双肩包或腰包，放置证件护照与充电宝'
-    },
-    girl: {
-      top: '软糯针织开衫 + 亲肤纯棉内搭，外穿保暖羊毛外套',
-      bottom: '垂坠舒适阔腿针织裤或松弛慢跑裤，坐飞机久坐不勒腹部',
-      shoes: '软底小白鞋或棉花糖运动鞋',
-      acc: '随身带一个大号轻便折叠旅行尼龙袋，装免税店提货的化妆品和伴手礼'
-    },
-    couple: '【松弛感机场旅人 (Airport Chic)】整套搭配遵循“轻盈、柔软、好脱穿”。上午在延南洞晒着暖阳喝最后一杯咖啡、逛望远市场吃热乎小吃，下午回酒店取行李坐机场大巴躺平直达仁川机场！',
-    photoTip: '延南洞红砖小巷咖啡馆门头拍照极具慵懒日韩剧质感。',
-    xhs: ['延南洞 穿搭', '望远市场 美食', '韩国秋冬 机场穿搭', '松弛感 旅行情侣穿搭']
+    couple: '【美术馆 Clean Fit + 机场松弛感】白天以黑、灰、燕麦色调在 Leeum 纯白螺旋楼梯与圣水水泥建筑前拍出极高质感大片；17:15 回九老取行李去机场，舒舒服服飞回广州！',
+    photoTip: 'Leeum 美术馆标志性白色螺旋楼梯俯拍与仰拍皆绝美；17:15 务必停手回九老赶 6004 机场大巴。',
+    xhs: ['Leeum 三星美术馆 拍照', '汉南洞 穿搭', '圣水洞 ootd', '韩国秋冬 机场穿搭']
   }
 ];
 
@@ -2687,7 +2644,7 @@ function renderOotd(){
   const filtered = OOTD_DAYS.filter(d => {
     if (ootdFilter === 'all') return true;
     if (ootdFilter === 'd12') return d.id === 'd1' || d.id === 'd2';
-    if (ootdFilter === 'd35') return d.id === 'd3' || d.id === 'd4' || d.id === 'd5';
+    if (ootdFilter === 'd34') return d.id === 'd3' || d.id === 'd4';
     return d.city === ootdFilter;
   });
 
@@ -2920,35 +2877,35 @@ $('#foodSeg').addEventListener('click', e => {
 });
 
 /* ================= PREP ================= */
-const PACK = [['passport','护照 + 签证确认书打印件'],['ticket','机票 / KTX / 酒店确认单'],['huwon','昌德宫后苑预约截图'],['adapter','转换插头 ×2'],['power','充电宝 + 数据线'],['esim','eSIM / 流量卡'],['card','Visa/Master 信用卡 ×2'],['cash','少量韩元现金'],['coat','羽绒服 / 大衣'],['thermal','保暖内衣'],['scarf','围巾 + 手套 + 帽子'],['shoes','好走的鞋'],['umbrella','折叠伞'],['cream','护手霜 + 润唇膏'],['warmer','暖宝宝'],['bag','折叠购物袋 / 半空行李箱'],['list','购物清单截图'],['meds','常用药']];
+const PACK = [['passport','护照（有效期>6个月）+ 签证确认书打印件'],['ticket','英文行程单（WE854 / SC4620 / SC4679）+ 同程酒店确认单'],['apps_book','HOMMAGE 医美预约 + Leeum 美术馆预约码'],['adapter','韩国转换插头（德标双圆孔）×2'],['power','带清晰 3C 标识的充电宝 + 数据线（⚠️ 民航严查3C）'],['esim','韩国 eSIM / 流量卡'],['card','Visa/Master 信用卡 ×2 + 少量韩元现金（付5万押金/市场用）'],['coat','保暖羽绒服 / 厚大衣'],['thermal','保暖内衣 + 暖宝宝/足底贴'],['scarf','围巾 + 帽子 + 防晒宽檐帽/墨镜/口罩（医美术后用）'],['shoes','防滑软底鞋（每天1.5万步）'],['bag','折叠尼龙购物袋（⚠️ 返程手提限5KG，重物全装23KG托运箱）'],['meds','常用药 + 医美术后修护面膜']];
 function renderPrep(){
   $('#prepPanel').innerHTML = `
-  <details class="acc" open><summary>✅ 出发前待办</summary><div class="in">
+  <details class="acc" open><summary>✈️ 真实航班与中转红线 <span class="ok">已同步 Gmail</span></summary><div class="in"><ul>
+    <li><b>去程（11/25 周三）</b>：Parata Air <b>WE854</b> · <b>03:30 深圳宝安 T3 ➔ 08:05 仁川 T1</b><br>编码：赵 <code>N2WC2A</code> / 刘 <code>NZ9F22</code> · ⚠️ <b>托运限 15KG/人</b>，手提 10KG</li>
+    <li><b>返程 1（11/28 周六）</b>：山东航空 <b>SC4620</b> · <b>22:10 仁川 T1 ➔ 22:45 青岛胶东</b><br>编码：赵 <code>NT7D92</code> / 刘 <code>QC7Z44</code> · ⚠️ <b>托运限 23KG，手提仅限 5KG！</b></li>
+    <li><b>青岛中转（10h10m 跨天过夜）</b>：⚠️ <b>行李非直达！</b>22:45 到青岛必须先提取托运行李，次日 11/29 <b>08:55 乘 SC4679</b> 重新托运，<b>12:35 抵广州白云 T3</b>。</li>
+  </ul></div></details>
+  <details class="acc" open><summary>✅ 出发前待办与退订止损</summary><div class="in">
     <ul class="checklist" id="todo">
-      ${[['visa','签证 C-3-9（已办好 🎉）',1],['hotel_s','首尔住宿：东大门退溪路68街 3晚（已预订 🎉）',1],['ktx','订 11/27 首尔→釜山 KTX（Korail 官网 / Korail Talk）'],['huwon2','预约昌德宫后苑导览（官网）'],['hotel_b','订釜山酒店：西面 2 晚（或 1 晚换广安里海景）'],['app','装好 Naver Map / Kakao T / Papago / Catch Table'],['popup','出发前 3 天查 #성수팝업 和红叶实拍']]
+      ${[['cancel_b9','🔴【紧急】明午 16:00(北京时间)前取消携程「9号精品酒店 #1128152236188926」'],['cancel_ff','🔴【紧急】11/22 前去 Agoda 核实退订「永登浦万枫 #2063009753」(防自动扣款0688)'],['cancel_tc','核实同程另外两笔福朋旧单已退，只保留 #101471974245（¥2,772.31）'],['hotel_s','主住宿已确认：九老福朋喜来登 11/25–11/28 共 3 晚 🎉',1],['hommage','预约 D3(11/27 10:00) HOMMAGE CLINIC 皮肤管理'],['leeum','官网预约 D4(11/28 10:15) Leeum 三星美术馆入场码'],['app','装好 Naver Map / Uber(或Kakao T) / Papago / Catch Table']]
         .map(([k,t,def]) => `<li><label><input type="checkbox" data-id="todo_${k}" ${def?'data-def="1"':''}><span>${t}</span></label></li>`).join('')}
     </ul></div></details>
-  <details class="acc"><summary>🛂 签证 <span class="ok">已办好</span></summary><div class="in">
-    <p>入境时随身带<b>护照 + 签证签发确认书打印件</b>（手机里也存一份截图）。入境卡 / e-Arrival 按航空公司提示填写。</p></div></details>
-  <details class="acc"><summary>🚆 交通</summary><div class="in"><ul>
-    <li>仁川 → 首尔站：AREX 直达约 43 分钟</li>
-    <li>首尔 → 釜山：KTX 约 2.5 小时，标准座约 6 万韩元/人</li>
-    <li>市内：地铁 + 公交，刷 T-money / WOWPASS</li>
-    <li>打车：Kakao T（可绑境外卡）</li>
-    <li>西面 → 金海机场：打车约 30 分钟</li></ul></div></details>
+  <details class="acc"><summary>🛂 签证与证件</summary><div class="in">
+    <p>入境时随身带<b>护照（有效期需大于6个月）+ 签证签发确认书打印件 + 英文行程单</b>（飞猪/携程邮件附件里可打印）。</p></div></details>
+  <details class="acc"><summary>🚌 交通（九老福朋出发）</summary><div class="in"><ul>
+    <li><b>仁川 T1 ⇄ 九老福朋</b>：<b>6004 路机场大巴</b>直达（约 65–75 分钟，行李放车底免搬箱）</li>
+    <li><b>市内通票推荐</b>：在仁川机场/地铁站买<b>气候同行卡（3日券10,000或5日券15,000韩元+卡费3,000）</b>，首尔 1–9 号线无限坐</li>
+    <li><b>打车</b>：用 <b>Uber</b>（支持微信/支付宝，可直接叫韩国出租车）或 <b>Kakao T</b>；D3 现代百货打车回九老仅约 15 分钟（~1万韩元）</li></ul></div></details>
   <details class="acc"><summary>📱 必装 App</summary><div class="in"><ul>
-    <li><b>Naver Map</b>：导航必备（Google 地图在韩国导航不好用）</li>
-    <li><b>Kakao T</b>：打车</li><li><b>Papago</b>：翻译，拍菜单</li>
-    <li><b>Catch Table</b>：餐厅订位 / 远程排队</li><li><b>Korail Talk</b>：KTX 车票</li></ul></div></details>
+    <li><b>Naver Map</b>：韩国精准步行与地铁路线导航</li>
+    <li><b>Uber / Kakao T</b>：打车必备</li><li><b>Papago</b>：韩文拍照翻译、点菜</li>
+    <li><b>Catch Table</b>：London Bagel / 热门餐厅远程取号</li></ul></div></details>
   <details class="acc"><summary>💳 支付 & 🧾 退税</summary><div class="in">
-    <p>商场、连锁店刷 Visa/Master；支付宝、微信在明洞、圣水等游客区覆盖率高。<b>市场、夜市带现金。</b>WOWPASS 可当交通卡 + 预付卡。</p>
-    <p>同一店单笔满 <b>15,000 韩元</b>可退税，很多店支持即时退税（出示护照直接扣税）；其余小票到机场退税机办理。<b>逛街随身带护照。</b></p></div></details>
+    <p>入住九老福朋前台需付 <b>50,000 韩元押金</b>（退房原路退）。汉南洞、圣水洞、明洞单笔满 <b>15,000 韩元</b>带护照可享立减退税；其余退税单 D4 <b>19:20 前抵达仁川 T1</b> 在自助机办理退税后托运！</p></div></details>
   <details class="acc"><summary>🌡 天气 & 🧥 穿搭</summary><div class="in"><ul>
-    <li>首尔 0 ~ 9°C，早晚有风，可能有初雪；釜山 5 ~ 14°C，海边风大</li>
-    <li>日落约 17:15，户外景点排在 16:30 前</li>
-    <li>洋葱式穿法：保暖打底 + 毛衣 + 大衣/短羽绒，室内暖气足方便脱</li>
-    <li>每天 1.5–2 万步，好走的鞋最重要</li>
-    <li>出片配色：驼色、奶白、酒红、焦糖色和落叶最搭</li></ul></div></details>
+    <li>11 月底首尔 -2 ~ 8°C，早晚寒风凛冽，室内暖气极足（22~25°C）</li>
+    <li>日落约 17:15，采用「薄发热衣 + 毛衣 + 防风大衣/羽绒服」洋葱式穿法</li>
+    <li>带清晰 3C 标识的充电宝（国内转机航班严查）</li></ul></div></details>
   <details class="acc"><summary>🔌 其他</summary><div class="in"><ul>
     <li>电压 220V，双圆孔插座，需要转换头</li>
     <li>景福宫周二闭馆；昌德宫、昌庆宫、德寿宫周一闭馆</li>
@@ -2959,17 +2916,16 @@ function renderPrep(){
     <ul class="checklist" id="packList">${PACK.map(([k,t]) => `<li><label><input type="checkbox" data-id="${k}"><span>${t}</span></label></li>`).join('')}</ul></div></details>
   <details class="acc"><summary>💰 预算（2 人，不含机票购物）</summary><div class="in">
     <table><tbody>
-      <tr><td>住宿</td><td>首尔 3 晚 + 釜山 2 晚</td><td class="n">₩700k–1.2M</td></tr>
-      <tr><td>餐饮</td><td>每天 ₩120k–200k</td><td class="n">₩720k–1.2M</td></tr>
-      <tr><td>KTX</td><td>×2 人</td><td class="n">≈ ₩120k</td></tr>
-      <tr><td>市内交通</td><td>地铁、打车、AREX</td><td class="n">₩120k–180k</td></tr>
-      <tr><td>门票体验</td><td>后苑、天空胶囊等</td><td class="n">₩60k–150k</td></tr></tbody>
-      <tfoot><tr><td colspan="2">合计</td><td class="n">≈ ₩1.7–2.85M</td></tr></tfoot></table>
-    <p class="small muted">约 ¥8,500–15,000（按 1 元 ≈ 190–200 韩元粗算）。</p></div></details>
+      <tr><td>住宿</td><td>九老福朋喜来登 3 晚（已付）</td><td class="n">¥2,772</td></tr>
+      <tr><td>餐饮</td><td>每天 ₩120k–180k（约 4 天）</td><td class="n">₩480k–720k</td></tr>
+      <tr><td>市内交通</td><td>气候卡、机场大巴、打车</td><td class="n">₩90k–140k</td></tr>
+      <tr><td>门票与杂项</td><td>昌庆宫温室等</td><td class="n">₩20k–50k</td></tr></tbody>
+      <tfoot><tr><td colspan="2">现场浮动花费（不含住宿/医美/购物）</td><td class="n">≈ ₩600k–910k</td></tr></tfoot></table>
+    <p class="small muted">除已付酒店 ¥2,772 外，当地餐饮交通约合人民币 ¥3,000–4,800（1 元 ≈ 190 韩元）。</p></div></details>
   <details class="acc"><summary>📷 照片来源</summary><div class="in">
     <p class="small muted">景点照片来自 Wikimedia Commons，按各自的知识共享许可使用，可能不是当季实拍。</p>
     <ul class="credits">${(window.CREDITS || []).map(c => `<li>${esc(c.k)}：<a href="${c.page}" target="_blank" rel="noopener">${esc(c.title)}</a> · ${esc(c.artist)} · ${esc(c.license)}</li>`).join('')}</ul></div></details>
-  <p class="small muted pad">信息整理于 2026-11-06。营业时间、活动日期可能变化，出发前再核实。</p>`;
+  <p class="small muted pad">已同步 Gmail 真实航班与酒店数据。营业时间、活动日期可能变化，出发前再核实。</p>`;
   setupChecks();
 }
 function setupChecks(){
