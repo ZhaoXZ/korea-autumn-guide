@@ -187,10 +187,10 @@ img{display:block;max-width:100%}
   .ov-strip{
     flex:1;transition:flex .48s cubic-bezier(.2,.9,.3,1),box-shadow .3s ease,border-color .3s ease;
     position:relative;overflow:hidden;border-radius:16px;cursor:pointer;
-    box-shadow:0 4px 14px rgba(0,0,0,.14);border:1.5px solid rgba(255,255,255,.2);background:#1a120c;
+    box-shadow:0 4px 14px rgba(15,25,38,.12);border:1.5px solid rgba(255,255,255,.35);background:#16222f;
   }
   .ov-strip:hover,.ov-strip:focus-within,.ov-strip.is-active{
-    flex:3.6;box-shadow:0 14px 40px rgba(0,0,0,.35);border-color:var(--dc,#9e2a3b);
+    flex:3.6;box-shadow:0 14px 40px rgba(15,25,38,.28);border-color:var(--dc,#9e2a3b);
   }
 }
 
@@ -199,12 +199,12 @@ img{display:block;max-width:100%}
   .ov-cinema-stack{display:flex;flex-direction:column;gap:12px}
   .ov-strip{
     position:relative;overflow:hidden;border-radius:16px;cursor:pointer;
-    box-shadow:0 3px 12px rgba(0,0,0,.12);border:1.5px solid rgba(255,255,255,.25);
+    box-shadow:0 3px 12px rgba(15,25,38,.10);border:1.5px solid rgba(255,255,255,.35);
     height:96px;transition:height .42s cubic-bezier(.2,.9,.3,1),box-shadow .3s ease,border-color .3s ease;
-    background:#1a120c;
+    background:#16222f;
   }
   .ov-strip.is-expanded{
-    height:390px;box-shadow:0 10px 30px rgba(0,0,0,.28);border-color:var(--dc,#9e2a3b);
+    height:390px;box-shadow:0 10px 30px rgba(15,25,38,.22);border-color:var(--dc,#9e2a3b);
   }
 }
 
@@ -213,10 +213,10 @@ img{display:block;max-width:100%}
 .ov-strip-bg img,.ov-strip-bg .noimg{width:100%;height:100%;object-fit:cover;object-position:center 38%;transition:transform .6s cubic-bezier(.2,.9,.3,1)}
 .ov-strip:hover .ov-strip-bg img,.ov-strip:focus-within .ov-strip-bg img,.ov-strip.is-active .ov-strip-bg img,.ov-strip.is-expanded .ov-strip-bg img{transform:scale(1.06)}
 
-/* 左侧底色渐变，保障未展开时文字清晰 */
+/* 左侧冷调轻遮罩，保障未展开时文字清晰又不显脏 */
 .ov-strip-left-tint{
   position:absolute;inset:0;z-index:2;
-  background:linear-gradient(to right,rgba(10,6,4,.84) 0%,rgba(10,6,4,.52) 42%,rgba(10,6,4,.18) 75%,transparent 100%);
+  background:linear-gradient(to right,rgba(15,25,38,.68) 0%,rgba(15,25,38,.34) 44%,rgba(15,25,38,.08) 76%,transparent 100%);
   pointer-events:none;transition:opacity .3s ease;
 }
 
@@ -255,19 +255,20 @@ img{display:block;max-width:100%}
   .ov-strip.is-expanded .ov-strip-expand-hint{opacity:0;transform:translateY(-50%) translateX(12px)}
 }
 
-/* 右侧半透明浅色冰雪磨砂玻璃蒙版抽屉 (Light Frosted Snow Glass Drawer) */
+/* 右侧悬浮冰雪磨砂玻璃卡片 (Floating Frosted Ice Glass Panel) */
 .ov-strip-drawer{
   position:absolute;z-index:4;display:flex;flex-direction:column;justify-content:space-between;
   color:#1d242b;opacity:0;pointer-events:none;
-  transition:opacity .35s ease,transform .38s cubic-bezier(.2,.9,.3,1);
+  transition:opacity .32s ease,transform .38s cubic-bezier(.2,.9,.3,1);
 }
 @media (min-width: 960px){
   .ov-strip-drawer{
-    inset:0 0 0 auto;width:58%;padding:18px 24px;
-    background:linear-gradient(to right,rgba(255,255,255,0) 0%,rgba(246,249,252,.78) 16%,rgba(255,255,255,.90) 40%,rgba(255,255,255,.94) 100%);
-    backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);
-    border-left:1px solid rgba(255,255,255,.8);box-shadow:-12px 0 32px rgba(22,34,47,.10);
-    transform:translateX(30px);
+    inset:12px 12px 12px auto;width:54%;padding:16px 20px;border-radius:14px;
+    background:rgba(255,255,255,.74);
+    backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);
+    border:1px solid rgba(255,255,255,.85);
+    box-shadow:0 8px 30px rgba(15,25,38,.14),inset 0 1px 0 rgba(255,255,255,.92);
+    transform:translateX(24px);
   }
   .ov-strip:hover .ov-strip-drawer,.ov-strip:focus-within .ov-strip-drawer,.ov-strip.is-active .ov-strip-drawer{
     opacity:1;pointer-events:auto;transform:translateX(0);
@@ -275,11 +276,12 @@ img{display:block;max-width:100%}
 }
 @media (max-width: 959px){
   .ov-strip-drawer{
-    inset:68px 0 0 0;padding:12px 14px 14px;
-    background:linear-gradient(to top,rgba(255,255,255,.96) 0%,rgba(246,249,252,.90) 76%,rgba(246,249,252,.72) 100%);
-    backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);
-    border-top:1px solid rgba(255,255,255,.85);transform:translateY(16px);
-    overflow-y:auto;-webkit-overflow-scrolling:touch;
+    inset:66px 10px 10px 10px;padding:12px 14px;border-radius:14px;
+    background:rgba(255,255,255,.80);
+    backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);
+    border:1px solid rgba(255,255,255,.88);
+    box-shadow:0 8px 26px rgba(15,25,38,.16),inset 0 1px 0 rgba(255,255,255,.92);
+    transform:translateY(14px);overflow-y:auto;-webkit-overflow-scrolling:touch;
   }
   .ov-strip.is-expanded .ov-strip-drawer{
     opacity:1;pointer-events:auto;transform:translateY(0);
